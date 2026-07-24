@@ -1,0 +1,39 @@
+.food-ticker {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.75);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 14px 0;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerMove 20s linear infinite;
+}
+
+.ticker-items {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ticker-items span {
+  color: white;
+  font-weight: bold;
+  margin-right: 60px;
+  white-space: nowrap;
+}
+
+@keyframes tickerMove {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+}

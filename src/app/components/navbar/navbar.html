@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark py-3 bg-warning">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold fs-3 text-danger" routerLink="/dashboard">
+      🍔 Joel<span class="text-dark">Hub</span>
+    </a>
+
+    <!-- Mobile button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarMenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarMenu">
+
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+
+        <li class="nav-item">
+          <a
+            class="nav-link active fw-semibold text-dark"
+            routerLink="/dashboard"
+          >
+            Home
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" routerLink="/menu">
+            Menu
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" routerLink="/categories">
+            Categories
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" routerLink="/orders">
+            Orders
+          </a>
+        </li>
+
+        <!-- Cart -->
+        <li class="nav-item">
+          <a
+            class="nav-link position-relative fw-semibold text-dark"
+            routerLink="/cart"
+          >
+            🛒 Cart
+
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              3
+            </span>
+          </a>
+        </li>
+
+        <!-- Logout -->
+        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+          <button
+            class="btn btn-danger rounded-pill px-4 fw-bold"
+            routerLink="/login"
+          >
+            Logout
+          </button>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

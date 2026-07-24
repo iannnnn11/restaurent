@@ -1,58 +1,34 @@
 <video autoplay muted loop playsinline class="bg-video">
     <source src="images/bgvideo.mp4" type="video/mp4">
 </video>
-
 <div class="overlay d-flex justify-content-center align-items-center vh-100">
 
-    <div class="card login-card p-4 shadow-lg">
-
+    <div class="card signup-card p-4 shadow-lg">
         <div class="text-center mb-4">
-
-            <h2 class="fw-bold text-white">
-                Create Account 👋
-            </h2>
-
             <p class="text-white-50">
-                Join us and start your journey
+                SignUp to continue
             </p>
-
         </div>
-
-        <input
-            type="text"
-            class="form-control mb-3 bg-transparent text-white"
-            placeholder="Full Name">
-
         <input
             type="email"
             class="form-control mb-3 bg-transparent text-white"
             placeholder="Email">
-
         <input
             type="password"
             class="form-control mb-3 bg-transparent text-white"
             placeholder="Password">
-
-        <input
-            type="password"
-            class="form-control mb-3 bg-transparent text-white"
-            placeholder="Confirm Password">
-
-        <button class="btn btn-warning w-100 fw-bold mt-2">
-            Sign Up
-        </button>
-
-        <p class="text-center text-white mt-4 mb-0">
-
-            Already have an account?
-
-            <a href="login.html"
-               class="text-warning text-decoration-none fw-bold">
-                Login
+        <input type="password" placeholder="confirm password" class="form-control mb-3 bg-transparent text-white">
+        <div class="d-flex justify-content-between mb-4">
+            <a href="#" class="text-warning text-decoration-none">
+                Forgot Password?
             </a>
-
+        </div>
+        <button class="btn btn-warning w-100 fw-bold">
+            Login
+        </button>
+        <p class="text-center text-white mt-4">
+            Already have an account?
+            <a routerLink="/login" class="text-warning text-decoration-none fw-bold">Login</a>
         </p>
-
     </div>
-
 </div>
