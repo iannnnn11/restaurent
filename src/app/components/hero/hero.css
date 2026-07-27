@@ -1,281 +1,43 @@
-:root {
-  --primary-orange: #ff5a36;
-  --secondary-orange: #ff9f2d;
-  --soft-orange: #fff1e8;
-  --warm-background: #fff9f4;
-  --dark-text: #171b2c;
+.footer{
+    background:#0b0f0c;
 }
 
-/* Navbar */
-
-.navbar {
-  z-index: 1000;
+.footer-link{
+    display:block;
+    color:#adb5bd;
+    text-decoration:none;
+    margin-bottom:12px;
+    transition:.3s;
 }
 
-.logo-box {
-  width: 43px;
-  height: 43px;
-  background: linear-gradient(
-    135deg,
-    var(--primary-orange),
-    var(--secondary-orange)
-  );
-  box-shadow: 0 8px 18px rgba(255, 90, 54, 0.25);
+.footer-link:hover{
+    color:#ffc107;
+    padding-left:6px;
 }
 
-.brand-highlight {
-  color: var(--primary-orange);
+.social-icon{
+    width:42px;
+    height:42px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:#1b261d;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
 }
 
-.navbar .nav-link {
-  color: #5d6370;
-  transition: 0.3s ease;
+.social-icon:hover{
+    background:#ffc107;
+    color:black;
+    transform:translateY(-4px);
 }
 
-.navbar .nav-link:hover {
-  color: var(--primary-orange);
-  background: var(--soft-orange);
+.form-control{
+    border:none;
 }
 
-.navbar .active-link {
-  color: var(--primary-orange) !important;
-  background: var(--soft-orange);
-}
-
-.cart-button {
-  color: var(--dark-text);
-  background: white;
-  border-color: #e7e7e7 !important;
-  transition: 0.3s ease;
-}
-
-.cart-button i {
-  color: var(--primary-orange);
-}
-
-.cart-button:hover {
-  color: var(--primary-orange);
-  border-color: var(--primary-orange) !important;
-  background: var(--soft-orange);
-}
-
-.cart-badge {
-  color: white;
-  background: var(--primary-orange);
-}
-
-.login-button {
-  border: none;
-  background: linear-gradient(
-    135deg,
-    var(--primary-orange),
-    var(--secondary-orange)
-  );
-  box-shadow: 0 10px 22px rgba(255, 90, 54, 0.25);
-  transition: 0.3s ease;
-}
-
-.login-button:hover {
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(255, 90, 54, 0.35);
-}
-
-/* Hero */
-
-.hero-section {
-  min-height: 100vh;
-  padding-top: 140px;
-  padding-bottom: 80px;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(255, 192, 112, 0.35),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 10% 90%,
-      rgba(255, 114, 75, 0.12),
-      transparent 25%
-    ),
-    var(--warm-background);
-}
-
-.hero-badge {
-  color: #d45124;
-  background: #ffe8d8;
-  border: 1px solid #ffd1b8;
-}
-
-.hero-highlight {
-  color: var(--primary-orange);
-}
-
-.hero-description {
-  max-width: 600px;
-  line-height: 1.8;
-}
-
-.hero-primary-btn {
-  border: none;
-  background: linear-gradient(
-    135deg,
-    var(--primary-orange),
-    var(--secondary-orange)
-  );
-  box-shadow: 0 12px 25px rgba(255, 90, 54, 0.25);
-  transition: 0.3s ease;
-}
-
-.hero-primary-btn:hover {
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 16px 32px rgba(255, 90, 54, 0.35);
-}
-
-.hero-secondary-btn {
-  color: var(--dark-text);
-  transition: 0.3s ease;
-}
-
-.hero-secondary-btn:hover {
-  color: var(--primary-orange);
-  border-color: var(--primary-orange) !important;
-  transform: translateY(-3px);
-}
-
-.feature-check {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 27px;
-  height: 27px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  color: white;
-  background: var(--primary-orange);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-/* Hero image */
-
-.hero-image-area {
-  max-width: 570px;
-  margin: auto;
-}
-
-.hero-image-card {
-  transform: rotate(2deg);
-}
-
-.hero-image {
-  height: 520px;
-  object-fit: cover;
-}
-
-.floating-card {
-  min-width: 220px;
-  z-index: 2;
-}
-
-.popular-card {
-  left: -45px;
-  bottom: 70px;
-}
-
-.delivery-card {
-  right: -35px;
-  top: 70px;
-}
-
-.floating-icon,
-.delivery-icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  font-size: 23px;
-}
-
-.floating-icon {
-  background: #fff0e6;
-}
-
-.delivery-icon {
-  background: #fff7d8;
-}
-
-/* Stats */
-
-.stat-card {
-  border: 1px solid #f2e9e2;
-  transition: 0.3s ease;
-}
-
-.stat-card h3 {
-  color: var(--primary-orange);
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(46, 35, 26, 0.1) !important;
-}
-
-/* Tablet */
-
-@media (max-width: 991px) {
-  .navbar-collapse {
-    margin-top: 15px;
-    padding: 20px;
-    border-radius: 20px;
-    background: white;
-    box-shadow: 0 15px 35px rgba(30, 25, 20, 0.1);
-  }
-
-  .hero-section {
-    padding-top: 125px;
-  }
-
-  .hero-image-area {
-    margin-top: 30px;
-  }
-
-  .hero-image {
-    height: 470px;
-  }
-
-  .popular-card {
-    left: 10px;
-  }
-
-  .delivery-card {
-    right: 10px;
-  }
-}
-
-/* Mobile */
-
-@media (max-width: 576px) {
-  .hero-section {
-    padding-top: 115px;
-  }
-
-  .hero-section h1 {
-    font-size: 2.7rem;
-  }
-
-  .hero-image {
-    height: 380px;
-  }
-
-  .floating-card {
-    position: static !important;
-    min-width: auto;
-    margin-top: 15px;
-  }
-
-  .hero-image-card {
-    transform: none;
-  }
+.form-control:focus{
+    box-shadow:none;
 }
