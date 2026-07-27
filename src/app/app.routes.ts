@@ -6,6 +6,7 @@ import { Menu } from './components/menu/menu';
 import { Orders } from './components/orders/orders';
 import { Cart } from './components/cart/cart';
 import { Categories } from './components/categories/categories';
+import { Booktable } from './components/booktable/booktable';
 
 export const routes: Routes = [
   {
@@ -40,5 +41,9 @@ export const routes: Routes = [
   {
     path: 'categories',
     component: Categories
+  },
+  {
+    path: 'booktable',
+    component: Booktable
   }
 ];
