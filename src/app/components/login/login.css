@@ -18,4 +18,7 @@
     backdrop-filter:blur(12px);
     border:1px solid rgba(255,255,255,.2);
 }
-
+.form-control::placeholder{
+    color: rgba(255,255,255,.7) !important;
+    opacity: 1;
+}

@@ -1,0 +1,48 @@
+.menu-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b0f0c, #172219);
+}
+
+.food-slider {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.food-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.food-card {
+  width: 310px;
+}
+
+.card {
+  background: #f8f9fa;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.food-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.slider-btn {
+  width: 45px;
+  height: 45px;
+}
+
+@media (max-width: 576px) {
+  .food-card {
+    width: 270px;
+  }
+
+  .food-image {
+    height: 190px;
+  }
+}
