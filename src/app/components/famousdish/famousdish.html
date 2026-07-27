@@ -1,275 +1,225 @@
-<section class="famous-section py-5">
+<section class="famous-dishes py-5">
 
   <div class="container">
 
-    <!-- Heading -->
-    <div class="row align-items-end mb-5">
+    <!-- Section Heading -->
+    <div class="text-center mb-5">
 
-      <div class="col-lg-7">
+      <p class="text-success fw-bold text-uppercase mb-2">
+        Customer Favourites
+      </p>
 
-        <span class="famous-badge">
-          🔥 Customer Favourites
-        </span>
+      <h2 class="fw-bold display-6">
+        Our Famous Dishes
+      </h2>
 
-        <h2 class="famous-title mt-3">
-          Our Most Loved
-          <span>Dishes</span>
-        </h2>
+      <p class="text-secondary mx-auto section-description">
+        Discover the dishes our customers love the most, prepared with fresh
+        ingredients and delicious flavours.
+      </p>
 
-        <p class="famous-description">
-          Discover the meals our customers order again and again.
-          Fresh ingredients, bold flavours and unforgettable taste.
-        </p>
+    </div>
+
+
+    <!-- Dish Cards -->
+    <div class="row g-4">
+
+      <!-- Dish 1 -->
+      <div class="col-sm-6 col-lg-3">
+
+        <div class="card dish-card h-100 border-0 shadow-sm">
+
+          <div class="dish-image-box">
+
+            <img
+              src="images/pizza1.webp"
+              class="card-img-top dish-image"
+              alt="Pepperoni Pizza">
+
+            <span class="rating-badge">
+              ⭐ 4.9
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <h5 class="card-title fw-bold">
+              Pepperoni Pizza
+            </h5>
+
+            <p class="card-text text-secondary small">
+              Crispy crust topped with mozzarella, pepperoni and Italian herbs.
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <h5 class="text-success fw-bold mb-0">
+                ₹399
+              </h5>
+
+              <button class="btn btn-success rounded-pill px-3">
+                Add +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
-      <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
 
-        <button
-          class="btn famous-menu-btn"
-          routerLink="/menu"
-        >
-          View Full Menu
-          <span>→</span>
-        </button>
+      <!-- Dish 2 -->
+      <div class="col-sm-6 col-lg-3">
+
+        <div class="card dish-card h-100 border-0 shadow-sm">
+
+          <div class="dish-image-box">
+
+            <img
+              src="images/burger.avif"
+              class="card-img-top dish-image"
+              alt="Cheese Burger">
+
+            <span class="rating-badge">
+              ⭐ 4.8
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <h5 class="card-title fw-bold">
+              Double Cheese Burger
+            </h5>
+
+            <p class="card-text text-secondary small">
+              Juicy double patty loaded with melted cheese and fresh vegetables.
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <h5 class="text-success fw-bold mb-0">
+                ₹249
+              </h5>
+
+              <button class="btn btn-success rounded-pill px-3">
+                Add +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Dish 3 -->
+      <div class="col-sm-6 col-lg-3">
+
+        <div class="card dish-card h-100 border-0 shadow-sm">
+
+          <div class="dish-image-box">
+
+            <img
+              src="images/alfredo.jpg"
+              class="card-img-top dish-image"
+              alt="Creamy Pasta">
+
+            <span class="rating-badge">
+              ⭐ 4.7
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <h5 class="card-title fw-bold">
+              Creamy Alfredo Pasta
+            </h5>
+
+            <p class="card-text text-secondary small">
+              Creamy white sauce pasta with herbs, cheese and fresh vegetables.
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <h5 class="text-success fw-bold mb-0">
+                ₹299
+              </h5>
+
+              <button class="btn btn-success rounded-pill px-3">
+                Add +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Dish 4 -->
+      <div class="col-sm-6 col-lg-3">
+
+        <div class="card dish-card h-100 border-0 shadow-sm">
+
+          <div class="dish-image-box">
+
+            <img
+              src="images/fries.jpg"
+              class="card-img-top dish-image"
+              alt="Loaded Fries">
+
+            <span class="rating-badge">
+              ⭐ 4.6
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <h5 class="card-title fw-bold">
+              Loaded Cheese Fries
+            </h5>
+
+            <p class="card-text text-secondary small">
+              Crispy fries topped with melted cheese, sauces and spicy seasoning.
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <h5 class="text-success fw-bold mb-0">
+                ₹179
+              </h5>
+
+              <button class="btn btn-success rounded-pill px-3">
+                Add +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
     </div>
 
-    <!-- Cards -->
-    <div class="row g-4">
 
-      <!-- Burger -->
-      <div class="col-md-6 col-lg-4">
+    <!-- View Menu Button -->
+    <div class="text-center mt-5">
 
-        <div class="famous-card h-100">
-
-          <div class="famous-image-wrapper">
-
-            <img
-              src="/images/burger.jpg"
-              alt="Classic Burger"
-              class="famous-image"
-            >
-
-            <span class="food-label bestseller">
-              Bestseller
-            </span>
-
-            <button class="heart-btn">
-              ♡
-            </button>
-
-            <div class="image-gradient"></div>
-
-          </div>
-
-          <div class="famous-card-body">
-
-            <div class="d-flex justify-content-between align-items-start gap-3">
-
-              <div>
-                <p class="food-category">
-                  Burger
-                </p>
-
-                <h3 class="food-name">
-                  Classic Burger
-                </h3>
-              </div>
-
-              <span class="food-rating">
-                4.8 ★
-              </span>
-
-            </div>
-
-            <p class="food-description">
-              Juicy grilled patty with melted cheese, fresh vegetables
-              and our signature house sauce.
-            </p>
-
-            <div class="food-details">
-              <span>⏱ 20–25 min</span>
-              <span>🌶 Medium</span>
-            </div>
-
-            <div class="food-footer">
-
-              <div>
-                <small>Starting from</small>
-
-                <h4>
-                  ₹149
-                </h4>
-              </div>
-
-              <button class="btn food-cart-btn">
-                🛒 Add to Cart
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- Pizza -->
-      <div class="col-md-6 col-lg-4">
-
-        <div class="famous-card h-100">
-
-          <div class="famous-image-wrapper">
-
-            <img
-              src="/images/pizza.jpg"
-              alt="Cheese Pizza"
-              class="famous-image"
-            >
-
-            <span class="food-label popular">
-              Popular
-            </span>
-
-            <button class="heart-btn">
-              ♡
-            </button>
-
-            <div class="image-gradient"></div>
-
-          </div>
-
-          <div class="famous-card-body">
-
-            <div class="d-flex justify-content-between align-items-start gap-3">
-
-              <div>
-                <p class="food-category">
-                  Pizza
-                </p>
-
-                <h3 class="food-name">
-                  Cheese Pizza
-                </h3>
-              </div>
-
-              <span class="food-rating">
-                4.9 ★
-              </span>
-
-            </div>
-
-            <p class="food-description">
-              Stone-baked pizza loaded with melted cheese, fresh toppings
-              and delicious Italian seasoning.
-            </p>
-
-            <div class="food-details">
-              <span>⏱ 25–30 min</span>
-              <span>🧀 Extra Cheesy</span>
-            </div>
-
-            <div class="food-footer">
-
-              <div>
-                <small>Starting from</small>
-
-                <h4>
-                  ₹299
-                </h4>
-              </div>
-
-              <button class="btn food-cart-btn">
-                🛒 Add to Cart
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- Pasta -->
-      <div class="col-md-6 col-lg-4">
-
-        <div class="famous-card h-100">
-
-          <div class="famous-image-wrapper">
-
-            <img
-              src="/images/pasta.jpg"
-              alt="Creamy Pasta"
-              class="famous-image"
-            >
-
-            <span class="food-label chef-choice">
-              Chef's Choice
-            </span>
-
-            <button class="heart-btn">
-              ♡
-            </button>
-
-            <div class="image-gradient"></div>
-
-          </div>
-
-          <div class="famous-card-body">
-
-            <div class="d-flex justify-content-between align-items-start gap-3">
-
-              <div>
-                <p class="food-category">
-                  Pasta
-                </p>
-
-                <h3 class="food-name">
-                  Creamy Pasta
-                </h3>
-              </div>
-
-              <span class="food-rating">
-                4.7 ★
-              </span>
-
-            </div>
-
-            <p class="food-description">
-              Creamy pasta cooked with herbs, vegetables and our
-              rich homemade white sauce.
-            </p>
-
-            <div class="food-details">
-              <span>⏱ 20–25 min</span>
-              <span>🌿 Vegetarian</span>
-            </div>
-
-            <div class="food-footer">
-
-              <div>
-                <small>Starting from</small>
-
-                <h4>
-                  ₹249
-                </h4>
-              </div>
-
-              <button class="btn food-cart-btn">
-                🛒 Add to Cart
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+      <button class="btn btn-outline-success btn-lg rounded-pill px-5">
+        View Full Menu
+      </button>
 
     </div>
 
