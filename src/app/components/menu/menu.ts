@@ -26,7 +26,7 @@ export class Menu {
       description: 'Rich coffee with steamed milk and foam.',
       price: 40,
       rating: 4.8,
-      image: '/images/cappuccino.jpg'
+      image: '/images/cappuchino.jpg'
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ export class Menu {
       description: 'Chilled coffee blended with milk.',
       price: 50,
       rating: 4.7,
-      image: '/images/cold-coffee.jpg'
+      image: '/images/coldcoffee.webp'
     },
     {
       id: 3,
@@ -42,7 +42,7 @@ export class Menu {
       description: 'Strong coffee without milk or sugar.',
       price: 30,
       rating: 4.5,
-      image: '/images/black-coffee.jpg'
+      image: '/images/blacktea.jpg'
     },
     {
       id: 4,
@@ -50,7 +50,7 @@ export class Menu {
       description: 'Refreshing and healthy green tea.',
       price: 25,
       rating: 4.6,
-      image: '/images/green-tea.jpg'
+      image: '/images/greentea.avif'
     },
     {
       id: 5,
@@ -58,7 +58,7 @@ export class Menu {
       description: 'Indian tea prepared with aromatic spices.',
       price: 20,
       rating: 4.9,
-      image: '/images/masala-tea.jpg'
+      image: '/images/masala.jpg'
     }
   ];
 

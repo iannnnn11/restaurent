@@ -4,9 +4,10 @@ import { Signup } from './components/signup/signup';
 import { Dashboard } from './components/dashboard/dashboard';
 import { Menu } from './components/menu/menu';
 import { Orders } from './components/orders/orders';
-import { Cart } from './components/cart/cart';
+import { CartComponent } from './components/cart/cart';
 import { Categories } from './components/categories/categories';
 import { Booktable } from './components/booktable/booktable';
+import { Cart } from './services/cart';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,10 @@ export const routes: Routes = [
   {
     path: 'signup',
     component: Signup
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   },
   {
     path: 'dashboard',

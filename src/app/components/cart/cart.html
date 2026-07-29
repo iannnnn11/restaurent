@@ -1,1 +1,86 @@
-<p>cart works!</p>
+<div class="container py-5">
+
+    <h2 class="fw-bold mb-4">
+        🛒 My Cart
+    </h2>
+     <button
+        class="btn btn-primary rounded-pill px-4"
+        routerLink="/menu">
+
+        <i class="fa-solid fa-arrow-left me-2"></i>
+        Back
+
+      </button>
+
+    <!-- Empty Cart -->
+
+    <div
+        *ngIf="cartItems.length === 0"
+        class="alert alert-warning text-center">
+
+        Your cart is empty.
+
+    </div>
+
+    <!-- Cart Items -->
+
+    <div
+        class="card shadow-sm mb-4 border-0"
+        *ngFor="let item of cartItems">
+
+        <div class="row g-0 align-items-center">
+
+            <!-- Image -->
+
+            <div class="col-md-3">
+
+                <img
+                    [src]="item.image"
+                    class="img-fluid rounded-start cart-image">
+
+            </div>
+
+            <!-- Details -->
+
+            <div class="col-md-6">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        {{ item.name }}
+                    </h4>
+
+                    <p class="text-secondary mb-2">
+                        {{ item.description }}
+                    </p>
+
+                    <p class="mb-1">
+                        ⭐ {{ item.rating }}
+                    </p>
+
+                    <h5 class="text-success">
+                        ₹ {{ item.price }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <!-- Button -->
+
+            <div class="col-md-3 text-center">
+
+                <button
+                    class="btn btn-danger">
+
+                    Remove
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
