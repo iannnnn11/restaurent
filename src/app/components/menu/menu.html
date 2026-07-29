@@ -1,62 +1,63 @@
 <section class="menu-page py-5">
 
   <div class="container-fluid px-4 px-lg-5">
-<div class="container-fluid px-4 pt-4">
 
-    <button
+    <div class="container-fluid px-4 pt-4">
+
+      <button
         class="btn btn-outline-light rounded-pill px-4"
         routerLink="/dashboard">
 
         <i class="fa-solid fa-arrow-left me-2"></i>
         Back
 
-    </button>
+      </button>
 
-</div>
+    </div>
+
     <!-- Heading -->
 
     <div class="text-center mb-5">
 
       <p class="text-warning fw-bold text-uppercase mb-2">
-        Explore Our Menu
+        Explore Our Pantry
       </p>
 
       <h1 class="display-4 fw-bold text-white">
-        Delicious Food For Every Mood
+        Office Snacks For Every Mood
       </h1>
 
       <p class="text-secondary">
-        Slide through our categories and discover your favourite dishes.
+        Browse pantry categories and add your favourite items to the cart.
       </p>
 
     </div>
 
 
-    <!-- Pizza Section -->
+    <!-- Coffee Section -->
 
     <div class="menu-category mb-5">
 
       <div class="d-flex justify-content-between align-items-center mb-3">
 
         <div>
+
           <h2 class="text-white fw-bold mb-1">
-            🍕 Pizza
+            ☕ Coffee & Tea
           </h2>
 
           <p class="text-secondary mb-0">
-            Freshly baked pizzas loaded with flavour
+            Refreshing drinks for your office break
           </p>
+
         </div>
-
-
-        <!-- Arrow Buttons -->
 
         <div class="d-flex gap-2">
 
           <button
             class="btn btn-outline-light rounded-circle slider-btn"
             type="button"
-            (click)="scrollLeft()">
+            (click)="scrollLeft(coffeeRow)">
 
             <i class="fa-solid fa-chevron-left"></i>
 
@@ -65,7 +66,7 @@
           <button
             class="btn btn-warning rounded-circle slider-btn"
             type="button"
-            (click)="scrollRight()">
+            (click)="scrollRight(coffeeRow)">
 
             <i class="fa-solid fa-chevron-right"></i>
 
@@ -77,11 +78,11 @@
 
       <div
         class="food-slider d-flex gap-4 pb-3"
-        #pizzaRow>
+        #coffeeRow>
 
         <div
           class="food-card flex-shrink-0"
-          *ngFor="let item of pizzaItems">
+          *ngFor="let item of coffeeItems">
 
           <div class="card border-0 rounded-4 overflow-hidden h-100">
 
@@ -103,6 +104,223 @@
 
             </div>
 
+            <div class="card-body p-4">
+
+              <h4 class="fw-bold">
+                {{ item.name }}
+              </h4>
+
+              <p class="text-secondary">
+                {{ item.description }}
+              </p>
+
+              <div class="d-flex justify-content-between align-items-center">
+
+                <span class="text-success fw-bold fs-5">
+                  ₹{{ item.price }}
+                </span>
+
+                <button
+                  class="btn btn-dark rounded-pill px-3"
+                  type="button"
+                  (click)="addToCart(item)">
+
+                  <i class="fa-solid fa-cart-plus me-1"></i>
+                  Add
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Nuts Section -->
+
+    <div class="menu-category mb-5">
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <div>
+
+          <h2 class="text-white fw-bold mb-1">
+            🥜 Nuts & Dry Fruits
+          </h2>
+
+          <p class="text-secondary mb-0">
+            Healthy and crunchy snacks for work
+          </p>
+
+        </div>
+
+        <div class="d-flex gap-2">
+
+          <button
+            class="btn btn-outline-light rounded-circle slider-btn"
+            type="button"
+            (click)="scrollLeft(nutsRow)">
+
+            <i class="fa-solid fa-chevron-left"></i>
+
+          </button>
+
+          <button
+            class="btn btn-warning rounded-circle slider-btn"
+            type="button"
+            (click)="scrollRight(nutsRow)">
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div
+        class="food-slider d-flex gap-4 pb-3"
+        #nutsRow>
+
+        <div
+          class="food-card flex-shrink-0"
+          *ngFor="let item of nutsItems">
+
+          <div class="card border-0 rounded-4 overflow-hidden h-100">
+
+            <div class="position-relative">
+
+              <img
+                [src]="item.image"
+                [alt]="item.name"
+                class="card-img-top food-image">
+
+              <span
+                class="badge bg-dark position-absolute top-0 end-0 m-3 px-3 py-2">
+
+                <i class="fa-solid fa-star text-warning me-1"></i>
+
+                {{ item.rating }}
+
+              </span>
+
+            </div>
+
+            <div class="card-body p-4">
+
+              <h4 class="fw-bold">
+                {{ item.name }}
+              </h4>
+
+              <p class="text-secondary">
+                {{ item.description }}
+              </p>
+
+              <div class="d-flex justify-content-between align-items-center">
+
+                <span class="text-success fw-bold fs-5">
+                  ₹{{ item.price }}
+                </span>
+
+                <button
+                  class="btn btn-dark rounded-pill px-3"
+                  type="button"
+                  (click)="addToCart(item)">
+
+                  <i class="fa-solid fa-cart-plus me-1"></i>
+                  Add
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Snacks Section -->
+
+    <div class="menu-category mb-5">
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <div>
+
+          <h2 class="text-white fw-bold mb-1">
+            🍪 Office Snacks
+          </h2>
+
+          <p class="text-secondary mb-0">
+            Quick snacks to enjoy during office hours
+          </p>
+
+        </div>
+
+        <div class="d-flex gap-2">
+
+          <button
+            class="btn btn-outline-light rounded-circle slider-btn"
+            type="button"
+            (click)="scrollLeft(snacksRow)">
+
+            <i class="fa-solid fa-chevron-left"></i>
+
+          </button>
+
+          <button
+            class="btn btn-warning rounded-circle slider-btn"
+            type="button"
+            (click)="scrollRight(snacksRow)">
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div
+        class="food-slider d-flex gap-4 pb-3"
+        #snacksRow>
+
+        <div
+          class="food-card flex-shrink-0"
+          *ngFor="let item of snackItems">
+
+          <div class="card border-0 rounded-4 overflow-hidden h-100">
+
+            <div class="position-relative">
+
+              <img
+                [src]="item.image"
+                [alt]="item.name"
+                class="card-img-top food-image">
+
+              <span
+                class="badge bg-dark position-absolute top-0 end-0 m-3 px-3 py-2">
+
+                <i class="fa-solid fa-star text-warning me-1"></i>
+
+                {{ item.rating }}
+
+              </span>
+
+            </div>
 
             <div class="card-body p-4">
 

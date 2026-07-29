@@ -1,78 +1,170 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Cart } from '../../services/cart';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './menu.html',
   styleUrl: './menu.css'
 })
 export class Menu {
 
-  @ViewChild('pizzaRow') pizzaRow!: ElementRef;
+  @ViewChild('coffeeRow') coffeeRow!: ElementRef;
+  @ViewChild('nutsRow') nutsRow!: ElementRef;
+  @ViewChild('snacksRow') snacksRow!: ElementRef;
 
-  pizzaItems = [
+  // Angular gives the Cart service to Menu here
+  constructor(private cartService: Cart) {}
+
+  coffeeItems = [
     {
-      name: 'Pepperoni Pizza',
-      description: 'Cheese, pepperoni and Italian herbs.',
-      price: 349,
+      id: 1,
+      name: 'Cappuccino',
+      description: 'Rich coffee with steamed milk and foam.',
+      price: 40,
       rating: 4.8,
-      image: '/images/pizza1.webp'
+      image: '/images/cappuccino.jpg'
     },
     {
-      name: 'Margherita Pizza',
-      description: 'Mozzarella, tomato sauce and basil.',
-      price: 299,
-      rating: 4.6,
-      image: '/images/pizza2.avif'
-    },
-    {
-      name: 'Farmhouse Pizza',
-      description: 'Fresh vegetables, cheese and herbs.',
-      price: 379,
+      id: 2,
+      name: 'Cold Coffee',
+      description: 'Chilled coffee blended with milk.',
+      price: 50,
       rating: 4.7,
-      image: '/images/pizza3.jpg'
+      image: '/images/cold-coffee.jpg'
     },
     {
-      name: 'Cheese Burst Pizza',
-      description: 'Loaded with extra melted cheese.',
-      price: 399,
-      rating: 4.9,
-      image: '/images/Margherita.jpg'
-    },
-    {
-      name: 'BBQ Chicken Pizza',
-      description: 'BBQ chicken, onions and mozzarella.',
-      price: 449,
-      rating: 4.8,
-      image: '/images/pizza1.webp'
-    },
-    {
-      name: 'Mexican Pizza',
-      description: 'Spicy vegetables, jalapeños and cheese.',
-      price: 389,
+      id: 3,
+      name: 'Black Coffee',
+      description: 'Strong coffee without milk or sugar.',
+      price: 30,
       rating: 4.5,
-      image: '/images/pizza1.webp'
+      image: '/images/black-coffee.jpg'
+    },
+    {
+      id: 4,
+      name: 'Green Tea',
+      description: 'Refreshing and healthy green tea.',
+      price: 25,
+      rating: 4.6,
+      image: '/images/green-tea.jpg'
+    },
+    {
+      id: 5,
+      name: 'Masala Tea',
+      description: 'Indian tea prepared with aromatic spices.',
+      price: 20,
+      rating: 4.9,
+      image: '/images/masala-tea.jpg'
     }
   ];
 
-  scrollLeft() {
-    this.pizzaRow.nativeElement.scrollBy({
+  nutsItems = [
+    {
+      id: 6,
+      name: 'Almonds',
+      description: 'Healthy and crunchy roasted almonds.',
+      price: 80,
+      rating: 4.8,
+      image: '/images/almonds.jpg'
+    },
+    {
+      id: 7,
+      name: 'Cashews',
+      description: 'Premium roasted and salted cashews.',
+      price: 90,
+      rating: 4.7,
+      image: '/images/cashews.jpg'
+    },
+    {
+      id: 8,
+      name: 'Walnuts',
+      description: 'Nutritious walnuts rich in healthy fats.',
+      price: 100,
+      rating: 4.6,
+      image: '/images/walnuts.jpg'
+    },
+    {
+      id: 9,
+      name: 'Pistachios',
+      description: 'Lightly salted crunchy pistachios.',
+      price: 110,
+      rating: 4.8,
+      image: '/images/pistachios.jpg'
+    },
+    {
+      id: 10,
+      name: 'Raisins',
+      description: 'Naturally sweet and healthy dried grapes.',
+      price: 60,
+      rating: 4.5,
+      image: '/images/raisins.jpg'
+    }
+  ];
+
+  snackItems = [
+    {
+      id: 11,
+      name: 'Potato Chips',
+      description: 'Crispy and lightly salted potato chips.',
+      price: 20,
+      rating: 4.6,
+      image: '/images/chips.jpg'
+    },
+    {
+      id: 12,
+      name: 'Cookies',
+      description: 'Crunchy chocolate-flavoured cookies.',
+      price: 30,
+      rating: 4.8,
+      image: '/images/cookies.jpg'
+    },
+    {
+      id: 13,
+      name: 'Popcorn',
+      description: 'Light and crispy salted popcorn.',
+      price: 35,
+      rating: 4.5,
+      image: '/images/popcorn.jpg'
+    },
+    {
+      id: 14,
+      name: 'Protein Bar',
+      description: 'Healthy snack packed with protein.',
+      price: 70,
+      rating: 4.7,
+      image: '/images/protein-bar.jpg'
+    },
+    {
+      id: 15,
+      name: 'Biscuits',
+      description: 'Classic biscuits perfect with tea.',
+      price: 20,
+      rating: 4.6,
+      image: '/images/biscuits.jpg'
+    }
+  ];
+
+  addToCart(item: any) {
+    this.cartService.addToCart(item);
+
+    console.log('Item sent to Cart service:', item);
+  }
+
+  scrollLeft(row: HTMLElement) {
+    row.scrollBy({
       left: -700,
       behavior: 'smooth'
     });
   }
 
-  scrollRight() {
-    this.pizzaRow.nativeElement.scrollBy({
+  scrollRight(row: HTMLElement) {
+    row.scrollBy({
       left: 700,
       behavior: 'smooth'
     });
-  }
-
-  addToCart(item: any) {
-    console.log('Added to cart:', item);
   }
 }
