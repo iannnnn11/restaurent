@@ -69,7 +69,7 @@ export class Menu {
       description: 'Healthy and crunchy roasted almonds.',
       price: 80,
       rating: 4.8,
-      image: '/images/almonds.jpg'
+      image: '/images/almond.webp'
     },
     {
       id: 7,
@@ -77,7 +77,7 @@ export class Menu {
       description: 'Premium roasted and salted cashews.',
       price: 90,
       rating: 4.7,
-      image: '/images/cashews.jpg'
+      image: '/images/cashew.jpg'
     },
     {
       id: 8,
@@ -85,7 +85,7 @@ export class Menu {
       description: 'Nutritious walnuts rich in healthy fats.',
       price: 100,
       rating: 4.6,
-      image: '/images/walnuts.jpg'
+      image: '/images/walnut.webp'
     },
     {
       id: 9,
@@ -93,7 +93,7 @@ export class Menu {
       description: 'Lightly salted crunchy pistachios.',
       price: 110,
       rating: 4.8,
-      image: '/images/pistachios.jpg'
+      image: '/images/pistachio.jpg'
     },
     {
       id: 10,
@@ -101,7 +101,7 @@ export class Menu {
       description: 'Naturally sweet and healthy dried grapes.',
       price: 60,
       rating: 4.5,
-      image: '/images/raisins.jpg'
+      image: '/images/raisin.webp'
     }
   ];
 
@@ -112,7 +112,7 @@ export class Menu {
       description: 'Crispy and lightly salted potato chips.',
       price: 20,
       rating: 4.6,
-      image: '/images/chips.jpg'
+      image: '/images/chip.jpg'
     },
     {
       id: 12,
@@ -120,7 +120,7 @@ export class Menu {
       description: 'Crunchy chocolate-flavoured cookies.',
       price: 30,
       rating: 4.8,
-      image: '/images/cookies.jpg'
+      image: '/images/cookie.jpg'
     },
     {
       id: 13,
@@ -136,7 +136,7 @@ export class Menu {
       description: 'Healthy snack packed with protein.',
       price: 70,
       rating: 4.7,
-      image: '/images/protein-bar.jpg'
+      image: '/images/protein.jpg'
     },
     {
       id: 15,
@@ -144,7 +144,7 @@ export class Menu {
       description: 'Classic biscuits perfect with tea.',
       price: 20,
       rating: 4.6,
-      image: '/images/biscuits.jpg'
+      image: '/images/biscuit.webp'
     }
   ];
 
@@ -153,6 +153,7 @@ export class Menu {
 
     console.log('Item sent to Cart service:', item);
   }
+
 
   scrollLeft(row: HTMLElement) {
     row.scrollBy({
