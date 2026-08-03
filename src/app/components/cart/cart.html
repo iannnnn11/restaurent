@@ -238,7 +238,7 @@
 
           <div class="bill-row">
             <span>Item total</span>
-            <span> getSubtotal() </span>
+            <span>₹{{ getSubtotal() }}</span>
           </div>
 
           <div class="bill-row">
@@ -249,17 +249,17 @@
                 title="Delivery charges"></i>
             </span>
 
-            <span>₹deliveryFee </span>
+            <span>₹{{ deliveryFee }}</span>
           </div>
 
           <div class="bill-row">
             <span>Platform fee</span>
-            <span>₹platformFee </span>
+            <span>₹{{ platformFee }}</span>
           </div>
 
           <div class="bill-row">
             <span>GST and restaurant charges</span>
-            <span>₹tax </span>
+            <span>₹{{ tax }}</span>
           </div>
 
           <hr>
@@ -282,7 +282,7 @@
 
           <div class="total-row">
             <span>To Pay</span>
-            <span>₹getGrandTotal</span>
+            <span>₹{{ getGrandTotal() }}</span>
           </div>
 
           <!-- Address -->
@@ -315,10 +315,10 @@
           <button
             type="button"
             class="btn checkout-btn w-100 mt-4"
-            >
+            (click)="placeOrder()">
 
             <span>
-              ₹ getGrandTotal
+              ₹{{ getGrandTotal() }}
             </span>
 
             <span>
