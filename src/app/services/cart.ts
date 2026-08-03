@@ -1,11 +1,17 @@
-import { Service } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Service()
+@Injectable({
+  providedIn: 'root'
+})
 export class Cart {
 
-  cartItems: any[] = [];
+  private cartItems: any[] = [];
 
-  addToCart(item: any) {
+  getCartItems(): any[] {
+    return this.cartItems;
+  }
+
+  addToCart(item: any): void {
     const existingItem = this.cartItems.find(
       cartItem => cartItem.id === item.id
     );
@@ -18,29 +24,37 @@ export class Cart {
         quantity: 1
       });
     }
-
-    console.log('Cart items:', this.cartItems);
   }
 
-  increaseQuantity(item: any) {
-    item.quantity++;
-  }
+  increaseQuantity(item: any): void {
+    const existingItem = this.cartItems.find(
+      cartItem => cartItem.id === item.id
+    );
 
-  decreaseQuantity(item: any) {
-    if (item.quantity > 1) {
-      item.quantity--;
-    } else {
-      this.removeItem(item);
+    if (existingItem) {
+      existingItem.quantity++;
     }
   }
 
-  removeItem(item: any) {
+  decreaseQuantity(item: any): void {
+    const existingItem = this.cartItems.find(
+      cartItem => cartItem.id === item.id
+    );
+
+    if (!existingItem) {
+      return;
+    }
+
+    if (existingItem.quantity > 1) {
+      existingItem.quantity--;
+    } else {
+      this.removeItem(existingItem);
+    }
+  }
+
+  removeItem(item: any): void {
     this.cartItems = this.cartItems.filter(
       cartItem => cartItem.id !== item.id
     );
-  }
-
-  getCartItems() {
-    return this.cartItems;
   }
 }

@@ -1,141 +1,133 @@
-<section class="menu-page py-5">
+<section class="bg-light min-vh-100 pb-5">
 
-  <div class="container-fluid px-4 px-lg-5">
+  <!-- Top Header -->
+  <header class="sticky-top bg-white border-bottom shadow-sm">
+    <div class="container py-3">
 
-    <div class="container-fluid px-4 pt-4">
+      <div class="d-flex align-items-center gap-3">
 
-      <button
-        class="btn btn-outline-light rounded-pill px-4"
-        routerLink="/dashboard">
+        <button
+          class="btn btn-primary border rounded-circle header-icon-btn"
+          type="button"
+          routerLink="/dashboard">
 
-        <i class="fa-solid fa-arrow-left me-2"></i>
-        Back
+          <i class="fa-solid fa-arrow-left"></i>
 
-      </button>
-      <button
-        class="btn btn-outline-light rounded-pill px-4"
-        routerLink="/cart">
+        </button>
 
-        <i class="fa-solid fa-arrow-left me-2"></i>
-        cart
+        <div class="position-relative flex-grow-1 mx-auto search-box">
 
-      </button>
-      
-    </div>
+          <i
+            class="fa-solid fa-magnifying-glass position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary">
+          </i>
 
-    <!-- Heading -->
-
-    <div class="text-center mb-5">
-
-      <p class="text-warning fw-bold text-uppercase mb-2">
-        Explore Our Pantry
-      </p>
-
-      <h1 class="display-4 fw-bold text-white">
-        Office Snacks For Every Mood
-      </h1>
-
-      <p class="text-secondary">
-        Browse pantry categories and add your favourite items to the cart.
-      </p>
-
-    </div>
-
-
-    <!-- Coffee Section -->
-
-    <div class="menu-category mb-5">
-
-      <div class="d-flex justify-content-between align-items-center mb-3">
-
-        <div>
-
-          <h2 class="text-white fw-bold mb-1">
-            ☕ Coffee & Tea
-          </h2>
-
-          <p class="text-secondary mb-0">
-            Refreshing drinks for your office break
-          </p>
+          <input
+            type="text"
+            class="form-control bg-light rounded-pill ps-5 py-2"
+            placeholder="Search dishes..."
+            [(ngModel)]="searchText">
 
         </div>
 
-        <div class="d-flex gap-2">
+        <button
+          class="btn btn-warning border rounded-circle position-relative header-icon-btn"
+          type="button"
+          routerLink="/cart">
 
-          <button
-            class="btn btn-outline-light rounded-circle slider-btn"
-            type="button"
-            (click)="scrollLeft(coffeeRow)">
+          <i class="fa-solid fa-bag-shopping"></i>
 
-            <i class="fa-solid fa-chevron-left"></i>
+          <span
+            *ngIf="getCartCount() > 0"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 
-          </button>
+            {{ getCartCount() }}
 
-          <button
-            class="btn btn-warning rounded-circle slider-btn"
-            type="button"
-            (click)="scrollRight(coffeeRow)">
+          </span>
 
-            <i class="fa-solid fa-chevron-right"></i>
-
-          </button>
-
-        </div>
+        </button>
 
       </div>
 
-      <div
-        class="food-slider d-flex gap-4 pb-3"
-        #coffeeRow>
+    </div>
+  </header>
 
-        <div
-          class="food-card flex-shrink-0"
-          *ngFor="let item of coffeeItems">
 
-          <div class="card border-0 rounded-4 overflow-hidden h-100">
+  <section class="bg-white py-4 border-bottom">
+    <div class="container">
 
-            <div class="position-relative">
+      <div class="d-flex gap-3 overflow-x-auto pb-2 offer-scroll">
 
-              <img
-                [src]="item.image"
-                [alt]="item.name"
-                class="card-img-top food-image">
+        <div class="card border-danger border-opacity-25 rounded-4 flex-shrink-0 offer-card">
 
-              <span
-                class="badge bg-dark position-absolute top-0 end-0 m-3 px-3 py-2">
+          <div class="card-body d-flex align-items-center gap-3">
 
-                <i class="fa-solid fa-star text-warning me-1"></i>
+            <div class="bg-danger text-white rounded-3 offer-icon">
 
-                {{ item.rating }}
-
-              </span>
+              <i class="fa-solid fa-percent"></i>
 
             </div>
 
-            <div class="card-body p-4">
+            <div>
 
-              <h4 class="fw-bold">
-                {{ item.name }}
-              </h4>
+              <h6 class="fw-bold mb-1">
+                50% OFF
+              </h6>
 
-              <p class="text-secondary">
-                {{ item.description }}
-              </p>
+              <small class="text-secondary">
+                Use code WELCOME50
+              </small>
 
-              <div class="d-flex justify-content-between align-items-center">
+            </div>
 
-                <span class="text-success fw-bold fs-5">
-                  ₹{{ item.price }}
-                </span>
+          </div>
 
-                <button
-  class="btn btn-dark rounded-pill"
-  (click)="addToCart(item)">
-  Add to Cart
-</button>
+        </div>
 
+        <div class="card border-danger border-opacity-25 rounded-4 flex-shrink-0 offer-card">
 
-              </div>
+          <div class="card-body d-flex align-items-center gap-3">
+
+            <div class="bg-danger text-white rounded-3 offer-icon">
+
+              <i class="fa-solid fa-tags"></i>
+
+            </div>
+
+            <div>
+
+              <h6 class="fw-bold mb-1">
+                ₹75 OFF
+              </h6>
+
+              <small class="text-secondary">
+                Orders above ₹399
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card border-danger border-opacity-25 rounded-4 flex-shrink-0 offer-card">
+
+          <div class="card-body d-flex align-items-center gap-3">
+
+            <div class="bg-danger text-white rounded-3 offer-icon">
+
+              <i class="fa-solid fa-truck-fast"></i>
+
+            </div>
+
+            <div>
+
+              <h6 class="fw-bold mb-1">
+                Free Delivery
+              </h6>
+
+              <small class="text-secondary">
+                On your first order
+              </small>
 
             </div>
 
@@ -146,107 +138,367 @@
       </div>
 
     </div>
+  </section>
 
+  <!-- Main Menu -->
+  <main class="container py-4 py-lg-5">
 
-    <!-- Nuts Section -->
+    <div class="row g-4">
 
-    <div class="menu-category mb-5">
+      <!-- Sidebar -->
+      <aside class="col-lg-3 d-none d-lg-block">
 
-      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="card border-0 shadow-sm rounded-4 sticky-sidebar">
 
-        <div>
+          <div class="card-body p-3">
 
-          <h2 class="text-white fw-bold mb-1">
-            🥜 Nuts & Dry Fruits
-          </h2>
+            <h5 class="fw-bold mb-3 px-2">
+              Menu
+            </h5>
 
-          <p class="text-secondary mb-0">
-            Healthy and crunchy snacks for work
-          </p>
+            <div class="list-group list-group-flush">
+
+  <button
+    type="button"
+    class="list-group-item list-group-item-action border-0 rounded-3 active-menu-link"
+    (click)="scrollToSection('recommended')">
+
+    <i class="fa-solid fa-fire me-2"></i>
+    Recommended
+
+  </button>
+
+  <button
+    type="button"
+    class="list-group-item list-group-item-action border-0 rounded-3"
+    (click)="scrollToSection('coffee')">
+
+    <i class="fa-solid fa-mug-hot me-2"></i>
+    Coffee & Tea
+
+  </button>
+
+  <button
+    type="button"
+    class="list-group-item list-group-item-action border-0 rounded-3"
+    (click)="scrollToSection('nuts')">
+
+    <i class="fa-solid fa-seedling me-2"></i>
+    Nuts & Dry Fruits
+
+  </button>
+
+  <button
+    type="button"
+    class="list-group-item list-group-item-action border-0 rounded-3"
+    (click)="scrollToSection('snacks')">
+
+    <i class="fa-solid fa-cookie-bite me-2"></i>
+    Office Snacks
+
+  </button>
+
+</div>
+
+          </div>
 
         </div>
 
-        <div class="d-flex gap-2">
+      </aside>
 
-          <button
-            class="btn btn-outline-light rounded-circle slider-btn"
-            type="button"
-            (click)="scrollLeft(nutsRow)">
 
-            <i class="fa-solid fa-chevron-left"></i>
+      <!-- Menu Items -->
+      <div class="col-lg-9">
 
-          </button>
+        <!-- Recommended -->
+        <section
+          id="recommended"
+          class="menu-section mb-5">
 
-          <button
-            class="btn btn-warning rounded-circle slider-btn"
-            type="button"
-            (click)="scrollRight(nutsRow)">
+          <div class="d-flex justify-content-between align-items-end mb-3">
 
-            <i class="fa-solid fa-chevron-right"></i>
+            <div>
 
-          </button>
+              <h2 class="fw-bold mb-1">
+                Recommended
+              </h2>
 
-        </div>
+              <p class="text-secondary mb-0">
+                Popular choices from our Employees
+              </p>
+
+            </div>
+
+            <small class="text-secondary">
+
+              {{ getFilteredItems(recommendedItems).length }} items
+
+            </small>
+
+          </div>
+
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+            <div
+              *ngFor="let item of getFilteredItems(recommendedItems); let last = last"
+              class="p-3 p-md-4"
+              [class.border-bottom]="!last">
+
+              <ng-container
+                *ngTemplateOutlet="foodTemplate; context: { item: item }">
+              </ng-container>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- Coffee -->
+        <section
+          id="coffee"
+          class="menu-section mb-5">
+
+          <div class="d-flex justify-content-between align-items-end mb-3">
+
+            <div>
+
+              <h2 class="fw-bold mb-1">
+                Coffee & Tea
+              </h2>
+
+              <p class="text-secondary mb-0">
+                Refreshing beverages for your work break
+              </p>
+
+            </div>
+
+            <small class="text-secondary">
+
+              {{ getFilteredItems(coffeeItems).length }} items
+
+            </small>
+
+          </div>
+
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+            <div
+              *ngFor="let item of getFilteredItems(coffeeItems); let last = last"
+              class="p-3 p-md-4"
+              [class.border-bottom]="!last">
+
+              <ng-container
+                *ngTemplateOutlet="foodTemplate; context: { item: item }">
+              </ng-container>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- Nuts -->
+        <section
+          id="nuts"
+          class="menu-section mb-5">
+
+          <div class="d-flex justify-content-between align-items-end mb-3">
+
+            <div>
+
+              <h2 class="fw-bold mb-1">
+                Nuts & Dry Fruits
+              </h2>
+
+              <p class="text-secondary mb-0">
+                Healthy snacks for office breaks
+              </p>
+
+            </div>
+
+            <small class="text-secondary">
+
+              {{ getFilteredItems(nutsItems).length }} items
+
+            </small>
+
+          </div>
+
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+            <div
+              *ngFor="let item of getFilteredItems(nutsItems); let last = last"
+              class="p-3 p-md-4"
+              [class.border-bottom]="!last">
+
+              <ng-container
+                *ngTemplateOutlet="foodTemplate; context: { item: item }">
+              </ng-container>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- Snacks -->
+        <section
+          id="snacks"
+          class="menu-section mb-5">
+
+          <div class="d-flex justify-content-between align-items-end mb-3">
+
+            <div>
+
+              <h2 class="fw-bold mb-1">
+                Office Snacks
+              </h2>
+
+              <p class="text-secondary mb-0">
+                Tasty snacks for meetings and break time
+              </p>
+
+            </div>
+
+            <small class="text-secondary">
+
+              {{ getFilteredItems(snackItems).length }} items
+
+            </small>
+
+          </div>
+
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+            <div
+              *ngFor="let item of getFilteredItems(snackItems); let last = last"
+              class="p-3 p-md-4"
+              [class.border-bottom]="!last">
+
+              <ng-container
+                *ngTemplateOutlet="foodTemplate; context: { item: item }">
+              </ng-container>
+
+            </div>
+
+          </div>
+
+        </section>
 
       </div>
 
-      <div
-        class="food-slider d-flex gap-4 pb-3"
-        #nutsRow>
+    </div>
 
-        <div
-          class="food-card flex-shrink-0"
-          *ngFor="let item of nutsItems">
+  </main>
 
-          <div class="card border-0 rounded-4 overflow-hidden h-100">
 
-            <div class="position-relative">
+  <!-- Reusable Item Template -->
+  <ng-template #foodTemplate let-item="item">
 
-              <img
-                [src]="item.image"
-                [alt]="item.name"
-                class="card-img-top food-image">
+    <div class="row align-items-center g-3">
 
-              <span
-                class="badge bg-dark position-absolute top-0 end-0 m-3 px-3 py-2">
+      <div class="col-7 col-md-8">
 
-                <i class="fa-solid fa-star text-warning me-1"></i>
+        <div class="d-flex align-items-center gap-2">
 
-                {{ item.rating }}
+          <span
+            class="veg-icon"
+            [class.non-veg]="item.isVeg === false">
 
-              </span>
+            <span></span>
 
-            </div>
+          </span>
 
-            <div class="card-body p-4">
+          <span
+            *ngIf="item.bestseller"
+            class="text-warning fw-bold small">
 
-              <h4 class="fw-bold">
-                {{ item.name }}
-              </h4>
+            <i class="fa-solid fa-star me-1"></i>
 
-              <p class="text-secondary">
-                {{ item.description }}
-              </p>
+            Bestseller
 
-              <div class="d-flex justify-content-between align-items-center">
+          </span>
 
-                <span class="text-success fw-bold fs-5">
-                  ₹{{ item.price }}
-                </span>
+        </div>
 
-                <button
-                  class="btn btn-dark rounded-pill px-3"
-                  type="button"
-                  (click)="addToCart(item)">
+        <h5 class="fw-bold mt-2 mb-1">
+          {{ item.name }}
+        </h5>
 
-                  <i class="fa-solid fa-cart-plus me-1"></i>
-                  Add
+        <div class="text-success small fw-semibold mb-2">
 
-                </button>
+          <i class="fa-solid fa-star"></i>
 
-              </div>
+          {{ item.rating }}
 
-            </div>
+          <span class="text-secondary">
+            ({{ item.ratingCount }})
+          </span>
+
+        </div>
+
+        <p class="fw-semibold mb-2">
+          ₹{{ item.price }}
+        </p>
+
+        <p class="text-secondary small mb-0 item-description">
+          {{ item.description }}
+        </p>
+
+      </div>
+
+      <div class="col-5 col-md-4">
+
+        <div class="position-relative ms-auto food-image-box">
+
+          <img
+            [src]="item.image"
+            [alt]="item.name"
+            class="img-fluid rounded-4 w-100 food-image">
+
+          <button
+            *ngIf="!item.quantity || item.quantity === 0"
+            class="btn btn-light border-success text-success fw-bold position-absolute start-50 translate-middle-x add-btn"
+            type="button"
+            (click)="addToCart(item)">
+
+            ADD
+
+            
+
+          </button>
+
+          <div
+            *ngIf="item.quantity && item.quantity > 0"
+            class="btn-group position-absolute start-50 translate-middle-x quantity-box"
+            role="group">
+
+            <button
+                    type="button"
+                    class="quantity-btn"
+                    (click)="decreaseQuantity(item)">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+
+            <button
+              type="button"
+              class="btn btn-light border-success text-success fw-bold">
+
+              {{ item.quantity }}
+
+            </button>
+
+            
+            <button
+                    type="button"
+                    class="quantity-btn"
+                    (click)="increaseQuantity(item)">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
 
           </div>
 
@@ -256,110 +508,46 @@
 
     </div>
 
+  </ng-template>
 
-    <!-- Snacks Section -->
 
-    <div class="menu-category mb-5">
+  <!-- Floating Cart Bar -->
+  <div
+    *ngIf="getCartCount() > 0"
+    class="position-fixed bottom-0 start-0 end-0 pb-3 floating-cart-wrapper">
 
-      <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="container">
+
+      <div
+        class="bg-success text-white rounded-4 shadow-lg px-4 py-3 d-flex align-items-center justify-content-between cart-summary">
 
         <div>
 
-          <h2 class="text-white fw-bold mb-1">
-            🍪 Office Snacks
-          </h2>
+          <span class="fw-bold">
 
-          <p class="text-secondary mb-0">
-            Quick snacks to enjoy during office hours
-          </p>
+            {{ getCartCount() }}
+            {{ getCartCount() === 1 ? 'item' : 'items' }}
 
-        </div>
+          </span>
 
-        <div class="d-flex gap-2">
+          <span class="mx-2">|</span>
 
-          <button
-            class="btn btn-outline-light rounded-circle slider-btn"
-            type="button"
-            (click)="scrollLeft(snacksRow)">
-
-            <i class="fa-solid fa-chevron-left"></i>
-
-          </button>
-
-          <button
-            class="btn btn-warning rounded-circle slider-btn"
-            type="button"
-            (click)="scrollRight(snacksRow)">
-
-            <i class="fa-solid fa-chevron-right"></i>
-
-          </button>
+          <span class="fw-bold">
+            ₹{{ getCartTotal() }}
+          </span>
 
         </div>
 
-      </div>
+        <button
+          class="btn text-white fw-bold"
+          type="button"
+          routerLink="/cart">
 
-      <div
-        class="food-slider d-flex gap-4 pb-3"
-        #snacksRow>
+          View Cart
 
-        <div
-          class="food-card flex-shrink-0"
-          *ngFor="let item of snackItems">
+          <i class="fa-solid fa-bag-shopping ms-2"></i>
 
-          <div class="card border-0 rounded-4 overflow-hidden h-100">
-
-            <div class="position-relative">
-
-              <img
-                [src]="item.image"
-                [alt]="item.name"
-                class="card-img-top food-image">
-
-              <span
-                class="badge bg-dark position-absolute top-0 end-0 m-3 px-3 py-2">
-
-                <i class="fa-solid fa-star text-warning me-1"></i>
-
-                {{ item.rating }}
-
-              </span>
-
-            </div>
-
-            <div class="card-body p-4">
-
-              <h4 class="fw-bold">
-                {{ item.name }}
-              </h4>
-
-              <p class="text-secondary">
-                {{ item.description }}
-              </p>
-
-              <div class="d-flex justify-content-between align-items-center">
-
-                <span class="text-success fw-bold fs-5">
-                  ₹{{ item.price }}
-                </span>
-
-                <button
-                  class="btn btn-dark rounded-pill px-3"
-                  type="button"
-                  (click)="addToCart(item)">
-
-                  <i class="fa-solid fa-cart-plus me-1"></i>
-                  Add
-
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
+        </button>
 
       </div>
 

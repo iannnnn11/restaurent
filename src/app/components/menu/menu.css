@@ -1,48 +1,154 @@
-.menu-page {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0b0f0c, #172219);
-}
-
-.food-slider {
-  overflow-x: auto;
+html {
   scroll-behavior: smooth;
-  scrollbar-width: none;
+  background:#0b0f0c;
 }
 
-.food-slider::-webkit-scrollbar {
-  display: none;
+.header-icon-btn {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
 }
 
-.food-card {
-  width: 310px;
+.search-box {
+  max-width: 600px;
 }
 
-.card {
-  background: #f8f9fa;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-}
-
-.food-image {
+.restaurant-image {
   width: 100%;
-  height: 220px;
+  height: 210px;
   object-fit: cover;
 }
 
-.slider-btn {
-  width: 45px;
-  height: 45px;
+.info-icon,
+.offer-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-@media (max-width: 576px) {
-  .food-card {
-    width: 270px;
+.offer-scroll,
+.category-links {
+  scrollbar-width: none;
+}
+
+.offer-scroll::-webkit-scrollbar,
+.category-links::-webkit-scrollbar {
+  display: none;
+}
+
+.offer-card {
+  width: 250px;
+  background: #fffafa;
+}
+
+.sticky-category {
+  position: sticky;
+  top: 77px;
+  z-index: 1020;
+}
+
+.sticky-sidebar {
+  position: sticky;
+  top: 155px;
+}
+
+.active-menu-link {
+  background: #fff0f0;
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.menu-section {
+  scroll-margin-top: 170px;
+}
+
+.veg-icon {
+  width: 17px;
+  height: 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #198754;
+}
+
+.veg-icon span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #198754;
+}
+
+.veg-icon.non-veg {
+  border-color: #dc3545;
+}
+
+.veg-icon.non-veg span {
+  background: #dc3545;
+}
+
+.food-image-box {
+  width: 170px;
+  padding-bottom: 25px;
+}
+
+.food-image {
+  height: 145px;
+  object-fit: cover;
+}
+
+.add-btn,
+.quantity-box {
+  bottom: 3px;
+  min-width: 120px;
+}
+
+.item-description {
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.floating-cart-wrapper {
+  z-index: 1050;
+}
+
+.cart-summary {
+  max-width: 650px;
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .restaurant-image {
+    height: 190px;
+  }
+
+  .sticky-category {
+    top: 75px;
+  }
+
+  .food-image-box {
+    width: 135px;
   }
 
   .food-image {
-    height: 190px;
+    height: 115px;
+  }
+
+  .add-btn,
+  .quantity-box {
+    min-width: 105px;
+  }
+
+  .item-description {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .cart-summary {
+    margin: 0 8px;
   }
 }
