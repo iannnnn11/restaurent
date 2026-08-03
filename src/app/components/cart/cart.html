@@ -1,85 +1,343 @@
-<div class="container py-5">
+<section class="cart-page py-4 py-lg-5">
+  <div class="container">
 
-    <h2 class="fw-bold mb-4">
-        🛒 My Cart
-    </h2>
-     <button
-        class="btn btn-primary rounded-pill px-4"
-        routerLink="/menu">
+    <!-- Page heading -->
+    <div class="mb-4">
+      <h2 class="fw-bold mb-1">Your Cart</h2>
+      <p class="text-secondary mb-0">
+        Review your items before placing the order
+      </p>
+    </div>
 
-        <i class="fa-solid fa-arrow-left me-2"></i>
-        Back
-
-      </button>
-
-    <!-- Empty Cart -->
-
+    <!-- Empty cart -->
     <div
-        *ngIf="cartItems.length === 0"
-        class="alert alert-warning text-center">
+      *ngIf="cartItems.length === 0"
+      class="empty-cart text-center bg-white rounded-4 shadow-sm p-5">
 
-        Your cart is empty.
+      <div class="empty-cart-icon mx-auto mb-3">
+        <i class="fa-solid fa-bag-shopping"></i>
+      </div>
+
+      <h3 class="fw-bold">Your cart is empty</h3>
+
+      <p class="text-secondary mb-4">
+        Add some delicious food to continue.
+      </p>
+
+      <a
+        routerLink="/menu"
+        class="btn btn-success rounded-pill px-4 py-2">
+        Browse Menu
+      </a>
 
     </div>
 
-    <!-- Cart Items -->
-
+    <!-- Cart content -->
     <div
-        class="card shadow-sm mb-4 border-0"
-        *ngFor="let item of cartItems">
+      *ngIf="cartItems.length > 0"
+      class="row g-4 align-items-start">
 
-        <div class="row g-0 align-items-center">
+      <!-- Left section -->
+      <div class="col-lg-8">
 
-            <!-- Image -->
+        <!-- Restaurant information -->
+        <div class="restaurant-card bg-white rounded-4 shadow-sm p-3 p-md-4 mb-3">
+          <div class="d-flex align-items-center gap-3">
 
-            <div class="col-md-3">
+            <img
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c5"
+              alt="Restaurant"
+              class="restaurant-image">
+
+            <div class="flex-grow-1">
+              <h5 class="fw-bold mb-1">
+                Joel's Kitchen
+              </h5>
+
+              <p class="text-secondary small mb-1">
+                Indian, Chinese, Fast Food
+              </p>
+
+              <p class="small mb-0">
+                <i class="fa-solid fa-location-dot text-danger me-1"></i>
+                Pune, Maharashtra
+              </p>
+            </div>
+
+            <div class="restaurant-rating d-none d-sm-block">
+              <i class="fa-solid fa-star me-1"></i>
+              4.5
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Delivery information -->
+        <div class="delivery-card bg-white rounded-4 shadow-sm p-3 mb-3">
+          <div class="d-flex align-items-center gap-3">
+
+            <div class="delivery-icon">
+              <i class="fa-solid fa-motorcycle"></i>
+            </div>
+
+            <div>
+              <h6 class="fw-bold mb-1">
+                Delivery in 25–30 minutes
+              </h6>
+
+              <p class="small text-secondary mb-0">
+                Your order will be delivered to your selected address.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Cart item -->
+        <div
+          *ngFor="let item of cartItems"
+          class="cart-item bg-white rounded-4 shadow-sm p-3 p-md-4 mb-3">
+
+          <div class="row g-3 align-items-center">
+
+            <!-- Item image -->
+            <div class="col-4 col-md-3">
+              <div class="image-wrapper">
 
                 <img
-                    [src]="item.image"
-                    class="img-fluid rounded-start cart-image">
+                  [src]="item.image"
+                  [alt]="item.name"
+                  class="cart-image">
+
+                <span class="food-type veg"></span>
+
+              </div>
+            </div>
+
+            <!-- Item details -->
+            <div class="col-8 col-md-5">
+
+              <h5 class="item-name fw-bold mb-1">
+                {{ item.name }}
+              </h5>
+
+              <p class="item-description text-secondary small mb-2">
+                {{ item.description }}
+              </p>
+
+              <h6 class="fw-bold mb-0">
+                ₹{{ item.price }}
+              </h6>
 
             </div>
 
-            <!-- Details -->
+            <!-- Quantity and total -->
+            <div class="col-12 col-md-4">
 
-            <div class="col-md-6">
+              <div
+                class="d-flex flex-md-column align-items-center align-items-md-end justify-content-between gap-3">
 
-                <div class="card-body">
+                <!-- Quantity controller -->
+                <div class="quantity-box">
 
-                    <h4 class="fw-bold">
-                        {{ item.name }}
-                    </h4>
+                  <button
+                    type="button"
+                    class="quantity-btn"
+                    (click)="decreaseQuantity(item)">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
 
-                    <p class="text-secondary mb-2">
-                        {{ item.description }}
-                    </p>
+                  <span class="quantity-number">
+                    {{ item.quantity }}
+                  </span>
 
-                    <p class="mb-1">
-                        ⭐ {{ item.rating }}
-                    </p>
-
-                    <h5 class="text-success">
-                        ₹ {{ item.price }}
-                    </h5>
+                  <button
+                    type="button"
+                    class="quantity-btn"
+                    (click)="increaseQuantity(item)">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
 
                 </div>
 
+                <!-- Item total -->
+                <h6 class="fw-bold mb-0">
+                  ₹{{ item.price * item.quantity }}
+                </h6>
+
+                <!-- Remove -->
+                <button
+                  type="button"
+                  class="remove-btn"
+                  (click)="removeItem(item)">
+
+                  <i class="fa-regular fa-trash-can me-1"></i>
+                  Remove
+
+                </button>
+
+              </div>
+
             </div>
 
-            <!-- Button -->
+          </div>
+        </div>
 
-            <div class="col-md-3 text-center">
+        <!-- Add more items -->
+        <a
+          routerLink="/menu"
+          class="add-more-card bg-white rounded-4 shadow-sm p-3 d-flex align-items-center justify-content-between text-decoration-none">
 
-              <button
-  class="btn btn-danger mt-2"
-  (click)="removeItem(item)">
-  Remove
-</button>
+          <div class="d-flex align-items-center gap-3">
 
+            <div class="add-icon">
+              <i class="fa-solid fa-plus"></i>
             </div>
+
+            <div>
+              <h6 class="fw-bold text-dark mb-1">
+                Add more items
+              </h6>
+
+              <p class="small text-secondary mb-0">
+                Explore more dishes from the menu
+              </p>
+            </div>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right text-secondary"></i>
+
+        </a>
+
+        <!-- Cooking instructions -->
+        <div class="instructions-card bg-white rounded-4 shadow-sm p-3 mt-3">
+
+          <label class="form-label fw-bold">
+            <i class="fa-regular fa-note-sticky me-2"></i>
+            Cooking instructions
+          </label>
+
+          <textarea
+            class="form-control instruction-input"
+            rows="2"
+            placeholder="Add instructions, for example: less spicy"></textarea>
 
         </div>
 
+      </div>
+
+      <!-- Right bill section -->
+      <div class="col-lg-4">
+
+        <div class="bill-card bg-white rounded-4 shadow-sm p-4">
+
+          <h5 class="fw-bold mb-4">
+            Bill Details
+          </h5>
+
+          <div class="bill-row">
+            <span>Item total</span>
+            <span> getSubtotal() </span>
+          </div>
+
+          <div class="bill-row">
+            <span>
+              Delivery fee
+              <i
+                class="fa-regular fa-circle-question ms-1"
+                title="Delivery charges"></i>
+            </span>
+
+            <span>₹deliveryFee </span>
+          </div>
+
+          <div class="bill-row">
+            <span>Platform fee</span>
+            <span>₹platformFee </span>
+          </div>
+
+          <div class="bill-row">
+            <span>GST and restaurant charges</span>
+            <span>₹tax </span>
+          </div>
+
+          <hr>
+
+          <!-- Coupon -->
+          <button
+            type="button"
+            class="coupon-card w-100 mb-3">
+
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa-solid fa-tags"></i>
+              <span class="fw-semibold">Apply Coupon</span>
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+          </button>
+
+          <hr>
+
+          <div class="total-row">
+            <span>To Pay</span>
+            <span>₹getGrandTotal</span>
+          </div>
+
+          <!-- Address -->
+          <div class="address-box mt-4">
+
+            <div class="d-flex gap-3">
+
+              <div class="address-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+
+              <div>
+                <p class="small text-secondary mb-1">
+                  Delivering to
+                </p>
+
+                <h6 class="fw-bold mb-1">
+                  Home
+                </h6>
+
+                <p class="small text-secondary mb-0">
+                  Pune, Maharashtra, India
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <button
+            type="button"
+            class="btn checkout-btn w-100 mt-4"
+            >
+
+            <span>
+              ₹ getGrandTotal
+            </span>
+
+            <span>
+              Proceed to Pay
+              <i class="fa-solid fa-arrow-right ms-2"></i>
+            </span>
+
+          </button>
+
+          <p class="secure-payment text-center small mt-3 mb-0">
+            <i class="fa-solid fa-shield-halved me-1"></i>
+            Safe and secure payments
+          </p>
+
+        </div>
+
+      </div>
+
     </div>
 
-</div>
+  </div>
+</section>
