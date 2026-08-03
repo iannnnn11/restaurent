@@ -32,4 +32,45 @@ decreaseQuantity(item: any) {
 
   this.cartItems = this.cartService.getCartItems();
 }
+deliveryFee = 35;
+platformFee = 6;
+tax = 28;
+
+getSubtotal(): number {
+  return this.cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+}
+
+getGrandTotal(): number {
+  return (
+    this.getSubtotal() +
+    this.deliveryFee +
+    this.platformFee +
+    this.tax
+  );
+}
+
+increaseQuantity(item: any): void {
+  item.quantity++;
+}
+
+decreaseQuantity(item: any): void {
+  if (item.quantity > 1) {
+    item.quantity--;
+  } else {
+    this.removeItem(item);
+  }
+}
+
+removeItem(item: any): void {
+  this.cartItems = this.cartItems.filter(
+    cartItem => cartItem !== item
+  );
+}
+
+placeOrder(): void {
+  console.log("Order placed successfully");
+}
 }
