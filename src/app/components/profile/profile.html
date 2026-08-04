@@ -1,0 +1,87 @@
+<div class="profile-layout min-vh-100">
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Fixed Sidebar -->
+      <aside class="col-lg-2 d-none d-lg-block sidebar min-vh-100 p-0">
+        <div class="p-4">
+
+          <a routerLink="/dashboard" class="text-decoration-none d-block mb-5">
+            <h3 class="fw-bold text-dark mb-0">
+              Joel<span class="text-warning">Hub</span>
+            </h3>
+
+            <small class="text-secondary">
+              Restaurant Management
+            </small>
+          </a>
+
+          <nav class="nav flex-column gap-2">
+
+            <a
+              routerLink="/profile/details"
+              routerLinkActive="active"
+              class="nav-link sidebar-link"
+            >
+              <i class="fa-solid fa-user me-3"></i>
+              Profile Details
+            </a>
+
+            <a
+              routerLink="/menu"
+              routerLinkActive="active"
+              class="nav-link sidebar-link"
+            >
+              <i class="fa-solid fa-clock-rotate-left me-3"></i>
+              Activity
+            </a>
+
+            <a
+              routerLink="/profile/security"
+              routerLinkActive="active"
+              class="nav-link sidebar-link"
+            >
+              <i class="fa-solid fa-shield-halved me-3"></i>
+              Security
+            </a>
+
+            <a
+              routerLink="/profile/settings"
+              routerLinkActive="active"
+              class="nav-link sidebar-link"
+            >
+              <i class="fa-solid fa-gear me-3"></i>
+              Settings
+            </a>
+
+            <button
+              type="button"
+              class="nav-link sidebar-link text-start border-0 bg-transparent"
+              (click)="logout()"
+            >
+              <i class="fa-solid fa-right-from-bracket me-3"></i>
+              Logout
+            </button>
+
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Changing Main Content -->
+      <main class="col-lg-10 ms-auto profile-content">
+        <header class="bg-white border-bottom px-4 px-md-5 py-3">
+          <h5 class="fw-bold mb-0">Employee Account</h5>
+
+          <small class="text-secondary">
+            Manage your profile and account settings
+          </small>
+        </header>
+
+        <div class="p-4 p-md-5">
+          
+        </div>
+      </main>
+
+    </div>
+  </div>
+</div>

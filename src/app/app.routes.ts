@@ -8,11 +8,16 @@ import { CartComponent } from './components/cart/cart';
 import { Categories } from './components/categories/categories';
 import { Booktable } from './components/booktable/booktable';
 import { Cart } from './services/cart';
+import { Profile } from './components/profile/profile';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: Login
+  },
+  { 
+    path: 'profile',
+    component:Profile
   },
   {
     path: 'signup',
