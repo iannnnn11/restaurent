@@ -1,66 +1,295 @@
-<section class="famous-dishes py-5">
+<section class="weekly-menu py-5">
 
   <div class="container">
 
-    <!-- Section Heading -->
+    <!-- Heading -->
     <div class="text-center mb-5">
 
-      <p class="text-success fw-bold text-uppercase mb-2">
-        Customer Favourites
-      </p>
+      <span class="section-badge d-inline-flex align-items-center gap-2 mb-3">
+        <i class="fa-solid fa-utensils"></i>
+        JodeTx Office Cafeteria
+      </span>
 
-      <h2 class="fw-bold display-6">
-        Our Famous Dishes
+      <h2 class="section-title fw-bold display-6 mb-3">
+        Weekly Meal Schedule
       </h2>
 
-      <p class="text-secondary mx-auto section-description">
-        Discover the dishes our customers love the most, prepared with fresh
-        ingredients and delicious flavours.
+      <p class="weekly-description mx-auto mb-0">
+        Plan your office meals in advance with our weekly breakfast
+        and lunch timetable.
       </p>
 
     </div>
 
 
-    <!-- Dish Cards -->
-    <div class="row g-4">
+    <!-- Meal Tabs -->
+    <ul
+      class="nav nav-pills justify-content-center gap-3 mb-5"
+      id="mealTabs"
+      role="tablist"
+    >
 
-      <!-- Dish 1 -->
-      <div class="col-sm-6 col-lg-3">
+      <li class="nav-item" role="presentation">
 
-        <div class="card dish-card h-100 border-0 shadow-sm">
+        <button
+          class="nav-link active rounded-pill px-4 py-2"
+          id="breakfast-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#breakfast"
+          type="button"
+          role="tab"
+          aria-controls="breakfast"
+          aria-selected="true"
+        >
+          <i class="fa-solid fa-mug-hot me-2"></i>
+          Breakfast
+        </button>
 
-          <div class="dish-image-box">
+      </li>
 
-            <img
-              src="images/pizza1.webp"
-              class="card-img-top dish-image"
-              alt="Pepperoni Pizza">
+      <li class="nav-item" role="presentation">
 
-            <span class="rating-badge">
-              ⭐ 4.9
-            </span>
+        <button
+          class="nav-link rounded-pill px-4 py-2"
+          id="lunch-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#lunch"
+          type="button"
+          role="tab"
+          aria-controls="lunch"
+          aria-selected="false"
+        >
+          <i class="fa-solid fa-bowl-food me-2"></i>
+          Lunch
+        </button>
+
+      </li>
+
+    </ul>
+
+
+    <div class="tab-content">
+
+      <!-- Breakfast -->
+      <div
+        class="tab-pane fade show active"
+        id="breakfast"
+        role="tabpanel"
+        aria-labelledby="breakfast-tab"
+      >
+
+        <div class="row g-4">
+
+          <!-- Monday -->
+          <div class="col-sm-6 col-md-4 col-xl-2">
+
+            <div class="card meal-day-card h-100">
+
+              <div class="card-body p-4 text-center">
+
+                <span class="day-number">
+                  01
+                </span>
+
+                <h5 class="day-title fw-bold mt-3 mb-1">
+                  Monday
+                </h5>
+
+                <small class="meal-time">
+                  Breakfast
+                </small>
+
+                <div class="meal-divider"></div>
+
+                <span class="meal-icon">
+                  <i class="fa-solid fa-burger"></i>
+                </span>
+
+                <h6 class="meal-name fw-bold mt-3 mb-0">
+                  Vada Pav
+                </h6>
+
+              </div>
+
+            </div>
 
           </div>
 
-          <div class="card-body">
 
-            <h5 class="card-title fw-bold">
-              Pepperoni Pizza
-            </h5>
+          <!-- Tuesday -->
+          <div class="col-sm-6 col-md-4 col-xl-2">
 
-            <p class="card-text text-secondary small">
-              Crispy crust topped with mozzarella, pepperoni and Italian herbs.
-            </p>
+            <div class="card meal-day-card h-100">
 
-            <div class="d-flex justify-content-between align-items-center">
+              <div class="card-body p-4 text-center">
 
-              <h5 class="text-success fw-bold mb-0">
-                ₹399
-              </h5>
+                <span class="day-number">
+                  02
+                </span>
 
-              <button class="btn btn-success rounded-pill px-3">
-                Add +
-              </button>
+                <h5 class="day-title fw-bold mt-3 mb-1">
+                  Tuesday
+                </h5>
+
+                <small class="meal-time">
+                  Breakfast
+                </small>
+
+                <div class="meal-divider"></div>
+
+                <span class="meal-icon">
+                  <i class="fa-solid fa-bread-slice"></i>
+                </span>
+
+                <h6 class="meal-name fw-bold mt-3 mb-0">
+                  Toast Sandwich
+                </h6>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Wednesday -->
+          <div class="col-sm-6 col-md-4 col-xl-2">
+
+            <div class="card meal-day-card h-100">
+
+              <div class="card-body p-4 text-center">
+
+                <span class="day-number">
+                  03
+                </span>
+
+                <h5 class="day-title fw-bold mt-3 mb-1">
+                  Wednesday
+                </h5>
+
+                <small class="meal-time">
+                  Breakfast
+                </small>
+
+                <div class="meal-divider"></div>
+
+                <span class="meal-icon">
+                  <i class="fa-solid fa-bowl-rice"></i>
+                </span>
+
+                <h6 class="meal-name fw-bold mt-3 mb-0">
+                  Poha
+                </h6>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Thursday -->
+          <div class="col-sm-6 col-md-4 col-xl-2">
+
+            <div class="card meal-day-card h-100">
+
+              <div class="card-body p-4 text-center">
+
+                <span class="day-number">
+                  04
+                </span>
+
+                <h5 class="day-title fw-bold mt-3 mb-1">
+                  Thursday
+                </h5>
+
+                <small class="meal-time">
+                  Breakfast
+                </small>
+
+                <div class="meal-divider"></div>
+
+                <span class="meal-icon">
+                  <i class="fa-solid fa-plate-wheat"></i>
+                </span>
+
+                <h6 class="meal-name fw-bold mt-3 mb-0">
+                  Idli Chutney
+                </h6>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Friday -->
+          <div class="col-sm-6 col-md-4 col-xl-2">
+
+            <div class="card meal-day-card h-100">
+
+              <div class="card-body p-4 text-center">
+
+                <span class="day-number">
+                  05
+                </span>
+
+                <h5 class="day-title fw-bold mt-3 mb-1">
+                  Friday
+                </h5>
+
+                <small class="meal-time">
+                  Breakfast
+                </small>
+
+                <div class="meal-divider"></div>
+
+                <span class="meal-icon">
+                  <i class="fa-solid fa-cookie-bite"></i>
+                </span>
+
+                <h6 class="meal-name fw-bold mt-3 mb-0">
+                  Samosa Pav
+                </h6>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Saturday -->
+          <div class="col-sm-6 col-md-4 col-xl-2">
+
+            <div class="card meal-day-card h-100">
+
+              <div class="card-body p-4 text-center">
+
+                <span class="day-number">
+                  06
+                </span>
+
+                <h5 class="day-title fw-bold mt-3 mb-1">
+                  Saturday
+                </h5>
+
+                <small class="meal-time">
+                  Breakfast
+                </small>
+
+                <div class="meal-divider"></div>
+
+                <span class="meal-icon">
+                  <i class="fa-solid fa-bowl-food"></i>
+                </span>
+
+                <h6 class="meal-name fw-bold mt-3 mb-0">
+                  Upma
+                </h6>
+
+              </div>
 
             </div>
 
@@ -71,137 +300,259 @@
       </div>
 
 
-      <!-- Dish 2 -->
-      <div class="col-sm-6 col-lg-3">
+      <!-- Lunch -->
+      <div
+        class="tab-pane fade"
+        id="lunch"
+        role="tabpanel"
+        aria-labelledby="lunch-tab"
+      >
 
-        <div class="card dish-card h-100 border-0 shadow-sm">
+        <div class="row g-4">
 
-          <div class="dish-image-box">
+          <!-- Monday -->
+          <div class="col-md-6 col-xl-4">
 
-            <img
-              src="images/burger.avif"
-              class="card-img-top dish-image"
-              alt="Cheese Burger">
+            <div class="card lunch-card h-100">
 
-            <span class="rating-badge">
-              ⭐ 4.8
-            </span>
+              <div class="card-body p-4">
 
-          </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
 
-          <div class="card-body">
+                  <div>
+                    <span class="lunch-day-label">
+                      Day 01
+                    </span>
 
-            <h5 class="card-title fw-bold">
-              Double Cheese Burger
-            </h5>
+                    <h4 class="lunch-day-title fw-bold mb-0 mt-1">
+                      Monday
+                    </h4>
+                  </div>
 
-            <p class="card-text text-secondary small">
-              Juicy double patty loaded with melted cheese and fresh vegetables.
-            </p>
+                  <span class="lunch-icon">
+                    <i class="fa-solid fa-bowl-rice"></i>
+                  </span>
 
-            <div class="d-flex justify-content-between align-items-center">
+                </div>
 
-              <h5 class="text-success fw-bold mb-0">
-                ₹249
-              </h5>
+                <ul class="list-unstyled meal-list mb-0">
+                  <li>Dal Tadka</li>
+                  <li>Rice</li>
+                  <li>Paneer Masala</li>
+                  <li>Bhindi Masala</li>
+                  <li>Papad</li>
+                  <li>Chapati</li>
+                  <li>Gulab Jamun</li>
+                </ul>
 
-              <button class="btn btn-success rounded-pill px-3">
-                Add +
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- Dish 3 -->
-      <div class="col-sm-6 col-lg-3">
-
-        <div class="card dish-card h-100 border-0 shadow-sm">
-
-          <div class="dish-image-box">
-
-            <img
-              src="images/alfredo.jpg"
-              class="card-img-top dish-image"
-              alt="Creamy Pasta">
-
-            <span class="rating-badge">
-              ⭐ 4.7
-            </span>
-
-          </div>
-
-          <div class="card-body">
-
-            <h5 class="card-title fw-bold">
-              Creamy Alfredo Pasta
-            </h5>
-
-            <p class="card-text text-secondary small">
-              Creamy white sauce pasta with herbs, cheese and fresh vegetables.
-            </p>
-
-            <div class="d-flex justify-content-between align-items-center">
-
-              <h5 class="text-success fw-bold mb-0">
-                ₹299
-              </h5>
-
-              <button class="btn btn-success rounded-pill px-3">
-                Add +
-              </button>
+              </div>
 
             </div>
 
           </div>
 
-        </div>
 
-      </div>
+          <!-- Tuesday -->
+          <div class="col-md-6 col-xl-4">
 
+            <div class="card lunch-card h-100">
 
-      <!-- Dish 4 -->
-      <div class="col-sm-6 col-lg-3">
+              <div class="card-body p-4">
 
-        <div class="card dish-card h-100 border-0 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-4">
 
-          <div class="dish-image-box">
+                  <div>
+                    <span class="lunch-day-label">
+                      Day 02
+                    </span>
 
-            <img
-              src="images/fries.jpg"
-              class="card-img-top dish-image"
-              alt="Loaded Fries">
+                    <h4 class="lunch-day-title fw-bold mb-0 mt-1">
+                      Tuesday
+                    </h4>
+                  </div>
 
-            <span class="rating-badge">
-              ⭐ 4.6
-            </span>
+                  <span class="lunch-icon">
+                    <i class="fa-solid fa-plate-wheat"></i>
+                  </span>
+
+                </div>
+
+                <ul class="list-unstyled meal-list mb-0">
+                  <li>Kali Dal</li>
+                  <li>Rice</li>
+                  <li>Baingan Bharta</li>
+                  <li>Chole</li>
+                  <li>Fryums</li>
+                  <li>Chapati</li>
+                  <li>Gulab Jamun</li>
+                </ul>
+
+              </div>
+
+            </div>
 
           </div>
 
-          <div class="card-body">
 
-            <h5 class="card-title fw-bold">
-              Loaded Cheese Fries
-            </h5>
+          <!-- Wednesday -->
+          <div class="col-md-6 col-xl-4">
 
-            <p class="card-text text-secondary small">
-              Crispy fries topped with melted cheese, sauces and spicy seasoning.
-            </p>
+            <div class="card lunch-card h-100">
 
-            <div class="d-flex justify-content-between align-items-center">
+              <div class="card-body p-4">
 
-              <h5 class="text-success fw-bold mb-0">
-                ₹179
-              </h5>
+                <div class="d-flex justify-content-between align-items-center mb-4">
 
-              <button class="btn btn-success rounded-pill px-3">
-                Add +
-              </button>
+                  <div>
+                    <span class="lunch-day-label">
+                      Day 03
+                    </span>
+
+                    <h4 class="lunch-day-title fw-bold mb-0 mt-1">
+                      Wednesday
+                    </h4>
+                  </div>
+
+                  <span class="lunch-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                  </span>
+
+                </div>
+
+                <ul class="list-unstyled meal-list mb-0">
+                  <li>Dal Tadka</li>
+                  <li>Rice</li>
+                  <li>Moong Masala</li>
+                  <li>Soya Masala</li>
+                  <li>Papad</li>
+                  <li>Chapati</li>
+                  <li>Gulab Jamun</li>
+                </ul>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Thursday -->
+          <div class="col-md-6 col-xl-4">
+
+            <div class="card lunch-card h-100">
+
+              <div class="card-body p-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                  <div>
+                    <span class="lunch-day-label">
+                      Day 04
+                    </span>
+
+                    <h4 class="lunch-day-title fw-bold mb-0 mt-1">
+                      Thursday
+                    </h4>
+                  </div>
+
+                  <span class="lunch-icon">
+                    <i class="fa-solid fa-bowl-food"></i>
+                  </span>
+
+                </div>
+
+                <ul class="list-unstyled meal-list mb-0">
+                  <li>Kali Dal</li>
+                  <li>Rice</li>
+                  <li>Veg Kheema</li>
+                  <li>Chana Chatpata</li>
+                  <li>Fryums</li>
+                  <li>Chapati</li>
+                  <li>Mini Rasgulla</li>
+                </ul>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Friday -->
+          <div class="col-md-6 col-xl-4">
+
+            <div class="card lunch-card h-100">
+
+              <div class="card-body p-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                  <div>
+                    <span class="lunch-day-label">
+                      Day 05
+                    </span>
+
+                    <h4 class="lunch-day-title fw-bold mb-0 mt-1">
+                      Friday
+                    </h4>
+                  </div>
+
+                  <span class="lunch-icon">
+                    <i class="fa-solid fa-egg"></i>
+                  </span>
+
+                </div>
+
+                <ul class="list-unstyled meal-list mb-0">
+                  <li>Yellow Dal</li>
+                  <li>Egg Masala Gravy</li>
+                  <li>Safed Vatana</li>
+                  <li>Sev Bhaji</li>
+                  <li>Papad</li>
+                  <li>Chapati</li>
+                  <li>Mini Rasgulla</li>
+                </ul>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Saturday -->
+          <div class="col-md-6 col-xl-4">
+
+            <div class="card lunch-card h-100">
+
+              <div class="card-body p-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                  <div>
+                    <span class="lunch-day-label">
+                      Day 06
+                    </span>
+
+                    <h4 class="lunch-day-title fw-bold mb-0 mt-1">
+                      Saturday
+                    </h4>
+                  </div>
+
+                  <span class="lunch-icon">
+                    <i class="fa-solid fa-bowl-rice"></i>
+                  </span>
+
+                </div>
+
+                <ul class="list-unstyled meal-list mb-0">
+                  <li>Masala Rice</li>
+                  <li>Raita</li>
+                  <li>Weekend Special Meal</li>
+                  <li>Light Office Lunch</li>
+                </ul>
+
+              </div>
 
             </div>
 
@@ -214,12 +565,16 @@
     </div>
 
 
-    <!-- View Menu Button -->
+    <!-- Bottom Action -->
     <div class="text-center mt-5">
 
-      <button class="btn btn-outline-success btn-lg rounded-pill px-5" routerLink="/menu">
-        View Full Menu
-      </button>
+      <a
+        class="btn complete-menu-btn btn-lg rounded-pill px-5 fw-semibold"
+        routerLink="/menu"
+      >
+        Explore Complete Menu
+        <i class="fa-solid fa-arrow-right ms-2"></i>
+      </a>
 
     </div>
 

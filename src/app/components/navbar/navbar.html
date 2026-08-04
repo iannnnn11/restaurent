@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top main-navbar py-3">
-  <div class="container">
+  <div class="container-fluid dashboard-container">
 
     <!-- Brand -->
     <a
@@ -31,7 +31,7 @@
 
     <div class="collapse navbar-collapse" id="navbarMenu">
 
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 mt-3 mt-lg-0">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3 mt-3 mt-lg-0">
 
         <li class="nav-item">
           <a
@@ -83,7 +83,6 @@
           </a>
         </li>
 
-        <!-- Profile -->
         <li class="nav-item ms-lg-2">
           <a
             class="btn profile-button rounded-pill px-3 d-flex align-items-center gap-2"
@@ -105,14 +104,14 @@
 
 
 <!-- Hero Section -->
-<section class="hero-section d-flex align-items-center">
+<section class="hero-section">
 
-  <div class="container">
+  <div class="container-fluid dashboard-container">
 
-    <div class="row align-items-center g-5">
+    <div class="row align-items-center min-vh-100 g-5">
 
       <!-- Left Content -->
-      <div class="col-lg-6 text-white hero-content">
+      <div class="col-lg-5 text-white hero-content">
 
         <div
           class="employee-badge d-inline-flex align-items-center gap-2
@@ -126,7 +125,7 @@
           Smart workplace dining
         </p>
 
-        <h1 class="display-3 fw-bold hero-title mb-4">
+        <h1 class="hero-title fw-bold mb-4">
           Your favourite meals,
           <span class="d-block text-warning">
             right at work.
@@ -142,7 +141,7 @@
         <div class="d-flex flex-wrap gap-3">
 
           <a
-            class="btn btn-warning btn-lg rounded-pill px-4 fw-semibold"
+            class="btn btn-warning btn-lg rounded-pill px-4 fw-semibold hero-primary-btn"
             routerLink="/menu"
           >
             <i class="fa-solid fa-utensils me-2"></i>
@@ -150,7 +149,7 @@
           </a>
 
           <a
-            class="btn btn-outline-light btn-lg rounded-pill px-4"
+            class="btn btn-outline-light btn-lg rounded-pill px-4 hero-secondary-btn"
             routerLink="/booktable"
           >
             <i class="fa-regular fa-calendar-check me-2"></i>
@@ -160,39 +159,51 @@
         </div>
 
         <!-- Features -->
-        <div class="row g-3 mt-4">
+        <div class="row g-4 mt-4 hero-features">
 
           <div class="col-sm-4">
+
             <div class="hero-feature">
+
               <i class="fa-solid fa-bolt text-warning"></i>
 
               <div>
                 <strong>Quick Pickup</strong>
                 <small>Skip long queues</small>
               </div>
+
             </div>
+
           </div>
 
           <div class="col-sm-4">
+
             <div class="hero-feature">
+
               <i class="fa-solid fa-leaf text-warning"></i>
 
               <div>
                 <strong>Fresh Meals</strong>
                 <small>Prepared daily</small>
               </div>
+
             </div>
+
           </div>
 
           <div class="col-sm-4">
+
             <div class="hero-feature">
+
               <i class="fa-solid fa-wallet text-warning"></i>
 
               <div>
                 <strong>Meal Credits</strong>
                 <small>Employee benefits</small>
               </div>
+
             </div>
+
           </div>
 
         </div>
@@ -200,76 +211,37 @@
       </div>
 
 
-      <!-- Right Side -->
-      <div class="col-lg-6">
+      <!-- Right Video -->
+      <div class="col-lg-7">
 
-        <div class="hero-visual position-relative mx-auto">
+        <div class="cafeteria-visual">
 
-          <div class="food-circle"></div>
+          <!-- Golden background -->
+          <div class="cafeteria-glow"></div>
 
-          <img
-            src="images/pizza.png"
-            class="main-food-image img-fluid"
-            alt="Fresh cafeteria meal"
+          <!-- Decorative rings -->
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+
+          <!-- Decorative particles -->
+          <span class="spark spark-one"></span>
+          <span class="spark spark-two"></span>
+          <span class="spark spark-three"></span>
+          <span class="spark spark-four"></span>
+
+          <!-- Cafeteria Video -->
+          <video
+            class="cafeteria-video"
+            autoplay
+            muted
+            loop
+            playsinline
           >
-
-          <!-- Available Badge -->
-          <div class="availability-card shadow-sm">
-
-            <span class="availability-icon">
-              <i class="fa-solid fa-check"></i>
-            </span>
-
-            <div>
-              <small>Today's special</small>
-              <h6 class="mb-0 fw-bold">
-                Available Now
-              </h6>
-            </div>
-
-          </div>
-
-          <!-- Meal Card -->
-          <div class="floating-card meal-card shadow">
-
-            <span class="floating-icon">
-              <i class="fa-solid fa-pizza-slice"></i>
-            </span>
-
-            <div>
-              <small class="text-secondary">
-                Today's Favourite
-              </small>
-
-              <h6 class="mb-0 fw-bold">
-                Farmhouse Pizza
-              </h6>
-            </div>
-
-            <span class="price-text">
-              ₹149
-            </span>
-
-          </div>
-
-          <!-- Time Card -->
-          <div class="floating-card time-card shadow">
-
-            <span class="floating-icon">
-              <i class="fa-regular fa-clock"></i>
-            </span>
-
-            <div>
-              <small class="text-secondary">
-                Estimated pickup
-              </small>
-
-              <h6 class="mb-0 fw-bold">
-                15–20 minutes
-              </h6>
-            </div>
-
-          </div>
+            <source
+              src="images/rest2.mp4"
+              type="video/mp4"
+            >
+          </video>
 
         </div>
 
@@ -292,6 +264,7 @@
              justify-content-between align-items-md-end gap-3 mb-4"
     >
       <div>
+
         <p class="text-warning fw-bold text-uppercase small mb-2">
           Employee services
         </p>
@@ -303,6 +276,7 @@
         <p class="text-secondary mb-0">
           Access your most-used cafeteria services.
         </p>
+
       </div>
 
       <a
@@ -312,11 +286,13 @@
         View complete menu
         <i class="fa-solid fa-arrow-right ms-1"></i>
       </a>
+
     </div>
 
     <div class="row g-4">
 
       <div class="col-sm-6 col-lg-3">
+
         <a
           routerLink="/menu"
           class="service-card card border-0 shadow-sm rounded-4 h-100 text-decoration-none"
@@ -342,9 +318,12 @@
 
           </div>
         </a>
+
       </div>
 
+
       <div class="col-sm-6 col-lg-3">
+
         <a
           routerLink="/orders"
           class="service-card card border-0 shadow-sm rounded-4 h-100 text-decoration-none"
@@ -370,9 +349,12 @@
 
           </div>
         </a>
+
       </div>
 
+
       <div class="col-sm-6 col-lg-3">
+
         <a
           routerLink="/booktable"
           class="service-card card border-0 shadow-sm rounded-4 h-100 text-decoration-none"
@@ -398,9 +380,12 @@
 
           </div>
         </a>
+
       </div>
 
+
       <div class="col-sm-6 col-lg-3">
+
         <a
           routerLink="/profile"
           class="service-card card border-0 shadow-sm rounded-4 h-100 text-decoration-none"
@@ -426,6 +411,7 @@
 
           </div>
         </a>
+
       </div>
 
     </div>

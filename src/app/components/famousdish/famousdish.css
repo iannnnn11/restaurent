@@ -1,78 +1,388 @@
-.famous-dishes{
-
-    background:linear-gradient(
-        to bottom,
-        #101411 0%,
-        #1d2b1e 35%,
-        #2a3d2b 100%
-    );
-
-    color:white;
-}
-
-.section-description {
-  max-width: 600px;
-}
-
-.dish-card {
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: white;
-  transition: 0.3s ease;
-}
-
-.dish-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.13) !important;
-}
-
-.dish-image-box {
+.weekly-menu {
   position: relative;
-  height: 220px;
   overflow: hidden;
+  color: #453426;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(255, 193, 7, 0.2),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 88%,
+      rgba(190, 142, 83, 0.16),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fffaf2 42%,
+      #f8e8d2 100%
+    );
 }
 
-.dish-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.4s ease;
-}
+.weekly-menu::before {
+  content: "";
 
-.dish-card:hover .dish-image {
-  transform: scale(1.08);
-}
-
-.rating-badge {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  width: 340px;
+  height: 340px;
+  top: -190px;
+  right: -140px;
 
-  background-color: white;
-  color: #222;
+  border-radius: 50%;
 
-  padding: 6px 11px;
-  border-radius: 20px;
+  background: rgba(255, 193, 7, 0.14);
+  filter: blur(35px);
 
-  font-size: 13px;
+  pointer-events: none;
+}
+
+.weekly-menu::after {
+  content: "";
+
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  bottom: -180px;
+  left: -130px;
+
+  border-radius: 50%;
+
+  background: rgba(177, 127, 70, 0.11);
+  filter: blur(35px);
+
+  pointer-events: none;
+}
+
+.weekly-menu .container {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Heading */
+
+.section-badge {
+  padding: 9px 17px;
+
+  border: 1px solid #eed3a7;
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.78);
+  color: #b47813;
+
+  box-shadow: 0 8px 24px rgba(105, 74, 42, 0.06);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.section-title {
+  color: #3f2e22;
+  letter-spacing: -1.5px;
+}
+
+.weekly-description {
+  max-width: 650px;
+
+  color: #816e5f;
+
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+
+/* Tabs */
+
+.weekly-menu .nav-pills .nav-link {
+  min-width: 145px;
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #745e4b;
+
+  border: 1px solid #ead5b9;
+
+  box-shadow: 0 9px 24px rgba(83, 57, 34, 0.07);
+
   font-weight: 600;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease;
 }
 
-.card-text {
-  min-height: 62px;
-  line-height: 1.6;
+.weekly-menu .nav-pills .nav-link:hover {
+  color: #443224;
+  border-color: #ffc107;
+  transform: translateY(-2px);
 }
 
-.card-body {
-  padding: 20px;
+.weekly-menu .nav-pills .nav-link.active {
+  background: linear-gradient(
+    135deg,
+    #ffc107,
+    #f0ae13
+  );
+
+  color: #34261b;
+
+  border-color: #ffc107;
+
+  box-shadow: 0 13px 28px rgba(255, 193, 7, 0.27);
 }
 
-@media (max-width: 768px) {
 
-  .dish-image-box {
-    height: 200px;
+/* Breakfast cards */
+
+.meal-day-card {
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid #ecd9c1;
+  border-radius: 23px;
+
+  box-shadow:
+    0 16px 38px rgba(92, 61, 34, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.meal-day-card:hover {
+  transform: translateY(-8px);
+
+  border-color: #ffc107;
+
+  box-shadow:
+    0 25px 48px rgba(92, 61, 34, 0.14);
+}
+
+.day-number {
+  width: 46px;
+  height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff0bf;
+  color: #99680f;
+
+  border: 1px solid #efd397;
+
+  font-weight: 800;
+}
+
+.day-title {
+  color: #49372a;
+}
+
+.meal-time {
+  color: #9b8776;
+}
+
+.meal-divider {
+  width: 46px;
+  height: 3px;
+
+  margin: 18px auto;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #e9a710,
+    #ffc107
+  );
+}
+
+.meal-icon {
+  width: 60px;
+  height: 60px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #fff6df;
+  color: #bf8215;
+
+  border: 1px solid #efddb6;
+
+  font-size: 1.35rem;
+}
+
+.meal-name {
+  color: #49372a;
+}
+
+
+/* Lunch cards */
+
+.lunch-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(255, 248, 237, 0.96)
+    );
+
+  border: 1px solid #ead5ba;
+  border-radius: 23px;
+
+  box-shadow:
+    0 17px 40px rgba(84, 55, 31, 0.09);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.lunch-card:hover {
+  transform: translateY(-7px);
+
+  border-color: #ffc107;
+
+  box-shadow:
+    0 26px 50px rgba(84, 55, 31, 0.15);
+}
+
+.lunch-day-label {
+  color: #bd7f13;
+
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.lunch-day-title {
+  color: #423126;
+}
+
+.lunch-icon {
+  width: 52px;
+  height: 52px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: #ffefbf;
+  color: #ac7412;
+
+  border: 1px solid #efd18d;
+
+  font-size: 1.15rem;
+}
+
+
+/* Meal list */
+
+.meal-list li {
+  position: relative;
+
+  padding: 11px 0 11px 28px;
+
+  color: #705d4e;
+
+  border-bottom: 1px solid #f0e0cd;
+}
+
+.meal-list li:last-child {
+  border-bottom: 0;
+}
+
+.meal-list li::before {
+  content: "✓";
+
+  position: absolute;
+  top: 11px;
+  left: 0;
+
+  color: #cf9217;
+
+  font-weight: 800;
+}
+
+
+/* Bottom button */
+
+.complete-menu-btn {
+  background: linear-gradient(
+    135deg,
+    #ffc107,
+    #eca711
+  );
+
+  color: #36271c;
+
+  border: 0;
+
+  box-shadow:
+    0 14px 30px rgba(255, 193, 7, 0.24);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.complete-menu-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #ffca2c,
+    #f4b418
+  );
+
+  color: #36271c;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 19px 36px rgba(255, 193, 7, 0.32);
+}
+
+
+/* Responsive */
+
+@media (max-width: 767px) {
+
+  .weekly-menu {
+    background:
+      linear-gradient(
+        180deg,
+        #fffdf9,
+        #f8e8d3
+      );
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .weekly-menu .nav-pills .nav-link {
+    min-width: 130px;
+  }
+
+  .meal-day-card,
+  .lunch-card {
+    border-radius: 19px;
   }
 
 }

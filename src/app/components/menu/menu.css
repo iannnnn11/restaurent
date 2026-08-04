@@ -2,7 +2,11 @@ html {
   scroll-behavior: smooth;
   background:#0b0f0c;
 }
-
+.menu-header{
+    background:#111a13;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(14px);
+}
 .header-icon-btn {
   width: 45px;
   height: 45px;
@@ -48,11 +52,14 @@ html {
   position: sticky;
   top: 77px;
   z-index: 1020;
+  background-color : #152119;
 }
 
 .sticky-sidebar {
   position: sticky;
   top: 155px;
+  
+
 }
 
 .active-menu-link {
@@ -73,22 +80,6 @@ html {
   justify-content: center;
   border: 2px solid #198754;
 }
-
-.veg-icon span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #198754;
-}
-
-.veg-icon.non-veg {
-  border-color: #dc3545;
-}
-
-.veg-icon.non-veg span {
-  background: #dc3545;
-}
-
 .food-image-box {
   width: 170px;
   padding-bottom: 25px;
