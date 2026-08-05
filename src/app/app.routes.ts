@@ -9,16 +9,49 @@ import { Categories } from './components/categories/categories';
 import { Booktable } from './components/booktable/booktable';
 import { Cart } from './services/cart';
 import { Profile } from './components/profile/profile';
+import { Settings } from './components/settings/settings';
+import { ProfileDetails } from './components/profile-details/profile-details';
+import { Activity } from './components/activity/activity';
+import { Security } from './components/security/security';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: Login
   },
-  { 
-    path: 'profile',
-    component:Profile
+  {
+    path: 'settings',
+    component: Settings
   },
+  {
+    path: 'profile',
+    component: Profile,
+
+    children: [
+      {
+        path: '',
+        redirectTo: 'details',
+        pathMatch: 'full'
+      },
+      {
+        path: 'details',
+        component: ProfileDetails
+      },
+      {
+        path: 'activity',
+        component: Activity
+      },
+      {
+        path: 'security',
+        component: Security
+      },
+      {
+        path: 'settings',
+        component: Settings
+      }
+    ]
+  },
+
   {
     path: 'signup',
     component: Signup

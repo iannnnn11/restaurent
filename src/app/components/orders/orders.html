@@ -1,3 +1,105 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top main-navbar py-3 ">
+  <div class="container-fluid dashboard-container">
+
+    <!-- Brand -->
+    <a
+      class="navbar-brand d-flex align-items-center gap-2"
+      routerLink="/dashboard"
+    >
+      <span class="brand-icon">
+        <i class="fa-solid fa-utensils"></i>
+      </span>
+
+      <span class="fw-bold fs-3">
+        Jode<span class="text-warning">Tx</span>
+      </span>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button
+      class="navbar-toggler border-0 shadow-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarMenu"
+      aria-controls="navbarMenu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMenu">
+
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3 mt-3 mt-lg-0">
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/dashboard"
+            routerLinkActive="active-link"
+          >
+            Dashboard
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/menu"
+            routerLinkActive="active-link"
+          >
+            Menu
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/cart"
+            routerLinkActive="active-link"
+          >
+            Cart
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/orders"
+            routerLinkActive="active-link"
+          >
+            My Orders
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/booktable"
+            routerLinkActive="active-link"
+          >
+            Book Table
+          </a>
+        </li>
+
+        <li class="nav-item ms-lg-2">
+          <a
+            class="btn profile-button rounded-pill px-3 d-flex align-items-center gap-2"
+            routerLink="/profile"
+          >
+            <span class="profile-avatar">
+              <i class="fa-solid fa-user"></i>
+            </span>
+
+            Profile
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
 <section class="orders-page py-4 py-lg-5">
   <div class="container">
 

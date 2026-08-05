@@ -295,7 +295,12 @@ export class Menu implements OnInit {
       );
   }
 
-  scrollToSection(sectionId: string): void {
+ 
+activeCategory: string = 'recommended';
+
+scrollToSection(sectionId: string): void {
+  this.activeCategory = sectionId;
+
   const section = document.getElementById(sectionId);
 
   if (section) {

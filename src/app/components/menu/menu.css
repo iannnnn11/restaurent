@@ -2,19 +2,266 @@ html {
   scroll-behavior: smooth;
   background:#0b0f0c;
 }
-.menu-header{
-    background:#111a13;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(14px);
-}
-.header-icon-btn {
-  width: 45px;
-  height: 45px;
-  flex-shrink: 0;
+.menu-header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #e9ecef;
+  z-index: 1050;
 }
 
+.menu-navbar {
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+}
+
+
+/* Back button */
+
+.back-btn {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #198754;
+  background: #eaf7f0;
+
+  border: 0;
+  border-radius: 13px;
+
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #ffffff;
+  background: #198754;
+  transform: translateX(-2px);
+}
+
+
+/* Brand */
+
+.brand-section {
+  min-width: 175px;
+  padding-right: 16px;
+  border-right: 1px solid #e9ecef;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+  background: #198754;
+
+  border-radius: 12px;
+}
+
+
+/* Search */
+
 .search-box {
-  max-width: 600px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 17px;
+
+  transform: translateY(-50%);
+  z-index: 2;
+
+  color: #98a2b3;
+}
+
+.search-input {
+  height: 46px;
+
+  padding-left: 46px;
+  padding-right: 42px;
+
+  color: #212529;
+  background: #f7f8fa;
+
+  border: 1px solid transparent;
+  border-radius: 13px;
+
+  transition: 0.2s ease;
+}
+
+.search-input:focus {
+  background: #ffffff;
+  border-color: #198754;
+
+  box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+}
+
+.search-input::placeholder {
+  color: #98a2b3;
+}
+
+.clear-search-btn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #6c757d;
+  background: transparent;
+
+  border: 0;
+  border-radius: 50%;
+}
+
+.clear-search-btn:hover {
+  color: #dc3545;
+  background: #f8d7da;
+}
+
+
+/* Orders button */
+
+.header-action-btn {
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0 16px;
+
+  color: #495057;
+  background: #f7f8fa;
+
+  border: 1px solid #e9ecef;
+  border-radius: 13px;
+
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition: 0.2s ease;
+}
+
+.header-action-btn:hover {
+  color: #198754;
+  background: #eaf7f0;
+  border-color: #ccebd9;
+}
+
+
+/* Cart */
+
+.cart-btn {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #ffffff;
+  background: #198754;
+
+  border: 0;
+  border-radius: 13px;
+
+  font-size: 17px;
+
+  box-shadow: 0 7px 18px rgba(25, 135, 84, 0.22);
+
+  transition: 0.2s ease;
+}
+
+.cart-btn:hover {
+  color: #ffffff;
+  background: #157347;
+  transform: translateY(-2px);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+
+  min-width: 21px;
+  height: 21px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 5px;
+
+  color: #ffffff;
+  background: #dc3545;
+
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .menu-navbar {
+    padding: 8px;
+    gap: 8px !important;
+    border-radius: 14px;
+  }
+
+  .back-btn,
+  .cart-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+  }
+
+  .search-input {
+    height: 42px;
+    padding-left: 40px;
+    font-size: 14px;
+  }
+
+  .search-icon {
+    left: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .menu-header .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .search-input::placeholder {
+    font-size: 12px;
+  }
 }
 
 .restaurant-image {
@@ -31,6 +278,143 @@ html {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+/* Horizontal category navigation */
+
+.category-nav {
+  position: sticky;
+  top: 82px;
+  z-index: 900;
+
+  padding: 12px;
+
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid #e9ecef;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+}
+
+
+/* Horizontal scrolling container */
+
+.category-scroll {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Category button */
+
+.category-btn {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 9px 17px;
+
+  color: #495057;
+  background: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.category-btn:hover {
+  color: #198754;
+  background: #eaf7f0;
+  transform: translateY(-1px);
+}
+
+
+/* Icon container */
+
+.category-icon {
+  width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #198754;
+  background: #eaf7f0;
+
+  border-radius: 9px;
+
+  transition: 0.2s ease;
+}
+
+
+/* Active category */
+
+.category-btn.active {
+  color: #ffffff;
+  background: #198754;
+
+  box-shadow: 0 7px 18px rgba(25, 135, 84, 0.22);
+}
+
+.category-btn.active .category-icon {
+  color: #198754;
+  background: #ffffff;
+}
+
+
+/* Menu sections */
+
+.menu-content {
+  width: 100%;
+}
+
+.menu-section {
+  scroll-margin-top: 180px;
+}
+
+
+/* Tablet and mobile */
+
+@media (max-width: 768px) {
+  .category-nav {
+    top: 74px;
+    margin-left: -4px;
+    margin-right: -4px;
+    padding: 9px;
+    border-radius: 14px;
+  }
+
+  .category-btn {
+    padding: 8px 13px;
+    font-size: 13px;
+  }
+
+  .category-icon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .menu-section {
+    scroll-margin-top: 165px;
+  }
 }
 
 .offer-scroll,

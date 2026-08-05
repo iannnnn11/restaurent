@@ -1,55 +1,110 @@
 <section class="bg-light min-vh-100 pb-5">
 
-  <!-- Top Header -->
-  <header class="sticky-top menu-header border-bottom shadow-sm">
-    <div class="container py-3">
+<!-- Top Header -->
+<header class="sticky-top menu-header">
 
-      <div class="d-flex align-items-center gap-3">
+  <div class="container py-3">
 
-        <button
-          class="btn btn-primary border rounded-circle header-icon-btn"
-          type="button"
-          routerLink="/dashboard">
+    <div class="menu-navbar d-flex align-items-center gap-3">
 
-          <i class="fa-solid fa-arrow-left"></i>
+      <!-- Back Button -->
+      <button
+        class="btn back-btn"
+        type="button"
+        routerLink="/dashboard"
+        aria-label="Go back">
 
-        </button>
+        <i class="fa-solid fa-arrow-left"></i>
 
-        <div class="position-relative flex-grow-1 mx-auto search-box">
+      </button>
 
-          <i
-            class="fa-solid fa-magnifying-glass position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary">
-          </i>
 
-          <input
-            type="text"
-            class="form-control bg-light rounded-pill ps-5 py-2"
-            placeholder="Search dishes..."
-            [(ngModel)]="searchText">
+      <!-- Brand -->
+      <div class="brand-section d-none d-md-flex align-items-center gap-2">
 
+        <div class="brand-icon">
+          <i class="fa-solid fa-utensils"></i>
         </div>
 
+        <div>
+          <h5 class="fw-bold mb-0">
+            Jode<span class="text-success">Tx</span>
+          </h5>
+
+          <small class="text-secondary">
+            Office Canteen
+          </small>
+        </div>
+
+      </div>
+
+
+      <!-- Search -->
+      <div class="position-relative flex-grow-1 search-box">
+
+        <i
+          class="fa-solid fa-magnifying-glass search-icon">
+        </i>
+
+        <input
+          type="text"
+          class="form-control search-input"
+          placeholder="Search coffee, snacks, nuts..."
+          [(ngModel)]="searchText">
+
         <button
-          class="btn btn-warning border rounded-circle position-relative header-icon-btn"
+          *ngIf="searchText"
           type="button"
-          routerLink="/cart">
+          class="clear-search-btn"
+          (click)="searchText = ''"
+          aria-label="Clear search">
 
-          <i class="fa-solid fa-bag-shopping"></i>
-
-          <span
-            *ngIf="getCartCount() > 0"
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-
-            {{ getCartCount() }}
-
-          </span>
+          <i class="fa-solid fa-xmark"></i>
 
         </button>
 
       </div>
 
+
+      <!-- Orders -->
+      <button
+        class="btn header-action-btn d-none d-md-flex"
+        type="button"
+        routerLink="/orders">
+
+        <i class="fa-solid fa-receipt"></i>
+
+        <span>My Orders</span>
+
+      </button>
+
+
+      <!-- Cart -->
+      <button
+        class="btn cart-btn position-relative"
+        type="button"
+        routerLink="/cart"
+        aria-label="Open cart">
+
+        <i class="fa-solid fa-bag-shopping"></i>
+
+        <span
+          *ngIf="getCartCount() > 0"
+          class="cart-badge">
+
+          {{ getCartCount() }}
+
+        </span>
+
+      </button>
+
     </div>
-  </header>
+
+  </div>
+
+</header>
+
+
 
 
   <section class="bg-white py-4 border-bottom">
@@ -143,253 +198,229 @@
   <!-- Main Menu -->
   <main class="container py-4 py-lg-5">
 
-    <div class="row g-4">
+    <!-- Horizontal Category Bar -->
+    <div class="category-nav mb-5">
 
-      <!-- Sidebar -->
-      <aside class="col-lg-3 d-none d-lg-block">
+      <div class="category-scroll d-flex align-items-center gap-2">
 
-        <div class="card border-0 shadow-sm rounded-4 sticky-sidebar">
+        <button
+          type="button"
+          class="category-btn"
+          [class.active]="activeCategory === 'recommended'"
+          (click)="scrollToSection('recommended')">
 
-          <div class="card-body p-3">
+          <span class="category-icon">
+            <i class="fa-solid fa-fire"></i>
+          </span>
 
-            <h5 class="fw-bold mb-3 px-2">
-              Menu
-            </h5>
+          Recommended
+        </button>
 
-            <div class="list-group list-group-flush">
+        <button
+          type="button"
+          class="category-btn"
+          [class.active]="activeCategory === 'coffee'"
+          (click)="scrollToSection('coffee')">
 
-  <button
-    type="button"
-    class="list-group-item list-group-item-action border-0 rounded-3"
-    (click)="scrollToSection('recommended')">
+          <span class="category-icon">
+            <i class="fa-solid fa-mug-hot"></i>
+          </span>
 
-    <i class="fa-solid fa-fire me-2"></i>
-    Recommended
+          Coffee & Tea
+        </button>
 
-  </button>
+        <button
+          type="button"
+          class="category-btn"
+          [class.active]="activeCategory === 'nuts'"
+          (click)="scrollToSection('nuts')">
 
-  <button
-    type="button"
-    class="list-group-item list-group-item-action border-0 rounded-3"
-    (click)="scrollToSection('coffee')">
+          <span class="category-icon">
+            <i class="fa-solid fa-seedling"></i>
+          </span>
 
-    <i class="fa-solid fa-mug-hot me-2"></i>
-    Coffee & Tea
+          Nuts & Dry Fruits
+        </button>
 
-  </button>
+        <button
+          type="button"
+          class="category-btn"
+          [class.active]="activeCategory === 'snacks'"
+          (click)="scrollToSection('snacks')">
 
-  <button
-    type="button"
-    class="list-group-item list-group-item-action border-0 rounded-3"
-    (click)="scrollToSection('nuts')">
+          <span class="category-icon">
+            <i class="fa-solid fa-cookie-bite"></i>
+          </span>
 
-    <i class="fa-solid fa-seedling me-2"></i>
-    Nuts & Dry Fruits
+          Office Snacks
+        </button>
 
-  </button>
+      </div>
 
-  <button
-    type="button"
-    class="list-group-item list-group-item-action border-0 rounded-3"
-    (click)="scrollToSection('snacks')">
+    </div>
 
-    <i class="fa-solid fa-cookie-bite me-2"></i>
-    Office Snacks
+    <!-- Menu Items -->
+    <div class="menu-content">
 
-  </button>
+      <!-- Recommended -->
+      <section
+        id="recommended"
+        class="menu-section mb-5">
 
-</div>
+        <div class="d-flex justify-content-between align-items-end mb-3">
+
+          <div>
+            <h2 class="fw-bold mb-1">
+              Recommended
+            </h2>
+
+            <p class="text-secondary mb-0">
+              Popular choices from our employees
+            </p>
+          </div>
+
+          <small class="text-secondary">
+            {{ getFilteredItems(recommendedItems).length }} items
+          </small>
+
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+          <div
+            *ngFor="let item of getFilteredItems(recommendedItems); let last = last"
+            class="p-3 p-md-4"
+            [class.border-bottom]="!last">
+
+            <ng-container
+              *ngTemplateOutlet="foodTemplate; context: { item: item }">
+            </ng-container>
 
           </div>
 
         </div>
 
-      </aside>
+      </section>
 
+      <!-- Coffee -->
+      <section
+        id="coffee"
+        class="menu-section mb-5">
 
-      <!-- Menu Items -->
-      <div class="col-lg-9">
+        <div class="d-flex justify-content-between align-items-end mb-3">
 
-        <!-- Recommended -->
-        <section
-          id="recommended"
-          class="menu-section mb-5">
+          <div>
+            <h2 class="fw-bold mb-1">
+              Coffee & Tea
+            </h2>
 
-          <div class="d-flex justify-content-between align-items-end mb-3">
+            <p class="text-secondary mb-0">
+              Refreshing beverages for your work break
+            </p>
+          </div>
 
-            <div>
+          <small class="text-secondary">
+            {{ getFilteredItems(coffeeItems).length }} items
+          </small>
 
-              <h2 class="fw-bold mb-1">
-                Recommended
-              </h2>
+        </div>
 
-              <p class="text-secondary mb-0">
-                Popular choices from our Employees
-              </p>
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
 
-            </div>
+          <div
+            *ngFor="let item of getFilteredItems(coffeeItems); let last = last"
+            class="p-3 p-md-4"
+            [class.border-bottom]="!last">
 
-            <small class="text-secondary">
-
-              {{ getFilteredItems(recommendedItems).length }} items
-
-            </small>
+            <ng-container
+              *ngTemplateOutlet="foodTemplate; context: { item: item }">
+            </ng-container>
 
           </div>
 
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        </div>
 
-            <div
-              *ngFor="let item of getFilteredItems(recommendedItems); let last = last"
-              class="p-3 p-md-4"
-              [class.border-bottom]="!last">
+      </section>
 
-              <ng-container
-                *ngTemplateOutlet="foodTemplate; context: { item: item }">
-              </ng-container>
+      <!-- Nuts -->
+      <section
+        id="nuts"
+        class="menu-section mb-5">
 
-            </div>
+        <div class="d-flex justify-content-between align-items-end mb-3">
+
+          <div>
+            <h2 class="fw-bold mb-1">
+              Nuts & Dry Fruits
+            </h2>
+
+            <p class="text-secondary mb-0">
+              Healthy snacks for office breaks
+            </p>
+          </div>
+
+          <small class="text-secondary">
+            {{ getFilteredItems(nutsItems).length }} items
+          </small>
+
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+          <div
+            *ngFor="let item of getFilteredItems(nutsItems); let last = last"
+            class="p-3 p-md-4"
+            [class.border-bottom]="!last">
+
+            <ng-container
+              *ngTemplateOutlet="foodTemplate; context: { item: item }">
+            </ng-container>
 
           </div>
 
-        </section>
+        </div>
 
+      </section>
 
-        <!-- Coffee -->
-        <section
-          id="coffee"
-          class="menu-section mb-5">
+      <!-- Snacks -->
+      <section
+        id="snacks"
+        class="menu-section mb-5">
 
-          <div class="d-flex justify-content-between align-items-end mb-3">
+        <div class="d-flex justify-content-between align-items-end mb-3">
 
-            <div>
+          <div>
+            <h2 class="fw-bold mb-1">
+              Office Snacks
+            </h2>
 
-              <h2 class="fw-bold mb-1">
-                Coffee & Tea
-              </h2>
+            <p class="text-secondary mb-0">
+              Tasty snacks for meetings and break time
+            </p>
+          </div>
 
-              <p class="text-secondary mb-0">
-                Refreshing beverages for your work break
-              </p>
+          <small class="text-secondary">
+            {{ getFilteredItems(snackItems).length }} items
+          </small>
 
-            </div>
+        </div>
 
-            <small class="text-secondary">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
 
-              {{ getFilteredItems(coffeeItems).length }} items
+          <div
+            *ngFor="let item of getFilteredItems(snackItems); let last = last"
+            class="p-3 p-md-4"
+            [class.border-bottom]="!last">
 
-            </small>
+            <ng-container
+              *ngTemplateOutlet="foodTemplate; context: { item: item }">
+            </ng-container>
 
           </div>
 
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        </div>
 
-            <div
-              *ngFor="let item of getFilteredItems(coffeeItems); let last = last"
-              class="p-3 p-md-4"
-              [class.border-bottom]="!last">
-
-              <ng-container
-                *ngTemplateOutlet="foodTemplate; context: { item: item }">
-              </ng-container>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- Nuts -->
-        <section
-          id="nuts"
-          class="menu-section mb-5">
-
-          <div class="d-flex justify-content-between align-items-end mb-3">
-
-            <div>
-
-              <h2 class="fw-bold mb-1">
-                Nuts & Dry Fruits
-              </h2>
-
-              <p class="text-secondary mb-0">
-                Healthy snacks for office breaks
-              </p>
-
-            </div>
-
-            <small class="text-secondary">
-
-              {{ getFilteredItems(nutsItems).length }} items
-
-            </small>
-
-          </div>
-
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-
-            <div
-              *ngFor="let item of getFilteredItems(nutsItems); let last = last"
-              class="p-3 p-md-4"
-              [class.border-bottom]="!last">
-
-              <ng-container
-                *ngTemplateOutlet="foodTemplate; context: { item: item }">
-              </ng-container>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- Snacks -->
-        <section
-          id="snacks"
-          class="menu-section mb-5">
-
-          <div class="d-flex justify-content-between align-items-end mb-3">
-
-            <div>
-
-              <h2 class="fw-bold mb-1">
-                Office Snacks
-              </h2>
-
-              <p class="text-secondary mb-0">
-                Tasty snacks for meetings and break time
-              </p>
-
-            </div>
-
-            <small class="text-secondary">
-
-              {{ getFilteredItems(snackItems).length }} items
-
-            </small>
-
-          </div>
-
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-
-            <div
-              *ngFor="let item of getFilteredItems(snackItems); let last = last"
-              class="p-3 p-md-4"
-              [class.border-bottom]="!last">
-
-              <ng-container
-                *ngTemplateOutlet="foodTemplate; context: { item: item }">
-              </ng-container>
-
-            </div>
-
-          </div>
-
-        </section>
-
-      </div>
+      </section>
 
     </div>
 

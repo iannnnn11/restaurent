@@ -1,134 +1,182 @@
-.profile-page {
-  background: #f5f7fa;
-  color: #1f2937;
+.profile-layout {
+  background: #f6f8f7;
 }
 
-.sidebar {
+/* Sidebar */
+
+.profile-sidebar {
   background: #ffffff;
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid #e7ece9;
+}
+
+.sidebar-inner {
   position: sticky;
   top: 0;
+
+  min-height: 100vh;
+  padding: 28px 20px;
 }
 
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 30px;
+}
+
+.brand-logo {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+  background: #198754;
+
+  border-radius: 14px;
+  font-size: 18px;
+}
+
+/* Employee */
+
+.employee-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px;
+  margin-bottom: 28px;
+
+  background: #f4faf7;
+  border: 1px solid #dcefe4;
+  border-radius: 15px;
+}
+
+.employee-avatar {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #ffffff;
+  background: #198754;
+
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.menu-label {
+  margin: 0 10px 10px;
+
+  color: #98a2b3;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Links */
+
 .sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 12px;
+
   color: #667085;
-  border-radius: 10px;
-  padding: 12px 14px;
-  font-weight: 500;
+  border-radius: 12px;
+
+  font-weight: 600;
   transition: 0.2s ease;
 }
 
 .sidebar-link:hover {
-  background: #f5f7fa;
-  color: #111827;
+  color: #198754;
+  background: #f0f8f4;
+}
+
+.sidebar-icon {
+  width: 36px;
+  height: 36px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f3f5f4;
+  border-radius: 10px;
 }
 
 .sidebar-link.active {
-  background: #fff3cd;
-  color: #111827;
-  font-weight: 600;
+  color: #ffffff;
+  background: #198754;
+
+  box-shadow: 0 8px 20px rgba(25, 135, 84, 0.2);
 }
 
-.profile-avatar {
-  width: 85px;
-  height: 85px;
-  min-width: 85px;
-  border-radius: 50%;
-  background: #212529;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.6rem;
-  font-weight: 700;
-}
-
-.info-box {
-  padding: 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+.sidebar-link.active .sidebar-icon {
+  color: #198754;
   background: #ffffff;
-  height: 100%;
 }
 
-.info-label {
-  color: #667085;
-  display: block;
-  margin-bottom: 5px;
-}
+/* Logout */
 
-.info-value {
-  font-weight: 600;
-  overflow-wrap: anywhere;
-}
+.logout-btn {
+  padding: 11px;
 
-.status-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  color: #dc3545;
+  background: #fff5f5;
 
-.quick-action-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  min-height: 85px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #f8d7da;
   border-radius: 12px;
-  color: #1f2937;
-  text-decoration: none;
-  transition: 0.2s ease;
+
+  font-weight: 600;
 }
 
-.quick-action-card:hover {
-  transform: translateY(-3px);
-  border-color: #ffc107;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+.logout-btn:hover {
+  color: #ffffff;
+  background: #dc3545;
 }
 
-.quick-action-card strong,
-.quick-action-card small {
-  display: block;
+/* Right content */
+
+.profile-content {
+  min-height: 100vh;
 }
 
-.quick-action-card small {
-  color: #667085;
-  margin-top: 3px;
-}
+.profile-header {
+  min-height: 80px;
 
-.quick-action-icon {
-  width: 45px;
-  height: 45px;
-  min-width: 45px;
-  border-radius: 10px;
-  background: #fff3cd;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  color: #856404;
+
+  padding: 16px 32px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e7ece9;
 }
 
-.activity-icon {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  border-radius: 50%;
-  background: #f1f3f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #495057;
+.profile-router-area {
+  padding: 32px;
 }
 
-@media (max-width: 767px) {
-  .profile-avatar {
-    width: 70px;
-    height: 70px;
-    min-width: 70px;
-    font-size: 1.3rem;
+/* Mobile */
+
+@media (max-width: 991px) {
+  .profile-header {
+    padding: 14px 18px;
+  }
+
+  .profile-router-area {
+    padding: 20px 14px;
   }
 }

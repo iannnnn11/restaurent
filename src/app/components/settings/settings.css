@@ -1,0 +1,122 @@
+.settings-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.settings-card {
+  background: #ffffff;
+  border: 1px solid #e7ece9;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.settings-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 20px 24px;
+  border-bottom: 1px solid #edf0ee;
+}
+
+.section-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #198754;
+  background: #eaf7f0;
+
+  border-radius: 12px;
+  font-size: 18px;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 18px 24px;
+  border-bottom: 1px solid #edf0ee;
+}
+
+.form-switch .form-check-input {
+  width: 44px;
+  height: 23px;
+  cursor: pointer;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.form-control-custom {
+  min-height: 46px;
+  border-color: #dee4e0;
+  border-radius: 11px;
+}
+
+.form-control-custom:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+}
+
+.large-avatar {
+  width: 78px;
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+  background: #198754;
+
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.employee-badge {
+  display: inline-flex;
+
+  padding: 6px 12px;
+
+  color: #157347;
+  background: #eaf7f0;
+
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.account-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 0;
+  color: #667085;
+}
+
+.account-info-row strong {
+  color: #212529;
+}
+
+@media (max-width: 576px) {
+  .setting-row {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .settings-card-header {
+    padding: 18px 16px;
+  }
+}

@@ -1,0 +1,299 @@
+<div class="settings-page">
+
+  <!-- Heading -->
+  <div
+    class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4"
+  >
+    <div>
+      <p class="text-success fw-semibold small mb-1">
+        Employee Preferences
+      </p>
+
+      <h2 class="fw-bold mb-1">
+        Settings
+      </h2>
+
+      <p class="text-secondary mb-0">
+        Manage your pantry notifications and application preferences.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-success px-4 rounded-3"
+      (click)="saveSettings()"
+    >
+      <i class="fa-solid fa-check me-2"></i>
+      Save Changes
+    </button>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Left -->
+    <div class="col-xl-8">
+
+      <!-- Notifications -->
+      <div class="settings-card mb-4">
+
+        <div class="settings-card-header">
+
+          <div class="section-icon">
+            <i class="fa-regular fa-bell"></i>
+          </div>
+
+          <div>
+            <h5 class="fw-bold mb-1">
+              Pantry Notifications
+            </h5>
+
+            <p class="text-secondary small mb-0">
+              Choose which updates you want to receive.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="setting-row">
+
+          <div>
+            <h6 class="fw-semibold mb-1">
+              Order ready alert
+            </h6>
+
+            <p class="text-secondary small mb-0">
+              Notify me when my food is ready to collect.
+            </p>
+          </div>
+
+          <div class="form-check form-switch">
+            <input
+              id="readyNotification"
+              class="form-check-input"
+              type="checkbox"
+              [(ngModel)]="orderReadyNotifications"
+            >
+          </div>
+
+        </div>
+
+        <div class="setting-row">
+
+          <div>
+            <h6 class="fw-semibold mb-1">
+              Daily menu updates
+            </h6>
+
+            <p class="text-secondary small mb-0">
+              Receive updates when today's pantry menu is available.
+            </p>
+          </div>
+
+          <div class="form-check form-switch">
+            <input
+              id="menuNotification"
+              class="form-check-input"
+              type="checkbox"
+              [(ngModel)]="menuNotifications"
+            >
+          </div>
+
+        </div>
+
+        <div class="setting-row">
+
+          <div>
+            <h6 class="fw-semibold mb-1">
+              Offers and discounts
+            </h6>
+
+            <p class="text-secondary small mb-0">
+              Receive information about pantry combos and special offers.
+            </p>
+          </div>
+
+          <div class="form-check form-switch">
+            <input
+              id="offerNotification"
+              class="form-check-input"
+              type="checkbox"
+              [(ngModel)]="offerNotifications"
+            >
+          </div>
+
+        </div>
+
+        <div class="setting-row border-0">
+
+          <div>
+            <h6 class="fw-semibold mb-1">
+              Email notifications
+            </h6>
+
+            <p class="text-secondary small mb-0">
+              Send important order updates to my company email.
+            </p>
+          </div>
+
+          <div class="form-check form-switch">
+            <input
+              id="emailNotification"
+              class="form-check-input"
+              type="checkbox"
+              [(ngModel)]="emailNotifications"
+            >
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Preferences -->
+      <div class="settings-card">
+
+        <div class="settings-card-header">
+
+          <div class="section-icon">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+
+          <div>
+            <h5 class="fw-bold mb-1">
+              Application Preferences
+            </h5>
+
+            <p class="text-secondary small mb-0">
+              Personalize your JodeTx Pantry experience.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="row g-4 p-4">
+
+          <div class="col-md-6">
+
+            <label
+              for="theme"
+              class="form-label fw-semibold"
+            >
+              Appearance
+            </label>
+
+            <select
+              id="theme"
+              class="form-select form-control-custom"
+              [(ngModel)]="theme"
+            >
+              <option value="light">Light Mode</option>
+              <option value="dark">Dark Mode</option>
+              <option value="system">Use System Setting</option>
+            </select>
+
+          </div>
+
+          <div class="col-md-6">
+
+            <label
+              for="language"
+              class="form-label fw-semibold"
+            >
+              Language
+            </label>
+
+            <select
+              id="language"
+              class="form-select form-control-custom"
+              [(ngModel)]="language"
+            >
+              <option>English</option>
+              <option>Hindi</option>
+              <option>Marathi</option>
+            </select>
+
+          </div>
+
+          <div class="col-12">
+
+            <label
+              for="diet"
+              class="form-label fw-semibold"
+            >
+              Dietary preference
+            </label>
+
+            <select
+              id="diet"
+              class="form-select form-control-custom"
+              [(ngModel)]="dietaryPreference"
+            >
+              <option>Vegetarian</option>
+              <option>Non-Vegetarian</option>
+              <option>Vegan</option>
+              <option>No Preference</option>
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Right -->
+    <div class="col-xl-4">
+
+      <div class="settings-card account-summary">
+
+        <div class="text-center px-4 pt-4">
+
+          <div class="large-avatar mx-auto mb-3">
+            IH
+          </div>
+
+          <h5 class="fw-bold mb-1">
+            Ian Honey
+          </h5>
+
+          <p class="text-secondary small mb-0">
+            ian.honey@jodetx.com
+          </p>
+
+          <span class="employee-badge mt-3">
+            JodeTx Employee
+          </span>
+
+        </div>
+
+        <hr class="my-4">
+
+        <div class="px-4 pb-4">
+
+          <div class="account-info-row">
+            <span>Employee ID</span>
+            <strong>JTX-1024</strong>
+          </div>
+
+          <div class="account-info-row">
+            <span>Department</span>
+            <strong>Engineering</strong>
+          </div>
+
+          <div class="account-info-row">
+            <span>Account</span>
+
+            <span class="text-success fw-semibold">
+              Active
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
