@@ -18,7 +18,6 @@ import {
 })
 export class Profile {
 
-  logout(): void {
-    console.log('User logged out');
-  }
+  
+  
 }

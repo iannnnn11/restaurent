@@ -1,22 +1,148 @@
 .settings-page {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
 }
 
-.settings-card {
-  background: #ffffff;
-  border: 1px solid #e7ece9;
-  border-radius: 18px;
+
+/* Left summary */
+
+.settings-summary-card {
   overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e6ebe8;
+  border-radius: 20px;
 }
 
-.settings-card-header {
+.settings-cover {
+  height: 125px;
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(255, 255, 255, 0.2),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #198754,
+      #2ca66f
+    );
+}
+
+.settings-avatar {
+  width: 105px;
+  height: 105px;
+  margin-top: -53px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+  background: #1f2937;
+
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+
+  font-size: 30px;
+
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+}
+
+.settings-status {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 12px;
+
+  color: #157347;
+  background: #eaf7f0;
+
+  border-radius: 30px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.settings-status i {
+  font-size: 8px;
+}
+
+.settings-summary-list {
+  border-top: 1px solid #edf0ee;
+}
+
+.settings-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 15px 0;
+
+  border-bottom: 1px solid #edf0ee;
+}
+
+.summary-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #198754;
+  background: #eaf7f0;
+
+  border-radius: 11px;
+}
+
+.preference-highlight {
+  padding: 15px;
+
+  background: #fffaf0;
+  border: 1px solid #f7e5bb;
+  border-radius: 14px;
+}
+
+.preference-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #b7791f;
+  background: #fff1c7;
+
+  border-radius: 11px;
+}
+
+
+/* Right card */
+
+.settings-form-card {
+  overflow: hidden;
+
+  background: #ffffff;
+  border: 1px solid #e6ebe8;
+  border-radius: 20px;
+}
+
+.settings-section {
+  padding: 26px;
+}
+
+.section-heading {
   display: flex;
   align-items: center;
   gap: 14px;
 
-  padding: 20px 24px;
-  border-bottom: 1px solid #edf0ee;
+  margin-bottom: 20px;
 }
 
 .section-icon {
@@ -33,22 +159,29 @@
   background: #eaf7f0;
 
   border-radius: 12px;
+
   font-size: 18px;
 }
 
-.setting-row {
+
+/* Settings rows */
+
+.setting-row,
+.account-action-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 
-  padding: 18px 24px;
+  padding: 18px 0;
+
   border-bottom: 1px solid #edf0ee;
 }
 
 .form-switch .form-check-input {
-  width: 44px;
-  height: 23px;
+  width: 46px;
+  height: 24px;
+
   cursor: pointer;
 }
 
@@ -57,66 +190,59 @@
   border-color: #198754;
 }
 
-.form-control-custom {
-  min-height: 46px;
-  border-color: #dee4e0;
-  border-radius: 11px;
-}
-
-.form-control-custom:focus {
+.form-switch .form-check-input:focus {
   border-color: #198754;
   box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
 }
 
-.large-avatar {
-  width: 78px;
-  height: 78px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Form controls */
 
-  color: #ffffff;
-  background: #198754;
+.settings-input {
+  min-height: 47px;
 
-  border-radius: 50%;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.employee-badge {
-  display: inline-flex;
-
-  padding: 6px 12px;
-
-  color: #157347;
-  background: #eaf7f0;
-
-  border-radius: 30px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.account-info-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 12px 0;
-  color: #667085;
-}
-
-.account-info-row strong {
   color: #212529;
+  background: #ffffff;
+
+  border-color: #dfe5e1;
+  border-radius: 11px;
+}
+
+.settings-input:focus {
+  border-color: #198754;
+
+  box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .settings-section {
+    padding: 20px 16px;
+  }
+
+  .settings-cover {
+    height: 105px;
+  }
+
+  .settings-avatar {
+    width: 90px;
+    height: 90px;
+    margin-top: -45px;
+
+    font-size: 25px;
+  }
+
+  .setting-row,
+  .account-action-row {
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 576px) {
-  .setting-row {
-    align-items: flex-start;
-    padding: 16px;
-  }
-
-  .settings-card-header {
-    padding: 18px 16px;
+  .setting-row,
+  .account-action-row {
+    gap: 14px;
   }
 }

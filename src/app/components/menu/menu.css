@@ -282,7 +282,7 @@ html {
 /* Horizontal category navigation */
 
 .category-nav {
-  position: sticky;
+  
   top: 82px;
   z-index: 900;
 
