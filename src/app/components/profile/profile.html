@@ -1,9 +1,10 @@
-<div class="profile-layout min-vh-100">
+<div class="profile-layout">
 
-  <div class="container-fluid">
+  <div class="container-fluid px-0">
+
     <div class="row g-0">
 
-      <!-- Permanent Sidebar -->
+      <!-- Desktop Sidebar -->
       <aside class="col-lg-3 col-xl-2 d-none d-lg-block profile-sidebar">
 
         <div class="sidebar-inner d-flex flex-column">
@@ -11,21 +12,22 @@
           <!-- Brand -->
           <a
             routerLink="/dashboard"
-            class="brand-wrapper text-decoration-none"
-          >
+            class="brand-wrapper text-decoration-none">
+
             <div class="brand-logo">
               <i class="fa-solid fa-utensils"></i>
             </div>
 
             <div>
-              <h4 class="fw-bold text-dark mb-0">
-                Jode<span class="text-success">Tx</span>
-              </h4>
+              <h5 class="brand-name mb-0">
+                Jode<span>Tx</span>
+              </h5>
 
-              <small class="text-secondary">
+              <small class="brand-subtitle">
                 Office Pantry
               </small>
             </div>
+
           </a>
 
           <!-- Employee -->
@@ -36,119 +38,156 @@
             </div>
 
             <div class="overflow-hidden">
-              <h6 class="fw-bold mb-0 text-truncate">
+
+              <h6 class="employee-name text-truncate mb-0">
                 Ian Honey
               </h6>
 
-              <small class="text-secondary">
+              <small class="employee-role">
                 Employee
               </small>
+
             </div>
+
+            <i class="fa-solid fa-chevron-right employee-arrow"></i>
 
           </div>
 
           <p class="menu-label">
-            Account
+            ACCOUNT
           </p>
 
           <!-- Navigation -->
-          <nav class="nav flex-column gap-2">
+          <nav class="nav flex-column sidebar-navigation">
 
             <a
               routerLink="details"
               routerLinkActive="active"
-              class="nav-link sidebar-link"
-            >
+              class="nav-link sidebar-link">
+
               <span class="sidebar-icon">
                 <i class="fa-regular fa-user"></i>
               </span>
 
               <span>Profile Details</span>
+
             </a>
 
             <a
               routerLink="activity"
               routerLinkActive="active"
-              class="nav-link sidebar-link"
-            >
+              class="nav-link sidebar-link">
+
               <span class="sidebar-icon">
                 <i class="fa-solid fa-clock-rotate-left"></i>
               </span>
 
               <span>Activity</span>
+
             </a>
 
             <a
               routerLink="security"
               routerLinkActive="active"
-              class="nav-link sidebar-link"
-            >
+              class="nav-link sidebar-link">
+
               <span class="sidebar-icon">
                 <i class="fa-solid fa-shield-halved"></i>
               </span>
 
               <span>Security</span>
+
             </a>
 
             <a
               routerLink="settings"
               routerLinkActive="active"
-              class="nav-link sidebar-link"
-            >
+              class="nav-link sidebar-link">
+
               <span class="sidebar-icon">
                 <i class="fa-solid fa-sliders"></i>
               </span>
 
               <span>Settings</span>
+
             </a>
 
           </nav>
 
+          <!-- Back to Dashboard -->
+          <a
+            routerLink="/dashboard"
+            class="dashboard-link text-decoration-none">
+
+            <i class="fa-solid fa-house"></i>
+            <span>Back to Dashboard</span>
+
+          </a>
+
           <!-- Logout -->
-          <div class="mt-auto pt-4">
+          <button
+            type="button"
+            class="logout-btn"
+            routerLink="/login">
 
-            <button
-              type="button"
-              class="btn logout-btn w-100"
-              routerLink="/login"
-            >
-              <i class="fa-solid fa-right-from-bracket me-2"></i>
-              Logout
-            </button>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
 
-          </div>
+          </button>
 
         </div>
 
       </aside>
 
-      <!-- Changing right side -->
+      <!-- Main Content -->
       <main class="col-lg-9 col-xl-10 profile-content">
 
-        <!-- Mobile header -->
+        <!-- Compact Header -->
         <header class="profile-header">
 
           <div>
-            <p class="text-success fw-semibold small mb-1">
-              JodeTx Employee Portal
+
+            <p class="header-label mb-1">
+              EMPLOYEE PORTAL
             </p>
 
-            <h5 class="fw-bold mb-0">
+            <h5 class="header-title mb-0">
               Account Management
             </h5>
+
           </div>
 
-          <a
-            routerLink="/dashboard"
-            class="btn btn-light border rounded-3"
-          >
-            <i class="fa-solid fa-house me-2"></i>
-            Dashboard
-          </a>
+          <div class="d-flex align-items-center gap-2">
+
+            <!-- Mobile menu -->
+            <button
+              class="mobile-menu-btn d-lg-none"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#profileMobileMenu"
+              aria-controls="profileMobileMenu">
+
+              <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <a
+              routerLink="/dashboard"
+              class="header-dashboard-btn text-decoration-none">
+
+              <i class="fa-solid fa-house"></i>
+
+              <span class="d-none d-sm-inline">
+                Dashboard
+              </span>
+
+            </a>
+
+          </div>
 
         </header>
 
-        <!-- Only this part routes -->
+        <!-- Routed content -->
         <section class="profile-router-area">
 
           <router-outlet></router-outlet>
@@ -158,6 +197,138 @@
       </main>
 
     </div>
+
+  </div>
+
+</div>
+
+
+<!-- Mobile Offcanvas Sidebar -->
+<div
+  class="offcanvas offcanvas-start profile-mobile-menu"
+  tabindex="-1"
+  id="profileMobileMenu"
+  aria-labelledby="profileMobileMenuLabel">
+
+  <div class="offcanvas-header">
+
+    <div class="d-flex align-items-center gap-2">
+
+      <div class="mobile-brand-logo">
+        <i class="fa-solid fa-utensils"></i>
+      </div>
+
+      <div>
+        <h5 class="mb-0 fw-bold" id="profileMobileMenuLabel">
+          Jode<span class="text-warning">Tx</span>
+        </h5>
+
+        <small class="text-secondary">
+          Office Pantry
+        </small>
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close">
+    </button>
+
+  </div>
+
+  <div class="offcanvas-body">
+
+    <div class="mobile-employee-card">
+
+      <div class="employee-avatar">
+        IH
+      </div>
+
+      <div>
+        <h6 class="fw-bold mb-0">
+          Ian Honey
+        </h6>
+
+        <small class="text-secondary">
+          Employee
+        </small>
+      </div>
+
+    </div>
+
+    <nav class="nav flex-column sidebar-navigation mt-3">
+
+      <a
+        routerLink="details"
+        routerLinkActive="active"
+        class="nav-link sidebar-link"
+        data-bs-dismiss="offcanvas">
+
+        <span class="sidebar-icon">
+          <i class="fa-regular fa-user"></i>
+        </span>
+
+        Profile Details
+
+      </a>
+
+      <a
+        routerLink="activity"
+        routerLinkActive="active"
+        class="nav-link sidebar-link"
+        data-bs-dismiss="offcanvas">
+
+        <span class="sidebar-icon">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </span>
+
+        Activity
+
+      </a>
+
+      <a
+        routerLink="security"
+        routerLinkActive="active"
+        class="nav-link sidebar-link"
+        data-bs-dismiss="offcanvas">
+
+        <span class="sidebar-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </span>
+
+        Security
+
+      </a>
+
+      <a
+        routerLink="settings"
+        routerLinkActive="active"
+        class="nav-link sidebar-link"
+        data-bs-dismiss="offcanvas">
+
+        <span class="sidebar-icon">
+          <i class="fa-solid fa-sliders"></i>
+        </span>
+
+        Settings
+
+      </a>
+
+    </nav>
+
+    <button
+      type="button"
+      class="logout-btn w-100 mt-4"
+      routerLink="/login">
+
+      <i class="fa-solid fa-right-from-bracket"></i>
+      Logout
+
+    </button>
+
   </div>
 
 </div>

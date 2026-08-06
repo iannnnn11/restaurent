@@ -4,8 +4,8 @@
     <!-- Brand -->
     <a
       class="navbar-brand d-flex align-items-center gap-2"
-      routerLink="/dashboard"
-    >
+      routerLink="/dashboard">
+
       <span class="brand-icon">
         <i class="fa-solid fa-utensils"></i>
       </span>
@@ -13,6 +13,7 @@
       <span class="fw-bold fs-3">
         Jode<span class="text-warning">Tx</span>
       </span>
+
     </a>
 
     <!-- Mobile Toggle -->
@@ -23,9 +24,10 @@
       data-bs-target="#navbarMenu"
       aria-controls="navbarMenu"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+      aria-label="Toggle navigation">
+
       <span class="navbar-toggler-icon"></span>
+
     </button>
 
     <div class="collapse navbar-collapse" id="navbarMenu">
@@ -37,8 +39,10 @@
             class="nav-link"
             routerLink="/dashboard"
             routerLinkActive="active-link"
-          >
+             >
+
             Dashboard
+
           </a>
         </li>
 
@@ -46,9 +50,10 @@
           <a
             class="nav-link"
             routerLink="/menu"
-            routerLinkActive="active-link"
-          >
+            routerLinkActive="active-link">
+
             Menu
+
           </a>
         </li>
 
@@ -56,9 +61,10 @@
           <a
             class="nav-link"
             routerLink="/cart"
-            routerLinkActive="active-link"
-          >
+            routerLinkActive="active-link">
+
             Cart
+
           </a>
         </li>
 
@@ -66,9 +72,10 @@
           <a
             class="nav-link"
             routerLink="/orders"
-            routerLinkActive="active-link"
-          >
+            routerLinkActive="active-link">
+
             My Orders
+
           </a>
         </li>
 
@@ -76,52 +83,81 @@
           <a
             class="nav-link"
             routerLink="/booktable"
-            routerLinkActive="active-link"
-          >
+            routerLinkActive="active-link">
+
             Book Table
+
           </a>
         </li>
 
         <li class="nav-item ms-lg-2">
           <a
             class="btn profile-button rounded-pill px-3 d-flex align-items-center gap-2"
-            routerLink="/profile"
-          >
+            routerLink="/profile">
+
             <span class="profile-avatar">
               <i class="fa-solid fa-user"></i>
             </span>
 
             Profile
+
           </a>
         </li>
 
       </ul>
 
     </div>
+
   </div>
 </nav>
+
 <section class="cart-page py-4 py-lg-5">
+
   <div class="container">
 
-    <!-- Page heading -->
-    <div class="mb-4">
-      <h2 class="fw-bold mb-1 text-white">Your Cart</h2>
-      <p class="text-secondary mb-0">
-        Review your items before placing the order
-      </p>
-      <button class="btn btn-primary" routerLink="/menu">back</button>
+    <!-- Heading -->
+    <div
+      class="d-flex flex-column flex-sm-row
+             justify-content-between align-items-sm-center
+             gap-3 mb-4">
+
+      <div>
+        <p class="section-label mb-1">
+          YOUR ORDER
+        </p>
+
+        <h2 class="fw-bold mb-1">
+          Your Cart
+        </h2>
+
+        <p class="text-secondary mb-0">
+          Review your items before placing the order.
+        </p>
+      </div>
+
+      <a
+        class="btn back-menu-btn"
+        routerLink="/menu">
+
+        <i class="fa-solid fa-arrow-left me-2"></i>
+        Back to Menu
+
+      </a>
+
     </div>
 
-    <!-- Empty cart -->
+    <!-- Empty Cart -->
     <div
       *ngIf="cartItems.length === 0"
-      class="empty-cart text-center bg-white rounded-4 shadow-sm p-5">
+      class="empty-cart text-center p-5">
 
       <div class="empty-cart-icon mx-auto mb-3">
         <i class="fa-solid fa-bag-shopping"></i>
       </div>
 
-      <h3 class="fw-bold">Your cart is empty</h3>
+      <h3 class="fw-bold">
+        Your cart is empty
+      </h3>
 
       <p class="text-secondary mb-4">
         Add some delicious food to continue.
@@ -129,54 +165,63 @@
 
       <a
         routerLink="/menu"
-        class="btn btn-success rounded-pill px-4 py-2">
+        class="btn browse-menu-btn">
+
         Browse Menu
+
       </a>
 
     </div>
 
-    <!-- Cart content -->
+    <!-- Cart Content -->
     <div
       *ngIf="cartItems.length > 0"
       class="row g-4 align-items-start">
 
-      <!-- Left section -->
+      <!-- Left Side -->
       <div class="col-lg-8">
 
-        <!-- Restaurant information -->
-        <div class="restaurant-card bg-white rounded-4 shadow-sm p-3 p-md-4 mb-3">
+        <!-- Restaurant Card -->
+        <div class="restaurant-card p-3 p-md-4 mb-3">
+
           <div class="d-flex align-items-center gap-3">
 
             <img
               src="images/restaurent-interior.avif"
-              alt="Restaurant"
+              alt="Office Canteen"
               class="restaurant-image">
 
             <div class="flex-grow-1">
+
               <h5 class="fw-bold mb-1">
                 Office Canteen
               </h5>
 
               <p class="text-secondary small mb-1">
-                Coffee,Nuts,Snacks
+                Coffee, Nuts and Snacks
               </p>
 
               <p class="small mb-0">
-                <i class="fa-solid fa-location-dot text-danger me-1"></i>
+                <i class="fa-solid fa-location-dot me-1"></i>
                 Thane, Maharashtra
               </p>
+
             </div>
 
             <div class="restaurant-rating d-none d-sm-block">
+
               <i class="fa-solid fa-star me-1"></i>
               4.5
+
             </div>
 
           </div>
+
         </div>
 
-        <!-- Delivery information -->
-        <div class="delivery-card bg-white rounded-4 shadow-sm p-3 mb-3">
+        <!-- Delivery -->
+        <div class="delivery-card p-3 mb-3">
+
           <div class="d-flex align-items-center gap-3">
 
             <div class="delivery-icon">
@@ -184,27 +229,31 @@
             </div>
 
             <div>
+
               <h6 class="fw-bold mb-1">
                 Delivery in 25–30 minutes
               </h6>
 
               <p class="small text-secondary mb-0">
-                Your order will be delivered to your office deck
+                Your order will be delivered to your office desk.
               </p>
+
             </div>
 
           </div>
+
         </div>
 
-        <!-- Cart item -->
+        <!-- Items -->
         <div
           *ngFor="let item of cartItems"
-          class="cart-item bg-white rounded-4 shadow-sm p-3 p-md-4 mb-3">
+          class="cart-item p-3 p-md-4 mb-3">
 
           <div class="row g-3 align-items-center">
 
-            <!-- Item image -->
+            <!-- Image -->
             <div class="col-4 col-md-3">
+
               <div class="image-wrapper">
 
                 <img
@@ -215,9 +264,10 @@
                 <span class="food-type veg"></span>
 
               </div>
+
             </div>
 
-            <!-- Item details -->
+            <!-- Details -->
             <div class="col-8 col-md-5">
 
               <h5 class="item-name fw-bold mb-1">
@@ -238,16 +288,18 @@
             <div class="col-12 col-md-4">
 
               <div
-                class="d-flex flex-md-column align-items-center align-items-md-end justify-content-between gap-3">
+                class="d-flex flex-md-column align-items-center
+                       align-items-md-end justify-content-between gap-3">
 
-                <!-- Quantity controller -->
                 <div class="quantity-box">
 
                   <button
                     type="button"
                     class="quantity-btn"
                     (click)="decreaseQuantity(item)">
+
                     <i class="fa-solid fa-minus"></i>
+
                   </button>
 
                   <span class="quantity-number">
@@ -258,17 +310,17 @@
                     type="button"
                     class="quantity-btn"
                     (click)="increaseQuantity(item)">
+
                     <i class="fa-solid fa-plus"></i>
+
                   </button>
 
                 </div>
 
-                <!-- Item total -->
                 <h6 class="fw-bold mb-0">
                   ₹{{ item.price * item.quantity }}
                 </h6>
 
-                <!-- Remove -->
                 <button
                   type="button"
                   class="remove-btn"
@@ -284,12 +336,14 @@
             </div>
 
           </div>
+
         </div>
 
-        <!-- Add more items -->
+        <!-- Add More -->
         <a
           routerLink="/menu"
-          class="add-more-card bg-white rounded-4 shadow-sm p-3 d-flex align-items-center justify-content-between text-decoration-none">
+          class="add-more-card p-3 d-flex align-items-center
+                 justify-content-between text-decoration-none">
 
           <div class="d-flex align-items-center gap-3">
 
@@ -298,42 +352,47 @@
             </div>
 
             <div>
-              <h6 class="fw-bold text-dark mb-1">
+
+              <h6 class="fw-bold mb-1">
                 Add more items
               </h6>
 
               <p class="small text-secondary mb-0">
-                Explore more dishes from the menu
+                Explore more items from the menu.
               </p>
+
             </div>
 
           </div>
 
-          <i class="fa-solid fa-chevron-right text-secondary"></i>
+          <i class="fa-solid fa-chevron-right"></i>
 
         </a>
 
-        <!-- Cooking instructions -->
-        <div class="instructions-card bg-white rounded-4 shadow-sm p-3 mt-3">
+        <!-- Instructions -->
+        <div class="instructions-card p-3 mt-3">
 
           <label class="form-label fw-bold">
+
             <i class="fa-regular fa-note-sticky me-2"></i>
             Cooking instructions
+
           </label>
 
           <textarea
             class="form-control instruction-input"
             rows="2"
-            placeholder="Add instructions, for example: less spicy"></textarea>
+            placeholder="For example: less spicy">
+          </textarea>
 
         </div>
 
       </div>
 
-      <!-- Right bill section -->
+      <!-- Bill -->
       <div class="col-lg-4">
 
-        <div class="bill-card bg-white rounded-4 shadow-sm p-4">
+        <div class="bill-card p-4">
 
           <h5 class="fw-bold mb-4">
             Bill Details
@@ -345,13 +404,7 @@
           </div>
 
           <div class="bill-row">
-            <span>
-              Delivery fee
-              <i
-                class="fa-regular fa-circle-question ms-1"
-                title="Delivery charges"></i>
-            </span>
-
+            <span>Delivery fee</span>
             <span>₹{{ deliveryFee }}</span>
           </div>
 
@@ -361,31 +414,104 @@
           </div>
 
           <div class="bill-row">
-            <span>GST and restaurant charges</span>
+            <span>GST and charges</span>
             <span>₹{{ tax }}</span>
           </div>
 
           <hr>
 
           <!-- Coupon -->
-          <button
-            type="button"
-            class="coupon-card w-100 mb-3">
+          <div class="coupon-section mb-3">
 
-            <div class="d-flex align-items-center gap-2">
+            <div class="coupon-heading d-flex align-items-center gap-2 mb-2">
+
               <i class="fa-solid fa-tags"></i>
-              <span class="fw-semibold">Apply Coupon</span>
+
+              <span class="fw-bold">
+                Employee Coupon
+              </span>
+
             </div>
 
-            <i class="fa-solid fa-chevron-right"></i>
+            <div class="input-group coupon-input-group">
 
-          </button>
+              <input
+                type="text"
+                class="form-control coupon-input"
+                placeholder="Enter coupon code"
+                [(ngModel)]="couponCode"
+                [readonly]="couponApplied">
+
+              <button
+                *ngIf="!couponApplied"
+                type="button"
+                class="btn coupon-apply-btn"
+                (click)="applyCoupon()">
+
+                Apply
+
+              </button>
+
+              <button
+                *ngIf="couponApplied"
+                type="button"
+                class="btn coupon-remove-btn"
+                (click)="removeCoupon()">
+
+                Remove
+
+              </button>
+
+            </div>
+
+            <p class="coupon-hint mb-0 mt-2">
+              Use <strong>JODETX100</strong> for a free employee meal.
+            </p>
+
+            <p
+              *ngIf="couponMessage"
+              class="coupon-message mb-0 mt-2"
+              [class.coupon-success]="couponApplied"
+              [class.coupon-error]="!couponApplied">
+
+              <i
+                class="fa-solid me-1"
+                [ngClass]="
+                  couponApplied
+                    ? 'fa-circle-check'
+                    : 'fa-circle-exclamation'
+                ">
+              </i>
+
+              {{ couponMessage }}
+
+            </p>
+
+          </div>
+
+          <!-- Discount -->
+          <div
+            *ngIf="couponApplied"
+            class="bill-row coupon-discount-row">
+
+            <span>Employee coupon</span>
+
+            <span>
+              -₹{{ getDiscount() }}
+            </span>
+
+          </div>
 
           <hr>
 
           <div class="total-row">
+
             <span>To Pay</span>
-            <span>₹{{ getGrandTotal() }}</span>
+
+            <span>
+              ₹{{ getGrandTotal() }}
+            </span>
+
           </div>
 
           <!-- Address -->
@@ -398,40 +524,47 @@
               </div>
 
               <div>
+
                 <p class="small text-secondary mb-1">
                   Delivering to
                 </p>
 
                 <h6 class="fw-bold mb-1">
-                  Home
+                  Office Desk
                 </h6>
 
                 <p class="small text-secondary mb-0">
-                  Pune, Maharashtra, India
+                  Thane, Maharashtra, India
                 </p>
+
               </div>
 
             </div>
 
           </div>
 
+          <!-- Place Order -->
           <button
-  class="checkout-btn w-100"
-  type="button"
-  (click)="placeOrder()">
+            class="checkout-btn w-100 mt-4"
+            type="button"
+            (click)="placeOrder()">
 
-  <span>₹{{ getGrandTotal() }}</span>
+            <span>
+              ₹{{ getGrandTotal() }}
+            </span>
 
-  <span>
-    Place Order
-    <i class="fa-solid fa-arrow-right ms-2"></i>
-  </span>
+            <span>
+              Place Order
+              <i class="fa-solid fa-arrow-right ms-2"></i>
+            </span>
 
-</button>
+          </button>
 
           <p class="secure-payment text-center small mt-3 mb-0">
+
             <i class="fa-solid fa-shield-halved me-1"></i>
             Safe and secure payments
+
           </p>
 
         </div>
@@ -441,4 +574,5 @@
     </div>
 
   </div>
+
 </section>

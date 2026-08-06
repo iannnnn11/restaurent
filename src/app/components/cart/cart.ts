@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
 import { Cart as CartService } from '../../services/cart';
@@ -10,6 +11,7 @@ import { OrderService } from '../../services/order';
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     RouterLink
   ],
   templateUrl: './cart.html',
@@ -23,6 +25,10 @@ export class CartComponent implements OnInit {
   platformFee = 6;
   tax = 28;
 
+  couponCode = '';
+  couponApplied = false;
+  couponMessage = '';
+
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
@@ -35,6 +41,10 @@ export class CartComponent implements OnInit {
 
   loadCartItems(): void {
     this.cartItems = this.cartService.getCartItems();
+
+    if (this.cartItems.length === 0) {
+      this.resetCoupon();
+    }
   }
 
   increaseQuantity(item: any): void {
@@ -54,19 +64,80 @@ export class CartComponent implements OnInit {
 
   getSubtotal(): number {
     return this.cartItems.reduce(
-      (total, item) =>
-        total + item.price * item.quantity,
+      (total: number, item: any) =>
+        total + item.price * (item.quantity || 0),
       0
     );
   }
 
-  getGrandTotal(): number {
+  getBillBeforeDiscount(): number {
+    if (this.cartItems.length === 0) {
+      return 0;
+    }
+
     return (
       this.getSubtotal() +
       this.deliveryFee +
       this.platformFee +
       this.tax
     );
+  }
+
+  getDiscount(): number {
+    if (!this.couponApplied) {
+      return 0;
+    }
+
+    return this.getBillBeforeDiscount();
+  }
+
+  getGrandTotal(): number {
+    const total =
+      this.getBillBeforeDiscount() -
+      this.getDiscount();
+
+    return Math.max(total, 0);
+  }
+
+  applyCoupon(): void {
+    const enteredCode =
+      this.couponCode.trim().toUpperCase();
+
+    if (this.cartItems.length === 0) {
+      this.couponApplied = false;
+      this.couponMessage =
+        'Add items to your cart first.';
+      return;
+    }
+
+    if (!enteredCode) {
+      this.couponApplied = false;
+      this.couponMessage =
+        'Please enter a coupon code.';
+      return;
+    }
+
+    if (enteredCode === 'JODETX100') {
+      this.couponApplied = true;
+      this.couponCode = 'JODETX100';
+      this.couponMessage =
+        'Employee coupon applied successfully. Your order is free.';
+      return;
+    }
+
+    this.couponApplied = false;
+    this.couponMessage =
+      'Invalid coupon code.';
+  }
+
+  removeCoupon(): void {
+    this.resetCoupon();
+  }
+
+  private resetCoupon(): void {
+    this.couponCode = '';
+    this.couponApplied = false;
+    this.couponMessage = '';
   }
 
   placeOrder(): void {
@@ -82,6 +153,8 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart();
 
     this.cartItems = [];
+
+    this.resetCoupon();
 
     this.router.navigate(['/orders']);
   }

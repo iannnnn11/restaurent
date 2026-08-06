@@ -1,12 +1,32 @@
+/* ===============================
+   PROFILE LAYOUT
+================================ */
+
 .profile-layout {
-  background: #f6f8f7;
+  min-height: 100vh;
+
+  color: #102033;
+
+  background:
+    radial-gradient(
+      circle at 8% 8%,
+      rgba(255, 193, 7, 0.13),
+      transparent 28%
+    ),
+    #fffaf0;
 }
 
-/* Sidebar */
+
+/* ===============================
+   SIDEBAR
+================================ */
 
 .profile-sidebar {
+  min-height: 100vh;
+
   background: #ffffff;
-  border-right: 1px solid #e7ece9;
+
+  border-right: 1px solid #f0e4c9;
 }
 
 .sidebar-inner {
@@ -14,50 +34,26 @@
   top: 0;
 
   min-height: 100vh;
-  padding: 28px 20px;
+
+  padding: 18px 16px;
 }
+
+
+/* Brand */
 
 .brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 
-  margin-bottom: 30px;
+  padding: 4px 5px 14px;
+
+  border-bottom: 1px solid #f0e4c9;
 }
 
 .brand-logo {
-  width: 46px;
-  height: 46px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #ffffff;
-  background: #198754;
-
-  border-radius: 14px;
-  font-size: 18px;
-}
-
-/* Employee */
-
-.employee-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 14px;
-  margin-bottom: 28px;
-
-  background: #f4faf7;
-  border: 1px solid #dcefe4;
-  border-radius: 15px;
-}
-
-.employee-avatar {
-  width: 43px;
-  height: 43px;
+  width: 40px;
+  height: 40px;
 
   display: flex;
   align-items: center;
@@ -65,118 +61,402 @@
 
   flex-shrink: 0;
 
-  color: #ffffff;
-  background: #198754;
+  color: #111111;
+  background: #ffc107;
 
-  border-radius: 50%;
-  font-weight: 700;
+  border-radius: 11px;
+
+  box-shadow: 0 6px 16px rgba(255, 193, 7, 0.2);
 }
 
-.menu-label {
-  margin: 0 10px 10px;
+.brand-name {
+  color: #102033;
 
-  color: #98a2b3;
+  font-weight: 800;
+}
+
+.brand-name span {
+  color: #d99d00;
+}
+
+.brand-subtitle {
+  color: #817968;
+
+  font-size: 12px;
+}
+
+
+/* Employee card */
+
+.employee-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 14px 0 16px;
+  padding: 10px;
+
+  background: #fffaf0;
+
+  border: 1px solid #f0e4c9;
+  border-radius: 13px;
+}
+
+.employee-avatar {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #102033;
+  background: #ffc107;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.employee-name {
+  color: #102033;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.employee-role {
+  color: #817968;
+
+  font-size: 12px;
+}
+
+.employee-arrow {
+  margin-left: auto;
+
+  color: #b4aa98;
+
   font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
+}
+
+
+/* Menu label */
+
+.menu-label {
+  margin: 0 8px 7px;
+
+  color: #a08e69;
+
+  font-size: 10px;
+  font-weight: 800;
   letter-spacing: 1px;
 }
 
-/* Links */
+
+/* Sidebar navigation */
+
+.sidebar-navigation {
+  gap: 4px;
+}
 
 .sidebar-link {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 
-  padding: 10px 12px;
+  padding: 9px 10px;
 
-  color: #667085;
-  border-radius: 12px;
+  color: #6d685e;
 
+  border-radius: 10px;
+
+  font-size: 14px;
   font-weight: 600;
+
   transition: 0.2s ease;
 }
 
 .sidebar-link:hover {
-  color: #198754;
-  background: #f0f8f4;
+  color: #102033;
+  background: #fff3c8;
+}
+
+.sidebar-link.active {
+  color: #102033;
+  background: #ffc107;
+
+  box-shadow: 0 5px 14px rgba(255, 193, 7, 0.19);
 }
 
 .sidebar-icon {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  background: #f3f5f4;
-  border-radius: 10px;
-}
+  flex-shrink: 0;
 
-.sidebar-link.active {
-  color: #ffffff;
-  background: #198754;
+  color: #b77e00;
+  background: #fff4cc;
 
-  box-shadow: 0 8px 20px rgba(25, 135, 84, 0.2);
+  border-radius: 8px;
 }
 
 .sidebar-link.active .sidebar-icon {
-  color: #198754;
+  color: #102033;
   background: #ffffff;
 }
+
+
+/* Dashboard link */
+
+.dashboard-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: auto;
+  padding: 9px 10px;
+
+  color: #625d52;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.dashboard-link:hover {
+  color: #102033;
+  background: #fff4cc;
+}
+
 
 /* Logout */
 
 .logout-btn {
-  padding: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
-  color: #dc3545;
+  margin-top: 8px;
+  padding: 9px 12px;
+
+  color: #c85a5f;
   background: #fff5f5;
 
-  border: 1px solid #f8d7da;
-  border-radius: 12px;
+  border: 1px solid #efced0;
+  border-radius: 10px;
 
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
 }
 
 .logout-btn:hover {
   color: #ffffff;
   background: #dc3545;
+  border-color: #dc3545;
 }
 
-/* Right content */
+
+/* ===============================
+   MAIN CONTENT
+================================ */
 
 .profile-content {
   min-height: 100vh;
 }
 
+
+/* Compact top header */
+
 .profile-header {
-  min-height: 80px;
+  min-height: 72px;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
-  padding: 16px 32px;
+  padding: 12px 24px;
 
-  background: #ffffff;
-  border-bottom: 1px solid #e7ece9;
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid #f0e4c9;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+
+.header-label {
+  color: #d99d00;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+}
+
+.header-title {
+  color: #102033;
+
+  font-weight: 800;
+}
+
+
+/* Dashboard button */
+
+.header-dashboard-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 9px 13px;
+
+  color: #102033;
+  background: #fffaf0;
+
+  border: 1px solid #f0e4c9;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.header-dashboard-btn:hover {
+  color: #102033;
+  background: #ffc107;
+  border-color: #ffc107;
+}
+
+
+/* Mobile menu */
+
+.mobile-menu-btn {
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #102033;
+  background: #ffc107;
+
+  border: none;
+  border-radius: 10px;
+}
+
+
+/* Routed section */
 
 .profile-router-area {
-  padding: 32px;
+  padding: 20px 24px 30px;
 }
 
-/* Mobile */
+
+/* ===============================
+   MOBILE OFFCANVAS
+================================ */
+
+.profile-mobile-menu {
+  background: #ffffff;
+}
+
+.profile-mobile-menu .offcanvas-header {
+  border-bottom: 1px solid #f0e4c9;
+}
+
+.mobile-brand-logo {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #102033;
+  background: #ffc107;
+
+  border-radius: 10px;
+}
+
+.mobile-employee-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px;
+
+  background: #fffaf0;
+
+  border: 1px solid #f0e4c9;
+  border-radius: 12px;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1199px) {
+  .sidebar-inner {
+    padding: 16px 12px;
+  }
+
+  .sidebar-link {
+    padding: 8px;
+  }
+}
 
 @media (max-width: 991px) {
   .profile-header {
-    padding: 14px 18px;
+    min-height: 66px;
+
+    padding: 10px 16px;
   }
 
   .profile-router-area {
-    padding: 20px 14px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-header {
+    min-height: 62px;
+
+    padding: 9px 12px;
+  }
+
+  .header-label {
+    font-size: 10px;
+  }
+
+  .header-title {
+    font-size: 16px;
+  }
+
+  .profile-router-area {
+    padding: 12px;
+  }
+
+  .header-dashboard-btn {
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
   }
 }

@@ -1,153 +1,98 @@
+/* ===============================
+   PAGE
+================================ */
+
 .settings-page {
-  max-width: 1250px;
-  margin: 0 auto;
+  width: 100%;
+  color: #102033;
 }
 
 
-/* Left summary */
+/* ===============================
+   HEADING
+================================ */
 
-.settings-summary-card {
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid #e6ebe8;
-  border-radius: 20px;
+.settings-heading {
+  margin-bottom: 14px;
 }
 
-.settings-cover {
-  height: 125px;
+.page-label {
+  color: #d79c00;
 
-  background:
-    radial-gradient(
-      circle at 80% 25%,
-      rgba(255, 255, 255, 0.2),
-      transparent 25%
-    ),
-    linear-gradient(
-      135deg,
-      #198754,
-      #2ca66f
-    );
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
 }
 
-.settings-avatar {
-  width: 105px;
-  height: 105px;
-  margin-top: -53px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #ffffff;
-  background: #1f2937;
-
-  border: 5px solid #ffffff;
-  border-radius: 50%;
-
-  font-size: 30px;
-
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+.settings-heading h2 {
+  color: #102033;
+  font-size: 26px;
 }
 
-.settings-status {
-  display: inline-flex;
-  align-items: center;
-
-  padding: 6px 12px;
-
-  color: #157347;
-  background: #eaf7f0;
-
-  border-radius: 30px;
-
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.settings-status i {
-  font-size: 8px;
-}
-
-.settings-summary-list {
-  border-top: 1px solid #edf0ee;
-}
-
-.settings-summary-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 15px 0;
-
-  border-bottom: 1px solid #edf0ee;
-}
-
-.summary-icon {
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 0;
-
-  color: #198754;
-  background: #eaf7f0;
-
-  border-radius: 11px;
-}
-
-.preference-highlight {
-  padding: 15px;
-
-  background: #fffaf0;
-  border: 1px solid #f7e5bb;
-  border-radius: 14px;
-}
-
-.preference-icon {
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 0;
-
-  color: #b7791f;
-  background: #fff1c7;
-
-  border-radius: 11px;
+.page-subtitle {
+  color: #7b7467;
+  font-size: 14px;
 }
 
 
-/* Right card */
+/* ===============================
+   SAVE MESSAGE
+================================ */
 
-.settings-form-card {
+.saved-message {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+
+  color: #146c43;
+  background: #e9f8ef;
+
+  border: 1px solid #cbead7;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* ===============================
+   MAIN CARD
+================================ */
+
+.settings-card {
   overflow: hidden;
 
-  background: #ffffff;
-  border: 1px solid #e6ebe8;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #f0e4c9;
+  border-radius: 18px;
+
+  box-shadow: 0 10px 30px rgba(63, 46, 12, 0.07);
 }
 
 .settings-section {
-  padding: 26px;
+  padding: 18px 20px;
 }
+
+.section-border {
+  border-top: 1px solid #f0e4c9;
+}
+
+
+/* ===============================
+   SECTION HEADING
+================================ */
 
 .section-heading {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
 
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .section-icon {
-  width: 45px;
-  height: 45px;
+  width: 36px;
+  height: 36px;
 
   display: flex;
   align-items: center;
@@ -155,94 +100,225 @@
 
   flex-shrink: 0;
 
-  color: #198754;
-  background: #eaf7f0;
+  color: #102033;
+  background: #fff1be;
 
-  border-radius: 12px;
+  border: 1px solid #ffe08a;
+  border-radius: 10px;
+}
 
-  font-size: 18px;
+.section-heading h5 {
+  color: #102033;
+  font-size: 16px;
+}
+
+.section-description {
+  color: #827967;
+  font-size: 12px;
 }
 
 
-/* Settings rows */
+/* ===============================
+   NOTIFICATIONS
+================================ */
 
-.setting-row,
-.account-action-row {
+.notification-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.setting-option {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 12px;
 
-  padding: 18px 0;
+  min-height: 84px;
+  padding: 12px;
 
-  border-bottom: 1px solid #edf0ee;
-}
+  background: #fffaf0;
 
-.form-switch .form-check-input {
-  width: 46px;
-  height: 24px;
+  border: 1px solid #f0e4c9;
+  border-radius: 12px;
 
   cursor: pointer;
 }
 
-.form-switch .form-check-input:checked {
-  background-color: #198754;
-  border-color: #198754;
+.setting-option h6 {
+  color: #102033;
+  font-size: 14px;
+  font-weight: 800;
 }
 
-.form-switch .form-check-input:focus {
-  border-color: #198754;
-  box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+.setting-option p {
+  color: #7b7467;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.form-check-input {
+  width: 42px;
+  height: 22px;
+
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.form-check-input:focus {
+  border-color: #ffc107;
+
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.14);
 }
 
 
-/* Form controls */
+/* ===============================
+   INPUTS
+================================ */
+
+.form-label {
+  margin-bottom: 5px;
+
+  color: #403c34;
+
+  font-size: 13px;
+  font-weight: 700;
+}
 
 .settings-input {
-  min-height: 47px;
+  min-height: 42px;
 
-  color: #212529;
-  background: #ffffff;
+  color: #102033;
+  background: #fffaf0;
 
-  border-color: #dfe5e1;
-  border-radius: 11px;
+  border: 1px solid #eadfc7;
+  border-radius: 10px;
+
+  font-size: 14px;
 }
 
 .settings-input:focus {
-  border-color: #198754;
+  color: #102033;
+  background: #ffffff;
 
-  box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+  border-color: #ffc107;
+
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.13);
 }
 
 
-/* Mobile */
+/* ===============================
+   BUTTONS
+================================ */
 
-@media (max-width: 768px) {
+.save-settings-btn,
+.reset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 16px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.save-settings-btn {
+  color: #102033;
+  background: #ffc107;
+
+  border: 1px solid #ffc107;
+
+  box-shadow: 0 6px 16px rgba(255, 193, 7, 0.2);
+}
+
+.save-settings-btn:hover {
+  color: #102033;
+  background: #ffca2c;
+  border-color: #ffca2c;
+}
+
+.reset-btn {
+  color: #5d584e;
+  background: #ffffff;
+
+  border: 1px solid #ded5c3;
+}
+
+.reset-btn:hover {
+  color: #102033;
+  background: #f8f3e8;
+}
+
+
+/* ===============================
+   ACTIONS
+================================ */
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  padding: 13px 20px;
+
+  background: #fffaf0;
+
+  border-top: 1px solid #f0e4c9;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 991px) {
+  .notification-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .settings-heading h2 {
+    font-size: 23px;
+  }
+
+  .settings-heading .save-settings-btn {
+    width: 100%;
+  }
+
   .settings-section {
-    padding: 20px 16px;
-  }
-
-  .settings-cover {
-    height: 105px;
-  }
-
-  .settings-avatar {
-    width: 90px;
-    height: 90px;
-    margin-top: -45px;
-
-    font-size: 25px;
-  }
-
-  .setting-row,
-  .account-action-row {
-    align-items: flex-start;
+    padding: 16px;
   }
 }
 
-@media (max-width: 576px) {
-  .setting-row,
-  .account-action-row {
-    gap: 14px;
+@media (max-width: 575px) {
+  .settings-card {
+    border-radius: 15px;
+  }
+
+  .settings-section {
+    padding: 14px;
+  }
+
+  .setting-option {
+    min-height: 76px;
+  }
+
+  .settings-actions {
+    padding: 12px 14px;
+  }
+
+  .settings-actions .save-settings-btn,
+  .settings-actions .reset-btn {
+    flex: 1;
   }
 }

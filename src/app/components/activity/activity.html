@@ -1,96 +1,91 @@
 <div class="activity-page">
 
-  <!-- Heading -->
+  <!-- Compact Heading -->
   <div
-    class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4"
-  >
+    class="activity-page-heading d-flex flex-column flex-md-row
+           justify-content-between align-items-md-center gap-2">
+
     <div>
-      <p class="text-success fw-semibold small mb-1">
-        Employee Account
+      <p class="page-label mb-1">
+        EMPLOYEE ACCOUNT
       </p>
 
       <h2 class="fw-bold mb-1">
         Activity
       </h2>
 
-      <p class="text-secondary mb-0">
+      <p class="page-subtitle mb-0">
         View your recent pantry orders and account activity.
       </p>
     </div>
 
     <button
       type="button"
-      class="btn btn-light border rounded-3 px-3"
-    >
+      class="export-btn">
+
       <i class="fa-solid fa-download me-2"></i>
-      Export Activity
+      Export
+
     </button>
+
   </div>
 
 
-  <!-- Summary Cards -->
-  <div class="row g-3 mb-4">
+  <!-- Compact Summary Cards -->
+  <div class="row g-2 activity-stats-row">
 
     <div class="col-6 col-xl-3">
 
       <div class="activity-stat-card">
 
-        <div class="stat-icon stat-orders">
+        <div class="stat-icon">
           <i class="fa-solid fa-bag-shopping"></i>
         </div>
 
         <div>
-          <small class="text-secondary">
-            Pantry Orders
-          </small>
+          <small>Pantry Orders</small>
 
-          <h3 class="fw-bold mb-0">
+          <h4 class="mb-0">
             12
-          </h3>
+          </h4>
         </div>
 
       </div>
 
     </div>
 
-
     <div class="col-6 col-xl-3">
 
       <div class="activity-stat-card">
 
-        <div class="stat-icon stat-spent">
+        <div class="stat-icon">
           <i class="fa-solid fa-indian-rupee-sign"></i>
         </div>
 
         <div>
-          <small class="text-secondary">
-            Total Spent
-          </small>
+          <small>Total Spent</small>
 
-          <h3 class="fw-bold mb-0">
+          <h4 class="mb-0">
             ₹1,420
-          </h3>
+          </h4>
         </div>
 
       </div>
 
     </div>
 
-
     <div class="col-6 col-xl-3">
 
       <div class="activity-stat-card">
 
-        <div class="stat-icon stat-login">
+        <div class="stat-icon">
           <i class="fa-solid fa-right-to-bracket"></i>
         </div>
 
         <div>
-          <small class="text-secondary">
-            Last Login
-          </small>
+          <small>Last Login</small>
 
-          <h6 class="fw-bold mb-0">
+          <h6 class="mb-0">
             Today
           </h6>
         </div>
@@ -99,21 +94,18 @@
 
     </div>
 
-
     <div class="col-6 col-xl-3">
 
       <div class="activity-stat-card">
 
-        <div class="stat-icon stat-favourite">
+        <div class="stat-icon">
           <i class="fa-solid fa-mug-hot"></i>
         </div>
 
         <div>
-          <small class="text-secondary">
-            Favourite Item
-          </small>
+          <small>Favourite</small>
 
-          <h6 class="fw-bold mb-0">
+          <h6 class="mb-0">
             Cold Coffee
           </h6>
         </div>
@@ -125,38 +117,36 @@
   </div>
 
 
-  <div class="row g-4">
+  <div class="row g-3 align-items-start">
 
-    <!-- Activity Timeline -->
+    <!-- Main Activity -->
     <div class="col-xl-8">
 
-      <div class="activity-card">
+      <section class="activity-card">
 
-        <div
-          class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 activity-card-header"
-        >
+        <div class="activity-card-header">
 
           <div>
-            <h5 class="fw-bold mb-1">
+            <h5 class="fw-bold mb-0">
               Recent Activity
             </h5>
 
-            <p class="text-secondary small mb-0">
-              Your latest pantry and account actions.
+            <p class="mb-0">
+              Latest pantry and account actions.
             </p>
           </div>
 
-
-          <div class="activity-filters d-flex gap-2 overflow-auto">
+          <div class="activity-filters">
 
             <button
               *ngFor="let filter of filters"
               type="button"
-              class="btn activity-filter-btn text-nowrap"
+              class="activity-filter-btn"
               [class.active]="selectedFilter === filter"
-              (click)="selectedFilter = filter"
-            >
+              (click)="selectedFilter = filter">
+
               {{ filter }}
+
             </button>
 
           </div>
@@ -168,69 +158,69 @@
 
           <div
             *ngFor="let activity of filteredActivities"
-            class="activity-item"
-          >
+            class="activity-item">
 
             <div
               class="activity-icon"
-              [ngClass]="getActivityClass(activity.type)"
-            >
+              [ngClass]="getActivityClass(activity.type)">
+
               <i
                 class="fa-solid"
-                [ngClass]="getActivityIcon(activity.type)"
-              ></i>
-            </div>
+                [ngClass]="getActivityIcon(activity.type)">
+              </i>
 
+            </div>
 
             <div class="activity-content">
 
               <div
-                class="d-flex flex-column flex-sm-row justify-content-between gap-2"
-              >
+                class="d-flex justify-content-between
+                       align-items-start gap-3">
 
-                <div>
-                  <h6 class="fw-semibold mb-1">
+                <div class="activity-text">
+
+                  <h6 class="fw-bold mb-1">
                     {{ activity.title }}
                   </h6>
 
-                  <p class="text-secondary small mb-0">
+                  <p class="mb-0">
                     {{ activity.description }}
                   </p>
+
                 </div>
 
+                <div class="activity-time text-end">
 
-                <div class="text-sm-end flex-shrink-0">
-
-                  <small class="text-secondary d-block">
+                  <small>
                     {{ activity.date }}
                   </small>
 
-                  <small class="fw-semibold">
+                  <strong>
                     {{ activity.time }}
-                  </small>
+                  </strong>
 
                 </div>
 
               </div>
 
-
               <div
                 *ngIf="activity.amount || activity.status"
-                class="d-flex flex-wrap gap-2 mt-3"
-              >
+                class="activity-meta">
 
                 <span
                   *ngIf="activity.amount"
-                  class="activity-price"
-                >
+                  class="activity-price">
+
                   ₹{{ activity.amount }}
+
                 </span>
 
                 <span
                   *ngIf="activity.status"
-                  class="activity-status"
-                >
+                  class="activity-status">
+
                   {{ activity.status }}
+
                 </span>
 
               </div>
@@ -241,103 +231,77 @@
 
         </div>
 
-      </div>
+      </section>
 
     </div>
 
 
-    <!-- Right Summary -->
+    <!-- Compact Right Summary -->
     <div class="col-xl-4">
 
-      <div class="activity-side-card mb-4">
+      <aside class="activity-side-card">
 
-        <div class="side-card-icon">
-          <i class="fa-solid fa-chart-simple"></i>
-        </div>
+        <div class="side-card-heading">
 
-        <h5 class="fw-bold mt-3 mb-1">
-          This Month
-        </h5>
-
-        <p class="text-secondary small">
-          Your pantry usage summary.
-        </p>
-
-
-        <div class="month-stat-row">
-
-          <span>Orders placed</span>
-
-          <strong>8</strong>
-
-        </div>
-
-
-        <div class="month-stat-row">
-
-          <span>Orders collected</span>
-
-          <strong>7</strong>
-
-        </div>
-
-
-        <div class="month-stat-row">
-
-          <span>Cancelled orders</span>
-
-          <strong>1</strong>
-
-        </div>
-
-
-        <div class="month-stat-row border-0">
-
-          <span>Total spent</span>
-
-          <strong class="text-success">
-            ₹890
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div class="activity-side-card">
-
-        <div class="side-card-icon">
-          <i class="fa-solid fa-star"></i>
-        </div>
-
-        <h5 class="fw-bold mt-3 mb-1">
-          Your Favourite
-        </h5>
-
-        <p class="text-secondary small">
-          Most ordered item this month.
-        </p>
-
-
-        <div class="favourite-item">
-
-          <div class="favourite-icon">
-            ☕
+          <div class="side-card-icon">
+            <i class="fa-solid fa-chart-simple"></i>
           </div>
 
           <div>
-            <h6 class="fw-bold mb-1">
-              Cold Coffee
-            </h6>
+            <h5 class="fw-bold mb-0">
+              This Month
+            </h5>
 
-            <small class="text-secondary">
-              Ordered 5 times
-            </small>
+            <p class="mb-0">
+              Pantry usage summary
+            </p>
           </div>
 
         </div>
 
-      </div>
+        <div class="month-stat-row">
+          <span>Orders placed</span>
+          <strong>8</strong>
+        </div>
+
+        <div class="month-stat-row">
+          <span>Collected</span>
+          <strong>7</strong>
+        </div>
+
+        <div class="month-stat-row">
+          <span>Cancelled</span>
+          <strong>1</strong>
+        </div>
+
+        <div class="month-stat-row total-spent-row">
+          <span>Total spent</span>
+          <strong>₹890</strong>
+        </div>
+
+        <div class="favourite-divider"></div>
+
+        <div class="favourite-summary">
+
+          <div class="favourite-icon">
+            <i class="fa-solid fa-mug-hot"></i>
+          </div>
+
+          <div>
+            <small>Most ordered</small>
+
+            <h6 class="fw-bold mb-0">
+              Cold Coffee
+            </h6>
+
+            <p class="mb-0">
+              Ordered 5 times
+            </p>
+          </div>
+
+        </div>
+
+      </aside>
 
     </div>
 

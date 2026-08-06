@@ -1,160 +1,195 @@
 <div class="security-page">
 
-  <!-- Heading -->
+  <!-- Compact Heading -->
   <div
-    class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4"
-  >
+    class="security-heading d-flex flex-column flex-md-row
+           justify-content-between align-items-md-center gap-2">
+
     <div>
-      <p class="text-success fw-semibold small mb-1">
-        Employee Account
+      <p class="page-label mb-1">
+        EMPLOYEE ACCOUNT
       </p>
 
       <h2 class="fw-bold mb-1">
         Security
       </h2>
 
-      <p class="text-secondary mb-0">
-        Manage your password, login protection and active sessions.
+      <p class="page-subtitle mb-0">
+        Manage your password and login protection.
       </p>
     </div>
 
     <span class="security-badge">
       <i class="fa-solid fa-shield-halved me-2"></i>
-      Account Protected
+      Protected
     </span>
-  </div>
 
+  </div>
 
   <!-- Message -->
   <div
     *ngIf="message"
-    class="alert border-0 rounded-3"
-    [ngClass]="
-      messageType === 'success'
-        ? 'alert-success'
-        : 'alert-danger'
-    "
-  >
+    class="security-message"
+    [class.error-message]="messageType !== 'success'">
+
     <i
       class="fa-solid me-2"
       [ngClass]="
         messageType === 'success'
           ? 'fa-circle-check'
           : 'fa-circle-exclamation'
-      "
-    ></i>
+      ">
+    </i>
 
     {{ message }}
+
   </div>
 
+  <div class="row g-3 align-items-start">
 
-  <div class="row g-4">
+    <!-- Password -->
+    <div class="col-xl-8">
 
-    <!-- Left Summary -->
-    <div class="col-xl-4">
+      <section class="security-card">
 
-      <div class="security-summary-card h-100">
+        <div class="section-heading">
 
-        <div class="security-cover"></div>
-
-        <div class="text-center px-4 pb-4">
-
-          <div class="security-avatar mx-auto">
-            <i class="fa-solid fa-shield-halved"></i>
+          <div class="section-icon">
+            <i class="fa-solid fa-lock"></i>
           </div>
 
-          <h4 class="fw-bold mt-3 mb-1">
-            Account Security
-          </h4>
+          <div>
+            <h5 class="fw-bold mb-0">
+              Change Password
+            </h5>
 
-          <p class="text-secondary mb-3">
-            Protect your JodeTx employee account.
-          </p>
+            <p class="section-description mb-0">
+              Use a strong password for your employee account.
+            </p>
+          </div>
 
-          <span class="account-status">
-            <i class="fa-solid fa-circle me-2"></i>
-            Security Active
-          </span>
+        </div>
 
+        <div class="row g-3">
 
-          <div class="security-info-list mt-4">
+          <!-- Current Password -->
+          <div class="col-12">
 
-            <div class="security-info-item">
+            <label
+              for="currentPassword"
+              class="form-label">
 
-              <div class="info-icon">
-                <i class="fa-solid fa-key"></i>
-              </div>
+              Current Password
 
-              <div class="text-start">
-                <small class="text-secondary d-block">
-                  Password
-                </small>
+            </label>
 
-                <strong>
-                  Updated recently
-                </strong>
-              </div>
+            <div class="password-box">
 
-            </div>
+              <input
+                id="currentPassword"
+                [type]="showCurrentPassword ? 'text' : 'password'"
+                class="form-control security-input"
+                placeholder="Enter current password"
+                [(ngModel)]="currentPassword">
 
+              <button
+                type="button"
+                class="password-toggle"
+                (click)="showCurrentPassword = !showCurrentPassword"
+                aria-label="Show or hide current password">
 
-            <div class="security-info-item">
+                <i
+                  class="fa-solid"
+                  [ngClass]="
+                    showCurrentPassword
+                      ? 'fa-eye-slash'
+                      : 'fa-eye'
+                  ">
+                </i>
 
-              <div class="info-icon">
-                <i class="fa-solid fa-mobile-screen-button"></i>
-              </div>
-
-              <div class="text-start">
-                <small class="text-secondary d-block">
-                  Two-Factor Authentication
-                </small>
-
-                <strong>
-                  {{ twoFactorEnabled ? 'Enabled' : 'Disabled' }}
-                </strong>
-              </div>
-
-            </div>
-
-
-            <div class="security-info-item">
-
-              <div class="info-icon">
-                <i class="fa-solid fa-bell"></i>
-              </div>
-
-              <div class="text-start">
-                <small class="text-secondary d-block">
-                  Login Alerts
-                </small>
-
-                <strong>
-                  {{ loginAlertsEnabled ? 'Enabled' : 'Disabled' }}
-                </strong>
-              </div>
+              </button>
 
             </div>
 
           </div>
 
+          <!-- New Password -->
+          <div class="col-md-6">
 
-          <div class="security-tip mt-4">
+            <label
+              for="newPassword"
+              class="form-label">
 
-            <div class="d-flex align-items-start gap-3">
+              New Password
 
-              <div class="tip-icon">
-                <i class="fa-solid fa-lightbulb"></i>
-              </div>
+            </label>
 
-              <div class="text-start">
-                <strong class="d-block mb-1">
-                  Security Tip
-                </strong>
+            <div class="password-box">
 
-                <small class="text-secondary">
-                  Use a strong password that you do not use on other websites.
-                </small>
-              </div>
+              <input
+                id="newPassword"
+                [type]="showNewPassword ? 'text' : 'password'"
+                class="form-control security-input"
+                placeholder="Enter new password"
+                [(ngModel)]="newPassword">
+
+              <button
+                type="button"
+                class="password-toggle"
+                (click)="showNewPassword = !showNewPassword"
+                aria-label="Show or hide new password">
+
+                <i
+                  class="fa-solid"
+                  [ngClass]="
+                    showNewPassword
+                      ? 'fa-eye-slash'
+                      : 'fa-eye'
+                  ">
+                </i>
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="col-md-6">
+
+            <label
+              for="confirmPassword"
+              class="form-label">
+
+              Confirm Password
+
+            </label>
+
+            <div class="password-box">
+
+              <input
+                id="confirmPassword"
+                [type]="showConfirmPassword ? 'text' : 'password'"
+                class="form-control security-input"
+                placeholder="Confirm new password"
+                [(ngModel)]="confirmPassword">
+
+              <button
+                type="button"
+                class="password-toggle"
+                (click)="showConfirmPassword = !showConfirmPassword"
+                aria-label="Show or hide confirmed password">
+
+                <i
+                  class="fa-solid"
+                  [ngClass]="
+                    showConfirmPassword
+                      ? 'fa-eye-slash'
+                      : 'fa-eye'
+                  ">
+                </i>
+
+              </button>
 
             </div>
 
@@ -162,369 +197,175 @@
 
         </div>
 
-      </div>
+        <!-- Compact Requirements -->
+        <div class="password-requirements">
+
+          <span>
+            <i class="fa-solid fa-check"></i>
+            8+ characters
+          </span>
+
+          <span>
+            <i class="fa-solid fa-check"></i>
+            Uppercase
+          </span>
+
+          <span>
+            <i class="fa-solid fa-check"></i>
+            Number
+          </span>
+
+          <span>
+            <i class="fa-solid fa-check"></i>
+            Special character
+          </span>
+
+        </div>
+
+        <div class="password-action">
+
+          <button
+            type="button"
+            class="update-password-btn"
+            (click)="changePassword()">
+
+            <i class="fa-solid fa-key me-2"></i>
+            Update Password
+
+          </button>
+
+        </div>
+
+      </section>
 
     </div>
 
+    <!-- Right Controls -->
+    <div class="col-xl-4">
 
-    <!-- Right Content -->
-    <div class="col-xl-8">
+      <aside class="security-side-card">
 
-      <div class="security-form-card">
+        <div class="section-heading">
 
-        <!-- Change Password -->
-        <section class="security-section">
-
-          <div class="section-heading">
-
-            <div class="section-icon">
-              <i class="fa-solid fa-lock"></i>
-            </div>
-
-            <div>
-              <h5 class="fw-bold mb-1">
-                Change Password
-              </h5>
-
-              <p class="text-secondary small mb-0">
-                Update the password used for your employee account.
-              </p>
-            </div>
-
+          <div class="section-icon">
+            <i class="fa-solid fa-user-shield"></i>
           </div>
 
+          <div>
+            <h5 class="fw-bold mb-0">
+              Login Protection
+            </h5>
 
-          <div class="row g-4 mt-1">
-
-            <div class="col-12">
-
-              <label
-                for="currentPassword"
-                class="form-label fw-semibold"
-              >
-                Current Password
-              </label>
-
-              <div class="password-box">
-
-                <input
-                  id="currentPassword"
-                  [type]="showCurrentPassword ? 'text' : 'password'"
-                  class="form-control security-input"
-                  placeholder="Enter current password"
-                  [(ngModel)]="currentPassword"
-                >
-
-                <button
-                  type="button"
-                  class="password-toggle"
-                  (click)="showCurrentPassword = !showCurrentPassword"
-                >
-                  <i
-                    class="fa-solid"
-                    [ngClass]="
-                      showCurrentPassword
-                        ? 'fa-eye-slash'
-                        : 'fa-eye'
-                    "
-                  ></i>
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="col-md-6">
-
-              <label
-                for="newPassword"
-                class="form-label fw-semibold"
-              >
-                New Password
-              </label>
-
-              <div class="password-box">
-
-                <input
-                  id="newPassword"
-                  [type]="showNewPassword ? 'text' : 'password'"
-                  class="form-control security-input"
-                  placeholder="Enter new password"
-                  [(ngModel)]="newPassword"
-                >
-
-                <button
-                  type="button"
-                  class="password-toggle"
-                  (click)="showNewPassword = !showNewPassword"
-                >
-                  <i
-                    class="fa-solid"
-                    [ngClass]="
-                      showNewPassword
-                        ? 'fa-eye-slash'
-                        : 'fa-eye'
-                    "
-                  ></i>
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="col-md-6">
-
-              <label
-                for="confirmPassword"
-                class="form-label fw-semibold"
-              >
-                Confirm Password
-              </label>
-
-              <div class="password-box">
-
-                <input
-                  id="confirmPassword"
-                  [type]="showConfirmPassword ? 'text' : 'password'"
-                  class="form-control security-input"
-                  placeholder="Confirm new password"
-                  [(ngModel)]="confirmPassword"
-                >
-
-                <button
-                  type="button"
-                  class="password-toggle"
-                  (click)="showConfirmPassword = !showConfirmPassword"
-                >
-                  <i
-                    class="fa-solid"
-                    [ngClass]="
-                      showConfirmPassword
-                        ? 'fa-eye-slash'
-                        : 'fa-eye'
-                    "
-                  ></i>
-                </button>
-
-              </div>
-
-            </div>
-
+            <p class="section-description mb-0">
+              Extra account security.
+            </p>
           </div>
 
+        </div>
 
-          <div class="password-requirements mt-4">
+        <!-- Two factor -->
+        <label class="security-option">
 
-            <h6 class="fw-semibold mb-2">
-              Password requirements
+          <div>
+            <h6 class="mb-1">
+              Two-factor authentication
             </h6>
 
-            <div class="d-flex flex-wrap gap-3">
+            <p class="mb-0">
+              Require a verification code during login.
+            </p>
+          </div>
 
-              <small>
-                <i class="fa-solid fa-check text-success me-1"></i>
-                At least 8 characters
-              </small>
+          <div class="form-check form-switch mb-0">
 
-              <small>
-                <i class="fa-solid fa-check text-success me-1"></i>
-                One uppercase letter
-              </small>
-
-              <small>
-                <i class="fa-solid fa-check text-success me-1"></i>
-                One number
-              </small>
-
-              <small>
-                <i class="fa-solid fa-check text-success me-1"></i>
-                One special character
-              </small>
-
-            </div>
+            <input
+              id="twoFactor"
+              type="checkbox"
+              class="form-check-input"
+              [(ngModel)]="twoFactorEnabled">
 
           </div>
 
+        </label>
 
-          <div class="text-end mt-4">
+        <!-- Login alerts -->
+        <label class="security-option">
 
-            <button
-              type="button"
-              class="btn btn-success px-4 rounded-3"
-              (click)="changePassword()"
-            >
-              <i class="fa-solid fa-key me-2"></i>
-              Update Password
-            </button>
+          <div>
+            <h6 class="mb-1">
+              New login alerts
+            </h6>
+
+            <p class="mb-0">
+              Receive an alert for a new device login.
+            </p>
+          </div>
+
+          <div class="form-check form-switch mb-0">
+
+            <input
+              id="loginAlerts"
+              type="checkbox"
+              class="form-check-input"
+              [(ngModel)]="loginAlertsEnabled">
 
           </div>
 
-        </section>
+        </label>
 
+        <div class="session-divider"></div>
 
-        <!-- Login Protection -->
-        <section class="security-section border-top">
+        <!-- Current session -->
+        <div class="session-heading">
 
-          <div class="section-heading">
+          <h6 class="fw-bold mb-0">
+            Current Session
+          </h6>
 
-            <div class="section-icon">
-              <i class="fa-solid fa-user-shield"></i>
-            </div>
+          <span class="current-device">
+            Active
+          </span>
 
-            <div>
-              <h5 class="fw-bold mb-1">
-                Login Protection
-              </h5>
+        </div>
 
-              <p class="text-secondary small mb-0">
-                Add extra security to your employee account.
-              </p>
-            </div>
+        <div class="device-row">
+
+          <div class="device-icon">
+            <i class="fa-solid fa-desktop"></i>
+          </div>
+
+          <div class="flex-grow-1">
+
+            <h6 class="fw-bold mb-1">
+              Windows Desktop
+            </h6>
+
+            <p class="mb-0">
+              Chrome · Pune Office
+            </p>
+
+            <small>
+              Active now
+            </small>
 
           </div>
 
+        </div>
 
-          <div class="security-setting-row">
+        <button
+          type="button"
+          class="sign-out-btn"
+          (click)="signOutAllDevices()">
 
-            <div>
-              <h6 class="fw-semibold mb-1">
-                Two-factor authentication
-              </h6>
+          <i class="fa-solid fa-right-from-bracket me-2"></i>
+          Sign Out Other Devices
 
-              <p class="text-secondary small mb-0">
-                Require an additional verification code during login.
-              </p>
-            </div>
+        </button>
 
-            <div class="form-check form-switch mb-0">
-              <input
-                id="twoFactor"
-                type="checkbox"
-                class="form-check-input"
-                [(ngModel)]="twoFactorEnabled"
-              >
-            </div>
-
-          </div>
-
-
-          <div class="security-setting-row border-0">
-
-            <div>
-              <h6 class="fw-semibold mb-1">
-                New login alerts
-              </h6>
-
-              <p class="text-secondary small mb-0">
-                Receive an email when your account is used on a new device.
-              </p>
-            </div>
-
-            <div class="form-check form-switch mb-0">
-              <input
-                id="loginAlerts"
-                type="checkbox"
-                class="form-check-input"
-                [(ngModel)]="loginAlertsEnabled"
-              >
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- Active Sessions -->
-        <section class="security-section border-top">
-
-          <div class="section-heading">
-
-            <div class="section-icon">
-              <i class="fa-solid fa-laptop"></i>
-            </div>
-
-            <div>
-              <h5 class="fw-bold mb-1">
-                Active Sessions
-              </h5>
-
-              <p class="text-secondary small mb-0">
-                Devices currently connected to your account.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div class="device-row">
-
-            <div class="device-icon">
-              <i class="fa-solid fa-desktop"></i>
-            </div>
-
-            <div class="flex-grow-1">
-              <div class="d-flex align-items-center gap-2">
-
-                <h6 class="fw-semibold mb-0">
-                  Windows Desktop
-                </h6>
-
-                <span class="current-device">
-                  Current
-                </span>
-
-              </div>
-
-              <small class="text-secondary">
-                Chrome · Pune Office · Active now
-              </small>
-            </div>
-
-          </div>
-
-
-          <div class="device-row">
-
-            <div class="device-icon">
-              <i class="fa-solid fa-mobile-screen"></i>
-            </div>
-
-            <div class="flex-grow-1">
-
-              <h6 class="fw-semibold mb-0">
-                Android Phone
-              </h6>
-
-              <small class="text-secondary">
-                Chrome Mobile · Last active 2 hours ago
-              </small>
-
-            </div>
-
-          </div>
-
-
-          <div class="text-end mt-4">
-
-            <button
-              type="button"
-              class="btn btn-outline-danger px-4 rounded-3"
-              (click)="signOutAllDevices()"
-            >
-              <i class="fa-solid fa-right-from-bracket me-2"></i>
-              Sign Out Other Devices
-            </button>
-
-          </div>
-
-        </section>
-
-      </div>
+      </aside>
 
     </div>
 
   </div>
 
-</div>
+</div>      

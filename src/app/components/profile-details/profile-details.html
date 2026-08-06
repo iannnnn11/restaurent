@@ -1,19 +1,20 @@
 <div class="profile-details-page">
 
-  <!-- Page Heading -->
+  <!-- Compact Page Heading -->
   <div
-    class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4"
-  >
+    class="page-heading-row d-flex flex-column flex-md-row
+           justify-content-between align-items-md-center gap-2">
+
     <div>
-      <p class="text-success fw-semibold small mb-1">
-        Employee Account
+      <p class="page-label mb-1">
+        EMPLOYEE ACCOUNT
       </p>
 
       <h2 class="fw-bold mb-1">
         Profile Details
       </h2>
 
-      <p class="text-secondary mb-0">
+      <p class="page-subtitle mb-0">
         View and update your personal and workplace information.
       </p>
     </div>
@@ -21,164 +22,124 @@
     <button
       *ngIf="!isEditing"
       type="button"
-      class="btn btn-success px-4 rounded-3"
-      (click)="toggleEdit()"
-    >
+      class="btn edit-profile-btn"
+      (click)="toggleEdit()">
+
       <i class="fa-solid fa-pen me-2"></i>
       Edit Profile
-    </button>
-  </div>
 
+    </button>
+
+  </div>
 
   <!-- Success Message -->
   <div
     *ngIf="savedMessage"
-    class="alert alert-success border-0 rounded-3"
-    role="alert"
-  >
+    class="save-message"
+    role="alert">
+
     <i class="fa-solid fa-circle-check me-2"></i>
     {{ savedMessage }}
+
   </div>
 
+  <div class="row g-3 align-items-start">
 
-  <div class="row g-4">
+    <!-- Compact Employee Summary -->
+    <div class="col-xl-3 col-lg-4">
 
-    <!-- Left Employee Summary -->
-    <div class="col-xl-4">
+      <aside class="employee-summary-card">
 
-      <div class="employee-summary-card h-100">
+        <div class="employee-top">
 
-        <!-- Cover -->
-        <div class="profile-cover"></div>
-
-        <div class="text-center px-4 pb-4">
-
-          <div class="profile-avatar mx-auto">
+          <div class="profile-avatar">
             IH
 
             <button
               *ngIf="isEditing"
               type="button"
               class="avatar-edit-btn"
-              aria-label="Change profile image"
-            >
+              aria-label="Change profile image">
+
               <i class="fa-solid fa-camera"></i>
+
             </button>
+
           </div>
 
-          <h4 class="fw-bold mt-3 mb-1">
-            {{ profile.firstName }} {{ profile.lastName }}
-          </h4>
+          <div class="employee-main-info">
 
-          <p class="text-secondary mb-2">
-            {{ profile.designation }}
-          </p>
+            <h4 class="fw-bold mb-1">
+              {{ profile.firstName }} {{ profile.lastName }}
+            </h4>
 
-          <span class="employee-status">
-            <i class="fa-solid fa-circle me-2"></i>
-            Active Employee
-          </span>
+            <p class="employee-designation mb-2">
+              {{ profile.designation }}
+            </p>
 
+            <span class="employee-status">
+              <i class="fa-solid fa-circle"></i>
+              Active
+            </span>
 
-          <!-- Quick Employee Info -->
-          <div class="employee-info-list mt-4">
+          </div>
 
-            <div class="employee-info-item">
+        </div>
 
-              <div class="info-icon">
-                <i class="fa-solid fa-id-badge"></i>
-              </div>
+        <div class="employee-info-list">
 
-              <div class="text-start">
-                <small class="text-secondary d-block">
-                  Employee ID
-                </small>
+          <div class="employee-info-item">
 
-                <strong>
-                  {{ profile.employeeId }}
-                </strong>
-              </div>
-
+            <div class="info-icon">
+              <i class="fa-solid fa-id-badge"></i>
             </div>
 
-
-            <div class="employee-info-item">
-
-              <div class="info-icon">
-                <i class="fa-solid fa-building"></i>
-              </div>
-
-              <div class="text-start">
-                <small class="text-secondary d-block">
-                  Department
-                </small>
-
-                <strong>
-                  {{ profile.department }}
-                </strong>
-              </div>
-
-            </div>
-
-
-            <div class="employee-info-item">
-
-              <div class="info-icon">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-
-              <div class="text-start">
-                <small class="text-secondary d-block">
-                  Office
-                </small>
-
-                <strong>
-                  {{ profile.officeLocation }}
-                </strong>
-              </div>
-
+            <div>
+              <small>Employee ID</small>
+              <strong>{{ profile.employeeId }}</strong>
             </div>
 
           </div>
 
+          <div class="employee-info-item">
 
-          <!-- Pantry Preference -->
-          <div class="pantry-preference mt-4">
+            <div class="info-icon">
+              <i class="fa-solid fa-building"></i>
+            </div>
 
-            <div class="d-flex align-items-center gap-3">
+            <div>
+              <small>Department</small>
+              <strong>{{ profile.department }}</strong>
+            </div>
 
-              <div class="pantry-icon">
-                <i class="fa-solid fa-leaf"></i>
-              </div>
+          </div>
 
-              <div class="text-start">
-                <small class="text-secondary d-block">
-                  Pantry Preference
-                </small>
+          <div class="employee-info-item">
 
-                <strong>
-                  {{ profile.dietaryPreference }}
-                </strong>
-              </div>
+            <div class="info-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
 
+            <div>
+              <small>Office</small>
+              <strong>{{ profile.officeLocation }}</strong>
             </div>
 
           </div>
 
         </div>
 
-      </div>
+      </aside>
 
     </div>
 
-
-    <!-- Right Editable Form -->
-    <div class="col-xl-8">
+    <!-- Right Form -->
+    <div class="col-xl-9 col-lg-8">
 
       <div class="profile-form-card">
 
         <!-- Personal Information -->
-        <div class="form-section">
+        <section class="form-section">
 
           <div class="section-heading">
 
@@ -187,26 +148,27 @@
             </div>
 
             <div>
-              <h5 class="fw-bold mb-1">
+              <h5 class="fw-bold mb-0">
                 Personal Information
               </h5>
 
-              <p class="text-secondary small mb-0">
+              <p class="section-description mb-0">
                 Basic details linked to your employee account.
               </p>
             </div>
 
           </div>
 
-          <div class="row g-4 mt-1">
+          <div class="row g-3 mt-1">
 
             <div class="col-md-6">
 
               <label
                 for="firstName"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 First Name
+
               </label>
 
               <input
@@ -214,19 +176,18 @@
                 type="text"
                 class="form-control profile-input"
                 [(ngModel)]="profile.firstName"
-                [readonly]="!isEditing"
-              >
+                [readonly]="!isEditing">
 
             </div>
-
 
             <div class="col-md-6">
 
               <label
                 for="lastName"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Last Name
+
               </label>
 
               <input
@@ -234,19 +195,18 @@
                 type="text"
                 class="form-control profile-input"
                 [(ngModel)]="profile.lastName"
-                [readonly]="!isEditing"
-              >
+                [readonly]="!isEditing">
 
             </div>
-
 
             <div class="col-md-6">
 
               <label
                 for="email"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Work Email
+
               </label>
 
               <input
@@ -254,23 +214,18 @@
                 type="email"
                 class="form-control profile-input"
                 [(ngModel)]="profile.workEmail"
-                readonly
-              >
-
-              <small class="text-secondary">
-                Work email cannot be changed.
-              </small>
+                readonly>
 
             </div>
-
 
             <div class="col-md-6">
 
               <label
                 for="phone"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Phone Number
+
               </label>
 
               <input
@@ -278,25 +233,24 @@
                 type="tel"
                 class="form-control profile-input"
                 [(ngModel)]="profile.phone"
-                [readonly]="!isEditing"
-              >
+                [readonly]="!isEditing">
 
             </div>
-
 
             <div class="col-12">
 
               <label
                 for="bio"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 About
+
               </label>
 
               <textarea
                 id="bio"
-                rows="4"
-                class="form-control profile-input"
+                rows="2"
+                class="form-control profile-input profile-textarea"
                 [(ngModel)]="profile.bio"
                 [readonly]="!isEditing">
               </textarea>
@@ -305,11 +259,10 @@
 
           </div>
 
-        </div>
-
+        </section>
 
         <!-- Workplace Information -->
-        <div class="form-section border-top">
+        <section class="form-section section-border">
 
           <div class="section-heading">
 
@@ -318,26 +271,27 @@
             </div>
 
             <div>
-              <h5 class="fw-bold mb-1">
+              <h5 class="fw-bold mb-0">
                 Workplace Information
               </h5>
 
-              <p class="text-secondary small mb-0">
+              <p class="section-description mb-0">
                 Your role and company-related details.
               </p>
             </div>
 
           </div>
 
-          <div class="row g-4 mt-1">
+          <div class="row g-3 mt-1">
 
-            <div class="col-md-6">
+            <div class="col-md-6 col-xl-4">
 
               <label
                 for="employeeId"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Employee ID
+
               </label>
 
               <input
@@ -345,19 +299,18 @@
                 type="text"
                 class="form-control profile-input"
                 [(ngModel)]="profile.employeeId"
-                readonly
-              >
+                readonly>
 
             </div>
 
-
-            <div class="col-md-6">
+            <div class="col-md-6 col-xl-4">
 
               <label
                 for="designation"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Designation
+
               </label>
 
               <input
@@ -365,19 +318,18 @@
                 type="text"
                 class="form-control profile-input"
                 [(ngModel)]="profile.designation"
-                readonly
-              >
+                readonly>
 
             </div>
 
-
-            <div class="col-md-6">
+            <div class="col-md-6 col-xl-4">
 
               <label
                 for="department"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Department
+
               </label>
 
               <input
@@ -385,19 +337,18 @@
                 type="text"
                 class="form-control profile-input"
                 [(ngModel)]="profile.department"
-                readonly
-              >
+                readonly>
 
             </div>
 
-
-            <div class="col-md-6">
+            <div class="col-md-6 col-xl-4">
 
               <label
                 for="manager"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Reporting Manager
+
               </label>
 
               <input
@@ -405,19 +356,18 @@
                 type="text"
                 class="form-control profile-input"
                 [(ngModel)]="profile.manager"
-                readonly
-              >
+                readonly>
 
             </div>
 
-
-            <div class="col-md-6">
+            <div class="col-md-6 col-xl-4">
 
               <label
                 for="officeLocation"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Office Location
+
               </label>
 
               <input
@@ -425,19 +375,18 @@
                 type="text"
                 class="form-control profile-input"
                 [(ngModel)]="profile.officeLocation"
-                readonly
-              >
+                readonly>
 
             </div>
 
-
-            <div class="col-md-6">
+            <div class="col-md-6 col-xl-4">
 
               <label
                 for="joiningDate"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Joining Date
+
               </label>
 
               <input
@@ -445,88 +394,88 @@
                 type="date"
                 class="form-control profile-input"
                 [(ngModel)]="profile.joiningDate"
-                readonly
-              >
+                readonly>
 
             </div>
 
           </div>
 
-        </div>
-
+        </section>
 
         <!-- Pantry Preferences -->
-        <div class="form-section border-top">
+        <section class="form-section section-border">
 
-          <div class="section-heading">
+          <div class="pantry-row">
 
-            <div class="section-icon">
-              <i class="fa-solid fa-utensils"></i>
+            <div class="section-heading mb-0">
+
+              <div class="section-icon">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+
+              <div>
+                <h5 class="fw-bold mb-0">
+                  Pantry Preference
+                </h5>
+
+                <p class="section-description mb-0">
+                  Personalize your office pantry experience.
+                </p>
+              </div>
+
             </div>
 
-            <div>
-              <h5 class="fw-bold mb-1">
-                Pantry Preferences
-              </h5>
-
-              <p class="text-secondary small mb-0">
-                Help us personalize your JodeTx pantry experience.
-              </p>
-            </div>
-
-          </div>
-
-          <div class="row g-4 mt-1">
-
-            <div class="col-md-6">
+            <div class="pantry-control">
 
               <label
                 for="dietaryPreference"
-                class="form-label fw-semibold"
-              >
+                class="form-label">
+
                 Dietary Preference
+
               </label>
 
               <select
                 id="dietaryPreference"
                 class="form-select profile-input"
                 [(ngModel)]="profile.dietaryPreference"
-                [disabled]="!isEditing"
-              >
+                [disabled]="!isEditing">
+
                 <option>Vegetarian</option>
                 <option>Non-Vegetarian</option>
                 <option>Vegan</option>
                 <option>No Preference</option>
+
               </select>
 
             </div>
 
           </div>
 
-        </div>
+        </section>
 
-
-        <!-- Action Buttons -->
+        <!-- Editing Actions -->
         <div
           *ngIf="isEditing"
-          class="d-flex flex-wrap justify-content-end gap-2 border-top p-4"
-        >
+          class="form-actions">
 
           <button
             type="button"
-            class="btn btn-light border px-4 rounded-3"
-            (click)="cancelEdit()"
-          >
+            class="btn cancel-btn"
+            (click)="cancelEdit()">
+
             Cancel
+
           </button>
 
           <button
             type="button"
-            class="btn btn-success px-4 rounded-3"
-            (click)="saveProfile()"
-          >
+            class="btn save-btn"
+            (click)="saveProfile()">
+
             <i class="fa-solid fa-check me-2"></i>
             Save Changes
+
           </button>
 
         </div>

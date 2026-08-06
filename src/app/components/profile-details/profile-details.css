@@ -1,63 +1,213 @@
+/* ===============================
+   PAGE
+================================ */
+
 .profile-details-page {
-  max-width: 1250px;
-  margin: 0 auto;
+  width: 100%;
+  color: #102033;
 }
 
 
-/* Left employee summary */
+/* ===============================
+   PAGE HEADING
+================================ */
+
+.page-heading-row {
+  margin-bottom: 14px;
+}
+
+.page-label {
+  color: #d79c00;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+}
+
+.page-heading-row h2 {
+  color: #102033;
+  font-size: 26px;
+}
+
+.page-subtitle {
+  color: #7b7467;
+  font-size: 14px;
+}
+
+.edit-profile-btn {
+  padding: 9px 16px;
+
+  color: #102033;
+  background: #ffc107;
+
+  border: 1px solid #ffc107;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  box-shadow: 0 6px 16px rgba(255, 193, 7, 0.2);
+
+  transition: 0.2s ease;
+}
+
+.edit-profile-btn:hover {
+  color: #102033;
+  background: #ffca2c;
+  border-color: #ffca2c;
+
+  transform: translateY(-1px);
+}
+
+
+/* ===============================
+   SUCCESS MESSAGE
+================================ */
+
+.save-message {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+
+  color: #146c43;
+  background: #e9f8ef;
+
+  border: 1px solid #cbead7;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* ===============================
+   EMPLOYEE SUMMARY
+================================ */
 
 .employee-summary-card {
-  overflow: hidden;
+  position: sticky;
+  top: 90px;
 
-  background: #ffffff;
-  border: 1px solid #e6ebe8;
-  border-radius: 20px;
+  padding: 18px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #f0e4c9;
+  border-radius: 18px;
+
+  box-shadow: 0 10px 30px rgba(63, 46, 12, 0.07);
 }
 
-.profile-cover {
-  height: 125px;
+.employee-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 
-  background:
-    radial-gradient(
-      circle at 80% 25%,
-      rgba(255, 255, 255, 0.2),
-      transparent 25%
-    ),
-    linear-gradient(
-      135deg,
-      #198754,
-      #2ca66f
-    );
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid #f0e4c9;
 }
 
 .profile-avatar {
   position: relative;
 
-  width: 105px;
-  height: 105px;
-  margin-top: -53px;
+  width: 68px;
+  height: 68px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   color: #ffffff;
-  background: #1f2937;
+  background: #102033;
 
-  border: 5px solid #ffffff;
-  border-radius: 50%;
+  border: 4px solid #fff3c8;
+  border-radius: 18px;
 
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
 
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+  box-shadow: 0 7px 18px rgba(16, 32, 51, 0.14);
 }
 
 .avatar-edit-btn {
   position: absolute;
-  right: 0;
-  bottom: 3px;
+  right: -5px;
+  bottom: -5px;
 
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #102033;
+  background: #ffc107;
+
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+
+  font-size: 11px;
+}
+
+.employee-main-info {
+  min-width: 0;
+}
+
+.employee-main-info h4 {
+  color: #102033;
+  font-size: 18px;
+}
+
+.employee-designation {
+  color: #7b7467;
+  font-size: 13px;
+}
+
+.employee-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px 9px;
+
+  color: #146c43;
+  background: #e9f8ef;
+
+  border: 1px solid #cbead7;
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.employee-status i {
+  font-size: 7px;
+}
+
+.employee-info-list {
+  display: grid;
+  gap: 8px;
+
+  margin-top: 14px;
+}
+
+.employee-info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 9px 10px;
+
+  background: #fffaf0;
+
+  border: 1px solid #f2e5c9;
+  border-radius: 11px;
+}
+
+.info-icon {
   width: 32px;
   height: 32px;
 
@@ -65,112 +215,70 @@
   align-items: center;
   justify-content: center;
 
-  color: #ffffff;
-  background: #198754;
-
-  border: 3px solid #ffffff;
-  border-radius: 50%;
-
-  font-size: 12px;
-}
-
-.employee-status {
-  display: inline-flex;
-  align-items: center;
-
-  padding: 6px 12px;
-
-  color: #157347;
-  background: #eaf7f0;
-
-  border-radius: 30px;
-
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.employee-status i {
-  font-size: 8px;
-}
-
-.employee-info-list {
-  border-top: 1px solid #edf0ee;
-}
-
-.employee-info-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 15px 0;
-
-  border-bottom: 1px solid #edf0ee;
-}
-
-.info-icon {
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   flex-shrink: 0;
 
-  color: #198754;
-  background: #eaf7f0;
+  color: #b77e00;
+  background: #fff1be;
 
-  border-radius: 11px;
+  border-radius: 8px;
 }
 
-.pantry-preference {
-  padding: 15px;
+.employee-info-item small {
+  display: block;
 
-  background: #fffaf0;
-  border: 1px solid #f7e5bb;
-  border-radius: 14px;
+  color: #8a8172;
+
+  font-size: 11px;
 }
 
-.pantry-icon {
-  width: 42px;
-  height: 42px;
+.employee-info-item strong {
+  display: block;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #102033;
 
-  flex-shrink: 0;
-
-  color: #b7791f;
-  background: #fff1c7;
-
-  border-radius: 11px;
+  font-size: 13px;
 }
 
 
-/* Right profile form */
+/* ===============================
+   FORM CARD
+================================ */
 
 .profile-form-card {
   overflow: hidden;
 
-  background: #ffffff;
-  border: 1px solid #e6ebe8;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #f0e4c9;
+  border-radius: 18px;
+
+  box-shadow: 0 10px 30px rgba(63, 46, 12, 0.07);
 }
 
 .form-section {
-  padding: 26px;
+  padding: 18px 20px;
 }
+
+.section-border {
+  border-top: 1px solid #f0e4c9;
+}
+
+
+/* ===============================
+   SECTION HEADING
+================================ */
 
 .section-heading {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+
+  margin-bottom: 10px;
 }
 
 .section-icon {
-  width: 45px;
-  height: 45px;
+  width: 36px;
+  height: 36px;
 
   display: flex;
   align-items: center;
@@ -178,57 +286,227 @@
 
   flex-shrink: 0;
 
-  color: #198754;
-  background: #eaf7f0;
+  color: #102033;
+  background: #fff1be;
 
-  border-radius: 12px;
+  border: 1px solid #ffe08a;
+  border-radius: 10px;
+}
 
-  font-size: 18px;
+.section-heading h5 {
+  color: #102033;
+  font-size: 16px;
+}
+
+.section-description {
+  color: #827967;
+
+  font-size: 12px;
+}
+
+
+/* ===============================
+   FORM CONTROLS
+================================ */
+
+.form-label {
+  margin-bottom: 5px;
+
+  color: #403c34;
+
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .profile-input {
-  min-height: 47px;
+  min-height: 42px;
 
-  color: #212529;
-  background: #ffffff;
+  color: #102033;
+  background: #fffaf0;
 
-  border-color: #dfe5e1;
-  border-radius: 11px;
+  border: 1px solid #eadfc7;
+  border-radius: 10px;
+
+  font-size: 14px;
+
+  transition: 0.2s ease;
 }
 
 .profile-input:focus {
-  border-color: #198754;
+  color: #102033;
+  background: #ffffff;
 
-  box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+  border-color: #ffc107;
+
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.13);
 }
 
 .profile-input[readonly] {
-  color: #667085;
-  background: #f7f8f8;
-  cursor: default;
+  color: #5e5a52;
+  background: #f8f6f0;
 }
 
-textarea.profile-input {
-  resize: vertical;
+.profile-input:disabled {
+  color: #5e5a52;
+  background: #f8f6f0;
+  opacity: 1;
+}
+
+.profile-textarea {
+  min-height: 70px;
+  resize: none;
 }
 
 
-/* Mobile */
+/* ===============================
+   PANTRY ROW
+================================ */
 
-@media (max-width: 768px) {
-  .form-section {
-    padding: 20px 16px;
+.pantry-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pantry-control {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+
+/* ===============================
+   ACTIONS
+================================ */
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  padding: 13px 20px;
+
+  background: #fffaf0;
+
+  border-top: 1px solid #f0e4c9;
+}
+
+.cancel-btn,
+.save-btn {
+  padding: 8px 16px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cancel-btn {
+  color: #5d584e;
+  background: #ffffff;
+
+  border: 1px solid #ded5c3;
+}
+
+.cancel-btn:hover {
+  color: #102033;
+  background: #f8f3e8;
+}
+
+.save-btn {
+  color: #102033;
+  background: #ffc107;
+
+  border: 1px solid #ffc107;
+}
+
+.save-btn:hover {
+  color: #102033;
+  background: #ffca2c;
+  border-color: #ffca2c;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1199px) {
+  .employee-summary-card {
+    position: static;
   }
 
-  .profile-cover {
-    height: 105px;
+  .pantry-row {
+    align-items: center;
+  }
+}
+
+@media (max-width: 991px) {
+  .employee-summary-card {
+    padding: 15px;
+  }
+
+  .form-section {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-heading-row h2 {
+    font-size: 23px;
+  }
+
+  .edit-profile-btn {
+    width: 100%;
+  }
+
+  .employee-top {
+    align-items: flex-start;
+  }
+
+  .pantry-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pantry-control {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .employee-summary-card,
+  .profile-form-card {
+    border-radius: 15px;
+  }
+
+  .employee-top {
+    gap: 11px;
   }
 
   .profile-avatar {
-    width: 90px;
-    height: 90px;
-    margin-top: -45px;
+    width: 58px;
+    height: 58px;
 
-    font-size: 25px;
+    border-radius: 15px;
+
+    font-size: 17px;
+  }
+
+  .form-section {
+    padding: 14px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .form-actions {
+    padding: 12px 14px;
+  }
+
+  .cancel-btn,
+  .save-btn {
+    flex: 1;
   }
 }
