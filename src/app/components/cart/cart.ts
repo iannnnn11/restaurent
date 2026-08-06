@@ -1,12 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+
 import { Cart as CartService } from '../../services/cart';
+import { OrderService } from '../../services/order';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [
+    CommonModule,
+    RouterLink
+  ],
   templateUrl: './cart.html',
   styleUrl: './cart.css'
 })
@@ -18,7 +23,11 @@ export class CartComponent implements OnInit {
   platformFee = 6;
   tax = 28;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private orderService: OrderService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -45,7 +54,8 @@ export class CartComponent implements OnInit {
 
   getSubtotal(): number {
     return this.cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) =>
+        total + item.price * item.quantity,
       0
     );
   }
@@ -60,6 +70,19 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder(): void {
-    console.log('Order placed successfully');
+    if (this.cartItems.length === 0) {
+      return;
+    }
+
+    this.orderService.placeOrder(
+      this.cartItems,
+      this.getGrandTotal()
+    );
+
+    this.cartService.clearCart();
+
+    this.cartItems = [];
+
+    this.router.navigate(['/orders']);
   }
 }

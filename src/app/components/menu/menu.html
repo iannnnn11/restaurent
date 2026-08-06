@@ -1,129 +1,116 @@
-<section class="bg-light min-vh-100 pb-5">
+<section class="menu-page min-vh-100 pb-5">
 
-<!-- Top Header -->
-<header class="sticky-top menu-header">
+  <!-- Top Header -->
+  <header class="sticky-top menu-header">
+    <div class="container py-3">
 
-  <div class="container py-3">
+      <div class="menu-navbar d-flex align-items-center gap-3">
 
-    <div class="menu-navbar d-flex align-items-center gap-3">
-
-      <!-- Back Button -->
-      <button
-        class="btn back-btn"
-        type="button"
-        routerLink="/dashboard"
-        aria-label="Go back">
-
-        <i class="fa-solid fa-arrow-left"></i>
-
-      </button>
-
-
-      <!-- Brand -->
-      <div class="brand-section d-none d-md-flex align-items-center gap-2">
-
-        <div class="brand-icon">
-          <i class="fa-solid fa-utensils"></i>
-        </div>
-
-        <div>
-          <h5 class="fw-bold mb-0">
-            Jode<span class="text-success">Tx</span>
-          </h5>
-
-          <small class="text-secondary">
-            Office Canteen
-          </small>
-        </div>
-
-      </div>
-
-
-      <!-- Search -->
-      <div class="position-relative flex-grow-1 search-box">
-
-        <i
-          class="fa-solid fa-magnifying-glass search-icon">
-        </i>
-
-        <input
-          type="text"
-          class="form-control search-input"
-          placeholder="Search coffee, snacks, nuts..."
-          [(ngModel)]="searchText">
-
+        <!-- Back Button -->
         <button
-          *ngIf="searchText"
+          class="btn back-btn"
           type="button"
-          class="clear-search-btn"
-          (click)="searchText = ''"
-          aria-label="Clear search">
+          routerLink="/dashboard"
+          aria-label="Go back">
 
-          <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-arrow-left"></i>
+
+        </button>
+
+        <!-- Brand -->
+        <div class="brand-section d-none d-md-flex align-items-center gap-2">
+
+          <div class="brand-icon">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+
+          <div>
+            <h5 class="brand-title mb-0">
+              Jode<span>Tx</span>
+            </h5>
+
+            <small class="brand-subtitle">
+              Office Canteen
+            </small>
+          </div>
+
+        </div>
+
+        <!-- Search -->
+        <div class="position-relative flex-grow-1 search-box">
+
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+
+          <input
+            type="text"
+            class="form-control search-input"
+            placeholder="Search coffee, snacks, nuts..."
+            [(ngModel)]="searchText">
+
+          <button
+            *ngIf="searchText"
+            type="button"
+            class="clear-search-btn"
+            (click)="searchText = ''"
+            aria-label="Clear search">
+
+            <i class="fa-solid fa-xmark"></i>
+
+          </button>
+
+        </div>
+
+        <!-- Orders -->
+        <button
+          class="btn header-action-btn d-none d-md-flex"
+          type="button"
+          routerLink="/orders">
+
+          <i class="fa-solid fa-receipt"></i>
+          <span>My Orders</span>
+
+        </button>
+
+        <!-- Cart -->
+        <button
+          class="btn cart-btn position-relative"
+          type="button"
+          routerLink="/cart"
+          aria-label="Open cart">
+
+          <i class="fa-solid fa-bag-shopping"></i>
+
+          <span
+            *ngIf="getCartCount() > 0"
+            class="cart-badge">
+
+            {{ getCartCount() }}
+
+          </span>
 
         </button>
 
       </div>
 
-
-      <!-- Orders -->
-      <button
-        class="btn header-action-btn d-none d-md-flex"
-        type="button"
-        routerLink="/orders">
-
-        <i class="fa-solid fa-receipt"></i>
-
-        <span>My Orders</span>
-
-      </button>
-
-
-      <!-- Cart -->
-      <button
-        class="btn cart-btn position-relative"
-        type="button"
-        routerLink="/cart"
-        aria-label="Open cart">
-
-        <i class="fa-solid fa-bag-shopping"></i>
-
-        <span
-          *ngIf="getCartCount() > 0"
-          class="cart-badge">
-
-          {{ getCartCount() }}
-
-        </span>
-
-      </button>
-
     </div>
+  </header>
 
-  </div>
+  <!-- Offers -->
+  <section class="offers-section py-4">
 
-</header>
-
-
-
-
-  <section class="bg-white py-4 border-bottom">
     <div class="container">
 
       <div class="d-flex gap-3 overflow-x-auto pb-2 offer-scroll">
 
-        <div class="card border-danger border-opacity-25 rounded-4 flex-shrink-0 offer-card">
+        <div class="card flex-shrink-0 offer-card">
 
           <div class="card-body d-flex align-items-center gap-3">
 
-            <div class="bg-danger text-white rounded-3 offer-icon">
-
+            <div class="offer-icon">
               <i class="fa-solid fa-percent"></i>
-
             </div>
 
             <div>
-
               <h6 class="fw-bold mb-1">
                 50% OFF
               </h6>
@@ -131,25 +118,21 @@
               <small class="text-secondary">
                 Use code WELCOME50
               </small>
-
             </div>
 
           </div>
 
         </div>
 
-        <div class="card border-danger border-opacity-25 rounded-4 flex-shrink-0 offer-card">
+        <div class="card flex-shrink-0 offer-card">
 
           <div class="card-body d-flex align-items-center gap-3">
 
-            <div class="bg-danger text-white rounded-3 offer-icon">
-
+            <div class="offer-icon">
               <i class="fa-solid fa-tags"></i>
-
             </div>
 
             <div>
-
               <h6 class="fw-bold mb-1">
                 ₹75 OFF
               </h6>
@@ -157,25 +140,21 @@
               <small class="text-secondary">
                 Orders above ₹399
               </small>
-
             </div>
 
           </div>
 
         </div>
 
-        <div class="card border-danger border-opacity-25 rounded-4 flex-shrink-0 offer-card">
+        <div class="card flex-shrink-0 offer-card">
 
           <div class="card-body d-flex align-items-center gap-3">
 
-            <div class="bg-danger text-white rounded-3 offer-icon">
-
+            <div class="offer-icon">
               <i class="fa-solid fa-truck-fast"></i>
-
             </div>
 
             <div>
-
               <h6 class="fw-bold mb-1">
                 Free Delivery
               </h6>
@@ -183,7 +162,6 @@
               <small class="text-secondary">
                 On your first order
               </small>
-
             </div>
 
           </div>
@@ -193,12 +171,13 @@
       </div>
 
     </div>
+
   </section>
 
   <!-- Main Menu -->
   <main class="container py-4 py-lg-5">
 
-    <!-- Horizontal Category Bar -->
+    <!-- Categories -->
     <div class="category-nav mb-5">
 
       <div class="category-scroll d-flex align-items-center gap-2">
@@ -214,6 +193,7 @@
           </span>
 
           Recommended
+
         </button>
 
         <button
@@ -227,6 +207,7 @@
           </span>
 
           Coffee & Tea
+
         </button>
 
         <button
@@ -240,6 +221,7 @@
           </span>
 
           Nuts & Dry Fruits
+
         </button>
 
         <button
@@ -253,13 +235,13 @@
           </span>
 
           Office Snacks
+
         </button>
 
       </div>
 
     </div>
 
-    <!-- Menu Items -->
     <div class="menu-content">
 
       <!-- Recommended -->
@@ -267,29 +249,33 @@
         id="recommended"
         class="menu-section mb-5">
 
-        <div class="d-flex justify-content-between align-items-end mb-3">
+        <div class="section-heading d-flex justify-content-between align-items-end mb-3">
 
           <div>
+            <p class="section-label mb-2">
+              EMPLOYEE FAVOURITES
+            </p>
+
             <h2 class="fw-bold mb-1">
               Recommended
             </h2>
 
-            <p class="text-secondary mb-0">
+            <p class="section-description mb-0">
               Popular choices from our employees
             </p>
           </div>
 
-          <small class="text-secondary">
+          <small class="item-count">
             {{ getFilteredItems(recommendedItems).length }} items
           </small>
 
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="menu-list-card overflow-hidden">
 
           <div
             *ngFor="let item of getFilteredItems(recommendedItems); let last = last"
-            class="p-3 p-md-4"
+            class="food-item-row p-3 p-md-4"
             [class.border-bottom]="!last">
 
             <ng-container
@@ -307,29 +293,33 @@
         id="coffee"
         class="menu-section mb-5">
 
-        <div class="d-flex justify-content-between align-items-end mb-3">
+        <div class="section-heading d-flex justify-content-between align-items-end mb-3">
 
           <div>
+            <p class="section-label mb-2">
+              WORK BREAK DRINKS
+            </p>
+
             <h2 class="fw-bold mb-1">
               Coffee & Tea
             </h2>
 
-            <p class="text-secondary mb-0">
+            <p class="section-description mb-0">
               Refreshing beverages for your work break
             </p>
           </div>
 
-          <small class="text-secondary">
+          <small class="item-count">
             {{ getFilteredItems(coffeeItems).length }} items
           </small>
 
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="menu-list-card overflow-hidden">
 
           <div
             *ngFor="let item of getFilteredItems(coffeeItems); let last = last"
-            class="p-3 p-md-4"
+            class="food-item-row p-3 p-md-4"
             [class.border-bottom]="!last">
 
             <ng-container
@@ -347,29 +337,33 @@
         id="nuts"
         class="menu-section mb-5">
 
-        <div class="d-flex justify-content-between align-items-end mb-3">
+        <div class="section-heading d-flex justify-content-between align-items-end mb-3">
 
           <div>
+            <p class="section-label mb-2">
+              HEALTHY CHOICES
+            </p>
+
             <h2 class="fw-bold mb-1">
               Nuts & Dry Fruits
             </h2>
 
-            <p class="text-secondary mb-0">
+            <p class="section-description mb-0">
               Healthy snacks for office breaks
             </p>
           </div>
 
-          <small class="text-secondary">
+          <small class="item-count">
             {{ getFilteredItems(nutsItems).length }} items
           </small>
 
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="menu-list-card overflow-hidden">
 
           <div
             *ngFor="let item of getFilteredItems(nutsItems); let last = last"
-            class="p-3 p-md-4"
+            class="food-item-row p-3 p-md-4"
             [class.border-bottom]="!last">
 
             <ng-container
@@ -387,29 +381,33 @@
         id="snacks"
         class="menu-section mb-5">
 
-        <div class="d-flex justify-content-between align-items-end mb-3">
+        <div class="section-heading d-flex justify-content-between align-items-end mb-3">
 
           <div>
+            <p class="section-label mb-2">
+              QUICK BITES
+            </p>
+
             <h2 class="fw-bold mb-1">
               Office Snacks
             </h2>
 
-            <p class="text-secondary mb-0">
+            <p class="section-description mb-0">
               Tasty snacks for meetings and break time
             </p>
           </div>
 
-          <small class="text-secondary">
+          <small class="item-count">
             {{ getFilteredItems(snackItems).length }} items
           </small>
 
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="menu-list-card overflow-hidden">
 
           <div
             *ngFor="let item of getFilteredItems(snackItems); let last = last"
-            class="p-3 p-md-4"
+            class="food-item-row p-3 p-md-4"
             [class.border-bottom]="!last">
 
             <ng-container
@@ -426,12 +424,12 @@
 
   </main>
 
-
-  <!-- Reusable Item Template -->
+  <!-- Reusable Food Template -->
   <ng-template #foodTemplate let-item="item">
 
     <div class="row align-items-center g-3">
 
+      <!-- Food Details -->
       <div class="col-7 col-md-8">
 
         <div class="d-flex align-items-center gap-2">
@@ -446,42 +444,42 @@
 
           <span
             *ngIf="item.bestseller"
-            class="text-warning fw-bold small">
+            class="bestseller-text fw-bold small">
 
             <i class="fa-solid fa-star me-1"></i>
-
             Bestseller
 
           </span>
 
         </div>
 
-        <h5 class="fw-bold mt-2 mb-1">
+        <h5 class="food-name mt-2 mb-1">
           {{ item.name }}
         </h5>
 
-        <div class="text-success small fw-semibold mb-2">
+        <div class="item-rating small fw-semibold mb-2">
 
           <i class="fa-solid fa-star"></i>
 
           {{ item.rating }}
 
-          <span class="text-secondary">
+          <span class="rating-count">
             ({{ item.ratingCount }})
           </span>
 
         </div>
 
-        <p class="fw-semibold mb-2">
+        <p class="food-price mb-2">
           ₹{{ item.price }}
         </p>
 
-        <p class="text-secondary small mb-0 item-description">
+        <p class="item-description small mb-0">
           {{ item.description }}
         </p>
 
       </div>
 
+      <!-- Food Image -->
       <div class="col-5 col-md-4">
 
         <div class="position-relative ms-auto food-image-box">
@@ -489,47 +487,46 @@
           <img
             [src]="item.image"
             [alt]="item.name"
-            class="img-fluid rounded-4 w-100 food-image">
+            class="img-fluid w-100 food-image">
 
+          <!-- Add Button -->
           <button
             *ngIf="!item.quantity || item.quantity === 0"
-            class="btn btn-light border-success text-success fw-bold position-absolute start-50 translate-middle-x add-btn"
+            class="btn position-absolute start-50 translate-middle-x add-btn"
             type="button"
             (click)="addToCart(item)">
 
             ADD
 
-            
-
           </button>
 
+          <!-- Quantity -->
           <div
             *ngIf="item.quantity && item.quantity > 0"
-            class="btn-group position-absolute start-50 translate-middle-x quantity-box"
+            class="quantity-box position-absolute start-50 translate-middle-x"
             role="group">
 
             <button
-                    type="button"
-                    class="quantity-btn"
-                    (click)="decreaseQuantity(item)">
-                    <i class="fa-solid fa-minus"></i>
-                  </button>
-
-            <button
               type="button"
-              class="btn btn-light border-success text-success fw-bold">
+              class="quantity-btn"
+              (click)="decreaseQuantity(item)">
 
-              {{ item.quantity }}
+              <i class="fa-solid fa-minus"></i>
 
             </button>
 
-            
+            <span class="quantity-number">
+              {{ item.quantity }}
+            </span>
+
             <button
-                    type="button"
-                    class="quantity-btn"
-                    (click)="increaseQuantity(item)">
-                    <i class="fa-solid fa-plus"></i>
-                  </button>
+              type="button"
+              class="quantity-btn"
+              (click)="increaseQuantity(item)">
+
+              <i class="fa-solid fa-plus"></i>
+
+            </button>
 
           </div>
 
@@ -541,24 +538,20 @@
 
   </ng-template>
 
-
-  <!-- Floating Cart Bar -->
+  <!-- Floating Cart -->
   <div
     *ngIf="getCartCount() > 0"
     class="position-fixed bottom-0 start-0 end-0 pb-3 floating-cart-wrapper">
 
     <div class="container">
 
-      <div
-        class="bg-success text-white rounded-4 shadow-lg px-4 py-3 d-flex align-items-center justify-content-between cart-summary">
+      <div class="cart-summary px-4 py-3 d-flex align-items-center justify-content-between">
 
         <div>
 
           <span class="fw-bold">
-
             {{ getCartCount() }}
             {{ getCartCount() === 1 ? 'item' : 'items' }}
-
           </span>
 
           <span class="mx-2">|</span>
@@ -570,12 +563,11 @@
         </div>
 
         <button
-          class="btn text-white fw-bold"
+          class="btn cart-summary-btn"
           type="button"
           routerLink="/cart">
 
           View Cart
-
           <i class="fa-solid fa-bag-shopping ms-2"></i>
 
         </button>

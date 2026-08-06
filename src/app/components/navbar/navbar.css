@@ -285,49 +285,18 @@
 /* Video */
 
 .cafeteria-video {
-  position: relative;
-  z-index: 3;
+  position: absolute;
+  inset: 0;
 
-  width: 880px;
-  max-width: 116%;
-  height: 650px;
-
-  display: block;
+  width: 100%;
+  height: 100%;
 
   object-fit: cover;
-  object-position: center;
 
-  border: 0;
-  border-radius: 52px;
+  z-index: -1;
 
-  mix-blend-mode: normal;
-
-  box-shadow:
-    0 45px 85px rgba(0, 0, 0, 0.55),
-    0 0 35px rgba(255, 193, 7, 0.08);
-
-  animation: cafeteriaFloat 6s ease-in-out infinite;
+  pointer-events: none;
 }
-
-
-/*
-If your Google Flow video already has a dark or transparent-looking
-background, keep object-fit: contain instead.
-*/
-
-/* @keyframes cafeteriaFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-12px);
-  }
-} */
-
-
-/* Orbit decorations */
 
 .orbit {
   position: absolute;

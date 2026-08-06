@@ -416,20 +416,18 @@
           </div>
 
           <button
-            type="button"
-            class="btn checkout-btn w-100 mt-4"
-            (click)="placeOrder()">
+  class="checkout-btn w-100"
+  type="button"
+  (click)="placeOrder()">
 
-            <span>
-              ₹{{ getGrandTotal() }}
-            </span>
+  <span>₹{{ getGrandTotal() }}</span>
 
-            <span>
-              Proceed to Pay
-              <i class="fa-solid fa-arrow-right ms-2"></i>
-            </span>
+  <span>
+    Place Order
+    <i class="fa-solid fa-arrow-right ms-2"></i>
+  </span>
 
-          </button>
+</button>
 
           <p class="secure-payment text-center small mt-3 mb-0">
             <i class="fa-solid fa-shield-halved me-1"></i>

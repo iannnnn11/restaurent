@@ -1,6 +1,10 @@
-
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  OnInit
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Cart } from '../../services/cart';
@@ -16,10 +20,19 @@ import { Cart } from '../../services/cart';
   templateUrl: './menu.html',
   styleUrl: './menu.css'
 })
-export class Menu implements OnInit {
+export class Menu implements OnInit, AfterViewInit {
 
   searchText = '';
   vegOnly = false;
+
+  activeCategory: string = 'recommended';
+
+  private categoryIds: string[] = [
+    'recommended',
+    'coffee',
+    'nuts',
+    'snacks'
+  ];
 
   constructor(private cartService: Cart) {}
 
@@ -216,6 +229,12 @@ export class Menu implements OnInit {
     this.syncQuantities();
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.updateActiveCategory();
+    });
+  }
+
   get recommendedItems(): any[] {
     return [
       this.coffeeItems[0],
@@ -295,19 +314,46 @@ export class Menu implements OnInit {
       );
   }
 
- 
-activeCategory: string = 'recommended';
+  scrollToSection(sectionId: string): void {
+    const section = document.getElementById(sectionId);
 
-scrollToSection(sectionId: string): void {
-  this.activeCategory = sectionId;
+    if (!section) {
+      return;
+    }
 
-  const section = document.getElementById(sectionId);
+    this.activeCategory = sectionId;
 
-  if (section) {
     section.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
   }
-}
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.updateActiveCategory();
+  }
+
+  private updateActiveCategory(): void {
+    const checkingPosition = 230;
+
+    for (
+      let index = this.categoryIds.length - 1;
+      index >= 0;
+      index--
+    ) {
+      const sectionId = this.categoryIds[index];
+      const section = document.getElementById(sectionId);
+
+      if (
+        section &&
+        section.getBoundingClientRect().top <= checkingPosition
+      ) {
+        this.activeCategory = sectionId;
+        return;
+      }
+    }
+
+    this.activeCategory = 'recommended';
+  }
 }

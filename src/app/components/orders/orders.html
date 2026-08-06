@@ -101,15 +101,19 @@
   </div>
 </nav>
 <section class="orders-page py-4 py-lg-5">
+
   <div class="container">
 
     <!-- Heading -->
     <div
-      class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4"
-    >
+      class="d-flex flex-column flex-md-row
+             justify-content-between
+             align-items-md-center
+             gap-3 mb-4">
+
       <div>
-        <p class="text-primary fw-semibold mb-1">
-          My Account
+        <p class="section-label mb-2">
+          YOUR ORDERS
         </p>
 
         <h2 class="fw-bold mb-1">
@@ -117,455 +121,171 @@
         </h2>
 
         <p class="text-secondary mb-0">
-          Track active orders and view your previous orders.
+          View your recently placed office canteen orders.
         </p>
       </div>
 
-      <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
+      <a
+        routerLink="/menu"
+        class="btn browse-menu-btn">
 
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search order or restaurant"
-          [(ngModel)]="searchText"
-        />
-      </div>
-    </div>
+        <i class="fa-solid fa-plus me-2"></i>
+        Order More
 
-    <!-- Summary cards -->
-    <div class="row g-3 mb-4">
-
-      <div class="col-6 col-lg-3">
-        <div class="summary-card">
-          <div class="summary-icon icon-total">
-            <i class="fa-solid fa-bag-shopping"></i>
-          </div>
-
-          <div>
-            <p class="text-secondary small mb-1">
-              Total Orders
-            </p>
-
-            <h3 class="fw-bold mb-0">
-              {{ getTabCount('All') }}
-            </h3>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-lg-3">
-        <div class="summary-card">
-          <div class="summary-icon icon-active">
-            <i class="fa-solid fa-motorcycle"></i>
-          </div>
-
-          <div>
-            <p class="text-secondary small mb-1">
-              Active
-            </p>
-
-            <h3 class="fw-bold mb-0">
-              {{ getTabCount('Active') }}
-            </h3>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-lg-3">
-        <div class="summary-card">
-          <div class="summary-icon icon-completed">
-            <i class="fa-solid fa-circle-check"></i>
-          </div>
-
-          <div>
-            <p class="text-secondary small mb-1">
-              Completed
-            </p>
-
-            <h3 class="fw-bold mb-0">
-              {{ getTabCount('Completed') }}
-            </h3>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-lg-3">
-        <div class="summary-card">
-          <div class="summary-icon icon-cancelled">
-            <i class="fa-solid fa-circle-xmark"></i>
-          </div>
-
-          <div>
-            <p class="text-secondary small mb-1">
-              Cancelled
-            </p>
-
-            <h3 class="fw-bold mb-0">
-              {{ getTabCount('Cancelled') }}
-            </h3>
-          </div>
-        </div>
-      </div>
+      </a>
 
     </div>
 
-    <!-- Tabs -->
-    <div class="orders-panel">
+    <!-- Empty Orders -->
+    <div
+      *ngIf="orders.length === 0"
+      class="empty-orders text-center">
 
-      <div class="status-tabs d-flex gap-2 overflow-x-auto p-3 border-bottom">
-
-        <button
-          type="button"
-          class="btn status-tab text-nowrap"
-          *ngFor="let tab of tabs"
-          [class.active-status-tab]="selectedTab === tab"
-          (click)="selectedTab = tab"
-        >
-          {{ tab }}
-
-          <span class="tab-count ms-1">
-            {{ getTabCount(tab) }}
-          </span>
-        </button>
-
+      <div class="empty-orders-icon mx-auto mb-3">
+        <i class="fa-solid fa-bag-shopping"></i>
       </div>
 
-      <!-- Orders -->
-      <div class="p-3 p-lg-4">
+      <h3 class="fw-bold mb-2">
+        No orders yet
+      </h3>
 
+      <p class="text-secondary mb-4">
+        Items you order from the cart will appear here.
+      </p>
+
+      <a
+        routerLink="/menu"
+        class="btn browse-menu-btn">
+
+        Browse Menu
+
+      </a>
+
+    </div>
+
+    <!-- Orders -->
+    <div
+      *ngIf="orders.length > 0"
+      class="d-flex flex-column gap-3">
+
+      <article
+        *ngFor="let order of orders"
+        class="order-card">
+
+        <!-- Order heading -->
         <div
-          class="row g-4"
-          *ngIf="filteredOrders.length > 0; else noOrders"
-        >
+          class="d-flex flex-column flex-md-row
+                 justify-content-between
+                 gap-3 pb-3 mb-3 order-header">
 
-          <div
-            class="col-12"
-            *ngFor="let order of filteredOrders"
-          >
+          <div>
 
-            <article class="order-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
 
-              <!-- Top section -->
-              <div
-                class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4"
-              >
+              <h5 class="fw-bold mb-0">
+                Order #{{ order.id }}
+              </h5>
 
-                <div class="d-flex align-items-center gap-3">
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  'status-pending': order.status === 'Pending',
+                  'status-preparing': order.status === 'Preparing',
+                  'status-ready': order.status === 'Ready',
+                  'status-completed': order.status === 'Completed'
+                }">
 
-                  <img
-                    [src]="order.restaurantImage"
-                    [alt]="order.restaurantName"
-                    class="restaurant-image"
-                  />
+                {{ order.status }}
 
-                  <div>
-                    <div class="d-flex align-items-center gap-2 mb-1">
-                      <h5 class="fw-bold mb-0">
-                        {{ order.restaurantName }}
-                      </h5>
+              </span>
 
-                      <span
-                        class="status-badge"
-                        [ngClass]="getStatusClass(order.status)"
-                      >
-                        {{ order.status }}
-                      </span>
-                    </div>
-
-                    <p class="text-secondary small mb-1">
-                      Order #{{ order.id }}
-                    </p>
-
-                    <p class="text-secondary small mb-0">
-                      Ordered on {{ order.orderDate }}
-                    </p>
-                  </div>
-
-                </div>
-
-                <div class="text-md-end">
-                  <small class="text-secondary d-block">
-                    Total Amount
-                  </small>
-
-                  <h4 class="fw-bold mb-1">
-                    ₹{{ order.total }}
-                  </h4>
-
-                  <span
-                    class="payment-badge"
-                    [ngClass]="getPaymentClass(order.paymentStatus)"
-                  >
-                    {{ order.paymentStatus }}
-                  </span>
-                </div>
-
-              </div>
-
-              <!-- Tracking progress -->
-              <div
-                class="tracking-section mb-4"
-                *ngIf="isActiveOrder(order)"
-              >
-
-                <div
-                  class="d-flex justify-content-between align-items-center mb-3"
-                >
-                  <div>
-                    <h6 class="fw-bold mb-1">
-                      Order Progress
-                    </h6>
-
-                    <small class="text-secondary">
-                      Estimated time:
-                      {{ order.estimatedTime }}
-                    </small>
-                  </div>
-
-                  <i class="fa-solid fa-truck-fast tracking-icon"></i>
-                </div>
-
-                <div class="order-progress">
-
-                  <div
-                    class="progress-line"
-                    [style.width.%]="
-                      ((getStatusStep(order.status) - 1) / 4) * 100
-                    "
-                  ></div>
-
-                  <div
-                    class="progress-step"
-                    [class.completed]="getStatusStep(order.status) >= 1"
-                  >
-                    <div class="step-circle">
-                      <i class="fa-solid fa-receipt"></i>
-                    </div>
-
-                    <span>Pending</span>
-                  </div>
-
-                  <div
-                    class="progress-step"
-                    [class.completed]="getStatusStep(order.status) >= 2"
-                  >
-                    <div class="step-circle">
-                      <i class="fa-solid fa-fire-burner"></i>
-                    </div>
-
-                    <span>Preparing</span>
-                  </div>
-
-                  <div
-                    class="progress-step"
-                    [class.completed]="getStatusStep(order.status) >= 3"
-                  >
-                    <div class="step-circle">
-                      <i class="fa-solid fa-bell-concierge"></i>
-                    </div>
-
-                    <span>Ready</span>
-                  </div>
-
-                  <div
-                    class="progress-step"
-                    [class.completed]="getStatusStep(order.status) >= 4"
-                  >
-                    <div class="step-circle">
-                      <i class="fa-solid fa-motorcycle"></i>
-                    </div>
-
-                    <span>On the way</span>
-                  </div>
-
-                  <div
-                    class="progress-step"
-                    [class.completed]="getStatusStep(order.status) >= 5"
-                  >
-                    <div class="step-circle">
-                      <i class="fa-solid fa-circle-check"></i>
-                    </div>
-
-                    <span>Delivered</span>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="row g-4">
-
-                <!-- Items -->
-                <div class="col-lg-7">
-
-                  <h6 class="fw-bold mb-3">
-                    Order Items
-                  </h6>
-
-                  <div
-                    class="d-flex justify-content-between align-items-center py-2 border-bottom"
-                    *ngFor="let item of order.items"
-                  >
-
-                    <div>
-                      <span class="fw-semibold">
-                        {{ item.quantity }} × {{ item.name }}
-                      </span>
-                    </div>
-
-                    <span class="fw-semibold">
-                      ₹{{ item.price * item.quantity }}
-                    </span>
-
-                  </div>
-
-                </div>
-
-                <!-- Delivery -->
-                <div class="col-lg-5">
-
-                  <div class="delivery-box h-100">
-
-                    <div class="d-flex gap-3">
-
-                      <div class="delivery-icon">
-                        <i class="fa-solid fa-location-dot"></i>
-                      </div>
-
-                      <div>
-                        <small class="text-secondary">
-                          Delivery Address
-                        </small>
-
-                        <p class="fw-semibold mb-0 mt-1">
-                          {{ order.address }}
-                        </p>
-                      </div>
-
-                    </div>
-
-                    <div
-                      class="mt-3"
-                      *ngIf="order.deliveryDate"
-                    >
-                      <small class="text-secondary">
-                        Delivered on
-                      </small>
-
-                      <p class="fw-semibold mb-0">
-                        {{ order.deliveryDate }}
-                      </p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-              <!-- Buttons -->
-              <div
-                class="d-flex flex-wrap justify-content-end gap-2 border-top pt-3 mt-4"
-              >
-
-                <button
-                  type="button"
-                  class="btn btn-light border"
-                  (click)="viewDetails(order)"
-                >
-                  <i class="fa-regular fa-eye me-2"></i>
-                  View Details
-                </button>
-
-                <button
-                  type="button"
-                  class="btn btn-outline-primary"
-                  *ngIf="isActiveOrder(order)"
-                  (click)="trackOrder(order)"
-                >
-                  <i class="fa-solid fa-location-arrow me-2"></i>
-                  Track Order
-                </button>
-
-                <button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  *ngIf="canCancelOrder(order)"
-                  (click)="cancelOrder(order)"
-                >
-                  Cancel Order
-                </button>
-
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  *ngIf="order.status === 'Delivered'"
-                  (click)="downloadInvoice(order)"
-                >
-                  <i class="fa-solid fa-download me-2"></i>
-                  Invoice
-                </button>
-
-                <button
-                  type="button"
-                  class="btn btn-outline-warning"
-                  *ngIf="order.status === 'Delivered'"
-                  (click)="rateOrder(order)"
-                >
-                  <i class="fa-regular fa-star me-2"></i>
-                  Rate Order
-                </button>
-
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  *ngIf="
-                    order.status === 'Delivered' ||
-                    order.status === 'Cancelled'
-                  "
-                  (click)="reorder(order)"
-                >
-                  <i class="fa-solid fa-rotate-right me-2"></i>
-                  Reorder
-                </button>
-
-              </div>
-
-            </article>
-
-          </div>
-
-        </div>
-
-        <!-- Empty state -->
-        <ng-template #noOrders>
-
-          <div class="text-center py-5">
-
-            <div class="empty-icon mx-auto mb-3">
-              <i class="fa-solid fa-bag-shopping"></i>
             </div>
 
-            <h4 class="fw-bold">
-              No orders found
-            </h4>
-
-            <p class="text-secondary">
-              You do not have any orders in this section.
+            <p class="text-secondary small mb-0">
+              {{ order.orderDate }}
             </p>
-
-            <button class="btn btn-primary px-4">
-              Browse Menu
-            </button>
 
           </div>
 
-        </ng-template>
+          <div class="text-md-end">
 
-      </div>
+            <small class="text-secondary d-block">
+              Total
+            </small>
+
+            <h4 class="fw-bold mb-0">
+              ₹{{ order.total }}
+            </h4>
+
+          </div>
+
+        </div>
+
+        <!-- Items -->
+        <div class="order-items">
+
+          <div
+            *ngFor="let item of order.items"
+            class="order-item d-flex align-items-center gap-3">
+
+            <img
+              [src]="item.image"
+              [alt]="item.name"
+              class="order-item-image">
+
+            <div class="flex-grow-1">
+
+              <h6 class="fw-bold mb-1">
+                {{ item.name }}
+              </h6>
+
+              <small class="text-secondary">
+                ₹{{ item.price }} × {{ item.quantity }}
+              </small>
+
+            </div>
+
+            <span class="fw-bold">
+              ₹{{ item.price * item.quantity }}
+            </span>
+
+          </div>
+
+        </div>
+
+        <!-- Bottom -->
+        <div
+          class="d-flex flex-column flex-sm-row
+                 justify-content-between
+                 align-items-sm-center
+                 gap-3 pt-3 mt-3 order-footer">
+
+          <p class="mb-0 text-secondary">
+
+            <i class="fa-solid fa-utensils me-2"></i>
+
+            {{ getItemCount(order) }}
+            {{ getItemCount(order) === 1 ? 'item' : 'items' }}
+
+          </p>
+
+          <button
+            *ngIf="order.status === 'Pending'"
+            type="button"
+            class="cancel-order-btn"
+            (click)="cancelOrder(order.id)">
+
+            <i class="fa-regular fa-trash-can me-1"></i>
+            Cancel Order
+
+          </button>
+
+        </div>
+
+      </article>
 
     </div>
 
   </div>
+
 </section>

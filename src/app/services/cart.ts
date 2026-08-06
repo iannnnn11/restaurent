@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -57,4 +58,8 @@ export class Cart {
       cartItem => cartItem.id !== item.id
     );
   }
+  clearCart(): void {
+  this.cartItems = [];
+  localStorage.removeItem('cartItems');
+}
 }
