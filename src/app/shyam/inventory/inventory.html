@@ -1,0 +1,655 @@
+<div class="container-fluid inventory-page px-4 py-3">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <div>
+      <h3 class="fw-bold mb-1">Inventory</h3>
+      <p class="text-muted mb-0">
+        Track pantry stock and refill items before they run out.
+      </p>
+    </div>
+
+    <button class="btn btn-dark rounded-3 px-3">
+      <i class="fa-solid fa-plus me-2"></i>
+      Add Stock Item
+    </button>
+
+  </div>
+
+
+  <!-- Summary Cards -->
+  <div class="row g-3 mb-3">
+
+    <div class="col-md-3">
+      <div class="summary-card">
+
+        <div>
+          <small>Total Items</small>
+          <h3>24</h3>
+        </div>
+
+        <div class="summary-icon total-icon">
+          <i class="fa-solid fa-boxes-stacked"></i>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="summary-card">
+
+        <div>
+          <small>In Stock</small>
+          <h3>17</h3>
+        </div>
+
+        <div class="summary-icon available-icon">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="summary-card">
+
+        <div>
+          <small>Low Stock</small>
+          <h3>5</h3>
+        </div>
+
+        <div class="summary-icon low-icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="summary-card">
+
+        <div>
+          <small>Out of Stock</small>
+          <h3>2</h3>
+        </div>
+
+        <div class="summary-icon out-icon">
+          <i class="fa-solid fa-box-open"></i>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Filters -->
+  <div class="filter-bar mb-3">
+
+    <div class="row g-2 align-items-center">
+
+      <div class="col-lg-5">
+
+        <div class="input-group">
+
+          <span class="input-group-text border-0 bg-light">
+            <i class="fa-solid fa-magnifying-glass text-muted"></i>
+          </span>
+
+          <input
+            type="text"
+            class="form-control border-0 bg-light"
+            placeholder="Search stock item..."
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="col-lg-3">
+
+        <select class="form-select border-0 bg-light">
+
+          <option>All Categories</option>
+          <option>Beverages</option>
+          <option>Snacks</option>
+          <option>Nuts</option>
+          <option>Ingredients</option>
+          <option>Packaging</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="col-lg-3">
+
+        <select class="form-select border-0 bg-light">
+
+          <option>All Stock</option>
+          <option>In Stock</option>
+          <option>Low Stock</option>
+          <option>Out of Stock</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="col-lg-1">
+
+        <button class="btn btn-dark w-100">
+          <i class="fa-solid fa-filter"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Inventory Table -->
+  <div class="inventory-card">
+
+    <div class="inventory-top d-flex justify-content-between align-items-center">
+
+      <div>
+        <h5 class="fw-bold mb-0">
+          Pantry Stock
+        </h5>
+
+        <small class="text-muted">
+          Update quantities when stock is received or used
+        </small>
+      </div>
+
+      <span class="last-updated">
+        <i class="fa-regular fa-clock me-1"></i>
+        Updated today
+      </span>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+      <table class="table align-middle mb-0">
+
+        <thead>
+
+          <tr>
+            <th>ITEM</th>
+            <th>CATEGORY</th>
+            <th>QUANTITY</th>
+            <th>MIN. STOCK</th>
+            <th>STATUS</th>
+            <th>LAST RESTOCK</th>
+            <th>ACTION</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <!-- Milk -->
+          <tr>
+
+            <td>
+              <div class="item-info">
+
+                <div class="item-icon">
+                  🥛
+                </div>
+
+                <div>
+                  <h6 class="mb-0">Milk</h6>
+                  <small>Buffalo Milk</small>
+                </div>
+
+              </div>
+            </td>
+
+
+            <td>
+              <span class="category-badge">
+                Beverages
+              </span>
+            </td>
+
+
+            <td>
+
+              <div class="quantity-control">
+
+                <button>-</button>
+
+                <span>3 L</span>
+
+                <button>+</button>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              5 L
+            </td>
+
+
+            <td>
+              <span class="stock-status low">
+                Low Stock
+              </span>
+            </td>
+
+
+            <td>
+              12 Aug
+            </td>
+
+
+            <td>
+
+              <button class="restock-btn">
+                <i class="fa-solid fa-plus me-1"></i>
+                Restock
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Coffee Beans -->
+          <tr>
+
+            <td>
+
+              <div class="item-info">
+
+                <div class="item-icon">
+                  ☕
+                </div>
+
+                <div>
+                  <h6 class="mb-0">Coffee Powder</h6>
+                  <small>Premium Blend</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="category-badge">
+                Ingredients
+              </span>
+            </td>
+
+
+            <td>
+
+              <div class="quantity-control">
+
+                <button>-</button>
+
+                <span>2 kg</span>
+
+                <button>+</button>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              4 kg
+            </td>
+
+
+            <td>
+              <span class="stock-status low">
+                Low Stock
+              </span>
+            </td>
+
+
+            <td>
+              11 Aug
+            </td>
+
+
+            <td>
+              <button class="restock-btn">
+                <i class="fa-solid fa-plus me-1"></i>
+                Restock
+              </button>
+            </td>
+
+          </tr>
+
+
+          <!-- Bread -->
+          <tr>
+
+            <td>
+
+              <div class="item-info">
+
+                <div class="item-icon">
+                  🍞
+                </div>
+
+                <div>
+                  <h6 class="mb-0">Bread</h6>
+                  <small>Sandwich Bread</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="category-badge">
+                Ingredients
+              </span>
+            </td>
+
+
+            <td>
+
+              <div class="quantity-control">
+
+                <button>-</button>
+
+                <span>12 pcs</span>
+
+                <button>+</button>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              8 pcs
+            </td>
+
+
+            <td>
+              <span class="stock-status available">
+                In Stock
+              </span>
+            </td>
+
+
+            <td>
+              13 Aug
+            </td>
+
+
+            <td>
+
+              <button class="edit-btn">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Almonds -->
+          <tr>
+
+            <td>
+
+              <div class="item-info">
+
+                <div class="item-icon">
+                  🌰
+                </div>
+
+                <div>
+                  <h6 class="mb-0">Almonds</h6>
+                  <small>Roasted Almonds</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="category-badge">
+                Nuts
+              </span>
+            </td>
+
+
+            <td>
+
+              <div class="quantity-control">
+
+                <button>-</button>
+
+                <span>8 packs</span>
+
+                <button>+</button>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              5 packs
+            </td>
+
+
+            <td>
+              <span class="stock-status available">
+                In Stock
+              </span>
+            </td>
+
+
+            <td>
+              10 Aug
+            </td>
+
+
+            <td>
+
+              <button class="edit-btn">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Chips -->
+          <tr>
+
+            <td>
+
+              <div class="item-info">
+
+                <div class="item-icon">
+                  🍟
+                </div>
+
+                <div>
+                  <h6 class="mb-0">Potato Chips</h6>
+                  <small>Salted</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="category-badge">
+                Snacks
+              </span>
+            </td>
+
+
+            <td>
+
+              <div class="quantity-control">
+
+                <button disabled>-</button>
+
+                <span>0 pcs</span>
+
+                <button>+</button>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              10 pcs
+            </td>
+
+
+            <td>
+              <span class="stock-status out">
+                Out of Stock
+              </span>
+            </td>
+
+
+            <td>
+              8 Aug
+            </td>
+
+
+            <td>
+
+              <button class="restock-btn urgent">
+                Restock
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Cups -->
+          <tr>
+
+            <td>
+
+              <div class="item-info">
+
+                <div class="item-icon">
+                  🥤
+                </div>
+
+                <div>
+                  <h6 class="mb-0">Paper Cups</h6>
+                  <small>250 ml</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="category-badge">
+                Packaging
+              </span>
+            </td>
+
+
+            <td>
+
+              <div class="quantity-control">
+
+                <button>-</button>
+
+                <span>45 pcs</span>
+
+                <button>+</button>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              20 pcs
+            </td>
+
+
+            <td>
+              <span class="stock-status available">
+                In Stock
+              </span>
+            </td>
+
+
+            <td>
+              12 Aug
+            </td>
+
+
+            <td>
+
+              <button class="edit-btn">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- Bottom -->
+    <div class="inventory-bottom d-flex justify-content-between align-items-center">
+
+      <small class="text-muted">
+        Showing 6 of 24 inventory items
+      </small>
+
+      <div class="d-flex align-items-center gap-2">
+
+        <span class="legend available-dot"></span>
+        <small>In Stock</small>
+
+        <span class="legend low-dot ms-2"></span>
+        <small>Low</small>
+
+        <span class="legend out-dot ms-2"></span>
+        <small>Out</small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

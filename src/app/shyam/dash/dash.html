@@ -1,112 +1,217 @@
+<div class="container-fluid p-0">
+  <div class="d-flex">
 
-<div class="container-fluid">
-  <div class="row">
+    <!-- Sidebar -->
+    <aside
+      class="sidebar text-white"
+      [class.sidebar-collapsed]="isCollapsed"
+    >
 
-<div class=" col-md-2 bg-dark text-white p-4 vh-100">
+      <!-- Brand + Toggle -->
+      <div class="d-flex align-items-center justify-content-between px-3 py-4">
 
-  <p class="fs-2 fw-bold mb-3 text-warning">
-    Jode<span class="text-primary">tx</span>
-  </p>
+        <h3
+          class="fw-bold mb-0 brand"
+          *ngIf="!isCollapsed"
+        >
+          Jode<span class="text-warning">Tx</span>
+        </h3>
 
-  <ul class="list-unstyled">
+        <button
+          class="toggle-btn"
+          (click)="toggleSidebar()"
+        >
+          <i
+            class="fa-solid"
+            [class.fa-angle-left]="!isCollapsed"
+            [class.fa-angle-right]="isCollapsed"
+          ></i>
+        </button>
 
-    <li class="mb-2">
-      <a class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded" routerLink="/dash/home">
-        <i class="fa-solid fa-house"></i>
-        Dashboard
-      </a>
-    </li>
+      </div>
 
-    <li class="mb-2">
-      <a  class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded" routerLink="/dash/order">
-        <i class="fa-solid fa-cart-shopping"></i>
-        Orders
-      </a>
-    </li>
 
-    <li class="mb-2">
-      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
-        <i class="fa-solid fa-utensils"></i>
-        Menu
-      </a>
-    </li>
+      <!-- Main -->
+      <p
+        class="section-title px-3"
+        *ngIf="!isCollapsed"
+      >
+        MAIN
+      </p>
 
-    <li class="mb-2">
-      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
-        <i class="fa-solid fa-layer-group"></i>
-        Categories
-      </a>
-    </li>
+      <ul class="list-unstyled px-2">
 
-  </ul>
+        <li>
+          <a
+            routerLink="/dash/home"
+            routerLinkActive="active-link"
+            class="sidebar-link"
+          >
+            <i class="fa-solid fa-house"></i>
 
-  <hr class="border-secondary my-4">
+            <span *ngIf="!isCollapsed">
+              Dashboard
+            </span>
+          </a>
+        </li>
 
-  <!-- Management -->
-  <p class="text-uppercase text-secondary small fw-semibold mb-3">
-    Management
-  </p>
 
-  <ul class="list-unstyled">
+        <li>
+          <a
+            routerLink="/dash/order"
+            routerLinkActive="active-link"
+            class="sidebar-link"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
 
-    <li class="mb-2">
-      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
-        <i class="fa-solid fa-boxes-stacked"></i>
-        Inventory
-      </a>
-    </li>
+            <span *ngIf="!isCollapsed">
+              Orders
+            </span>
+          </a>
+        </li>
 
-    <li class="mb-2">
-      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
-        <i class="fa-solid fa-users"></i>
-        Employees
-      </a>
-    </li>
 
-    <li class="mb-2">
-      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
-        <i class="fa-solid fa-chart-line"></i>
-        Revenue
-      </a>
-    </li>
+        <li>
+          <a class="sidebar-link" routerLink="/dash/mennu"
+          routerLinkActive="active-link">
 
-    <li class="mb-2">
-      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
-        <i class="fa-solid fa-chart-pie"></i>
-        Reports
-      </a>
-    </li>
+            <i class="fa-solid fa-utensils"></i>
 
-  </ul>
+            <span *ngIf="!isCollapsed">
+              Menu
+            </span>
 
-  <hr class="border-secondary my-4">
+          </a>
+        </li>
 
-  <!-- System -->
-  <p class="text-uppercase text-secondary small fw-semibold mb-3">
-    System
-  </p>
 
-  <ul class="list-unstyled">
+        <li>
+          <a class="sidebar-link">
 
-    <li class="mb-2">
-      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
-        <i class="fa-solid fa-gear"></i>
-        Settings
-      </a>
-    </li>
+            <i class="fa-solid fa-layer-group"></i>
 
-    <li class="mb-2">
-      <a href="#" class="text-danger text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        Logout
-      </a>
-    </li>
+            <span *ngIf="!isCollapsed">
+              Categories
+            </span>
 
-  </ul>
+          </a>
+        </li>
 
-</div>
-<div class="col-md-10">
-    <router-outlet></router-outlet>
-</div>
-</div>
+      </ul>
+
+
+      <div *ngIf="!isCollapsed">
+        <hr class="sidebar-divider">
+
+        <p class="section-title px-3">
+          MANAGEMENT
+        </p>
+      </div>
+
+
+      <ul class="list-unstyled px-2">
+
+        <li>
+          <a class="sidebar-link" routerLink="/dash/inventory" routerLinkActive="active-link" >
+
+            <i class="fa-solid fa-boxes-stacked"></i>
+
+            <span *ngIf="!isCollapsed">
+              Inventory
+            </span>
+
+          </a>
+        </li>
+
+
+        <li>
+          <a class="sidebar-link">
+
+            <i class="fa-solid fa-users"></i>
+
+            <span *ngIf="!isCollapsed">
+              Employees
+            </span>
+
+          </a>
+        </li>
+
+
+        <li>
+          <a class="sidebar-link">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <span *ngIf="!isCollapsed">
+              Revenue
+            </span>
+
+          </a>
+        </li>
+
+
+        <li>
+          <a class="sidebar-link">
+
+            <i class="fa-solid fa-chart-pie"></i>
+
+            <span *ngIf="!isCollapsed">
+              Reports
+            </span>
+
+          </a>
+        </li>
+
+      </ul>
+
+
+      <div *ngIf="!isCollapsed">
+        <hr class="sidebar-divider">
+
+        <p class="section-title px-3">
+          SYSTEM
+        </p>
+      </div>
+
+
+      <ul class="list-unstyled px-2">
+
+        <li>
+          <a class="sidebar-link">
+
+            <i class="fa-solid fa-gear"></i>
+
+            <span *ngIf="!isCollapsed">
+              Settings
+            </span>
+
+          </a>
+        </li>
+
+
+        <li>
+          <a class="sidebar-link logout-link">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span *ngIf="!isCollapsed">
+              Logout
+            </span>
+
+          </a>
+        </li>
+
+      </ul>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content flex-grow-1">
+
+      <router-outlet></router-outlet>
+
+    </main>
+
+  </div>
 </div>

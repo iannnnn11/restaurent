@@ -1,16 +1,16 @@
-<div class="container-fluid py-4">
+<div class="container-fluid order-page px-4 py-3">
 
   <!-- Header -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
 
     <div>
-      <h2 class="fw-bold mb-1">Orders</h2>
+      <h3 class="fw-bold mb-1">Orders</h3>
       <p class="text-muted mb-0">
-        Manage and update current pantry orders.
+        Manage today's pantry orders.
       </p>
     </div>
 
-    <button class="btn btn-dark px-4">
+    <button class="btn btn-dark rounded-3 px-3">
       <i class="fa-solid fa-rotate me-2"></i>
       Refresh
     </button>
@@ -18,14 +18,33 @@
   </div>
 
 
-  <!-- Status Cards -->
-  <div class="row g-3 mb-4">
+  <!-- Status Summary -->
+  <div class="row g-3 mb-3">
 
     <div class="col-md-3">
-      <div class="card border-0 shadow-sm rounded-4">
-        <div class="card-body">
-          <p class="text-muted mb-2 ">Order</p>
-          <h3 class="fw-bold text-warning mb-0">10</h3>
+      <div class="summary-card">
+        <div>
+          <small>Total Orders</small>
+          <h3>48</h3>
+        </div>
+
+        <div class="summary-icon total-icon">
+          <i class="fa-solid fa-receipt"></i>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="summary-card">
+
+        <div>
+          <small>Waiting</small>
+          <h3>12</h3>
+        </div>
+
+        <div class="summary-icon waiting-icon">
+          <i class="fa-solid fa-clock"></i>
         </div>
 
       </div>
@@ -33,100 +52,101 @@
 
 
     <div class="col-md-3">
-      <div class="card border-0 shadow-sm rounded-4">
-        <div class="card-body">
-          <p class="text-muted mb-2">Pending</p>
-          <h3 class="fw-bold text-warning mb-0">12</h3>
+      <div class="summary-card">
+
+        <div>
+          <small>Preparing</small>
+          <h3>8</h3>
         </div>
+
+        <div class="summary-icon preparing-icon">
+          <i class="fa-solid fa-fire-burner"></i>
+        </div>
+
       </div>
     </div>
 
 
     <div class="col-md-3">
-      <div class="card border-0 shadow-sm rounded-4">
-        <div class="card-body">
-          <p class="text-muted mb-2">Preparing</p>
-          <h3 class="fw-bold text-primary mb-0">8</h3>
-        </div>
-      </div>
-    </div>
+      <div class="summary-card">
 
-
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm rounded-4">
-        <div class="card-body">
-          <p class="text-muted mb-2">Ready</p>
-          <h3 class="fw-bold text-success mb-0">6</h3>
+        <div>
+          <small>Ready</small>
+          <h3>6</h3>
         </div>
+
+        <div class="summary-icon ready-icon">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+
       </div>
     </div>
 
   </div>
 
 
-  <!-- Filter Section -->
-  <div class="card border-0 shadow-sm rounded-4 mb-4">
+  <!-- Search + Filters -->
+  <div class="filter-bar mb-3">
 
-    <div class="card-body">
+    <div class="row g-2 align-items-center">
 
-      <div class="row g-3 align-items-center">
+      <!-- Search -->
+      <div class="col-lg-5">
 
-        <!-- Search -->
-        <div class="col-md-5">
-          <div class="input-group">
+        <div class="input-group">
 
-            <span class="input-group-text bg-white">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </span>
+          <span class="input-group-text border-0 bg-light">
+            <i class="fa-solid fa-magnifying-glass text-muted"></i>
+          </span>
 
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search order ID or employee..."
-            >
-
-          </div>
-        </div>
-
-
-        <!-- Status -->
-        <div class="col-md-3">
-
-          <select class="form-select">
-
-            <option selected>All Status</option>
-            <option>Pending</option>
-            <option>Preparing</option>
-            <option>Ready</option>
-            <option>Completed</option>
-
-          </select>
+          <input
+            type="text"
+            class="form-control border-0 bg-light"
+            placeholder="Search order, employee or food..."
+          >
 
         </div>
 
-
-        <!-- Date -->
-        <div class="col-md-3">
-
-          <select class="form-select">
-
-            <option selected>Today</option>
-            <option>Yesterday</option>
-            <option>This Week</option>
-
-          </select>
-
-        </div>
+      </div>
 
 
-        <!-- Filter button -->
-        <div class="col-md-1">
+      <!-- Status -->
+      <div class="col-lg-3">
 
-          <button class="btn btn-dark w-100">
-            <i class="fa-solid fa-filter"></i>
-          </button>
+        <select class="form-select border-0 bg-light">
 
-        </div>
+          <option>All Status</option>
+          <option>Waiting</option>
+          <option>Preparing</option>
+          <option>Ready</option>
+          <option>Completed</option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Date -->
+      <div class="col-lg-2">
+
+        <select class="form-select border-0 bg-light">
+
+          <option>Today</option>
+          <option>Yesterday</option>
+          <option>This Week</option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Button -->
+      <div class="col-lg-2">
+
+        <button class="btn btn-dark w-100">
+          <i class="fa-solid fa-filter me-2"></i>
+          Filter
+        </button>
 
       </div>
 
@@ -135,272 +155,435 @@
   </div>
 
 
-  <!-- Orders Table -->
-  <div class="card border-0 shadow-sm rounded-4">
+  <!-- Order Table -->
+  <div class="orders-card">
 
-    <div class="card-body p-0">
+    <!-- Table heading -->
+    <div class="table-top d-flex justify-content-between align-items-center">
 
-      <div class="table-responsive">
+      <div>
+        <h5 class="fw-bold mb-0">
+          Today's Orders
+        </h5>
 
-        <table class="table table-hover align-middle mb-0">
-
-          <thead class="table-light">
-
-            <tr>
-              <th class="ps-4">Order ID</th>
-              <th>Employee</th>
-              <th>Items</th>
-              <th>Amount</th>
-              <th>Time</th>
-              <th>Status</th>
-              <th class="text-center">Action</th>
-            </tr>
-
-          </thead>
+        <small class="text-muted">
+          38 active orders
+        </small>
+      </div>
 
 
-          <tbody>
+      <div class="d-flex gap-2">
 
-            <!-- Order 1 -->
-            <tr>
+        <button class="small-filter active-filter">
+          All
+        </button>
 
-              <td class="ps-4 fw-semibold">
+        <button class="small-filter">
+          Waiting
+        </button>
+
+        <button class="small-filter">
+          Preparing
+        </button>
+
+        <button class="small-filter">
+          Ready
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+      <table class="table align-middle mb-0">
+
+        <thead>
+
+          <tr>
+            <th>ORDER</th>
+            <th>EMPLOYEE</th>
+            <th>ITEMS</th>
+            <th>TIME</th>
+            <th>AMOUNT</th>
+            <th>STATUS</th>
+            <th>ACTION</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <!-- ORDER 1 -->
+          <tr>
+
+            <td>
+              <span class="order-code">
                 #1024
-              </td>
+              </span>
+            </td>
 
-              <td>
-                <div>
-                  <p class="fw-semibold mb-0">Rahul Sharma</p>
-                  <small class="text-muted">Design Team</small>
+
+            <td>
+              <div class="employee-info">
+
+                <div class="employee-avatar">
+                  RS
                 </div>
-              </td>
 
-              <td>
+                <div>
+                  <h6 class="mb-0">Rahul Sharma</h6>
+                  <small>Design</small>
+                </div>
+
+              </div>
+            </td>
+
+
+            <td>
+              <span class="item-name">
                 Chicken Sandwich
-                <small class="text-muted d-block">
-                  Cold Coffee
-                </small>
-              </td>
+              </span>
 
-              <td class="fw-semibold">
-                ₹180
-              </td>
-
-              <td>
-                10:32 AM
-              </td>
-
-              <td>
-                <span class="badge bg-warning text-dark">
-                  Pending
-                </span>
-              </td>
-
-              <td class="text-center">
-
-                <button class="btn btn-primary btn-sm me-2">
-                  Start Preparing
-                </button>
-
-                <button class="btn btn-outline-secondary btn-sm">
-                  View
-                </button>
-
-              </td>
-
-            </tr>
+              <small class="d-block text-muted">
+                + Cold Coffee
+              </small>
+            </td>
 
 
-            <!-- Order 2 -->
-            <tr>
+            <td>
+              10:32 AM
+            </td>
 
-              <td class="ps-4 fw-semibold">
+
+            <td class="fw-semibold">
+              ₹180
+            </td>
+
+
+            <td>
+              <span class="order-status waiting">
+                Waiting
+              </span>
+            </td>
+
+
+            <td>
+
+              <button class="order-action">
+                Start Preparing
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- ORDER 2 -->
+          <tr>
+
+            <td>
+              <span class="order-code">
                 #1025
-              </td>
+              </span>
+            </td>
 
-              <td>
-                <div>
-                  <p class="fw-semibold mb-0">Priya Nair</p>
-                  <small class="text-muted">Development</small>
+
+            <td>
+
+              <div class="employee-info">
+
+                <div class="employee-avatar">
+                  PN
                 </div>
-              </td>
 
-              <td>
+                <div>
+                  <h6 class="mb-0">Priya Nair</h6>
+                  <small>Development</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="item-name">
                 Veg Burger
-                <small class="text-muted d-block">
-                  French Fries
-                </small>
-              </td>
+              </span>
 
-              <td class="fw-semibold">
-                ₹220
-              </td>
-
-              <td>
-                10:40 AM
-              </td>
-
-              <td>
-                <span class="badge bg-primary">
-                  Preparing
-                </span>
-              </td>
-
-              <td class="text-center">
-
-                <button class="btn btn-success btn-sm me-2">
-                  Mark Ready
-                </button>
-
-                <button class="btn btn-outline-secondary btn-sm">
-                  View
-                </button>
-
-              </td>
-
-            </tr>
+              <small class="d-block text-muted">
+                + French Fries
+              </small>
+            </td>
 
 
-            <!-- Order 3 -->
-            <tr>
+            <td>
+              10:40 AM
+            </td>
 
-              <td class="ps-4 fw-semibold">
+
+            <td class="fw-semibold">
+              ₹220
+            </td>
+
+
+            <td>
+              <span class="order-status preparing">
+                Preparing
+              </span>
+            </td>
+
+
+            <td>
+
+              <button class="order-action success-action">
+                Mark Ready
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- ORDER 3 -->
+          <tr>
+
+            <td>
+              <span class="order-code">
                 #1026
-              </td>
+              </span>
+            </td>
 
-              <td>
-                <div>
-                  <p class="fw-semibold mb-0">Amit Patil</p>
-                  <small class="text-muted">HR Team</small>
+
+            <td>
+
+              <div class="employee-info">
+
+                <div class="employee-avatar">
+                  AP
                 </div>
-              </td>
 
-              <td>
+                <div>
+                  <h6 class="mb-0">Amit Patil</h6>
+                  <small>HR</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="item-name">
                 Paneer Wrap
-              </td>
-
-              <td class="fw-semibold">
-                ₹140
-              </td>
-
-              <td>
-                10:48 AM
-              </td>
-
-              <td>
-                <span class="badge bg-success">
-                  Ready
-                </span>
-              </td>
-
-              <td class="text-center">
-
-                <button class="btn btn-dark btn-sm me-2">
-                  Complete Order
-                </button>
-
-                <button class="btn btn-outline-secondary btn-sm">
-                  View
-                </button>
-
-              </td>
-
-            </tr>
+              </span>
+            </td>
 
 
-            <!-- Order 4 -->
-            <tr>
+            <td>
+              10:48 AM
+            </td>
 
-              <td class="ps-4 fw-semibold">
+
+            <td class="fw-semibold">
+              ₹140
+            </td>
+
+
+            <td>
+              <span class="order-status ready">
+                Ready
+              </span>
+            </td>
+
+
+            <td>
+
+              <button class="order-action dark-action">
+                Complete
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- ORDER 4 -->
+          <tr>
+
+            <td>
+              <span class="order-code">
                 #1027
-              </td>
+              </span>
+            </td>
 
-              <td>
-                <div>
-                  <p class="fw-semibold mb-0">Sneha Joshi</p>
-                  <small class="text-muted">Finance</small>
+
+            <td>
+
+              <div class="employee-info">
+
+                <div class="employee-avatar">
+                  SJ
                 </div>
-              </td>
 
-              <td>
+                <div>
+                  <h6 class="mb-0">Sneha Joshi</h6>
+                  <small>Finance</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="item-name">
                 Masala Tea
-                <small class="text-muted d-block">
-                  Veg Sandwich
-                </small>
-              </td>
+              </span>
 
-              <td class="fw-semibold">
-                ₹110
-              </td>
+              <small class="d-block text-muted">
+                + Veg Sandwich
+              </small>
+            </td>
 
-              <td>
-                11:02 AM
-              </td>
 
-              <td>
-                <span class="badge bg-secondary">
-                  Completed
-                </span>
-              </td>
+            <td>
+              11:02 AM
+            </td>
 
-              <td class="text-center">
 
-                <button
-                  class="btn btn-outline-secondary btn-sm"
-                >
-                  View
-                </button>
+            <td class="fw-semibold">
+              ₹110
+            </td>
 
-              </td>
 
-            </tr>
+            <td>
+              <span class="order-status completed">
+                Completed
+              </span>
+            </td>
 
-          </tbody>
 
-        </table>
+            <td>
+
+              <button class="view-action">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- ORDER 5 -->
+          <tr>
+
+            <td>
+              <span class="order-code">
+                #1028
+              </span>
+            </td>
+
+
+            <td>
+
+              <div class="employee-info">
+
+                <div class="employee-avatar">
+                  VK
+                </div>
+
+                <div>
+                  <h6 class="mb-0">Vikas Kumar</h6>
+                  <small>IT</small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="item-name">
+                Cold Coffee
+              </span>
+
+              <small class="d-block text-muted">
+                x2
+              </small>
+            </td>
+
+
+            <td>
+              11:08 AM
+            </td>
+
+
+            <td class="fw-semibold">
+              ₹160
+            </td>
+
+
+            <td>
+              <span class="order-status waiting">
+                Waiting
+              </span>
+            </td>
+
+
+            <td>
+
+              <button class="order-action">
+                Start Preparing
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- Bottom -->
+    <div class="table-bottom d-flex justify-content-between align-items-center">
+
+      <small class="text-muted">
+        Showing 5 of 48 orders
+      </small>
+
+
+      <div class="d-flex gap-2">
+
+        <button class="page-btn">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <button class="page-btn active-page">
+          1
+        </button>
+
+        <button class="page-btn">
+          2
+        </button>
+
+        <button class="page-btn">
+          3
+        </button>
+
+        <button class="page-btn">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
 
       </div>
 
     </div>
-
-  </div>
-
-
-  <!-- Bottom -->
-  <div class="d-flex justify-content-between align-items-center mt-4">
-
-    <small class="text-muted">
-      Showing 4 of 48 orders
-    </small>
-
-
-    <nav>
-
-      <ul class="pagination pagination-sm mb-0">
-
-        <li class="page-item disabled">
-          <a class="page-link">Previous</a>
-        </li>
-
-        <li class="page-item active">
-          <a class="page-link">1</a>
-        </li>
-
-        <li class="page-item">
-          <a class="page-link">2</a>
-        </li>
-
-        <li class="page-item">
-          <a class="page-link">3</a>
-        </li>
-
-        <li class="page-item">
-          <a class="page-link">Next</a>
-        </li>
-
-      </ul>
-
-    </nav>
 
   </div>
 

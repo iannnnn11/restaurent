@@ -17,6 +17,8 @@ import { Dash } from './shyam/dash/dash';
 import { Home } from './shyam/home/home';
 import { Order } from './shyam/order/order';
 import { authGuard } from './auth-guard';
+import { Mennu } from './shyam/mennu/mennu';
+import { Inventory } from './shyam/inventory/inventory';
 
 export const routes: Routes = [
   {
@@ -73,6 +75,14 @@ export const routes: Routes = [
     {
       path: 'order',
       component: Order
+    },
+    {
+      path: 'mennu',
+      component: Mennu
+    },
+    {
+      path: 'inventory',
+      component: Inventory
     }
   ]
 },

@@ -1,0 +1,426 @@
+.order-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+
+/* =======================
+   SUMMARY CARDS
+======================= */
+
+.summary-card {
+  background: white;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 16px;
+
+  padding: 17px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 95px;
+}
+
+
+.summary-card small {
+  color: #6b7280;
+}
+
+
+.summary-card h3 {
+  margin: 4px 0 0;
+
+  font-weight: 700;
+}
+
+
+.summary-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  font-size: 18px;
+}
+
+
+.total-icon {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+
+.waiting-icon {
+  background: #fff7d6;
+  color: #b77900;
+}
+
+
+.preparing-icon {
+  background: #eaf2ff;
+  color: #2563eb;
+}
+
+
+.ready-icon {
+  background: #e8f8ef;
+  color: #198754;
+}
+
+
+
+/* =======================
+   FILTER BAR
+======================= */
+
+.filter-bar {
+  background: white;
+
+  padding: 13px;
+
+  border-radius: 16px;
+
+  border: 1px solid #edf0f4;
+}
+
+
+.filter-bar .form-control,
+.filter-bar .form-select,
+.filter-bar .input-group-text {
+  min-height: 42px;
+}
+
+
+
+/* =======================
+   TABLE CARD
+======================= */
+
+.orders-card {
+  background: white;
+
+  border-radius: 17px;
+
+  border: 1px solid #edf0f4;
+
+  overflow: hidden;
+}
+
+
+.table-top {
+  padding: 16px 18px;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+
+
+/* =======================
+   MINI FILTER BUTTONS
+======================= */
+
+.small-filter {
+  border: 0;
+
+  background: #f4f5f7;
+
+  color: #6b7280;
+
+  padding: 7px 11px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.active-filter {
+  background: #111827;
+
+  color: white;
+}
+
+
+
+/* =======================
+   TABLE
+======================= */
+
+.table thead th {
+  padding: 13px 16px;
+
+  background: #f8f9fb;
+
+  border-bottom: 1px solid #eeeeee;
+
+  color: #8a9099;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+}
+
+
+.table tbody td {
+  padding: 13px 16px;
+
+  border-color: #f0f0f0;
+
+  font-size: 13px;
+}
+
+
+.table tbody tr:hover {
+  background: #fafafa;
+}
+
+
+
+/* =======================
+   ORDER CODE
+======================= */
+
+.order-code {
+  font-weight: 700;
+
+  color: #111827;
+}
+
+
+
+/* =======================
+   EMPLOYEE
+======================= */
+
+.employee-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.employee-info h6 {
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+.employee-info small {
+  color: #8b8f97;
+}
+
+
+.employee-avatar {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eef0f3;
+
+  color: #374151;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+
+/* =======================
+   ITEMS
+======================= */
+
+.item-name {
+  font-weight: 600;
+}
+
+
+
+/* =======================
+   STATUS
+======================= */
+
+.order-status {
+  display: inline-block;
+
+  min-width: 82px;
+
+  text-align: center;
+
+  border-radius: 20px;
+
+  padding: 6px 9px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.order-status.waiting {
+  background: #fff5d6;
+
+  color: #9b6800;
+}
+
+
+.order-status.preparing {
+  background: #eaf2ff;
+
+  color: #2563eb;
+}
+
+
+.order-status.ready {
+  background: #e8f7ef;
+
+  color: #198754;
+}
+
+
+.order-status.completed {
+  background: #eef0f3;
+
+  color: #6b7280;
+}
+
+
+
+/* =======================
+   ACTION BUTTONS
+======================= */
+
+.order-action {
+  min-width: 105px;
+
+  padding: 7px 10px;
+
+  border: 1px solid #d7dbe0;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #111827;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  transition: 0.2s;
+}
+
+
+.order-action:hover {
+  background: #111827;
+
+  color: white;
+
+  border-color: #111827;
+}
+
+
+.success-action {
+  background: #198754;
+
+  border-color: #198754;
+
+  color: white;
+}
+
+
+.dark-action {
+  background: #111827;
+
+  border-color: #111827;
+
+  color: white;
+}
+
+
+.view-action {
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid #ddd;
+
+  background: white;
+
+  border-radius: 8px;
+
+  color: #6b7280;
+}
+
+
+
+/* =======================
+   PAGINATION
+======================= */
+
+.table-bottom {
+  padding: 13px 18px;
+
+  border-top: 1px solid #eeeeee;
+}
+
+
+.page-btn {
+  min-width: 31px;
+  height: 31px;
+
+  border: 1px solid #e1e4e8;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #555;
+
+  font-size: 12px;
+}
+
+
+.active-page {
+  background: #111827;
+
+  color: white;
+
+  border-color: #111827;
+}
+
+
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+@media (max-width: 992px) {
+
+  .table-top {
+    align-items: flex-start !important;
+
+    gap: 15px;
+
+    flex-direction: column;
+  }
+
+}
