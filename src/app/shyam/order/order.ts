@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  OrderService,
+  UserOrder
+} from '../../services/order';
 
 @Component({
   selector: 'app-order',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './order.html',
-  styleUrl: './order.css',
+  styleUrl: './order.css'
 })
-export class Order {}
+export class Order implements OnInit {
+
+  orders: UserOrder[] = [];
+
+  constructor(private orderService: OrderService) {}
+
+  ngOnInit() {
+    this.orders = this.orderService.getOrders();
+  }
+
+}

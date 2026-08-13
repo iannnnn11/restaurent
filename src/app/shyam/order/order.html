@@ -216,335 +216,103 @@
 
         <tbody>
 
-          <!-- ORDER 1 -->
-          <tr>
+  <tr *ngFor="let order of orders">
 
-            <td>
-              <span class="order-code">
-                #1024
-              </span>
-            </td>
+    <!-- Order ID -->
+    <td>
+      <span class="order-code">
+        {{ order.id }}
+      </span>
+    </td>
 
 
-            <td>
-              <div class="employee-info">
+    <!-- Items -->
+    <td colspan="2">
 
-                <div class="employee-avatar">
-                  RS
-                </div>
+      <div *ngFor="let item of order.items">
 
-                <div>
-                  <h6 class="mb-0">Rahul Sharma</h6>
-                  <small>Design</small>
-                </div>
+        <span class="item-name">
+          {{ item.name }}
+        </span>
 
-              </div>
-            </td>
+        <small class="text-muted ms-2">
+          x{{ item.quantity }}
+        </small>
 
+      </div>
 
-            <td>
-              <span class="item-name">
-                Chicken Sandwich
-              </span>
+    </td>
 
-              <small class="d-block text-muted">
-                + Cold Coffee
-              </small>
-            </td>
 
+    <!-- Time -->
+    <td>
+      {{ order.orderDate }}
+    </td>
 
-            <td>
-              10:32 AM
-            </td>
 
+    <!-- Amount -->
+    <td class="fw-semibold">
+      ₹{{ order.total }}
+    </td>
 
-            <td class="fw-semibold">
-              ₹180
-            </td>
 
+    <!-- Status -->
+    <td>
 
-            <td>
-              <span class="order-status waiting">
-                Waiting
-              </span>
-            </td>
+      <span
+        class="order-status"
+        [ngClass]="{
+          'waiting': order.status === 'Pending',
+          'preparing': order.status === 'Preparing',
+          'ready': order.status === 'Ready',
+          'completed': order.status === 'Completed'
+        }"
+      >
+        {{ order.status }}
+      </span>
 
+    </td>
 
-            <td>
 
-              <button class="order-action">
-                Start Preparing
-              </button>
+    <!-- Action -->
+    <td>
 
-            </td>
+      <button
+        *ngIf="order.status === 'Pending'"
+        class="order-action"
+      >
+        Start Preparing
+      </button>
 
-          </tr>
 
+      <button
+        *ngIf="order.status === 'Preparing'"
+        class="order-action success-action"
+      >
+        Mark Ready
+      </button>
 
-          <!-- ORDER 2 -->
-          <tr>
 
-            <td>
-              <span class="order-code">
-                #1025
-              </span>
-            </td>
+      <button
+        *ngIf="order.status === 'Ready'"
+        class="order-action dark-action"
+      >
+        Complete
+      </button>
 
 
-            <td>
+      <span
+        *ngIf="order.status === 'Completed'"
+        class="text-success fw-semibold"
+      >
+        Done
+      </span>
 
-              <div class="employee-info">
+    </td>
 
-                <div class="employee-avatar">
-                  PN
-                </div>
+  </tr>
 
-                <div>
-                  <h6 class="mb-0">Priya Nair</h6>
-                  <small>Development</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="item-name">
-                Veg Burger
-              </span>
-
-              <small class="d-block text-muted">
-                + French Fries
-              </small>
-            </td>
-
-
-            <td>
-              10:40 AM
-            </td>
-
-
-            <td class="fw-semibold">
-              ₹220
-            </td>
-
-
-            <td>
-              <span class="order-status preparing">
-                Preparing
-              </span>
-            </td>
-
-
-            <td>
-
-              <button class="order-action success-action">
-                Mark Ready
-              </button>
-
-            </td>
-
-          </tr>
-
-
-          <!-- ORDER 3 -->
-          <tr>
-
-            <td>
-              <span class="order-code">
-                #1026
-              </span>
-            </td>
-
-
-            <td>
-
-              <div class="employee-info">
-
-                <div class="employee-avatar">
-                  AP
-                </div>
-
-                <div>
-                  <h6 class="mb-0">Amit Patil</h6>
-                  <small>HR</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="item-name">
-                Paneer Wrap
-              </span>
-            </td>
-
-
-            <td>
-              10:48 AM
-            </td>
-
-
-            <td class="fw-semibold">
-              ₹140
-            </td>
-
-
-            <td>
-              <span class="order-status ready">
-                Ready
-              </span>
-            </td>
-
-
-            <td>
-
-              <button class="order-action dark-action">
-                Complete
-              </button>
-
-            </td>
-
-          </tr>
-
-
-          <!-- ORDER 4 -->
-          <tr>
-
-            <td>
-              <span class="order-code">
-                #1027
-              </span>
-            </td>
-
-
-            <td>
-
-              <div class="employee-info">
-
-                <div class="employee-avatar">
-                  SJ
-                </div>
-
-                <div>
-                  <h6 class="mb-0">Sneha Joshi</h6>
-                  <small>Finance</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="item-name">
-                Masala Tea
-              </span>
-
-              <small class="d-block text-muted">
-                + Veg Sandwich
-              </small>
-            </td>
-
-
-            <td>
-              11:02 AM
-            </td>
-
-
-            <td class="fw-semibold">
-              ₹110
-            </td>
-
-
-            <td>
-              <span class="order-status completed">
-                Completed
-              </span>
-            </td>
-
-
-            <td>
-
-              <button class="view-action">
-                <i class="fa-solid fa-eye"></i>
-              </button>
-
-            </td>
-
-          </tr>
-
-
-          <!-- ORDER 5 -->
-          <tr>
-
-            <td>
-              <span class="order-code">
-                #1028
-              </span>
-            </td>
-
-
-            <td>
-
-              <div class="employee-info">
-
-                <div class="employee-avatar">
-                  VK
-                </div>
-
-                <div>
-                  <h6 class="mb-0">Vikas Kumar</h6>
-                  <small>IT</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="item-name">
-                Cold Coffee
-              </span>
-
-              <small class="d-block text-muted">
-                x2
-              </small>
-            </td>
-
-
-            <td>
-              11:08 AM
-            </td>
-
-
-            <td class="fw-semibold">
-              ₹160
-            </td>
-
-
-            <td>
-              <span class="order-status waiting">
-                Waiting
-              </span>
-            </td>
-
-
-            <td>
-
-              <button class="order-action">
-                Start Preparing
-              </button>
-
-            </td>
-
-          </tr>
-
-        </tbody>
+</tbody>
 
       </table>
 
