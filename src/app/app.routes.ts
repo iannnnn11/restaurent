@@ -13,6 +13,10 @@ import { Settings } from './components/settings/settings';
 import { ProfileDetails } from './components/profile-details/profile-details';
 import { Activity } from './components/activity/activity';
 import { Security } from './components/security/security';
+import { Dash } from './shyam/dash/dash';
+import { Home } from './shyam/home/home';
+import { Order } from './shyam/order/order';
+import { authGuard } from './auth-guard';
 
 export const routes: Routes = [
   {
@@ -51,6 +55,27 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+  path: 'dash',
+  component: Dash,
+  canActivate: [authGuard],
+
+  children: [
+    {
+      path: '',
+      redirectTo: 'home',
+      pathMatch: 'full'
+    },
+    {
+      path: 'home',
+      component: Home
+    },
+    {
+      path: 'order',
+      component: Order
+    }
+  ]
+},
 
   {
     path: 'signup',
@@ -83,5 +108,10 @@ export const routes: Routes = [
   {
     path: 'booktable',
     component: Booktable
+  },
+  {
+    path: 'dash',
+    component: Dash
   }
+  
 ];

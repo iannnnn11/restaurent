@@ -1,0 +1,298 @@
+<div class="container-fluid py-4 px-4 dashboard-page">
+
+  <!-- Welcome -->
+  <div class="mb-4">
+    
+    <h2 class="fw-bold mb-1">Shyam Bhai</h2>
+    <p class="text-muted mb-0">
+      Here is what you need to handle today.
+    </p>
+  </div>
+
+
+  <!-- Main Status Cards -->
+  <div class="row g-3 mb-4">
+
+    <div class="col-md-4">
+      <div class="card dashboard-card border-0 shadow-sm h-100">
+        <div class="card-body p-4 d-flex justify-content-between align-items-center">
+
+          <div>
+            <p class="text-muted mb-1">Orders Waiting</p>
+            <h2 class="fw-bold mb-0">12</h2>
+            <small class="text-warning fw-semibold">
+              Need attention
+            </small>
+          </div>
+
+          <div class="icon-box bg-warning-subtle text-warning">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div class="card dashboard-card border-0 shadow-sm h-100">
+        <div class="card-body p-4 d-flex justify-content-between align-items-center">
+
+          <div>
+            <p class="text-muted mb-1">Ready Orders</p>
+            <h2 class="fw-bold mb-0">8</h2>
+            <small class="text-success fw-semibold">
+              Give to customer
+            </small>
+          </div>
+
+          <div class="icon-box bg-success-subtle text-success">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div class="card dashboard-card border-0 shadow-sm h-100">
+        <div class="card-body p-4 d-flex justify-content-between align-items-center">
+
+          <div>
+            <p class="text-muted mb-1">Low Stock Items</p>
+            <h2 class="fw-bold mb-0">5</h2>
+            <small class="text-danger fw-semibold">
+              Refill soon
+            </small>
+          </div>
+
+          <div class="icon-box bg-danger-subtle text-danger">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row g-4">
+
+    <!-- Current Orders -->
+    <div class="col-lg-8">
+
+      <div class="card border-0 shadow-sm dashboard-card">
+
+        <div class="card-body p-4">
+
+          <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+              <h5 class="fw-bold mb-1">Current Orders</h5>
+              <small class="text-muted">
+                Orders that need to be prepared
+              </small>
+            </div>
+
+            <button class="btn btn-dark rounded-3 px-3">
+              View All Orders
+            </button>
+
+          </div>
+
+
+          <!-- Order 1 -->
+          <div class="order-item d-flex justify-content-between align-items-center p-3 mb-3 rounded-3">
+
+            <div class="d-flex align-items-center gap-3">
+
+              <div class="order-number">
+                #1024
+              </div>
+
+              <div>
+                <h6 class="fw-bold mb-1">Chicken Sandwich</h6>
+                <small class="text-muted">
+                  1 Sandwich • 1 Cold Drink
+                </small>
+              </div>
+
+            </div>
+
+            <span class="badge rounded-pill bg-warning text-dark px-3 py-2">
+              Preparing
+            </span>
+
+          </div>
+
+
+          <!-- Order 2 -->
+          <div class="order-item d-flex justify-content-between align-items-center p-3 mb-3 rounded-3">
+
+            <div class="d-flex align-items-center gap-3">
+
+              <div class="order-number">
+                #1025
+              </div>
+
+              <div>
+                <h6 class="fw-bold mb-1">Cold Coffee</h6>
+                <small class="text-muted">
+                  2 Cold Coffee
+                </small>
+              </div>
+
+            </div>
+
+            <span class="badge rounded-pill bg-success px-3 py-2">
+              Ready
+            </span>
+
+          </div>
+
+
+          <!-- Order 3 -->
+          <div class="order-item d-flex justify-content-between align-items-center p-3 rounded-3">
+
+            <div class="d-flex align-items-center gap-3">
+
+              <div class="order-number">
+                #1026
+              </div>
+
+              <div>
+                <h6 class="fw-bold mb-1">Veg Meal</h6>
+                <small class="text-muted">
+                  1 Meal • 1 Juice
+                </small>
+              </div>
+
+            </div>
+
+            <span class="badge rounded-pill bg-secondary px-3 py-2">
+              Waiting
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Right Section -->
+    <div class="col-lg-4">
+
+      <!-- Low Stock -->
+      <div class="card border-0 shadow-sm dashboard-card mb-4">
+
+        <div class="card-body p-4">
+
+          <div class="mb-4">
+            <h5 class="fw-bold mb-1">Stock Alert</h5>
+            <small class="text-muted">
+              Items running low
+            </small>
+          </div>
+
+
+          <div class="stock-item d-flex justify-content-between align-items-center mb-3">
+
+            <div class="d-flex align-items-center gap-3">
+              <div class="food-icon">🥛</div>
+              <div>
+                <h6 class="mb-0 fw-semibold">Milk</h6>
+                <small class="text-muted">Beverages</small>
+              </div>
+            </div>
+
+            <span class="text-danger fw-bold">
+              3 left
+            </span>
+
+          </div>
+
+
+          <div class="stock-item d-flex justify-content-between align-items-center mb-3">
+
+            <div class="d-flex align-items-center gap-3">
+              <div class="food-icon">🍞</div>
+              <div>
+                <h6 class="mb-0 fw-semibold">Bread</h6>
+                <small class="text-muted">Food</small>
+              </div>
+            </div>
+
+            <span class="text-warning fw-bold">
+              5 left
+            </span>
+
+          </div>
+
+
+          <div class="stock-item d-flex justify-content-between align-items-center">
+
+            <div class="d-flex align-items-center gap-3">
+              <div class="food-icon">☕</div>
+              <div>
+                <h6 class="mb-0 fw-semibold">Coffee</h6>
+                <small class="text-muted">Beverages</small>
+              </div>
+            </div>
+
+            <span class="text-danger fw-bold">
+              2 left
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Simple Instructions -->
+      <div class="card border-0 shadow-sm dashboard-card">
+
+        <div class="card-body p-4">
+
+          <h5 class="fw-bold mb-3">
+            What To Do
+          </h5>
+
+          <div class="help-step">
+            <span>1</span>
+            Check new orders
+          </div>
+
+          <div class="help-step">
+            <span>2</span>
+            Prepare the food
+          </div>
+
+          <div class="help-step">
+            <span>3</span>
+            Mark order as ready
+          </div>
+
+          <div class="help-step mb-0">
+            <span>4</span>
+            Give order to customer
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  
+
+</div>

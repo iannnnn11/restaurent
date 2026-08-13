@@ -1,0 +1,112 @@
+
+<div class="container-fluid">
+  <div class="row">
+
+<div class=" col-md-2 bg-dark text-white p-4 vh-100">
+
+  <p class="fs-2 fw-bold mb-3 text-warning">
+    Jode<span class="text-primary">tx</span>
+  </p>
+
+  <ul class="list-unstyled">
+
+    <li class="mb-2">
+      <a class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded" routerLink="/dash/home">
+        <i class="fa-solid fa-house"></i>
+        Dashboard
+      </a>
+    </li>
+
+    <li class="mb-2">
+      <a  class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded" routerLink="/dash/order">
+        <i class="fa-solid fa-cart-shopping"></i>
+        Orders
+      </a>
+    </li>
+
+    <li class="mb-2">
+      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
+        <i class="fa-solid fa-utensils"></i>
+        Menu
+      </a>
+    </li>
+
+    <li class="mb-2">
+      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
+        <i class="fa-solid fa-layer-group"></i>
+        Categories
+      </a>
+    </li>
+
+  </ul>
+
+  <hr class="border-secondary my-4">
+
+  <!-- Management -->
+  <p class="text-uppercase text-secondary small fw-semibold mb-3">
+    Management
+  </p>
+
+  <ul class="list-unstyled">
+
+    <li class="mb-2">
+      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
+        <i class="fa-solid fa-boxes-stacked"></i>
+        Inventory
+      </a>
+    </li>
+
+    <li class="mb-2">
+      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
+        <i class="fa-solid fa-users"></i>
+        Employees
+      </a>
+    </li>
+
+    <li class="mb-2">
+      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
+        <i class="fa-solid fa-chart-line"></i>
+        Revenue
+      </a>
+    </li>
+
+    <li class="mb-2">
+      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
+        <i class="fa-solid fa-chart-pie"></i>
+        Reports
+      </a>
+    </li>
+
+  </ul>
+
+  <hr class="border-secondary my-4">
+
+  <!-- System -->
+  <p class="text-uppercase text-secondary small fw-semibold mb-3">
+    System
+  </p>
+
+  <ul class="list-unstyled">
+
+    <li class="mb-2">
+      <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
+        <i class="fa-solid fa-gear"></i>
+        Settings
+      </a>
+    </li>
+
+    <li class="mb-2">
+      <a href="#" class="text-danger text-decoration-none d-flex align-items-center gap-3 p-2 rounded">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+<div class="col-md-10">
+    <router-outlet></router-outlet>
+</div>
+</div>
+</div>
