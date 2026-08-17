@@ -21,4 +21,13 @@ export class Order implements OnInit {
     this.orders = this.orderService.getOrders();
   }
 
+  updateStatus(
+  orderId: string,
+  status: 'Pending' | 'Preparing' | 'Ready' | 'Completed'
+) {
+  this.orderService.updateOrderStatus(orderId, status);
+
+  this.orders = this.orderService.getOrders();
+}
+
 }

@@ -76,4 +76,24 @@ export class OrderService {
   clearOrders(): void {
     localStorage.removeItem(this.storageKey);
   }
+  updateOrderStatus(
+  orderId: string,
+  status: 'Pending' | 'Preparing' | 'Ready' | 'Completed'
+): void {
+
+  const orders = this.getOrders();
+
+  const order = orders.find(
+    order => order.id === orderId
+  );
+
+  if (order) {
+    order.status = status;
+
+    localStorage.setItem(
+      this.storageKey,
+      JSON.stringify(orders)
+    );
+  }
+}
 }

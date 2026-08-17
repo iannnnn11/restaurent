@@ -198,430 +198,99 @@
 
         <tbody>
 
-          <!-- Milk -->
-          <tr>
+  <tr *ngFor="let item of items">
 
-            <td>
-              <div class="item-info">
+    <!-- ITEM -->
+    <td>
+      <div class="item-info">
 
-                <div class="item-icon">
-                  🥛
-                </div>
+        <div class="item-icon">
+          📦
+        </div>
 
-                <div>
-                  <h6 class="mb-0">Milk</h6>
-                  <small>Buffalo Milk</small>
-                </div>
+        <div>
+          <h6 class="mb-0">{{ item.name }}</h6>
+          <small>{{ item.subtitle }}</small>
+        </div>
 
-              </div>
-            </td>
+      </div>
+    </td>
 
 
-            <td>
-              <span class="category-badge">
-                Beverages
-              </span>
-            </td>
+    <!-- CATEGORY -->
+    <td>
+      <span class="category-badge">
+        {{ item.category }}
+      </span>
+    </td>
 
 
-            <td>
+    <!-- QUANTITY -->
+    <td>
 
-              <div class="quantity-control">
+      <div class="quantity-control">
 
-                <button>-</button>
+        <button>-</button>
 
-                <span>3 L</span>
+        <span>
+          {{ item.quantity }} {{ item.unit }}
+        </span>
 
-                <button>+</button>
+        <button>+</button>
 
-              </div>
+      </div>
 
-            </td>
+    </td>
 
 
-            <td>
-              5 L
-            </td>
+    <!-- MIN STOCK -->
+    <td>
+      {{ item.minStock }} {{ item.unit }}
+    </td>
 
 
-            <td>
-              <span class="stock-status low">
-                Low Stock
-              </span>
-            </td>
+    <!-- STATUS -->
+    <td>
 
+      <span
+        class="stock-status"
+        [class.available]="item.quantity > item.minStock"
+        [class.low]="item.quantity > 0 && item.quantity <= item.minStock"
+        [class.out]="item.quantity === 0"
+      >
 
-            <td>
-              12 Aug
-            </td>
+        {{
+          item.quantity === 0
+            ? 'Out of Stock'
+            : item.quantity <= item.minStock
+              ? 'Low Stock'
+              : 'In Stock'
+        }}
 
+      </span>
 
-            <td>
+    </td>
 
-              <button class="restock-btn">
-                <i class="fa-solid fa-plus me-1"></i>
-                Restock
-              </button>
 
-            </td>
+    <!-- LAST RESTOCK -->
+    <td>
+      {{ item.lastRestock }}
+    </td>
 
-          </tr>
 
+    <!-- ACTION -->
+    <td>
 
-          <!-- Coffee Beans -->
-          <tr>
+      <button class="restock-btn">
+        <i class="fa-solid fa-plus me-1"></i>
+        Restock
+      </button>
 
-            <td>
+    </td>
 
-              <div class="item-info">
+  </tr>
 
-                <div class="item-icon">
-                  ☕
-                </div>
-
-                <div>
-                  <h6 class="mb-0">Coffee Powder</h6>
-                  <small>Premium Blend</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="category-badge">
-                Ingredients
-              </span>
-            </td>
-
-
-            <td>
-
-              <div class="quantity-control">
-
-                <button>-</button>
-
-                <span>2 kg</span>
-
-                <button>+</button>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              4 kg
-            </td>
-
-
-            <td>
-              <span class="stock-status low">
-                Low Stock
-              </span>
-            </td>
-
-
-            <td>
-              11 Aug
-            </td>
-
-
-            <td>
-              <button class="restock-btn">
-                <i class="fa-solid fa-plus me-1"></i>
-                Restock
-              </button>
-            </td>
-
-          </tr>
-
-
-          <!-- Bread -->
-          <tr>
-
-            <td>
-
-              <div class="item-info">
-
-                <div class="item-icon">
-                  🍞
-                </div>
-
-                <div>
-                  <h6 class="mb-0">Bread</h6>
-                  <small>Sandwich Bread</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="category-badge">
-                Ingredients
-              </span>
-            </td>
-
-
-            <td>
-
-              <div class="quantity-control">
-
-                <button>-</button>
-
-                <span>12 pcs</span>
-
-                <button>+</button>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              8 pcs
-            </td>
-
-
-            <td>
-              <span class="stock-status available">
-                In Stock
-              </span>
-            </td>
-
-
-            <td>
-              13 Aug
-            </td>
-
-
-            <td>
-
-              <button class="edit-btn">
-                <i class="fa-solid fa-pen"></i>
-              </button>
-
-            </td>
-
-          </tr>
-
-
-          <!-- Almonds -->
-          <tr>
-
-            <td>
-
-              <div class="item-info">
-
-                <div class="item-icon">
-                  🌰
-                </div>
-
-                <div>
-                  <h6 class="mb-0">Almonds</h6>
-                  <small>Roasted Almonds</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="category-badge">
-                Nuts
-              </span>
-            </td>
-
-
-            <td>
-
-              <div class="quantity-control">
-
-                <button>-</button>
-
-                <span>8 packs</span>
-
-                <button>+</button>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              5 packs
-            </td>
-
-
-            <td>
-              <span class="stock-status available">
-                In Stock
-              </span>
-            </td>
-
-
-            <td>
-              10 Aug
-            </td>
-
-
-            <td>
-
-              <button class="edit-btn">
-                <i class="fa-solid fa-pen"></i>
-              </button>
-
-            </td>
-
-          </tr>
-
-
-          <!-- Chips -->
-          <tr>
-
-            <td>
-
-              <div class="item-info">
-
-                <div class="item-icon">
-                  🍟
-                </div>
-
-                <div>
-                  <h6 class="mb-0">Potato Chips</h6>
-                  <small>Salted</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="category-badge">
-                Snacks
-              </span>
-            </td>
-
-
-            <td>
-
-              <div class="quantity-control">
-
-                <button disabled>-</button>
-
-                <span>0 pcs</span>
-
-                <button>+</button>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              10 pcs
-            </td>
-
-
-            <td>
-              <span class="stock-status out">
-                Out of Stock
-              </span>
-            </td>
-
-
-            <td>
-              8 Aug
-            </td>
-
-
-            <td>
-
-              <button class="restock-btn urgent">
-                Restock
-              </button>
-
-            </td>
-
-          </tr>
-
-
-          <!-- Cups -->
-          <tr>
-
-            <td>
-
-              <div class="item-info">
-
-                <div class="item-icon">
-                  🥤
-                </div>
-
-                <div>
-                  <h6 class="mb-0">Paper Cups</h6>
-                  <small>250 ml</small>
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              <span class="category-badge">
-                Packaging
-              </span>
-            </td>
-
-
-            <td>
-
-              <div class="quantity-control">
-
-                <button>-</button>
-
-                <span>45 pcs</span>
-
-                <button>+</button>
-
-              </div>
-
-            </td>
-
-
-            <td>
-              20 pcs
-            </td>
-
-
-            <td>
-              <span class="stock-status available">
-                In Stock
-              </span>
-            </td>
-
-
-            <td>
-              12 Aug
-            </td>
-
-
-            <td>
-
-              <button class="edit-btn">
-                <i class="fa-solid fa-pen"></i>
-              </button>
-
-            </td>
-
-          </tr>
-
-        </tbody>
+</tbody>
 
       </table>
 
