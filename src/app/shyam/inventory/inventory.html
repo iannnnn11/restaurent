@@ -230,13 +230,13 @@
 
       <div class="quantity-control">
 
-        <button>-</button>
+        <button (click)="decreaseQuantity(item)">-</button>
 
         <span>
           {{ item.quantity }} {{ item.unit }}
         </span>
 
-        <button>+</button>
+        <button (click)="increaseQuantity(item)">+</button>
 
       </div>
 

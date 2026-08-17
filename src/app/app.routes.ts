@@ -18,7 +18,7 @@ import { Home } from './shyam/home/home';
 import { Order } from './shyam/order/order';
 import { authGuard } from './auth-guard';
 import { Mennu } from './shyam/mennu/mennu';
-import { Inventory } from './shyam/inventory/inventory';
+import { InventoryComponent } from './shyam/inventory/inventory';
 
 export const routes: Routes = [
   {
@@ -82,7 +82,7 @@ export const routes: Routes = [
     },
     {
       path: 'inventory',
-      component: Inventory
+      component: InventoryComponent
     }
   ]
 },

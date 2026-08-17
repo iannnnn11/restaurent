@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { InventoryService } from './inventory';
 
 export interface OrderItem {
   id: number;
@@ -20,6 +21,9 @@ export interface UserOrder {
   providedIn: 'root'
 })
 export class OrderService {
+  constructor(
+    private inventoryService: InventoryService
+  ) {}
 
   private storageKey = 'jodetx-orders';
 
@@ -38,29 +42,47 @@ export class OrderService {
   }
 
   placeOrder(
-    items: OrderItem[],
-    total: number
-  ): UserOrder {
+  items: OrderItem[],
+  total: number
+): UserOrder {
 
-    const orders = this.getOrders();
+  // Reduce inventory after order is confirmed
+  for (const item of items) {
 
-    const newOrder: UserOrder = {
-      id: `JT${Date.now()}`,
-      items: items.map(item => ({ ...item })),
-      total: total,
-      status: 'Pending',
-      orderDate: new Date().toLocaleString()
-    };
+  console.log(
+    'Reducing inventory:',
+    item.name,
+    'ID:',
+    item.id,
+    'Quantity:',
+    item.quantity
+  );
 
-    orders.unshift(newOrder);
+  this.inventoryService.updateQuantity(
+    item.id.toString(),
+    -item.quantity
+  );
+}
+  const orders = this.getOrders();
 
-    localStorage.setItem(
-      this.storageKey,
-      JSON.stringify(orders)
-    );
+  const newOrder: UserOrder = {
+    id: `JT${Date.now()}`,
+    items: items.map(item => ({ ...item })),
+    total: total,
+    status: 'Pending',
+    orderDate: new Date().toLocaleString()
+  };
 
-    return newOrder;
-  }
+  orders.unshift(newOrder);
+
+  localStorage.setItem(
+    this.storageKey,
+    JSON.stringify(orders)
+  );
+
+  return newOrder;
+}
+    
 
   cancelOrder(orderId: string): void {
     const updatedOrders = this.getOrders().filter(
