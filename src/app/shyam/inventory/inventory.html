@@ -5,28 +5,40 @@
 
     <div>
       <h3 class="fw-bold mb-1">Inventory</h3>
+
       <p class="text-muted mb-0">
         Track pantry stock and refill items before they run out.
       </p>
     </div>
 
-    <button class="btn btn-dark rounded-3 px-3">
-      <i class="fa-solid fa-plus me-2"></i>
-      Add Stock Item
+    <button
+      class="btn btn-dark rounded-3 px-3"
+      (click)="loadInventory()"
+    >
+      <i class="fa-solid fa-rotate me-2"></i>
+      Refresh
     </button>
 
   </div>
 
 
-  <!-- Summary Cards -->
+  <!-- ========================= -->
+  <!-- SUMMARY CARDS -->
+  <!-- ========================= -->
+
   <div class="row g-3 mb-3">
 
+    <!-- Total Items -->
     <div class="col-md-3">
+
       <div class="summary-card">
 
         <div>
           <small>Total Items</small>
-          <h3>24</h3>
+
+          <h3>
+            {{ totalItems }}
+          </h3>
         </div>
 
         <div class="summary-icon total-icon">
@@ -34,15 +46,21 @@
         </div>
 
       </div>
+
     </div>
 
 
+    <!-- In Stock -->
     <div class="col-md-3">
+
       <div class="summary-card">
 
         <div>
           <small>In Stock</small>
-          <h3>17</h3>
+
+          <h3>
+            {{ inStockItems }}
+          </h3>
         </div>
 
         <div class="summary-icon available-icon">
@@ -50,15 +68,21 @@
         </div>
 
       </div>
+
     </div>
 
 
+    <!-- Low Stock -->
     <div class="col-md-3">
+
       <div class="summary-card">
 
         <div>
           <small>Low Stock</small>
-          <h3>5</h3>
+
+          <h3>
+            {{ lowStockItems }}
+          </h3>
         </div>
 
         <div class="summary-icon low-icon">
@@ -66,15 +90,21 @@
         </div>
 
       </div>
+
     </div>
 
 
+    <!-- Out Of Stock -->
     <div class="col-md-3">
+
       <div class="summary-card">
 
         <div>
           <small>Out of Stock</small>
-          <h3>2</h3>
+
+          <h3>
+            {{ outOfStockItems }}
+          </h3>
         </div>
 
         <div class="summary-icon out-icon">
@@ -82,28 +112,39 @@
         </div>
 
       </div>
+
     </div>
 
   </div>
 
 
-  <!-- Filters -->
+  <!-- ========================= -->
+  <!-- FILTERS -->
+  <!-- ========================= -->
+
   <div class="filter-bar mb-3">
 
     <div class="row g-2 align-items-center">
 
+
+      <!-- Search -->
       <div class="col-lg-5">
 
         <div class="input-group">
 
           <span class="input-group-text border-0 bg-light">
+
             <i class="fa-solid fa-magnifying-glass text-muted"></i>
+
           </span>
+
 
           <input
             type="text"
             class="form-control border-0 bg-light"
             placeholder="Search stock item..."
+            [(ngModel)]="searchText"
+            (input)="applyFilters()"
           >
 
         </div>
@@ -111,40 +152,73 @@
       </div>
 
 
+      <!-- Category -->
       <div class="col-lg-3">
 
-        <select class="form-select border-0 bg-light">
+        <select
+          class="form-select border-0 bg-light"
+          [(ngModel)]="selectedCategory"
+          (change)="applyFilters()"
+        >
 
-          <option>All Categories</option>
-          <option>Beverages</option>
-          <option>Snacks</option>
-          <option>Nuts</option>
-          <option>Ingredients</option>
-          <option>Packaging</option>
+          <option value="All">
+            All Categories
+          </option>
+
+
+          <option
+            *ngFor="let category of categories"
+            [value]="category"
+          >
+            {{ category }}
+          </option>
 
         </select>
 
       </div>
 
 
+      <!-- Stock -->
       <div class="col-lg-3">
 
-        <select class="form-select border-0 bg-light">
+        <select
+          class="form-select border-0 bg-light"
+          [(ngModel)]="selectedStock"
+          (change)="applyFilters()"
+        >
 
-          <option>All Stock</option>
-          <option>In Stock</option>
-          <option>Low Stock</option>
-          <option>Out of Stock</option>
+          <option value="All">
+            All Stock
+          </option>
+
+          <option value="In Stock">
+            In Stock
+          </option>
+
+          <option value="Low Stock">
+            Low Stock
+          </option>
+
+          <option value="Out of Stock">
+            Out of Stock
+          </option>
 
         </select>
 
       </div>
 
 
+      <!-- Filter Button -->
       <div class="col-lg-1">
 
-        <button class="btn btn-dark w-100">
+        <button
+          class="btn btn-dark w-100"
+          (click)="applyFilters()"
+          title="Apply Filter"
+        >
+
           <i class="fa-solid fa-filter"></i>
+
         </button>
 
       </div>
@@ -154,12 +228,20 @@
   </div>
 
 
-  <!-- Inventory Table -->
+  <!-- ========================= -->
+  <!-- INVENTORY CARD -->
+  <!-- ========================= -->
+
   <div class="inventory-card">
 
-    <div class="inventory-top d-flex justify-content-between align-items-center">
+
+    <!-- Top -->
+    <div
+      class="inventory-top d-flex justify-content-between align-items-center"
+    >
 
       <div>
+
         <h5 class="fw-bold mb-0">
           Pantry Stock
         </h5>
@@ -167,30 +249,48 @@
         <small class="text-muted">
           Update quantities when stock is received or used
         </small>
+
       </div>
 
+
       <span class="last-updated">
+
         <i class="fa-regular fa-clock me-1"></i>
+
         Updated today
+
       </span>
 
     </div>
 
 
+    <!-- ========================= -->
+    <!-- TABLE -->
+    <!-- ========================= -->
+
     <div class="table-responsive">
 
       <table class="table align-middle mb-0">
 
+
         <thead>
 
           <tr>
+
             <th>ITEM</th>
+
             <th>CATEGORY</th>
+
             <th>QUANTITY</th>
+
             <th>MIN. STOCK</th>
+
             <th>STATUS</th>
+
             <th>LAST RESTOCK</th>
+
             <th>ACTION</th>
+
           </tr>
 
         </thead>
@@ -198,126 +298,236 @@
 
         <tbody>
 
-  <tr *ngFor="let item of items">
 
-    <!-- ITEM -->
-    <td>
-      <div class="item-info">
-
-        <div class="item-icon">
-          📦
-        </div>
-
-        <div>
-          <h6 class="mb-0">{{ item.name }}</h6>
-          <small>{{ item.subtitle }}</small>
-        </div>
-
-      </div>
-    </td>
+          <!-- Inventory Items -->
+          <tr *ngFor="let item of filteredItems">
 
 
-    <!-- CATEGORY -->
-    <td>
-      <span class="category-badge">
-        {{ item.category }}
-      </span>
-    </td>
+            <!-- ITEM -->
+            <td>
+
+              <div class="item-info">
 
 
-    <!-- QUANTITY -->
-    <td>
-
-      <div class="quantity-control">
-
-        <button (click)="decreaseQuantity(item)">-</button>
-
-        <span>
-          {{ item.quantity }} {{ item.unit }}
-        </span>
-
-        <button (click)="increaseQuantity(item)">+</button>
-
-      </div>
-
-    </td>
+                <div class="item-icon">
+                  📦
+                </div>
 
 
-    <!-- MIN STOCK -->
-    <td>
-      {{ item.minStock }} {{ item.unit }}
-    </td>
+                <div>
+
+                  <h6 class="mb-0">
+                    {{ item.name }}
+                  </h6>
+
+                  <small>
+                    {{ item.subtitle }}
+                  </small>
+
+                </div>
 
 
-    <!-- STATUS -->
-    <td>
+              </div>
 
-      <span
-        class="stock-status"
-        [class.available]="item.quantity > item.minStock"
-        [class.low]="item.quantity > 0 && item.quantity <= item.minStock"
-        [class.out]="item.quantity === 0"
-      >
-
-        {{
-          item.quantity === 0
-            ? 'Out of Stock'
-            : item.quantity <= item.minStock
-              ? 'Low Stock'
-              : 'In Stock'
-        }}
-
-      </span>
-
-    </td>
+            </td>
 
 
-    <!-- LAST RESTOCK -->
-    <td>
-      {{ item.lastRestock }}
-    </td>
+            <!-- CATEGORY -->
+            <td>
+
+              <span class="category-badge">
+
+                {{ item.category }}
+
+              </span>
+
+            </td>
 
 
-    <!-- ACTION -->
-    <td>
+            <!-- QUANTITY -->
+            <td>
 
-      <button class="restock-btn">
-        <i class="fa-solid fa-plus me-1"></i>
-        Restock
-      </button>
+              <div class="quantity-control">
 
-    </td>
 
-  </tr>
+                <!-- Decrease -->
+                <button
+                  type="button"
+                  (click)="decreaseQuantity(item)"
+                  [disabled]="item.quantity === 0"
+                >
+                  -
+                </button>
 
-</tbody>
+
+                <!-- Current Quantity -->
+                <span>
+
+                  {{ item.quantity }}
+                  {{ item.unit }}
+
+                </span>
+
+
+                <!-- Increase -->
+                <button
+                  type="button"
+                  (click)="increaseQuantity(item)"
+                >
+                  +
+                </button>
+
+
+              </div>
+
+            </td>
+
+
+            <!-- MIN STOCK -->
+            <td>
+
+              {{ item.minStock }}
+              {{ item.unit }}
+
+            </td>
+
+
+            <!-- STATUS -->
+            <td>
+
+
+              <span
+                class="stock-status"
+
+                [class.available]="
+                  getStockStatus(item) === 'In Stock'
+                "
+
+                [class.low]="
+                  getStockStatus(item) === 'Low Stock'
+                "
+
+                [class.out]="
+                  getStockStatus(item) === 'Out of Stock'
+                "
+              >
+
+                {{ getStockStatus(item) }}
+
+              </span>
+
+
+            </td>
+
+
+            <!-- LAST RESTOCK -->
+            <td>
+
+              {{ item.lastRestock }}
+
+            </td>
+
+
+            <!-- ACTION -->
+            <td>
+
+
+              <button
+                type="button"
+                class="restock-btn"
+                (click)="restockItem(item)"
+              >
+
+                <i class="fa-solid fa-plus me-1"></i>
+
+                Restock
+
+              </button>
+
+
+            </td>
+
+
+          </tr>
+
+
+        </tbody>
 
       </table>
 
-    </div>
 
+      <!-- ========================= -->
+      <!-- EMPTY STATE -->
+      <!-- ========================= -->
 
-    <!-- Bottom -->
-    <div class="inventory-bottom d-flex justify-content-between align-items-center">
+      <div
+        *ngIf="filteredItems.length === 0"
+        class="text-center text-muted p-5"
+      >
 
-      <small class="text-muted">
-        Showing 6 of 24 inventory items
-      </small>
+        <i
+          class="fa-solid fa-box-open fs-3 mb-2"
+        ></i>
 
-      <div class="d-flex align-items-center gap-2">
-
-        <span class="legend available-dot"></span>
-        <small>In Stock</small>
-
-        <span class="legend low-dot ms-2"></span>
-        <small>Low</small>
-
-        <span class="legend out-dot ms-2"></span>
-        <small>Out</small>
+        <p class="mb-0">
+          No inventory items found.
+        </p>
 
       </div>
 
+
     </div>
+
+
+    <!-- ========================= -->
+    <!-- BOTTOM -->
+    <!-- ========================= -->
+
+    <div
+      class="inventory-bottom d-flex justify-content-between align-items-center"
+    >
+
+
+      <!-- Dynamic Count -->
+      <small class="text-muted">
+
+        Showing
+        {{ filteredItems.length }}
+        of
+        {{ totalItems }}
+        inventory items
+
+      </small>
+
+
+      <!-- Legend -->
+      <div class="d-flex align-items-center gap-2">
+
+        <span class="legend available-dot"></span>
+
+        <small>
+          In Stock
+        </small>
+
+
+        <span class="legend low-dot ms-2"></span>
+
+        <small>
+          Low
+        </small>
+
+
+        <span class="legend out-dot ms-2"></span>
+
+        <small>
+          Out
+        </small>
+
+      </div>
+
+
+    </div>
+
 
   </div>
 

@@ -1,48 +1,41 @@
-.sidebar {
-  width: 250px;
-  min-height: 100vh;
-
-  background:
-    linear-gradient(
-      180deg,
-      #111827 0%,
-      #0f172a 100%
-    );
-
-  transition: width 0.3s ease;
-
-  box-shadow:
-    8px 0 30px rgba(0, 0, 0, 0.12);
+/* Wrapper to lock the entire screen */
+.container-fluid {
+  height: 100vh;
+  overflow: hidden; /* Stops the main browser window from scrolling */
 }
 
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh; /* Exactly window height */
+  overflow: hidden; /* Ensures sidebar itself never scrolls */
+  
+  background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+  transition: width 0.3s ease;
+  box-shadow: 8px 0 30px rgba(0, 0, 0, 0.12);
+}
 
 /* Collapsed sidebar */
 .sidebar-collapsed {
   width: 82px;
 }
 
-
 /* Brand */
 .brand {
   letter-spacing: -1px;
 }
 
-
 /* Toggle button */
 .toggle-btn {
   width: 36px;
   height: 36px;
-
   border: none;
   border-radius: 10px;
-
   background: rgba(255,255,255,0.08);
   color: white;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: 0.2s ease;
 }
 
@@ -51,88 +44,61 @@
   color: #111827;
 }
 
-
 /* Section headings */
 .section-title {
   font-size: 11px;
   letter-spacing: 1.5px;
-
   color: #64748b;
-
   margin-top: 25px;
   margin-bottom: 10px;
 }
-
 
 /* Sidebar links */
 .sidebar-link {
   display: flex;
   align-items: center;
-
   gap: 14px;
-
   padding: 12px 14px;
-
   margin-bottom: 6px;
-
   color: #cbd5e1;
-
   text-decoration: none;
-
   border-radius: 12px;
-
   cursor: pointer;
-
   transition: all 0.2s ease;
 }
-
 
 /* Icons */
 .sidebar-link i {
   width: 22px;
-
   font-size: 18px;
-
   text-align: center;
 }
-
 
 /* Hover */
 .sidebar-link:hover {
   color: white;
-
   background: rgba(255,255,255,0.08);
-
   transform: translateX(3px);
 }
-
 
 /* Active route */
 .active-link {
   background: #ffc107;
-
   color: #111827;
-
   font-weight: 600;
-
-  box-shadow:
-    0 6px 20px rgba(255, 193, 7, 0.22);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.22);
 }
-
 
 .active-link:hover {
   color: #111827;
   background: #ffc107;
 }
 
-
 /* Divider */
 .sidebar-divider {
   border-color: rgba(255,255,255,0.08);
-
   margin: 22px 15px;
 }
-
 
 /* Logout */
 .logout-link {
@@ -144,12 +110,11 @@
   color: #fca5a5;
 }
 
-
 /* Main content */
 .main-content {
-  min-height: 100vh;
-
+  height: 100vh; /* Locks height to window */
+  overflow-y: auto; /* Allows ONLY this box to scroll */
+  
   background: #f8fafc;
-
   padding: 25px;
 }

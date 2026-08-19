@@ -1,28 +1,29 @@
+/* =========================================
+   DASHBOARD
+========================================= */
+
 .dashboard-page {
-  background: #f5f7fb;
   min-height: 100vh;
 }
 
 
-/* =========================
+/* =========================================
    STATUS CARDS
-========================= */
+========================================= */
 
 .status-card {
-  min-height: 115px;
+  background: #fff;
+  border-radius: 16px;
   padding: 20px;
+  min-height: 125px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  border-radius: 18px;
+  border: 1px solid #eee;
 
-  background: white;
-
-  border: 1px solid #edf0f4;
-
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .status-card:hover {
@@ -30,234 +31,259 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
+.warning-card {
+  border-left: 4px solid #f59e0b;
+}
+
+.success-card {
+  border-left: 4px solid #22c55e;
+}
+
+.danger-card {
+  border-left: 4px solid #ef4444;
+}
 
 .status-label {
-  margin-bottom: 5px;
-
-  color: #6c757d;
-
   font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 5px;
 }
-
 
 .status-number {
-  margin: 0;
-
-  font-size: 34px;
-
+  font-size: 32px;
   font-weight: 700;
+  margin: 0;
+  color: #111827;
 }
-
 
 .status-message {
-  margin-bottom: 5px;
-
-  color: #777;
+  color: #6b7280;
+  margin-bottom: 4px;
 }
 
-
 .status-icon {
-  width: 52px;
-  height: 52px;
-
-  border-radius: 15px;
+  width: 50px;
+  height: 50px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 21px;
-}
-
-
-/* Card colors */
-
-.warning-card {
-  border-left: 4px solid #ffc107;
+  border-radius: 14px;
+  font-size: 20px;
 }
 
 .warning-card .status-icon {
-  background: #fff8db;
-  color: #d39e00;
-}
-
-
-.success-card {
-  border-left: 4px solid #198754;
+  background: #fff7ed;
+  color: #f59e0b;
 }
 
 .success-card .status-icon {
-  background: #e9f7ef;
-  color: #198754;
-}
-
-
-.danger-card {
-  border-left: 4px solid #dc3545;
+  background: #f0fdf4;
+  color: #22c55e;
 }
 
 .danger-card .status-icon {
-  background: #fdeced;
-  color: #dc3545;
+  background: #fef2f2;
+  color: #ef4444;
 }
 
 
-
-/* =========================
+/* =========================================
    MAIN CARDS
-========================= */
+========================================= */
 
 .main-card {
-  border-radius: 18px;
-
-  border: 1px solid #edf0f4 !important;
-
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.035);
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #eee !important;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.03);
 }
 
 
-.view-link {
-  font-size: 14px;
-
-  color: #111827;
-
-  font-weight: 600;
-}
-
-
-
-/* =========================
-   ORDERS
-========================= */
+/* =========================================
+   CURRENT ORDERS
+========================================= */
 
 .order-row {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 
-  padding: 14px 5px;
+  padding: 15px 0;
 
   border-bottom: 1px solid #eeeeee;
+
+  gap: 15px;
 }
 
+.order-row:last-child {
+  border-bottom: none;
+}
 
 .order-left {
   display: flex;
   align-items: center;
-
   gap: 14px;
+
+  min-width: 0;
 }
 
 
+/* Order ID box */
+
 .order-id {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 13px;
+  background: #111827;
+  color: white;
 
-  background: #f3f4f6;
-
-  color: #111827;
+  border-radius: 12px;
 
   font-size: 13px;
-
   font-weight: 700;
+
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 }
 
+
+/* Add # before order ID visually */
+
+.order-id::before {
+  content: "#";
+  opacity: 0.6;
+  margin-right: 1px;
+}
+
+
+.order-left h6 {
+  font-size: 14px;
+}
+
+.order-left small {
+  font-size: 12px;
+}
+
+
+/* =========================================
+   ORDER ACTIONS
+========================================= */
 
 .order-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 
-  gap: 12px;
+  gap: 10px;
+
+  flex-shrink: 0;
 }
 
 
-/* Status */
+/* =========================================
+   STATUS BADGES
+========================================= */
 
 .status-badge {
-  min-width: 90px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  padding: 7px 12px;
+  padding: 6px 11px;
 
   border-radius: 20px;
 
-  text-align: center;
-
   font-size: 12px;
-
   font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.status-badge.waiting {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.status-badge.preparing {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.status-badge.ready {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.status-badge.completed {
+  background: #f3f4f6;
+  color: #4b5563;
 }
 
 
-.preparing {
-  background: #fff4d3;
-
-  color: #a56c00;
-}
-
-
-.ready {
-  background: #e5f7ed;
-
-  color: #16794b;
-}
-
-
-.waiting {
-  background: #eef0f3;
-
-  color: #555;
-}
-
-
-/* Action Buttons */
+/* =========================================
+   ORDER BUTTON
+========================================= */
 
 .action-btn {
-  min-width: 90px;
+  border: none;
 
-  padding: 7px 12px;
+  background: #f3f4f6;
+  color: #111827;
 
-  border: 1px solid #ddd;
+  padding: 7px 13px;
 
-  border-radius: 9px;
-
-  background: white;
+  border-radius: 8px;
 
   font-size: 12px;
-
   font-weight: 600;
 
-  transition: 0.2s ease;
-}
+  cursor: pointer;
 
+  transition: all 0.2s ease;
+}
 
 .action-btn:hover {
   background: #111827;
   color: white;
-
-  border-color: #111827;
 }
-
 
 .action-btn.dark {
   background: #111827;
-
   color: white;
+}
 
-  border-color: #111827;
+.action-btn.dark:hover {
+  background: #000;
 }
 
 
+/* =========================================
+   VIEW LINKS
+========================================= */
 
-/* =========================
+.view-link {
+  color: #111827;
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.view-link:hover {
+  color: #555;
+}
+
+
+/* =========================================
    QUICK ACTIONS
-========================= */
+========================================= */
 
 .quick-actions {
   display: grid;
@@ -268,74 +294,106 @@
 }
 
 
-.quick-actions button {
-  border: 1px solid #e7e9ed;
+/*
+ IMPORTANT:
+ These are now <a> tags instead of buttons.
+ So we explicitly make them block/flex elements.
+*/
 
-  background: white;
+.quick-action {
+  min-height: 105px;
 
-  border-radius: 14px;
+  display: flex !important;
 
-  padding: 14px 10px;
+  flex-direction: column;
 
-  display: flex;
   align-items: center;
+  justify-content: center;
 
   gap: 10px;
 
-  font-size: 13px;
+  background: #fff;
 
-  font-weight: 600;
+  border: 1px solid #eeeeee;
 
-  transition: 0.2s ease;
+  border-radius: 15px;
+
+  text-decoration: none !important;
+
+  color: #111827 !important;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.quick-action:hover {
+  transform: translateY(-3px);
+
+  border-color: #d1d5db;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+  color: #111827 !important;
 }
 
 
-.quick-actions button:hover {
-  transform: translateY(-2px);
-
-  border-color: #111827;
-}
-
+/* Icon box */
 
 .quick-icon {
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
 
-  border-radius: 10px;
+  display: flex !important;
 
-  background: #f2f3f5;
-
-  display: flex;
   align-items: center;
   justify-content: center;
+
+  border-radius: 12px;
+
+  background: #f3f4f6;
+
+  color: #111827;
+
+  font-size: 18px;
+
+  flex-shrink: 0;
+}
+
+.quick-action span {
+  display: block;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  color: #374151;
 }
 
 
-
-/* =========================
-   STOCK
-========================= */
+/* =========================================
+   STOCK ALERT
+========================================= */
 
 .alert-count {
-  background: #fdeced;
-
-  color: #dc3545;
-
-  font-size: 11px;
-
-  font-weight: 600;
+  background: #fff7ed;
+  color: #c2410c;
 
   padding: 6px 10px;
 
   border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
 }
 
 
 .stock-row {
   display: flex;
 
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   padding: 13px 0;
 
@@ -344,65 +402,56 @@
 
 
 .stock-icon {
-  width: 42px;
-  height: 42px;
-
-  border-radius: 12px;
-
-  background: #f5f5f5;
+  width: 40px;
+  height: 40px;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  font-size: 20px;
+  border-radius: 10px;
+
+  background: #f3f4f6;
+
+  color: #374151;
+
+  font-size: 16px;
 }
 
 
 .stock-danger {
-  color: #dc3545;
-
-  background: #fff0f1;
-
-  padding: 5px 9px;
-
-  border-radius: 8px;
+  color: #dc2626;
 
   font-size: 12px;
-
   font-weight: 700;
+
+  white-space: nowrap;
 }
 
 
 .stock-warning {
-  color: #a56c00;
-
-  background: #fff8df;
-
-  padding: 5px 9px;
-
-  border-radius: 8px;
+  color: #d97706;
 
   font-size: 12px;
-
   font-weight: 700;
+
+  white-space: nowrap;
 }
 
 
-
-/* =========================
-   WORKFLOW
-========================= */
+/* =========================================
+   WORKER GUIDE
+========================================= */
 
 .worker-guide {
   display: flex;
 
   align-items: center;
 
-  gap: 13px;
+  gap: 14px;
 
-  padding: 16px;
+  padding: 18px;
 
   border-radius: 16px;
 
@@ -411,42 +460,44 @@
   color: white;
 }
 
-
-.worker-guide small {
-  color: #9ca3af;
-
-  font-size: 10px;
-
-  letter-spacing: 1px;
-}
-
-
-.worker-guide p {
-  font-size: 13px;
-}
-
-
 .guide-icon {
-  min-width: 42px;
+  width: 42px;
   height: 42px;
 
-  border-radius: 12px;
-
-  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  color: #ffc107;
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  color: #fbbf24;
+}
+
+.worker-guide small {
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  color: #9ca3af;
+}
+
+.worker-guide p {
+  font-size: 13px;
+
+  color: #e5e7eb;
+
+  margin-top: 3px;
 }
 
 
-
-/* =========================
+/* =========================================
    RESPONSIVE
-========================= */
+========================================= */
 
 @media (max-width: 992px) {
 
@@ -459,21 +510,37 @@
 
 @media (max-width: 768px) {
 
-  .dashboard-page {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
-
   .order-row {
     align-items: flex-start;
-
-    gap: 15px;
   }
 
   .order-actions {
     flex-direction: column;
-
     align-items: flex-end;
+  }
+
+  .order-id {
+    width: 45px;
+    height: 45px;
+  }
+
+}
+
+
+@media (max-width: 576px) {
+
+  .quick-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .order-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .order-actions {
+    flex-direction: row;
+    justify-content: flex-start;
   }
 
 }

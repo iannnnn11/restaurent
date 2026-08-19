@@ -17,9 +17,10 @@ import { Dash } from './shyam/dash/dash';
 import { Home } from './shyam/home/home';
 import { Order } from './shyam/order/order';
 import { authGuard } from './auth-guard';
-import { Mennu } from './shyam/mennu/mennu';
-import { InventoryComponent } from './shyam/inventory/inventory';
 
+import { Inventory } from './shyam/inventory/inventory';
+
+import { Employeee } from './shyam/employeee/employeee'; 
 export const routes: Routes = [
   {
     path: 'login',
@@ -77,12 +78,13 @@ export const routes: Routes = [
       component: Order
     },
     {
-      path: 'mennu',
-      component: Mennu
+      path: 'employeee',
+      component: Employeee  
+
     },
     {
       path: 'inventory',
-      component: InventoryComponent
+      component: Inventory
     }
   ]
 },

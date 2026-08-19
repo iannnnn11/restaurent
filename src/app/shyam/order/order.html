@@ -2,7 +2,6 @@
 
   <!-- Header -->
   <div class="d-flex justify-content-between align-items-center mb-3">
-
     <div>
       <h3 class="fw-bold mb-1">Orders</h3>
       <p class="text-muted mb-0">
@@ -10,22 +9,25 @@
       </p>
     </div>
 
-    <button class="btn btn-dark rounded-3 px-3">
+    <button
+      class="btn btn-dark rounded-3 px-3"
+      (click)="loadOrders()"
+    >
       <i class="fa-solid fa-rotate me-2"></i>
       Refresh
     </button>
-
   </div>
 
 
   <!-- Status Summary -->
   <div class="row g-3 mb-3">
 
+    <!-- Total -->
     <div class="col-md-3">
       <div class="summary-card">
         <div>
           <small>Total Orders</small>
-          <h3>48</h3>
+          <h3>{{ totalOrders }}</h3>
         </div>
 
         <div class="summary-icon total-icon">
@@ -35,50 +37,47 @@
     </div>
 
 
+    <!-- Waiting -->
     <div class="col-md-3">
       <div class="summary-card">
-
         <div>
           <small>Waiting</small>
-          <h3>12</h3>
+          <h3>{{ pendingOrders }}</h3>
         </div>
 
         <div class="summary-icon waiting-icon">
           <i class="fa-solid fa-clock"></i>
         </div>
-
       </div>
     </div>
 
 
+    <!-- Preparing -->
     <div class="col-md-3">
       <div class="summary-card">
-
         <div>
           <small>Preparing</small>
-          <h3>8</h3>
+          <h3>{{ preparingOrders }}</h3>
         </div>
 
         <div class="summary-icon preparing-icon">
           <i class="fa-solid fa-fire-burner"></i>
         </div>
-
       </div>
     </div>
 
 
+    <!-- Ready -->
     <div class="col-md-3">
       <div class="summary-card">
-
         <div>
           <small>Ready</small>
-          <h3>6</h3>
+          <h3>{{ readyOrders }}</h3>
         </div>
 
         <div class="summary-icon ready-icon">
           <i class="fa-solid fa-circle-check"></i>
         </div>
-
       </div>
     </div>
 
@@ -102,7 +101,9 @@
           <input
             type="text"
             class="form-control border-0 bg-light"
-            placeholder="Search order, employee or food..."
+            placeholder="Search order or food..."
+            [(ngModel)]="searchText"
+            (input)="applyFilters()"
           >
 
         </div>
@@ -113,14 +114,16 @@
       <!-- Status -->
       <div class="col-lg-3">
 
-        <select class="form-select border-0 bg-light">
-
-          <option>All Status</option>
-          <option>Waiting</option>
-          <option>Preparing</option>
-          <option>Ready</option>
-          <option>Completed</option>
-
+        <select
+          class="form-select border-0 bg-light"
+          [(ngModel)]="selectedStatus"
+          (change)="applyFilters()"
+        >
+          <option value="All">All Status</option>
+          <option value="Pending">Waiting</option>
+          <option value="Preparing">Preparing</option>
+          <option value="Ready">Ready</option>
+          <option value="Completed">Completed</option>
         </select>
 
       </div>
@@ -129,21 +132,26 @@
       <!-- Date -->
       <div class="col-lg-2">
 
-        <select class="form-select border-0 bg-light">
-
-          <option>Today</option>
-          <option>Yesterday</option>
-          <option>This Week</option>
-
+        <select
+          class="form-select border-0 bg-light"
+          [(ngModel)]="selectedDate"
+          (change)="applyFilters()"
+        >
+          <option value="Today">Today</option>
+          <option value="Yesterday">Yesterday</option>
+          <option value="This Week">This Week</option>
         </select>
 
       </div>
 
 
-      <!-- Button -->
+      <!-- Filter -->
       <div class="col-lg-2">
 
-        <button class="btn btn-dark w-100">
+        <button
+          class="btn btn-dark w-100"
+          (click)="applyFilters()"
+        >
           <i class="fa-solid fa-filter me-2"></i>
           Filter
         </button>
@@ -155,10 +163,11 @@
   </div>
 
 
-  <!-- Order Table -->
+  <!-- Orders Card -->
   <div class="orders-card">
 
-    <!-- Table heading -->
+
+    <!-- Table Header -->
     <div class="table-top d-flex justify-content-between align-items-center">
 
       <div>
@@ -167,26 +176,43 @@
         </h5>
 
         <small class="text-muted">
-          38 active orders
+          {{ activeOrders }} active orders
         </small>
       </div>
 
 
+      <!-- Status Tabs -->
       <div class="d-flex gap-2">
 
-        <button class="small-filter active-filter">
+        <button
+          class="small-filter"
+          [class.active-filter]="currentFilter === 'All'"
+          (click)="setFilter('All')"
+        >
           All
         </button>
 
-        <button class="small-filter">
+        <button
+          class="small-filter"
+          [class.active-filter]="currentFilter === 'Pending'"
+          (click)="setFilter('Pending')"
+        >
           Waiting
         </button>
 
-        <button class="small-filter">
+        <button
+          class="small-filter"
+          [class.active-filter]="currentFilter === 'Preparing'"
+          (click)="setFilter('Preparing')"
+        >
           Preparing
         </button>
 
-        <button class="small-filter">
+        <button
+          class="small-filter"
+          [class.active-filter]="currentFilter === 'Ready'"
+          (click)="setFilter('Ready')"
+        >
           Ready
         </button>
 
@@ -195,126 +221,156 @@
     </div>
 
 
+    <!-- Table -->
     <div class="table-responsive">
 
       <table class="table align-middle mb-0">
 
         <thead>
-
           <tr>
             <th>ORDER</th>
-            <th>EMPLOYEE</th>
             <th>ITEMS</th>
             <th>TIME</th>
             <th>AMOUNT</th>
             <th>STATUS</th>
             <th>ACTION</th>
           </tr>
-
         </thead>
 
 
         <tbody>
 
-  <tr *ngFor="let order of orders">
+          <tr *ngFor="let order of filteredOrders">
 
-    <!-- Order ID -->
-    <td>
-      <span class="order-code">
-        {{ order.id }}
-      </span>
-    </td>
-
-
-    <!-- Items -->
-    <td colspan="2">
-
-      <div *ngFor="let item of order.items">
-
-        <span class="item-name">
-          {{ item.name }}
-        </span>
-
-        <small class="text-muted ms-2">
-          x{{ item.quantity }}
-        </small>
-
-      </div>
-
-    </td>
+            <!-- Order ID -->
+            <td>
+              <span class="order-code">
+                {{ order.id }}
+              </span>
+            </td>
 
 
-    <!-- Time -->
-    <td>
-      {{ order.orderDate }}
-    </td>
+            <!-- Items -->
+            <td>
+
+              <div
+                *ngFor="let item of order.items"
+                class="mb-1"
+              >
+
+                <span class="item-name">
+                  {{ item.name }}
+                </span>
+
+                <small class="text-muted ms-2">
+                  x{{ item.quantity }}
+                </small>
+
+              </div>
+
+            </td>
 
 
-    <!-- Amount -->
-    <td class="fw-semibold">
-      ₹{{ order.total }}
-    </td>
+            <!-- Time -->
+            <td>
+              {{ order.orderDate }}
+            </td>
 
 
-    <!-- Status -->
-    <td>
-
-      <span
-        class="order-status"
-        [ngClass]="{
-          'waiting': order.status === 'Pending',
-          'preparing': order.status === 'Preparing',
-          'ready': order.status === 'Ready',
-          'completed': order.status === 'Completed'
-        }"
-      >
-        {{ order.status }}
-      </span>
-
-    </td>
+            <!-- Amount -->
+            <td class="fw-semibold">
+              ₹{{ order.total }}
+            </td>
 
 
-    <!-- Action -->
-    <td>
+            <!-- Status -->
+            <td>
 
-      <button
-        *ngIf="order.status === 'Pending'"
-        class="order-action"
-      >
-        Start Preparing
-      </button>
+              <span
+                class="order-status"
+                [ngClass]="{
+                  'waiting': order.status === 'Pending',
+                  'preparing': order.status === 'Preparing',
+                  'ready': order.status === 'Ready',
+                  'completed': order.status === 'Completed'
+                }"
+              >
+                {{ order.status }}
+              </span>
 
-
-      <button
-        *ngIf="order.status === 'Preparing'"
-        class="order-action success-action"
-      >
-        Mark Ready
-      </button>
-
-
-      <button
-        *ngIf="order.status === 'Ready'"
-        class="order-action dark-action"
-      >
-        Complete
-      </button>
+            </td>
 
 
-      <span
-        *ngIf="order.status === 'Completed'"
-        class="text-success fw-semibold"
-      >
-        Done
-      </span>
+            <!-- Action -->
+            <td>
 
-    </td>
+              <!-- Pending -->
+              <div
+                *ngIf="order.status === 'Pending'"
+                class="d-flex gap-2"
+              >
 
-  </tr>
+                <button
+                  class="order-action"
+                  (click)="updateStatus(order.id, 'Preparing')"
+                >
+                  Confirm Order
+                </button>
 
-</tbody>
+                <button
+                  class="order-action reject-action"
+                  (click)="rejectOrder(order.id)"
+                >
+                  Reject Order
+                </button>
+
+              </div>
+
+
+              <!-- Preparing -->
+              <button
+                *ngIf="order.status === 'Preparing'"
+                class="order-action success-action"
+                (click)="updateStatus(order.id, 'Ready')"
+              >
+                Mark Ready
+              </button>
+
+
+              <!-- Ready -->
+              <button
+                *ngIf="order.status === 'Ready'"
+                class="order-action dark-action"
+                (click)="updateStatus(order.id, 'Completed')"
+              >
+                Complete
+              </button>
+
+
+              <!-- Completed -->
+              <span
+                *ngIf="order.status === 'Completed'"
+                class="text-success fw-semibold"
+              >
+                Done
+              </span>
+
+            </td>
+
+          </tr>
+
+        </tbody>
 
       </table>
+
+
+      <!-- Empty State -->
+      <div
+        *ngIf="filteredOrders.length === 0"
+        class="text-center text-muted p-4"
+      >
+        No orders found.
+      </div>
 
     </div>
 
@@ -323,9 +379,9 @@
     <div class="table-bottom d-flex justify-content-between align-items-center">
 
       <small class="text-muted">
-        Showing 5 of 48 orders
+        Showing {{ filteredOrders.length }}
+        of {{ totalOrders }} orders
       </small>
-
 
       <div class="d-flex gap-2">
 
@@ -335,14 +391,6 @@
 
         <button class="page-btn active-page">
           1
-        </button>
-
-        <button class="page-btn">
-          2
-        </button>
-
-        <button class="page-btn">
-          3
         </button>
 
         <button class="page-btn">
