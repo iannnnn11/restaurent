@@ -1,4 +1,5 @@
 export interface InventoryItem {
+
   id: string;
   name: string;
   subtitle: string;
@@ -7,4 +8,6 @@ export interface InventoryItem {
   unit: string;
   minStock: number;
   lastRestock: string;
+  costPrice: number;
+
 }

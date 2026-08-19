@@ -1,1 +1,402 @@
-<p>employeee works!</p>
+<div class="employee-page">
+
+  <!-- ================= HEADER ================= -->
+  <div class="page-header">
+
+    <div>
+      <div class="eyebrow">
+        <i class="fa-solid fa-users"></i>
+        Employee Management
+      </div>
+
+      <h2>Employees</h2>
+
+      <p>
+        Manage and view all employees in your organization.
+      </p>
+    </div>
+
+    <div class="header-actions">
+
+      <div class="employee-count">
+        <i class="fa-solid fa-user-group"></i>
+        <span>{{ employees.length }} Employees</span>
+      </div>
+
+      <button class="add-btn">
+        <i class="fa-solid fa-plus"></i>
+        Add Employee
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= SUMMARY ================= -->
+  <div class="summary-grid">
+
+    <div class="summary-box">
+
+      <div class="summary-icon blue">
+        <i class="fa-solid fa-users"></i>
+      </div>
+
+      <div>
+        <span>Total Employees</span>
+        <h3>{{ employees.length }}</h3>
+      </div>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <div class="summary-icon green">
+        <i class="fa-solid fa-user-check"></i>
+      </div>
+
+      <div>
+        <span>Active Employees</span>
+        <h3>{{ activeEmployees }}</h3>
+      </div>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <div class="summary-icon orange">
+        <i class="fa-solid fa-building"></i>
+      </div>
+
+      <div>
+        <span>Departments</span>
+        <h3>{{ departmentsCount }}</h3>
+      </div>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <div class="summary-icon purple">
+        <i class="fa-solid fa-location-dot"></i>
+      </div>
+
+      <div>
+        <span>Branches</span>
+        <h3>{{ branchesCount }}</h3>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= FILTER BAR ================= -->
+  <div class="toolbar">
+
+    <div class="search-box">
+
+      <i class="fa-solid fa-magnifying-glass"></i>
+
+      <input
+        type="text"
+        placeholder="Search employee, ID, department..."
+        [(ngModel)]="searchText"
+      >
+
+    </div>
+
+
+    <select [(ngModel)]="selectedDepartment">
+
+      <option value="All">
+        All Departments
+      </option>
+
+      <option
+        *ngFor="let department of departments"
+        [value]="department"
+      >
+        {{ department }}
+      </option>
+
+    </select>
+
+
+    <select [(ngModel)]="selectedStatus">
+
+      <option value="All">
+        All Status
+      </option>
+
+      <option value="Active">
+        Active
+      </option>
+
+      <option value="Inactive">
+        Inactive
+      </option>
+
+    </select>
+
+
+    <button
+      class="filter-btn"
+      (click)="applyFilters()"
+    >
+
+      <i class="fa-solid fa-filter"></i>
+
+      Filter
+
+    </button>
+
+  </div>
+
+
+  <!-- ================= EMPLOYEE GRID ================= -->
+  <div class="employee-section">
+
+    <div class="section-heading">
+
+      <div>
+        <h4>Employee Directory</h4>
+
+        <p>
+          {{ filteredEmployees.length }} employees found
+        </p>
+      </div>
+
+      <div class="view-options">
+
+        <button class="view-btn active">
+          <i class="fa-solid fa-grip"></i>
+        </button>
+
+        <button class="view-btn">
+          <i class="fa-solid fa-list"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- CARDS -->
+    <div class="employee-grid">
+
+      <div
+        class="employee-card"
+        *ngFor="let employee of filteredEmployees"
+      >
+
+        <!-- CARD TOP -->
+        <div class="card-top">
+
+          <div class="avatar">
+
+            {{ employee.name.charAt(0) }}
+
+          </div>
+
+
+          <div class="employee-main">
+
+            <h5>
+              {{ employee.name }}
+            </h5>
+
+            <span class="employee-id">
+              {{ employee.companyId }}
+            </span>
+
+          </div>
+
+
+          <button class="more-btn">
+
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+          </button>
+
+        </div>
+
+
+        <!-- ROLE -->
+        <div class="role-row">
+
+          <span class="role-badge">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+            {{ employee.role }}
+
+          </span>
+
+
+          <span
+            class="status-badge"
+            [class.active]="employee.status === 'Active'"
+            [class.inactive]="employee.status !== 'Active'"
+          >
+
+            <span class="status-dot"></span>
+
+            {{ employee.status }}
+
+          </span>
+
+        </div>
+
+
+        <!-- DIVIDER -->
+        <div class="card-divider"></div>
+
+
+        <!-- DETAILS -->
+        <div class="employee-details">
+
+          <div class="detail-row">
+
+            <div class="detail-icon">
+
+              <i class="fa-solid fa-building"></i>
+
+            </div>
+
+            <div>
+
+              <small>Department</small>
+
+              <strong>
+                {{ employee.department }}
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <div class="detail-icon">
+
+              <i class="fa-solid fa-location-dot"></i>
+
+            </div>
+
+            <div>
+
+              <small>Branch</small>
+
+              <strong>
+                {{ employee.branch }}
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <div class="detail-icon">
+
+              <i class="fa-solid fa-phone"></i>
+
+            </div>
+
+            <div>
+
+              <small>Phone</small>
+
+              <strong>
+                {{ employee.phone }}
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <div class="detail-icon">
+
+              <i class="fa-solid fa-calendar-days"></i>
+
+            </div>
+
+            <div>
+
+              <small>Joined</small>
+
+              <strong>
+                {{ employee.joiningDate }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- CARD FOOTER -->
+        <div class="card-footer">
+
+          <button class="profile-btn">
+
+            <i class="fa-regular fa-user"></i>
+
+            View Profile
+
+          </button>
+
+
+          <button class="contact-btn">
+
+            <i class="fa-solid fa-phone"></i>
+
+          </button>
+
+
+          <button class="contact-btn">
+
+            <i class="fa-regular fa-envelope"></i>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- EMPTY -->
+    <div
+      *ngIf="filteredEmployees.length === 0"
+      class="empty-state"
+    >
+
+      <div class="empty-icon">
+
+        <i class="fa-solid fa-user-slash"></i>
+
+      </div>
+
+      <h5>No employees found</h5>
+
+      <p>
+        Try changing your search or filter.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

@@ -7,7 +7,9 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
 import { Cart } from '../../services/cart';
+import { InventoryService } from '../../services/inventory';
 
 @Component({
   selector: 'app-menu',
@@ -25,7 +27,7 @@ export class Menu implements OnInit, AfterViewInit {
   searchText = '';
   vegOnly = false;
 
-  activeCategory: string = 'recommended';
+  activeCategory = 'recommended';
 
   private categoryIds: string[] = [
     'recommended',
@@ -34,11 +36,19 @@ export class Menu implements OnInit, AfterViewInit {
     'snacks'
   ];
 
-  constructor(private cartService: Cart) {}
+  constructor(
+    private cartService: Cart,
+    private inventoryService: InventoryService
+  ) {}
+
+  // =========================
+  // COFFEE
+  // =========================
 
   coffeeItems = [
+
     {
-      id: 1,
+      id: '1',
       name: 'Cappuccino',
       description: 'Rich coffee with steamed milk and foam.',
       price: 40,
@@ -46,11 +56,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 210,
       image: '/images/cappuchino.jpg',
       isVeg: true,
-      bestseller: true,
-      quantity: 0
+      bestseller: true
     },
+
     {
-      id: 2,
+      id: '2',
       name: 'Cold Coffee',
       description: 'Chilled coffee blended with milk.',
       price: 50,
@@ -58,11 +68,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 175,
       image: '/images/coldcoffee.webp',
       isVeg: true,
-      bestseller: true,
-      quantity: 0
+      bestseller: true
     },
+
     {
-      id: 3,
+      id: '3',
       name: 'Black Coffee',
       description: 'Strong coffee without milk or sugar.',
       price: 30,
@@ -70,11 +80,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 92,
       image: '/images/blacktea.jpg',
       isVeg: true,
-      bestseller: false,
-      quantity: 0
+      bestseller: false
     },
+
     {
-      id: 4,
+      id: '4',
       name: 'Green Tea',
       description: 'Refreshing and healthy green tea.',
       price: 25,
@@ -82,11 +92,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 115,
       image: '/images/greentea.avif',
       isVeg: true,
-      bestseller: false,
-      quantity: 0
+      bestseller: false
     },
+
     {
-      id: 5,
+      id: '5',
       name: 'Masala Tea',
       description: 'Indian tea prepared with aromatic spices.',
       price: 20,
@@ -94,14 +104,19 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 320,
       image: '/images/masala.jpg',
       isVeg: true,
-      bestseller: true,
-      quantity: 0
+      bestseller: true
     }
+
   ];
 
+  // =========================
+  // NUTS
+  // =========================
+
   nutsItems = [
+
     {
-      id: 6,
+      id: '6',
       name: 'Almonds',
       description: 'Healthy and crunchy roasted almonds.',
       price: 80,
@@ -109,11 +124,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 140,
       image: '/images/almond.webp',
       isVeg: true,
-      bestseller: true,
-      quantity: 0
+      bestseller: true
     },
+
     {
-      id: 7,
+      id: '7',
       name: 'Cashews',
       description: 'Premium roasted and salted cashews.',
       price: 90,
@@ -121,11 +136,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 125,
       image: '/images/cashew.jpg',
       isVeg: true,
-      bestseller: true,
-      quantity: 0
+      bestseller: true
     },
+
     {
-      id: 8,
+      id: '8',
       name: 'Walnuts',
       description: 'Nutritious walnuts rich in healthy fats.',
       price: 100,
@@ -133,11 +148,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 88,
       image: '/images/walnut.webp',
       isVeg: true,
-      bestseller: false,
-      quantity: 0
+      bestseller: false
     },
+
     {
-      id: 9,
+      id: '9',
       name: 'Pistachios',
       description: 'Lightly salted crunchy pistachios.',
       price: 110,
@@ -145,11 +160,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 160,
       image: '/images/pistachio.jpg',
       isVeg: true,
-      bestseller: true,
-      quantity: 0
+      bestseller: true
     },
+
     {
-      id: 10,
+      id: '10',
       name: 'Raisins',
       description: 'Naturally sweet and healthy dried grapes.',
       price: 60,
@@ -157,14 +172,19 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 75,
       image: '/images/raisin.webp',
       isVeg: true,
-      bestseller: false,
-      quantity: 0
+      bestseller: false
     }
+
   ];
 
+  // =========================
+  // SNACKS
+  // =========================
+
   snackItems = [
+
     {
-      id: 11,
+      id: '11',
       name: 'Potato Chips',
       description: 'Crispy and lightly salted potato chips.',
       price: 20,
@@ -172,11 +192,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 230,
       image: '/images/chip.jpg',
       isVeg: true,
-      bestseller: true,
-      quantity: 0
+      bestseller: true
     },
+
     {
-      id: 12,
+      id: '12',
       name: 'Cookies',
       description: 'Crunchy chocolate-flavoured cookies.',
       price: 30,
@@ -184,11 +204,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 280,
       image: '/images/cookie.jpg',
       isVeg: true,
-      bestseller: true,
-      quantity: 0
+      bestseller: true
     },
+
     {
-      id: 13,
+      id: '13',
       name: 'Popcorn',
       description: 'Light and crispy salted popcorn.',
       price: 35,
@@ -196,11 +216,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 130,
       image: '/images/popcorn.jpg',
       isVeg: true,
-      bestseller: false,
-      quantity: 0
+      bestseller: false
     },
+
     {
-      id: 14,
+      id: '14',
       name: 'Protein Bar',
       description: 'Healthy snack packed with protein.',
       price: 70,
@@ -208,11 +228,11 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 98,
       image: '/images/protein.jpg',
       isVeg: true,
-      bestseller: false,
-      quantity: 0
+      bestseller: false
     },
+
     {
-      id: 15,
+      id: '15',
       name: 'Biscuits',
       description: 'Classic biscuits perfect with tea.',
       price: 20,
@@ -220,22 +240,33 @@ export class Menu implements OnInit, AfterViewInit {
       ratingCount: 190,
       image: '/images/biscuit.webp',
       isVeg: true,
-      bestseller: false,
-      quantity: 0
+      bestseller: false
     }
+
   ];
 
+  // =========================
+  // INIT
+  // =========================
+
   ngOnInit(): void {
-    this.syncQuantities();
+    this.syncInventoryQuantities();
   }
 
   ngAfterViewInit(): void {
+
     setTimeout(() => {
       this.updateActiveCategory();
     });
+
   }
 
+  // =========================
+  // RECOMMENDED
+  // =========================
+
   get recommendedItems(): any[] {
+
     return [
       this.coffeeItems[0],
       this.coffeeItems[4],
@@ -244,40 +275,48 @@ export class Menu implements OnInit, AfterViewInit {
       this.snackItems[1],
       this.snackItems[3]
     ];
+
   }
+
+  // =========================
+  // SEARCH
+  // =========================
 
   getFilteredItems(items: any[]): any[] {
-    const search = this.searchText.trim().toLowerCase();
+
+    const search = this.searchText
+      .trim()
+      .toLowerCase();
 
     return items.filter(item => {
+
       const matchesSearch =
-        item.name.toLowerCase().includes(search) ||
-        item.description.toLowerCase().includes(search);
+        item.name
+          .toLowerCase()
+          .includes(search) ||
+
+        item.description
+          .toLowerCase()
+          .includes(search);
 
       const matchesVeg =
-        !this.vegOnly || item.isVeg === true;
+        !this.vegOnly ||
+        item.isVeg === true;
 
       return matchesSearch && matchesVeg;
+
     });
+
   }
 
-  addToCart(item: any): void {
-    this.cartService.addToCart(item);
-    this.syncQuantities();
-  }
+  // =========================
+  // INVENTORY
+  // =========================
 
-  increaseQuantity(item: any): void {
-    this.cartService.increaseQuantity(item);
-    this.syncQuantities();
-  }
+  syncInventoryQuantities(): void {
 
-  decreaseQuantity(item: any): void {
-    this.cartService.decreaseQuantity(item);
-    this.syncQuantities();
-  }
-
-  syncQuantities(): void {
-    const cartItems = this.cartService.getCartItems();
+    const inventoryItems =
+      this.inventoryService.getItems();
 
     const allItems = [
       ...this.coffeeItems,
@@ -286,15 +325,142 @@ export class Menu implements OnInit, AfterViewInit {
     ];
 
     allItems.forEach(item => {
-      const cartItem = cartItems.find(
-        (savedItem: any) => savedItem.id === item.id
-      );
 
-      item.quantity = cartItem ? cartItem.quantity : 0;
+      const inventoryItem =
+        inventoryItems.find(
+          inventory => inventory.id === item.id
+        );
+
+      /*
+       * We no longer store quantity directly
+       * inside menu item.
+       *
+       * InventoryService is the single source
+       * of truth for stock.
+       */
+
     });
+
   }
 
+  // =========================
+  // STOCK
+  // =========================
+
+  getStockQuantity(id: string): number {
+
+    const inventoryItem =
+      this.inventoryService
+        .getItems()
+        .find(item => item.id === id);
+
+    return inventoryItem
+      ? inventoryItem.quantity
+      : 0;
+  }
+
+  isOutOfStock(id: string): boolean {
+
+    return this.getStockQuantity(id) <= 0;
+
+  }
+
+  isLowStock(id: string): boolean {
+
+    const item =
+      this.inventoryService
+        .getItems()
+        .find(item => item.id === id);
+
+    if (!item) {
+      return false;
+    }
+
+    return (
+      item.quantity > 0 &&
+      item.quantity <= item.minStock
+    );
+
+  }
+
+  // =========================
+  // CART QUANTITY
+  // =========================
+
+  getCartQuantity(id: string): number {
+
+    const cartItem =
+      this.cartService
+        .getCartItems()
+        .find(item => item.id === id);
+
+    return cartItem
+      ? cartItem.quantity
+      : 0;
+  }
+
+  // =========================
+  // ADD TO CART
+  // =========================
+
+  addToCart(item: any): void {
+
+    const stock =
+      this.getStockQuantity(item.id);
+
+    const cartQuantity =
+      this.getCartQuantity(item.id);
+
+    // No stock
+    if (stock <= 0) {
+      return;
+    }
+
+    // Cart already has maximum available quantity
+    if (cartQuantity >= stock) {
+      return;
+    }
+
+    this.cartService.addToCart(item);
+
+  }
+
+  // =========================
+  // INCREASE CART
+  // =========================
+
+  increaseQuantity(item: any): void {
+
+    const stock =
+      this.getStockQuantity(item.id);
+
+    const cartQuantity =
+      this.getCartQuantity(item.id);
+
+    if (cartQuantity >= stock) {
+      return;
+    }
+
+    this.cartService.increaseQuantity(item);
+
+  }
+
+  // =========================
+  // DECREASE CART
+  // =========================
+
+  decreaseQuantity(item: any): void {
+
+    this.cartService.decreaseQuantity(item);
+
+  }
+
+  // =========================
+  // CART COUNT
+  // =========================
+
   getCartCount(): number {
+
     return this.cartService
       .getCartItems()
       .reduce(
@@ -302,20 +468,35 @@ export class Menu implements OnInit, AfterViewInit {
           total + (item.quantity || 0),
         0
       );
+
   }
 
+  // =========================
+  // CART TOTAL
+  // =========================
+
   getCartTotal(): number {
+
     return this.cartService
       .getCartItems()
       .reduce(
         (total: number, item: any) =>
-          total + item.price * (item.quantity || 0),
+          total +
+          item.price *
+          (item.quantity || 0),
         0
       );
+
   }
 
+  // =========================
+  // SCROLL
+  // =========================
+
   scrollToSection(sectionId: string): void {
-    const section = document.getElementById(sectionId);
+
+    const section =
+      document.getElementById(sectionId);
 
     if (!section) {
       return;
@@ -327,14 +508,22 @@ export class Menu implements OnInit, AfterViewInit {
       behavior: 'smooth',
       block: 'start'
     });
+
   }
+
+  // =========================
+  // ACTIVE CATEGORY
+  // =========================
 
   @HostListener('window:scroll')
   onWindowScroll(): void {
+
     this.updateActiveCategory();
+
   }
 
   private updateActiveCategory(): void {
+
     const checkingPosition = 230;
 
     for (
@@ -342,18 +531,29 @@ export class Menu implements OnInit, AfterViewInit {
       index >= 0;
       index--
     ) {
-      const sectionId = this.categoryIds[index];
-      const section = document.getElementById(sectionId);
+
+      const sectionId =
+        this.categoryIds[index];
+
+      const section =
+        document.getElementById(sectionId);
 
       if (
         section &&
-        section.getBoundingClientRect().top <= checkingPosition
+        section.getBoundingClientRect().top <=
+        checkingPosition
       ) {
+
         this.activeCategory = sectionId;
+
         return;
+
       }
+
     }
 
     this.activeCategory = 'recommended';
+
   }
+
 }

@@ -5,10 +5,11 @@ import { InventoryItem } from '../models/inventory-item';
   providedIn: 'root'
 })
 export class InventoryService {
+
   private storageKey = 'jodetx-inventory';
+
   private items: InventoryItem[] = [
 
-    // Coffee & Tea
     {
       id: '1',
       name: 'Cappuccino',
@@ -17,7 +18,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 20
     },
 
     {
@@ -28,7 +30,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 25
     },
 
     {
@@ -39,7 +42,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 12
     },
 
     {
@@ -50,7 +54,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 10
     },
 
     {
@@ -61,10 +66,10 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 8
     },
 
-    // Nuts
     {
       id: '6',
       name: 'Almonds',
@@ -73,7 +78,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'packs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 50
     },
 
     {
@@ -84,7 +90,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'packs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 60
     },
 
     {
@@ -95,7 +102,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'packs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 65
     },
 
     {
@@ -106,7 +114,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'packs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 70
     },
 
     {
@@ -117,10 +126,10 @@ export class InventoryService {
       quantity: 20,
       unit: 'packs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 35
     },
 
-    // Snacks
     {
       id: '11',
       name: 'Potato Chips',
@@ -129,7 +138,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 10
     },
 
     {
@@ -140,7 +150,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 15
     },
 
     {
@@ -151,7 +162,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 18
     },
 
     {
@@ -162,7 +174,8 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 45
     },
 
     {
@@ -173,59 +186,93 @@ export class InventoryService {
       quantity: 20,
       unit: 'pcs',
       minStock: 5,
-      lastRestock: '17 Aug'
+      lastRestock: '17 Aug',
+      costPrice: 10
     }
 
   ];
 
+
   constructor() {
-  const savedItems = localStorage.getItem(this.storageKey);
 
-  if (savedItems) {
-    try {
-      this.items = JSON.parse(savedItems);
-    } catch {
-      console.log('Could not load saved inventory');
+    const savedItems = localStorage.getItem(this.storageKey);
+
+    if (savedItems) {
+
+      try {
+
+        this.items = JSON.parse(savedItems);
+
+      } catch {
+
+        console.log('Could not load saved inventory');
+
+        this.saveItems();
+
+      }
+
+    } else {
+
+      this.saveItems();
+
     }
-  } else {
-    localStorage.setItem(
-      this.storageKey,
-      JSON.stringify(this.items)
-    );
+
   }
-}
+
+
   getItems(): InventoryItem[] {
+
     return this.items;
+
   }
 
 
-  updateQuantity(id: string, change: number): void {
-
-    console.log(
-      'Inventory update requested:',
-      id,
-      change
-    );
+  increaseQuantity(id: string): void {
 
     const item = this.items.find(
-      (item: InventoryItem) => item.id === id
+      item => item.id === id
     );
 
     if (!item) {
-
-      console.log(
-        'Inventory item NOT found:',
-        id
-      );
-
       return;
     }
 
-    console.log(
-      'Before:',
-      item.name,
-      item.quantity
+    item.quantity++;
+
+    this.saveItems();
+
+  }
+
+
+  decreaseQuantity(id: string): void {
+
+    const item = this.items.find(
+      item => item.id === id
     );
+
+    if (!item || item.quantity <= 0) {
+      return;
+    }
+
+    item.quantity--;
+
+    this.saveItems();
+
+  }
+
+
+  updateQuantity(
+    id: string,
+    change: number
+  ): void {
+
+    const item = this.items.find(
+      item => item.id === id
+    );
+
+    if (!item) {
+      return;
+    }
 
     item.quantity += change;
 
@@ -233,16 +280,51 @@ export class InventoryService {
       item.quantity = 0;
     }
 
-    console.log(
-      'After:',
-      item.name,
-      item.quantity
-    );
-    localStorage.setItem(
-  this.storageKey,
-  JSON.stringify(this.items)
-);  
+    this.saveItems();
+
   }
-  
+
+
+  restockItem(id: string): void {
+
+    const item = this.items.find(
+      item => item.id === id
+    );
+
+    if (!item) {
+      return;
+    }
+
+    item.quantity += item.minStock;
+
+    item.lastRestock = this.getToday();
+
+    this.saveItems();
+
+  }
+
+
+  private saveItems(): void {
+
+    localStorage.setItem(
+      this.storageKey,
+      JSON.stringify(this.items)
+    );
+
+  }
+
+
+  private getToday(): string {
+
+    return new Date().toLocaleDateString(
+      'en-GB',
+      {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      }
+    );
+
+  }
 
 }

@@ -1,12 +1,64 @@
 <section class="menu-page min-vh-100 pb-5">
 
-  <!-- Top Header -->
+  <style>
+    .inventory-status {
+      bottom: 52px;
+      z-index: 3;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .stock-available {
+      color: #198754;
+      background: rgba(255, 255, 255, 0.94);
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    .stock-low {
+      color: #b45309;
+      background: #fff7ed;
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    .stock-out {
+      color: #b91c1c;
+      background: #fef2f2;
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    .out-of-stock {
+      bottom: 12px;
+      width: 88%;
+      text-align: center;
+      padding: 9px 10px;
+      border-radius: 9px;
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 4;
+    }
+  </style>
+
+
+  <!-- ========================= -->
+  <!-- TOP HEADER -->
+  <!-- ========================= -->
+
   <header class="sticky-top menu-header">
+
     <div class="container py-3">
 
       <div class="menu-navbar d-flex align-items-center gap-3">
 
         <!-- Back Button -->
+
         <button
           class="btn back-btn"
           type="button"
@@ -17,14 +69,18 @@
 
         </button>
 
+
         <!-- Brand -->
-        <div class="brand-section d-none d-md-flex align-items-center gap-2">
+
+        <div
+          class="brand-section d-none d-md-flex align-items-center gap-2">
 
           <div class="brand-icon">
             <i class="fa-solid fa-utensils"></i>
           </div>
 
           <div>
+
             <h5 class="brand-title mb-0">
               Jode<span>Tx</span>
             </h5>
@@ -32,11 +88,14 @@
             <small class="brand-subtitle">
               Office Canteen
             </small>
+
           </div>
 
         </div>
 
+
         <!-- Search -->
+
         <div class="position-relative flex-grow-1 search-box">
 
           <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -46,6 +105,7 @@
             class="form-control search-input"
             placeholder="Search coffee, snacks, nuts..."
             [(ngModel)]="searchText">
+
 
           <button
             *ngIf="searchText"
@@ -60,18 +120,25 @@
 
         </div>
 
+
         <!-- Orders -->
+
         <button
           class="btn header-action-btn d-none d-md-flex"
           type="button"
           routerLink="/orders">
 
           <i class="fa-solid fa-receipt"></i>
-          <span>My Orders</span>
+
+          <span>
+            My Orders
+          </span>
 
         </button>
 
+
         <!-- Cart -->
+
         <button
           class="btn cart-btn position-relative"
           type="button"
@@ -79,6 +146,7 @@
           aria-label="Open cart">
 
           <i class="fa-solid fa-bag-shopping"></i>
+
 
           <span
             *ngIf="getCartCount() > 0"
@@ -93,24 +161,37 @@
       </div>
 
     </div>
+
   </header>
 
-  <!-- Offers -->
+
+  <!-- ========================= -->
+  <!-- OFFERS -->
+  <!-- ========================= -->
+
   <section class="offers-section py-4">
 
     <div class="container">
 
-      <div class="d-flex gap-3 overflow-x-auto pb-2 offer-scroll">
+      <div
+        class="d-flex gap-3 overflow-x-auto pb-2 offer-scroll">
+
+
+        <!-- Offer 1 -->
 
         <div class="card flex-shrink-0 offer-card">
 
-          <div class="card-body d-flex align-items-center gap-3">
+          <div
+            class="card-body d-flex align-items-center gap-3">
 
             <div class="offer-icon">
+
               <i class="fa-solid fa-percent"></i>
+
             </div>
 
             <div>
+
               <h6 class="fw-bold mb-1">
                 50% OFF
               </h6>
@@ -118,21 +199,29 @@
               <small class="text-secondary">
                 Use code WELCOME50
               </small>
+
             </div>
 
           </div>
 
         </div>
 
+
+        <!-- Offer 2 -->
+
         <div class="card flex-shrink-0 offer-card">
 
-          <div class="card-body d-flex align-items-center gap-3">
+          <div
+            class="card-body d-flex align-items-center gap-3">
 
             <div class="offer-icon">
+
               <i class="fa-solid fa-tags"></i>
+
             </div>
 
             <div>
+
               <h6 class="fw-bold mb-1">
                 ₹75 OFF
               </h6>
@@ -140,21 +229,29 @@
               <small class="text-secondary">
                 Orders above ₹399
               </small>
+
             </div>
 
           </div>
 
         </div>
 
+
+        <!-- Offer 3 -->
+
         <div class="card flex-shrink-0 offer-card">
 
-          <div class="card-body d-flex align-items-center gap-3">
+          <div
+            class="card-body d-flex align-items-center gap-3">
 
             <div class="offer-icon">
+
               <i class="fa-solid fa-truck-fast"></i>
+
             </div>
 
             <div>
+
               <h6 class="fw-bold mb-1">
                 Free Delivery
               </h6>
@@ -162,6 +259,7 @@
               <small class="text-secondary">
                 On your first order
               </small>
+
             </div>
 
           </div>
@@ -174,13 +272,25 @@
 
   </section>
 
-  <!-- Main Menu -->
+
+  <!-- ========================= -->
+  <!-- MAIN MENU -->
+  <!-- ========================= -->
+
   <main class="container py-4 py-lg-5">
 
-    <!-- Categories -->
+
+    <!-- ========================= -->
+    <!-- CATEGORY NAVIGATION -->
+    <!-- ========================= -->
+
     <div class="category-nav mb-5">
 
-      <div class="category-scroll d-flex align-items-center gap-2">
+      <div
+        class="category-scroll d-flex align-items-center gap-2">
+
+
+        <!-- Recommended -->
 
         <button
           type="button"
@@ -189,12 +299,17 @@
           (click)="scrollToSection('recommended')">
 
           <span class="category-icon">
+
             <i class="fa-solid fa-fire"></i>
+
           </span>
 
           Recommended
 
         </button>
+
+
+        <!-- Coffee -->
 
         <button
           type="button"
@@ -203,12 +318,17 @@
           (click)="scrollToSection('coffee')">
 
           <span class="category-icon">
+
             <i class="fa-solid fa-mug-hot"></i>
+
           </span>
 
           Coffee & Tea
 
         </button>
+
+
+        <!-- Nuts -->
 
         <button
           type="button"
@@ -217,12 +337,17 @@
           (click)="scrollToSection('nuts')">
 
           <span class="category-icon">
+
             <i class="fa-solid fa-seedling"></i>
+
           </span>
 
           Nuts & Dry Fruits
 
         </button>
+
+
+        <!-- Snacks -->
 
         <button
           type="button"
@@ -231,7 +356,9 @@
           (click)="scrollToSection('snacks')">
 
           <span class="category-icon">
+
             <i class="fa-solid fa-cookie-bite"></i>
+
           </span>
 
           Office Snacks
@@ -242,16 +369,24 @@
 
     </div>
 
+
     <div class="menu-content">
 
-      <!-- Recommended -->
+
+      <!-- ========================= -->
+      <!-- RECOMMENDED -->
+      <!-- ========================= -->
+
       <section
         id="recommended"
         class="menu-section mb-5">
 
-        <div class="section-heading d-flex justify-content-between align-items-end mb-3">
+
+        <div
+          class="section-heading d-flex justify-content-between align-items-end mb-3">
 
           <div>
+
             <p class="section-label mb-2">
               EMPLOYEE FAVOURITES
             </p>
@@ -263,23 +398,36 @@
             <p class="section-description mb-0">
               Popular choices from our employees
             </p>
+
           </div>
 
+
           <small class="item-count">
-            {{ getFilteredItems(recommendedItems).length }} items
+
+            {{ getFilteredItems(recommendedItems).length }}
+            items
+
           </small>
 
         </div>
 
+
         <div class="menu-list-card overflow-hidden">
 
           <div
-            *ngFor="let item of getFilteredItems(recommendedItems); let last = last"
+            *ngFor="
+              let item of getFilteredItems(recommendedItems);
+              let last = last
+            "
             class="food-item-row p-3 p-md-4"
             [class.border-bottom]="!last">
 
+
             <ng-container
-              *ngTemplateOutlet="foodTemplate; context: { item: item }">
+              *ngTemplateOutlet="
+                foodTemplate;
+                context: { item: item }
+              ">
             </ng-container>
 
           </div>
@@ -288,14 +436,21 @@
 
       </section>
 
-      <!-- Coffee -->
+
+      <!-- ========================= -->
+      <!-- COFFEE -->
+      <!-- ========================= -->
+
       <section
         id="coffee"
         class="menu-section mb-5">
 
-        <div class="section-heading d-flex justify-content-between align-items-end mb-3">
+
+        <div
+          class="section-heading d-flex justify-content-between align-items-end mb-3">
 
           <div>
+
             <p class="section-label mb-2">
               WORK BREAK DRINKS
             </p>
@@ -307,23 +462,36 @@
             <p class="section-description mb-0">
               Refreshing beverages for your work break
             </p>
+
           </div>
 
+
           <small class="item-count">
-            {{ getFilteredItems(coffeeItems).length }} items
+
+            {{ getFilteredItems(coffeeItems).length }}
+            items
+
           </small>
 
         </div>
 
+
         <div class="menu-list-card overflow-hidden">
 
           <div
-            *ngFor="let item of getFilteredItems(coffeeItems); let last = last"
+            *ngFor="
+              let item of getFilteredItems(coffeeItems);
+              let last = last
+            "
             class="food-item-row p-3 p-md-4"
             [class.border-bottom]="!last">
 
+
             <ng-container
-              *ngTemplateOutlet="foodTemplate; context: { item: item }">
+              *ngTemplateOutlet="
+                foodTemplate;
+                context: { item: item }
+              ">
             </ng-container>
 
           </div>
@@ -332,14 +500,21 @@
 
       </section>
 
-      <!-- Nuts -->
+
+      <!-- ========================= -->
+      <!-- NUTS -->
+      <!-- ========================= -->
+
       <section
         id="nuts"
         class="menu-section mb-5">
 
-        <div class="section-heading d-flex justify-content-between align-items-end mb-3">
+
+        <div
+          class="section-heading d-flex justify-content-between align-items-end mb-3">
 
           <div>
+
             <p class="section-label mb-2">
               HEALTHY CHOICES
             </p>
@@ -351,23 +526,36 @@
             <p class="section-description mb-0">
               Healthy snacks for office breaks
             </p>
+
           </div>
 
+
           <small class="item-count">
-            {{ getFilteredItems(nutsItems).length }} items
+
+            {{ getFilteredItems(nutsItems).length }}
+            items
+
           </small>
 
         </div>
 
+
         <div class="menu-list-card overflow-hidden">
 
           <div
-            *ngFor="let item of getFilteredItems(nutsItems); let last = last"
+            *ngFor="
+              let item of getFilteredItems(nutsItems);
+              let last = last
+            "
             class="food-item-row p-3 p-md-4"
             [class.border-bottom]="!last">
 
+
             <ng-container
-              *ngTemplateOutlet="foodTemplate; context: { item: item }">
+              *ngTemplateOutlet="
+                foodTemplate;
+                context: { item: item }
+              ">
             </ng-container>
 
           </div>
@@ -376,14 +564,21 @@
 
       </section>
 
-      <!-- Snacks -->
+
+      <!-- ========================= -->
+      <!-- SNACKS -->
+      <!-- ========================= -->
+
       <section
         id="snacks"
         class="menu-section mb-5">
 
-        <div class="section-heading d-flex justify-content-between align-items-end mb-3">
+
+        <div
+          class="section-heading d-flex justify-content-between align-items-end mb-3">
 
           <div>
+
             <p class="section-label mb-2">
               QUICK BITES
             </p>
@@ -395,23 +590,36 @@
             <p class="section-description mb-0">
               Tasty snacks for meetings and break time
             </p>
+
           </div>
 
+
           <small class="item-count">
-            {{ getFilteredItems(snackItems).length }} items
+
+            {{ getFilteredItems(snackItems).length }}
+            items
+
           </small>
 
         </div>
 
+
         <div class="menu-list-card overflow-hidden">
 
           <div
-            *ngFor="let item of getFilteredItems(snackItems); let last = last"
+            *ngFor="
+              let item of getFilteredItems(snackItems);
+              let last = last
+            "
             class="food-item-row p-3 p-md-4"
             [class.border-bottom]="!last">
 
+
             <ng-container
-              *ngTemplateOutlet="foodTemplate; context: { item: item }">
+              *ngTemplateOutlet="
+                foodTemplate;
+                context: { item: item }
+              ">
             </ng-container>
 
           </div>
@@ -424,15 +632,30 @@
 
   </main>
 
-  <!-- Reusable Food Template -->
-  <ng-template #foodTemplate let-item="item">
+
+  <!-- ========================= -->
+  <!-- REUSABLE FOOD TEMPLATE -->
+  <!-- ========================= -->
+
+  <ng-template
+    #foodTemplate
+    let-item="item">
+
 
     <div class="row align-items-center g-3">
 
-      <!-- Food Details -->
+
+      <!-- ========================= -->
+      <!-- FOOD DETAILS -->
+      <!-- ========================= -->
+
       <div class="col-7 col-md-8">
 
+
         <div class="d-flex align-items-center gap-2">
+
+
+          <!-- Veg Icon -->
 
           <span
             class="veg-icon"
@@ -442,20 +665,32 @@
 
           </span>
 
+
+          <!-- Bestseller -->
+
           <span
             *ngIf="item.bestseller"
             class="bestseller-text fw-bold small">
 
             <i class="fa-solid fa-star me-1"></i>
+
             Bestseller
 
           </span>
 
         </div>
 
+
+        <!-- Name -->
+
         <h5 class="food-name mt-2 mb-1">
+
           {{ item.name }}
+
         </h5>
+
+
+        <!-- Rating -->
 
         <div class="item-rating small fw-semibold mb-2">
 
@@ -464,34 +699,116 @@
           {{ item.rating }}
 
           <span class="rating-count">
+
             ({{ item.ratingCount }})
+
           </span>
 
         </div>
 
+
+        <!-- Price -->
+
         <p class="food-price mb-2">
+
           ₹{{ item.price }}
+
         </p>
 
+
+        <!-- Description -->
+
         <p class="item-description small mb-0">
+
           {{ item.description }}
+
         </p>
 
       </div>
 
-      <!-- Food Image -->
+
+      <!-- ========================= -->
+      <!-- FOOD IMAGE -->
+      <!-- ========================= -->
+
       <div class="col-5 col-md-4">
 
-        <div class="position-relative ms-auto food-image-box">
+        <div
+          class="position-relative ms-auto food-image-box">
+
 
           <img
             [src]="item.image"
             [alt]="item.name"
             class="img-fluid w-100 food-image">
 
-          <!-- Add Button -->
+
+          <!-- ========================= -->
+          <!-- INVENTORY STATUS -->
+          <!-- ========================= -->
+
+          <div
+            class="inventory-status position-absolute start-50 translate-middle-x">
+
+
+            <!-- IN STOCK -->
+
+            <span
+              *ngIf="
+                !isOutOfStock(item.id) &&
+                getStockQuantity(item.id) > 5
+              "
+              class="stock-available">
+
+              <i class="fa-solid fa-circle-check me-1"></i>
+
+              In Stock
+
+            </span>
+
+
+            <!-- LOW STOCK -->
+
+            <span
+              *ngIf="
+                !isOutOfStock(item.id) &&
+                getStockQuantity(item.id) <= 5
+              "
+              class="stock-low">
+
+              <i class="fa-solid fa-triangle-exclamation me-1"></i>
+
+              Only
+              {{ getStockQuantity(item.id) }}
+              left
+
+            </span>
+
+
+            <!-- OUT OF STOCK -->
+
+            <span
+              *ngIf="isOutOfStock(item.id)"
+              class="stock-out">
+
+              <i class="fa-solid fa-circle-xmark me-1"></i>
+
+              Out of Stock
+
+            </span>
+
+          </div>
+
+
+          <!-- ========================= -->
+          <!-- ADD BUTTON -->
+          <!-- ========================= -->
+
           <button
-            *ngIf="!item.quantity || item.quantity === 0"
+            *ngIf="
+              !isOutOfStock(item.id) &&
+              getCartQuantity(item.id) === 0
+            "
             class="btn position-absolute start-50 translate-middle-x add-btn"
             type="button"
             (click)="addToCart(item)">
@@ -500,11 +817,21 @@
 
           </button>
 
-          <!-- Quantity -->
+
+          <!-- ========================= -->
+          <!-- QUANTITY CONTROLS -->
+          <!-- ========================= -->
+
           <div
-            *ngIf="item.quantity && item.quantity > 0"
+            *ngIf="
+              !isOutOfStock(item.id) &&
+              getCartQuantity(item.id) > 0
+            "
             class="quantity-box position-absolute start-50 translate-middle-x"
             role="group">
+
+
+            <!-- MINUS -->
 
             <button
               type="button"
@@ -515,18 +842,45 @@
 
             </button>
 
+
+            <!-- CART QUANTITY -->
+
             <span class="quantity-number">
-              {{ item.quantity }}
+
+              {{ getCartQuantity(item.id) }}
+
             </span>
+
+
+            <!-- PLUS -->
 
             <button
               type="button"
               class="quantity-btn"
+              [disabled]="
+                getCartQuantity(item.id) >=
+                getStockQuantity(item.id)
+              "
               (click)="increaseQuantity(item)">
 
               <i class="fa-solid fa-plus"></i>
 
             </button>
+
+          </div>
+
+
+          <!-- ========================= -->
+          <!-- OUT OF STOCK MESSAGE -->
+          <!-- ========================= -->
+
+          <div
+            *ngIf="isOutOfStock(item.id)"
+            class="out-of-stock position-absolute start-50 translate-middle-x">
+
+            <i class="fa-solid fa-ban me-1"></i>
+
+            Out of Stock
 
           </div>
 
@@ -538,29 +892,45 @@
 
   </ng-template>
 
-  <!-- Floating Cart -->
+
+  <!-- ========================= -->
+  <!-- FLOATING CART -->
+  <!-- ========================= -->
+
   <div
     *ngIf="getCartCount() > 0"
     class="position-fixed bottom-0 start-0 end-0 pb-3 floating-cart-wrapper">
 
     <div class="container">
 
-      <div class="cart-summary px-4 py-3 d-flex align-items-center justify-content-between">
+      <div
+        class="cart-summary px-4 py-3 d-flex align-items-center justify-content-between">
+
 
         <div>
 
           <span class="fw-bold">
+
             {{ getCartCount() }}
+
             {{ getCartCount() === 1 ? 'item' : 'items' }}
+
           </span>
 
-          <span class="mx-2">|</span>
+
+          <span class="mx-2">
+            |
+          </span>
+
 
           <span class="fw-bold">
+
             ₹{{ getCartTotal() }}
+
           </span>
 
         </div>
+
 
         <button
           class="btn cart-summary-btn"
@@ -568,6 +938,7 @@
           routerLink="/cart">
 
           View Cart
+
           <i class="fa-solid fa-bag-shopping ms-2"></i>
 
         </button>

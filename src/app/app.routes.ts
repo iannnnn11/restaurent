@@ -21,6 +21,7 @@ import { authGuard } from './auth-guard';
 import { Inventory } from './shyam/inventory/inventory';
 
 import { Employeee } from './shyam/employeee/employeee'; 
+import { Revenue } from './shyam/revenue/revenue';
 export const routes: Routes = [
   {
     path: 'login',
@@ -85,6 +86,10 @@ export const routes: Routes = [
     {
       path: 'inventory',
       component: Inventory
+    },
+    {
+      path: 'revenue',
+      component: Revenue
     }
   ]
 },
