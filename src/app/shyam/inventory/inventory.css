@@ -333,3 +333,47 @@
 .out-dot {
   background: #dc3545;
 }
+.price-display {
+  min-width: 80px;
+}
+
+.price-display strong {
+  font-size: 15px;
+}
+
+.price-edit {
+  width: 110px;
+}
+
+.price-btn {
+  border: 1px solid #dee2e6;
+  background: #fff;
+  color: #212529;
+  border-radius: 7px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.price-btn:hover {
+  background: #f8f9fa;
+}
+
+.save-price-btn {
+  border: 0;
+  background: #198754;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.cancel-price-btn {
+  border: 0;
+  background: #dc3545;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}

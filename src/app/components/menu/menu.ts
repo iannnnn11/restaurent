@@ -41,17 +41,13 @@ export class Menu implements OnInit, AfterViewInit {
     private inventoryService: InventoryService
   ) {}
 
-  // =========================
-  // COFFEE
-  // =========================
-
   coffeeItems = [
 
     {
       id: '1',
       name: 'Cappuccino',
       description: 'Rich coffee with steamed milk and foam.',
-      price: 40,
+      price: 50,
       rating: 4.8,
       ratingCount: 210,
       image: '/images/cappuchino.jpg',
@@ -63,7 +59,7 @@ export class Menu implements OnInit, AfterViewInit {
       id: '2',
       name: 'Cold Coffee',
       description: 'Chilled coffee blended with milk.',
-      price: 50,
+      price: 60,
       rating: 4.7,
       ratingCount: 175,
       image: '/images/coldcoffee.webp',
@@ -109,10 +105,6 @@ export class Menu implements OnInit, AfterViewInit {
 
   ];
 
-  // =========================
-  // NUTS
-  // =========================
-
   nutsItems = [
 
     {
@@ -131,7 +123,7 @@ export class Menu implements OnInit, AfterViewInit {
       id: '7',
       name: 'Cashews',
       description: 'Premium roasted and salted cashews.',
-      price: 90,
+      price: 95,
       rating: 4.7,
       ratingCount: 125,
       image: '/images/cashew.jpg',
@@ -176,10 +168,6 @@ export class Menu implements OnInit, AfterViewInit {
     }
 
   ];
-
-  // =========================
-  // SNACKS
-  // =========================
 
   snackItems = [
 
@@ -245,12 +233,10 @@ export class Menu implements OnInit, AfterViewInit {
 
   ];
 
-  // =========================
-  // INIT
-  // =========================
-
   ngOnInit(): void {
-    this.syncInventoryQuantities();
+
+    this.syncInventoryData();
+
   }
 
   ngAfterViewInit(): void {
@@ -260,10 +246,6 @@ export class Menu implements OnInit, AfterViewInit {
     });
 
   }
-
-  // =========================
-  // RECOMMENDED
-  // =========================
 
   get recommendedItems(): any[] {
 
@@ -277,10 +259,6 @@ export class Menu implements OnInit, AfterViewInit {
     ];
 
   }
-
-  // =========================
-  // SEARCH
-  // =========================
 
   getFilteredItems(items: any[]): any[] {
 
@@ -309,11 +287,7 @@ export class Menu implements OnInit, AfterViewInit {
 
   }
 
-  // =========================
-  // INVENTORY
-  // =========================
-
-  syncInventoryQuantities(): void {
+  syncInventoryData(): void {
 
     const inventoryItems =
       this.inventoryService.getItems();
@@ -331,21 +305,15 @@ export class Menu implements OnInit, AfterViewInit {
           inventory => inventory.id === item.id
         );
 
-      /*
-       * We no longer store quantity directly
-       * inside menu item.
-       *
-       * InventoryService is the single source
-       * of truth for stock.
-       */
+      if (!inventoryItem) {
+        return;
+      }
+
+      item.price = inventoryItem.price;
 
     });
 
   }
-
-  // =========================
-  // STOCK
-  // =========================
 
   getStockQuantity(id: string): number {
 
@@ -357,6 +325,7 @@ export class Menu implements OnInit, AfterViewInit {
     return inventoryItem
       ? inventoryItem.quantity
       : 0;
+
   }
 
   isOutOfStock(id: string): boolean {
@@ -383,10 +352,6 @@ export class Menu implements OnInit, AfterViewInit {
 
   }
 
-  // =========================
-  // CART QUANTITY
-  // =========================
-
   getCartQuantity(id: string): number {
 
     const cartItem =
@@ -397,11 +362,8 @@ export class Menu implements OnInit, AfterViewInit {
     return cartItem
       ? cartItem.quantity
       : 0;
-  }
 
-  // =========================
-  // ADD TO CART
-  // =========================
+  }
 
   addToCart(item: any): void {
 
@@ -411,12 +373,10 @@ export class Menu implements OnInit, AfterViewInit {
     const cartQuantity =
       this.getCartQuantity(item.id);
 
-    // No stock
     if (stock <= 0) {
       return;
     }
 
-    // Cart already has maximum available quantity
     if (cartQuantity >= stock) {
       return;
     }
@@ -424,10 +384,6 @@ export class Menu implements OnInit, AfterViewInit {
     this.cartService.addToCart(item);
 
   }
-
-  // =========================
-  // INCREASE CART
-  // =========================
 
   increaseQuantity(item: any): void {
 
@@ -445,19 +401,11 @@ export class Menu implements OnInit, AfterViewInit {
 
   }
 
-  // =========================
-  // DECREASE CART
-  // =========================
-
   decreaseQuantity(item: any): void {
 
     this.cartService.decreaseQuantity(item);
 
   }
-
-  // =========================
-  // CART COUNT
-  // =========================
 
   getCartCount(): number {
 
@@ -470,10 +418,6 @@ export class Menu implements OnInit, AfterViewInit {
       );
 
   }
-
-  // =========================
-  // CART TOTAL
-  // =========================
 
   getCartTotal(): number {
 
@@ -488,10 +432,6 @@ export class Menu implements OnInit, AfterViewInit {
       );
 
   }
-
-  // =========================
-  // SCROLL
-  // =========================
 
   scrollToSection(sectionId: string): void {
 
@@ -510,10 +450,6 @@ export class Menu implements OnInit, AfterViewInit {
     });
 
   }
-
-  // =========================
-  // ACTIVE CATEGORY
-  // =========================
 
   @HostListener('window:scroll')
   onWindowScroll(): void {

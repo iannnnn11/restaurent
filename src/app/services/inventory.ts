@@ -19,7 +19,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 20
+      costPrice: 20,
+      price: 50
     },
 
     {
@@ -31,7 +32,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 25
+      costPrice: 25,
+      price: 60
     },
 
     {
@@ -43,7 +45,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 12
+      costPrice: 12,
+      price: 30
     },
 
     {
@@ -55,7 +58,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 10
+      costPrice: 10,
+      price: 25
     },
 
     {
@@ -67,7 +71,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 8
+      costPrice: 8,
+      price: 20
     },
 
     {
@@ -79,7 +84,8 @@ export class InventoryService {
       unit: 'packs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 50
+      costPrice: 50,
+      price: 80
     },
 
     {
@@ -91,7 +97,8 @@ export class InventoryService {
       unit: 'packs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 60
+      costPrice: 60,
+      price: 95
     },
 
     {
@@ -103,7 +110,8 @@ export class InventoryService {
       unit: 'packs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 65
+      costPrice: 65,
+      price: 100
     },
 
     {
@@ -115,7 +123,8 @@ export class InventoryService {
       unit: 'packs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 70
+      costPrice: 70,
+      price: 110
     },
 
     {
@@ -127,7 +136,8 @@ export class InventoryService {
       unit: 'packs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 35
+      costPrice: 35,
+      price: 60
     },
 
     {
@@ -139,7 +149,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 10
+      costPrice: 10,
+      price: 20
     },
 
     {
@@ -151,7 +162,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 15
+      costPrice: 15,
+      price: 30
     },
 
     {
@@ -163,7 +175,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 18
+      costPrice: 18,
+      price: 35
     },
 
     {
@@ -175,7 +188,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 45
+      costPrice: 45,
+      price: 70
     },
 
     {
@@ -187,7 +201,8 @@ export class InventoryService {
       unit: 'pcs',
       minStock: 5,
       lastRestock: '17 Aug',
-      costPrice: 10
+      costPrice: 10,
+      price: 20
     }
 
   ];
@@ -195,17 +210,45 @@ export class InventoryService {
 
   constructor() {
 
-    const savedItems = localStorage.getItem(this.storageKey);
+    const savedItems =
+      localStorage.getItem(this.storageKey);
 
     if (savedItems) {
 
       try {
 
-        this.items = JSON.parse(savedItems);
+        const parsedItems: InventoryItem[] =
+          JSON.parse(savedItems);
+
+        this.items = this.items.map(defaultItem => {
+
+          const savedItem = parsedItems.find(
+            item => item.id === defaultItem.id
+          );
+
+          if (savedItem) {
+
+            return {
+              ...defaultItem,
+              ...savedItem,
+              price:
+                savedItem.price ??
+                defaultItem.price
+            };
+
+          }
+
+          return defaultItem;
+
+        });
+
+        this.saveItems();
 
       } catch {
 
-        console.log('Could not load saved inventory');
+        console.log(
+          'Could not load saved inventory'
+        );
 
         this.saveItems();
 
@@ -279,6 +322,26 @@ export class InventoryService {
     if (item.quantity < 0) {
       item.quantity = 0;
     }
+
+    this.saveItems();
+
+  }
+
+
+  updatePrice(
+    id: string,
+    price: number
+  ): void {
+
+    const item = this.items.find(
+      item => item.id === id
+    );
+
+    if (!item) {
+      return;
+    }
+
+    item.price = price;
 
     this.saveItems();
 

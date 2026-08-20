@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { InventoryService } from '../../services/inventory';
 import { InventoryItem } from '../../models/inventory-item';
 
-
 @Component({
   selector: 'app-inventory',
   standalone: true,
@@ -18,185 +17,102 @@ import { InventoryItem } from '../../models/inventory-item';
 })
 export class Inventory implements OnInit {
 
-  // All inventory items
   items: InventoryItem[] = [];
-
-  // Items displayed after filtering
   filteredItems: InventoryItem[] = [];
 
-  // Search text
-  searchText: string = '';
+  searchText = '';
+  selectedCategory = 'All';
+  selectedStock = 'All';
 
-  // Selected category
-  selectedCategory: string = 'All';
-
-  // Selected stock status
-  selectedStock: string = 'All';
-
+  editingPriceId: string | null = null;
+  newPrice = 0;
 
   constructor(
     private inventoryService: InventoryService
   ) {}
 
-
-  // =========================
-  // INITIALIZE
-  // =========================
-
   ngOnInit(): void {
-
     this.loadInventory();
-
   }
-
-
-  // =========================
-  // LOAD INVENTORY
-  // =========================
 
   loadInventory(): void {
-
     this.items = this.inventoryService.getItems();
-
     this.applyFilters();
-
   }
-
-
-  // =========================
-  // SUMMARY CARDS
-  // =========================
 
   get totalItems(): number {
-
     return this.items.length;
-
   }
 
-
   get inStockItems(): number {
-
     return this.items.filter(
       item => item.quantity > item.minStock
     ).length;
-
   }
 
-
   get lowStockItems(): number {
-
     return this.items.filter(
       item =>
         item.quantity > 0 &&
         item.quantity <= item.minStock
     ).length;
-
   }
 
-
   get outOfStockItems(): number {
-
     return this.items.filter(
       item => item.quantity === 0
     ).length;
-
   }
-
-
-  // =========================
-  // STOCK STATUS
-  // =========================
 
   getStockStatus(item: InventoryItem): string {
 
     if (item.quantity === 0) {
-
       return 'Out of Stock';
-
     }
 
     if (item.quantity <= item.minStock) {
-
       return 'Low Stock';
-
     }
 
     return 'In Stock';
-
   }
-
-
-  // =========================
-  // CATEGORY LIST
-  // =========================
 
   get categories(): string[] {
-
     return [
       ...new Set(
-        this.items.map(
-          item => item.category
-        )
+        this.items.map(item => item.category)
       )
     ];
-
   }
-
-
-  // =========================
-  // FILTERING
-  // =========================
 
   applyFilters(): void {
 
-    const search =
-      this.searchText
-        .toLowerCase()
-        .trim();
+    const search = this.searchText
+      .toLowerCase()
+      .trim();
 
+    this.filteredItems = this.items.filter(item => {
 
-    this.filteredItems = this.items.filter(
-      item => {
+      const matchesSearch =
+        search === '' ||
+        item.name.toLowerCase().includes(search) ||
+        item.subtitle.toLowerCase().includes(search);
 
+      const matchesCategory =
+        this.selectedCategory === 'All' ||
+        item.category === this.selectedCategory;
 
-        // Search
-        const matchesSearch =
-          search === '' ||
-          item.name
-            .toLowerCase()
-            .includes(search) ||
-          item.subtitle
-            .toLowerCase()
-            .includes(search);
+      const matchesStock =
+        this.selectedStock === 'All' ||
+        this.getStockStatus(item) === this.selectedStock;
 
-
-        // Category
-        const matchesCategory =
-          this.selectedCategory === 'All' ||
-          item.category === this.selectedCategory;
-
-
-        // Stock status
-        const matchesStock =
-          this.selectedStock === 'All' ||
-          this.getStockStatus(item) === this.selectedStock;
-
-
-        return (
-          matchesSearch &&
-          matchesCategory &&
-          matchesStock
-        );
-
-      }
-    );
-
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesStock
+      );
+    });
   }
-
-
-  // =========================
-  // INCREASE QUANTITY
-  // =========================
 
   increaseQuantity(item: InventoryItem): void {
 
@@ -206,20 +122,12 @@ export class Inventory implements OnInit {
     );
 
     this.loadInventory();
-
   }
-
-
-  // =========================
-  // DECREASE QUANTITY
-  // =========================
 
   decreaseQuantity(item: InventoryItem): void {
 
     if (item.quantity <= 0) {
-
       return;
-
     }
 
     this.inventoryService.updateQuantity(
@@ -228,45 +136,32 @@ export class Inventory implements OnInit {
     );
 
     this.loadInventory();
-
   }
 
+  startPriceEdit(item: InventoryItem): void {
 
-  // =========================
-  // RESTOCK
-  // =========================
+    this.editingPriceId = item.id;
+    this.newPrice = item.price;
+  }
 
-  restockItem(item: InventoryItem): void {
+  savePrice(item: InventoryItem): void {
 
-    // Add minimum-stock amount
-    this.inventoryService.updateQuantity(
+    if (this.newPrice <= 0) {
+      return;
+    }
+
+    this.inventoryService.updatePrice(
       item.id,
-      item.minStock
+      this.newPrice
     );
 
-    // Update last restock date
-    item.lastRestock = this.getToday();
+    this.editingPriceId = null;
 
-    // Reload the data
     this.loadInventory();
-
   }
 
+  cancelPriceEdit(): void {
 
-  // =========================
-  // TODAY'S DATE
-  // =========================
-
-  private getToday(): string {
-
-    return new Date().toLocaleDateString(
-      'en-GB',
-      {
-        day: '2-digit',
-        month: 'short'
-      }
-    );
-
+    this.editingPriceId = null;
   }
-
 }

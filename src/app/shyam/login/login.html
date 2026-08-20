@@ -1,0 +1,353 @@
+<div class="admin-login-page min-vh-100">
+
+  <div class="container-fluid h-100">
+    <div class="row min-vh-100 g-0">
+
+      <!-- ================= LEFT SECTION ================= -->
+      <section
+        class="col-lg-7 d-none d-lg-flex admin-illustration-section
+               justify-content-center align-items-center position-relative"
+      >
+
+        <div class="admin-illustration-content text-center px-5">
+
+          <!-- Brand -->
+          <div class="brand mb-5">
+
+            <div class="d-flex align-items-center justify-content-center gap-3">
+
+              <div class="admin-logo-circle">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+
+              <div class="text-start">
+
+                <h2 class="company-name mb-0">
+                  Jode<span>Tx</span>
+                </h2>
+
+                <small class="company-tagline">
+                  Office Restaurant Management
+                </small>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Dashboard Illustration -->
+          <div class="dashboard-illustration mx-auto mb-5">
+
+            <!-- Floating icons -->
+
+            <div class="floating-icon icon-one">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <div class="floating-icon icon-two">
+              <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+
+            <div class="floating-icon icon-three">
+              <i class="fa-solid fa-receipt"></i>
+            </div>
+
+
+            <!-- Dashboard card -->
+
+            <div class="mini-dashboard">
+
+              <div class="dashboard-header">
+
+                <div class="dashboard-title">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+              </div>
+
+
+              <div class="dashboard-body">
+
+                <div class="stat-card">
+                  <i class="fa-solid fa-bag-shopping"></i>
+
+                  <div>
+                    <small>Orders</small>
+                    <strong>128</strong>
+                  </div>
+                </div>
+
+
+                <div class="stat-card">
+                  <i class="fa-solid fa-chart-simple"></i>
+
+                  <div>
+                    <small>Revenue</small>
+                    <strong>₹24.8K</strong>
+                  </div>
+                </div>
+
+
+                <div class="chart-area">
+
+                  <div class="chart-line line-one"></div>
+                  <div class="chart-line line-two"></div>
+                  <div class="chart-line line-three"></div>
+                  <div class="chart-line line-four"></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Heading -->
+
+          <h1 class="display-5 fw-bold mb-3">
+            Control. Manage. Grow.
+          </h1>
+
+          <p class="lead mx-auto">
+            Manage orders, inventory, menu items and daily
+            restaurant operations from one powerful workspace.
+          </p>
+
+        </div>
+
+
+        <div class="admin-curved-shape"></div>
+
+      </section>
+
+
+      <!-- ================= LOGIN SECTION ================= -->
+
+      <section
+        class="col-12 col-lg-5 admin-login-section
+               d-flex justify-content-center align-items-center"
+      >
+
+        <div class="admin-login-wrapper px-4 px-sm-5">
+
+
+          <!-- Mobile Logo -->
+
+          <div class="d-lg-none text-center mb-5">
+
+            <div class="mobile-admin-logo">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+
+            <h2 class="mobile-brand fw-bold text-white mt-3">
+              Jode<span>Tx</span>
+            </h2>
+
+            <small class="text-white-50">
+              Admin Management Portal
+            </small>
+
+          </div>
+
+
+          <!-- Heading -->
+
+          <div class="mb-5">
+
+            <p class="admin-login-label mb-2">
+              ADMIN CONTROL PANEL
+            </p>
+
+            <h1 class="fw-bold text-white mb-3">
+              Welcome, Administrator
+            </h1>
+
+            <p class="text-white-50 mb-0">
+              Sign in to manage your restaurant operations.
+            </p>
+
+          </div>
+
+
+          <!-- ================= FORM ================= -->
+
+          <form (ngSubmit)="login()">
+
+
+            <!-- Admin ID -->
+
+            <div class="mb-4">
+
+              <label
+                for="adminId"
+                class="form-label text-white-50"
+              >
+                Admin ID
+              </label>
+
+              <div class="input-group admin-input-group">
+
+                <span class="input-group-text">
+                  <i class="fa-solid fa-user-shield"></i>
+                </span>
+
+                <input
+  id="adminId"
+  type="text"
+  class="form-control"
+  placeholder="Enter your admin ID"
+  [(ngModel)]="username"
+  name="username"
+  required
+  minlength="3"
+  autocomplete="username"
+>
+
+              </div>
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="mb-3">
+
+              <label
+                for="adminPassword"
+                class="form-label text-white-50"
+              >
+                Password
+              </label>
+
+              <div class="input-group admin-input-group">
+
+                <span class="input-group-text">
+                  <i class="fa-solid fa-lock"></i>
+                </span>
+
+                <input
+  id="adminPassword"
+  type="password"
+  class="form-control"
+  placeholder="Enter your password"
+  [(ngModel)]="password"
+  name="password"
+  required
+  minlength="6"
+  autocomplete="current-password"
+>
+
+              </div>
+
+            </div>
+
+
+            <!-- Error -->
+
+            <div
+              *ngIf="errorMessage"
+              class="admin-error mb-3"
+            >
+
+              <i class="fa-solid fa-circle-exclamation me-2"></i>
+
+              {{ errorMessage }}
+
+            </div>
+
+
+            <!-- Remember / Forgot -->
+
+            <div
+              class="d-flex justify-content-between
+                     align-items-center flex-wrap
+                     gap-2 mb-4"
+            >
+
+              <div class="form-check">
+
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="rememberAdmin"
+                >
+
+                <label
+                  class="form-check-label text-white-50"
+                  for="rememberAdmin"
+                >
+                  Keep me signed in
+                </label>
+
+              </div>
+
+              <a
+                href="#"
+                class="admin-forgot-link text-decoration-none"
+              >
+                Forgot password?
+              </a>
+
+            </div>
+
+
+            <!-- Login -->
+
+            <button
+              type="submit"
+              class="btn admin-login-button w-100
+                     fw-semibold py-3" routerLink="/dash/home"
+            >
+
+              Access Admin Panel
+
+              <i class="fa-solid fa-arrow-right ms-2"></i>
+
+            </button>
+
+
+          </form>
+
+
+          <!-- Security -->
+
+          <div class="admin-security-note text-center mt-4">
+
+            <i class="fa-solid fa-shield-halved me-2"></i>
+
+            Protected admin area. Authorised personnel only.
+
+          </div>
+
+
+          <!-- Bottom -->
+
+          <div class="admin-footer text-center mt-5">
+
+            <div class="d-flex justify-content-center
+                        align-items-center gap-2">
+
+              <i class="fa-solid fa-lock"></i>
+
+              <span>
+                Secure JodeTx Management System
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+
+</div>

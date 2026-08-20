@@ -1,0 +1,604 @@
+<div class="settings-page">
+
+  <!-- ================= HEADER ================= -->
+
+  <div class="page-header">
+
+    <div>
+      <h3>Settings</h3>
+
+      <p>
+        Manage your JodeTx admin panel and application preferences.
+      </p>
+    </div>
+
+    <div class="header-actions">
+
+      <button
+        type="button"
+        class="btn reset-btn"
+        (click)="resetSettings()">
+
+        <i class="fa-solid fa-rotate-left me-1"></i>
+        Reset
+
+      </button>
+
+      <button
+        type="button"
+        class="btn save-btn"
+        (click)="saveSettings()">
+
+        <i class="fa-solid fa-check me-1"></i>
+        Save Changes
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= MAIN GRID ================= -->
+
+  <div class="settings-grid">
+
+
+    <!-- =========================================
+         ADMIN ACCOUNT
+    ========================================== -->
+
+    <div class="settings-card">
+
+      <div class="card-title">
+
+        <div class="title-icon">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <div>
+          <h5>Admin Account</h5>
+          <span>Manage administrator information</span>
+        </div>
+
+      </div>
+
+
+      <div class="profile-box">
+
+        <div class="profile-avatar">
+          {{ adminName.charAt(0).toUpperCase() }}
+        </div>
+
+        <div>
+          <strong>{{ adminName }}</strong>
+
+          <small>
+            Administrator
+          </small>
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label>Admin Name</label>
+
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="adminName">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Email Address</label>
+
+          <input
+            type="email"
+            class="form-control"
+            [(ngModel)]="adminEmail">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         CANTEEN SETTINGS
+    ========================================== -->
+
+    <div class="settings-card">
+
+      <div class="card-title">
+
+        <div class="title-icon">
+          <i class="fa-solid fa-utensils"></i>
+        </div>
+
+        <div>
+          <h5>Canteen Settings</h5>
+          <span>Configure your pantry application</span>
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label>Canteen Name</label>
+
+          <input
+            type="text"
+            class="form-control"
+            value="JodeTx Office Canteen">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Currency</label>
+
+          <select class="form-select">
+
+            <option selected>Indian Rupee (₹)</option>
+            <option>US Dollar ($)</option>
+            <option>Euro (€)</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="info-box">
+
+        <i class="fa-solid fa-circle-info"></i>
+
+        <span>
+          Prices and revenue will be displayed using the selected currency.
+        </span>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         NOTIFICATIONS
+    ========================================== -->
+
+    <div class="settings-card">
+
+      <div class="card-title">
+
+        <div class="title-icon">
+          <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div>
+          <h5>Notifications</h5>
+          <span>Choose what you want to be notified about</span>
+        </div>
+
+      </div>
+
+
+      <!-- New Orders -->
+
+      <div class="setting-row">
+
+        <div class="setting-left">
+
+          <div class="setting-icon blue">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </div>
+
+          <div>
+            <strong>New Orders</strong>
+
+            <small>
+              Notify when a new order is received
+            </small>
+          </div>
+
+        </div>
+
+        <div class="form-check form-switch">
+
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [(ngModel)]="orderNotifications">
+
+        </div>
+
+      </div>
+
+
+      <!-- Low Stock -->
+
+      <div class="setting-row">
+
+        <div class="setting-left">
+
+          <div class="setting-icon orange">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+
+          <div>
+            <strong>Low Stock Alerts</strong>
+
+            <small>
+              Alert when an item reaches minimum stock
+            </small>
+          </div>
+
+        </div>
+
+        <div class="form-check form-switch">
+
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [(ngModel)]="lowStockAlerts">
+
+        </div>
+
+      </div>
+
+
+      <!-- Completed Orders -->
+
+      <div class="setting-row">
+
+        <div class="setting-left">
+
+          <div class="setting-icon green">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+
+          <div>
+            <strong>Order Completed</strong>
+
+            <small>
+              Notify when an order is marked completed
+            </small>
+
+          </div>
+
+        </div>
+
+        <div class="form-check form-switch">
+
+          <input
+            class="form-check-input"
+            type="checkbox"
+            checked>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         APPEARANCE
+    ========================================== -->
+
+    <div class="settings-card">
+
+      <div class="card-title">
+
+        <div class="title-icon">
+          <i class="fa-solid fa-palette"></i>
+        </div>
+
+        <div>
+          <h5>Appearance</h5>
+          <span>Customize your admin workspace</span>
+        </div>
+
+      </div>
+
+
+      <div class="appearance-options">
+
+
+        <!-- Light -->
+
+        <label
+          class="theme-option"
+          [class.selected]="!darkMode">
+
+          <input
+            type="radio"
+            name="theme"
+            [checked]="!darkMode"
+            (change)="darkMode = false; applyTheme()">
+
+          <div class="theme-preview light-preview">
+
+            <div class="preview-top"></div>
+
+            <div class="preview-body">
+
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+
+          </div>
+
+          <span>
+            Light
+          </span>
+
+        </label>
+
+
+        <!-- Dark -->
+
+        <label
+          class="theme-option"
+          [class.selected]="darkMode">
+
+          <input
+            type="radio"
+            name="theme"
+            [checked]="darkMode"
+            (change)="darkMode = true; applyTheme()">
+
+          <div class="theme-preview dark-preview">
+
+            <div class="preview-top"></div>
+
+            <div class="preview-body">
+
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+
+          </div>
+
+          <span>
+            Dark
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <div class="setting-row compact-setting">
+
+        <div class="setting-left">
+
+          <div class="setting-icon purple">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+
+          <div>
+
+            <strong>Compact Mode</strong>
+
+            <small>
+              Reduce spacing across admin tables
+            </small>
+
+          </div>
+
+        </div>
+
+        <div class="form-check form-switch">
+
+          <input
+            class="form-check-input"
+            type="checkbox">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         SECURITY
+    ========================================== -->
+
+    <div class="settings-card">
+
+      <div class="card-title">
+
+        <div class="title-icon security">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+          <h5>Security</h5>
+          <span>Protect your administrator account</span>
+        </div>
+
+      </div>
+
+
+      <div class="security-status">
+
+        <div class="security-check">
+
+          <i class="fa-solid fa-circle-check"></i>
+
+          <div>
+            <strong>Account Protected</strong>
+
+            <small>
+              Your admin account is currently active.
+            </small>
+          </div>
+
+        </div>
+
+        <span class="status-badge">
+          Active
+        </span>
+
+      </div>
+
+
+      <div class="security-item">
+
+        <div>
+
+          <strong>Password</strong>
+
+          <small>
+            Last updated recently
+          </small>
+
+        </div>
+
+        <button
+          type="button"
+          class="outline-btn">
+
+          Change Password
+
+        </button>
+
+      </div>
+
+
+      <div class="security-item">
+
+        <div>
+
+          <strong>Admin Session</strong>
+
+          <small>
+            Current browser session
+          </small>
+
+        </div>
+
+        <button
+          type="button"
+          class="danger-outline-btn"
+          (click)="logout()">
+
+          <i class="fa-solid fa-right-from-bracket me-1"></i>
+          Logout
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         SYSTEM INFORMATION
+    ========================================== -->
+
+    <div class="settings-card">
+
+      <div class="card-title">
+
+        <div class="title-icon">
+          <i class="fa-solid fa-server"></i>
+        </div>
+
+        <div>
+          <h5>System Information</h5>
+          <span>JodeTx application details</span>
+        </div>
+
+      </div>
+
+
+      <div class="system-list">
+
+        <div class="system-row">
+
+          <span>Application</span>
+
+          <strong>JodeTx Office Pantry</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+          <span>Version</span>
+
+          <strong>1.0.0</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+          <span>Platform</span>
+
+          <strong>Angular</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+          <span>Data Storage</span>
+
+          <span class="storage-status">
+
+            <i class="fa-solid fa-circle"></i>
+            LocalStorage
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <div class="settings-footer">
+
+    <span>
+      <i class="fa-solid fa-circle-check"></i>
+      All changes are saved locally
+    </span>
+
+    <span>
+      JodeTx Admin Panel
+    </span>
+
+  </div>
+
+</div>

@@ -1,1 +1,372 @@
-/* You can add global styles to this file, and also import other style files */
+/* ================================
+   LIGHT THEME
+================================ */
+
+:root {
+  --app-bg: #f5f6f8;
+  --card-bg: #ffffff;
+  --surface-bg: #ffffff;
+  --input-bg: #ffffff;
+  --border-color: #e5e7eb;
+
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+
+  --sidebar-bg: #ffffff;
+  --navbar-bg: #ffffff;
+
+  --hover-bg: #f3f4f6;
+  --table-bg: #ffffff;
+}
+
+
+/* ================================
+   DARK THEME
+================================ */
+
+body[data-theme="dark"] {
+
+  --app-bg: #0f172a;
+  --card-bg: #1e293b;
+  --surface-bg: #1e293b;
+  --input-bg: #0f172a;
+  --border-color: #334155;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --sidebar-bg: #111827;
+  --navbar-bg: #111827;
+
+  --hover-bg: #273449;
+  --table-bg: #1e293b;
+}
+
+
+/* ================================
+   GLOBAL
+================================ */
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--text-primary);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+
+/* ================================
+   ADMIN MAIN AREA
+================================ */
+
+body[data-theme="dark"] .settings-page,
+body[data-theme="dark"] .dashboard-page,
+body[data-theme="dark"] .order-page,
+body[data-theme="dark"] .inventory-page,
+body[data-theme="dark"] .revenue-page,
+body[data-theme="dark"] .employee-page,
+body[data-theme="dark"] .menu-page {
+
+  background: var(--app-bg) !important;
+  color: var(--text-primary);
+}
+
+
+/* ================================
+   CARDS
+================================ */
+
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .settings-card,
+body[data-theme="dark"] .stat-card,
+body[data-theme="dark"] .dashboard-card,
+body[data-theme="dark"] .order-card,
+body[data-theme="dark"] .inventory-card {
+
+  background: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary);
+}
+
+
+/* ================================
+   SIDEBAR
+================================ */
+
+body[data-theme="dark"] .sidebar {
+
+  background: var(--sidebar-bg) !important;
+  color: var(--text-primary);
+  border-color: var(--border-color) !important;
+}
+
+
+/* Sidebar text */
+
+body[data-theme="dark"] .sidebar a,
+body[data-theme="dark"] .sidebar-link {
+
+  color: var(--text-secondary);
+}
+
+
+/* Sidebar hover */
+
+body[data-theme="dark"] .sidebar a:hover,
+body[data-theme="dark"] .sidebar-link:hover {
+
+  background: var(--hover-bg);
+  color: #ffffff;
+}
+
+
+/* Active sidebar item */
+
+body[data-theme="dark"] .sidebar .active,
+body[data-theme="dark"] .sidebar-link.active {
+
+  background: #334155;
+  color: #ffffff;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+
+body[data-theme="dark"] .navbar,
+body[data-theme="dark"] .custom-navbar {
+
+  background: var(--navbar-bg) !important;
+  color: var(--text-primary);
+  border-color: var(--border-color) !important;
+}
+
+
+/* ================================
+   HEADINGS
+================================ */
+
+body[data-theme="dark"] h1,
+body[data-theme="dark"] h2,
+body[data-theme="dark"] h3,
+body[data-theme="dark"] h4,
+body[data-theme="dark"] h5,
+body[data-theme="dark"] h6 {
+
+  color: var(--text-primary);
+}
+
+
+/* ================================
+   TEXT
+================================ */
+
+body[data-theme="dark"] .text-muted {
+
+  color: var(--text-muted) !important;
+}
+
+body[data-theme="dark"] p,
+body[data-theme="dark"] span {
+
+  color: inherit;
+}
+
+
+/* ================================
+   INPUTS
+================================ */
+
+body[data-theme="dark"] .form-control,
+body[data-theme="dark"] .form-select,
+body[data-theme="dark"] textarea {
+
+  background-color: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+
+body[data-theme="dark"] .form-control::placeholder {
+
+  color: #64748b;
+}
+
+
+body[data-theme="dark"] .form-select option {
+
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+
+/* ================================
+   TABLES
+================================ */
+
+body[data-theme="dark"] table {
+
+  background: var(--table-bg);
+  color: var(--text-primary);
+}
+
+
+body[data-theme="dark"] .table {
+
+  --bs-table-bg: #1e293b;
+  --bs-table-color: #f8fafc;
+  --bs-table-border-color: #334155;
+}
+
+
+body[data-theme="dark"] .table thead {
+
+  background: #273449;
+}
+
+
+body[data-theme="dark"] .table tbody tr {
+
+  background: #1e293b;
+}
+
+
+body[data-theme="dark"] .table tbody tr:hover {
+
+  background: #273449;
+}
+
+
+/* ================================
+   DROPDOWN
+================================ */
+
+body[data-theme="dark"] .dropdown-menu {
+
+  background: #1e293b;
+  border-color: #334155;
+}
+
+
+body[data-theme="dark"] .dropdown-item {
+
+  color: #e2e8f0;
+}
+
+
+body[data-theme="dark"] .dropdown-item:hover {
+
+  background: #334155;
+  color: #ffffff;
+}
+
+
+/* ================================
+   MODALS
+================================ */
+
+body[data-theme="dark"] .modal-content {
+
+  background: #1e293b;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+
+/* ================================
+   BORDERS
+================================ */
+
+body[data-theme="dark"] .border {
+
+  border-color: #334155 !important;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+body[data-theme="dark"] .btn-light {
+
+  background: #334155;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+
+body[data-theme="dark"] .btn-outline-secondary {
+
+  color: #cbd5e1;
+  border-color: #475569;
+}
+
+
+body[data-theme="dark"] .btn-outline-secondary:hover {
+
+  background: #334155;
+  color: #ffffff;
+}
+
+
+/* ================================
+   SETTINGS
+================================ */
+
+body[data-theme="dark"] .settings-footer {
+
+  color: #94a3b8;
+}
+
+
+body[data-theme="dark"] .info-box {
+
+  background: #172033;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+
+body[data-theme="dark"] .profile-box {
+
+  background: #111827;
+  border-color: #334155;
+}
+
+
+body[data-theme="dark"] .setting-row,
+body[data-theme="dark"] .security-item,
+body[data-theme="dark"] .system-row {
+
+  border-color: #334155;
+}
+
+
+/* ================================
+   TRANSITION
+================================ */
+
+.sidebar,
+.navbar,
+.custom-navbar,
+.card,
+.settings-card,
+.form-control,
+.form-select,
+.table,
+body {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
